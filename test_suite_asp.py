@@ -25,5 +25,22 @@ class TestSuite:
         page.submit()
         page.wait.text_appear("Бухгалтерский учет")
 
-    def cash_expense_request(self):
+    def test_cash_expense_request(self):
         pass
+
+    def test_getting_cash_request(self):
+        page = CashRequestPage(self.driver)
+        page.click_by_text("Заявка на получение наличных денег")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+
+        page.new_document.account_number("Администрато")
+        page.new_document.tracking_number("1233")
+        page.new_document.operation("Снятие наличных (деньги в пути) (Все КОСГУ)")
+
+        page.new_document.document_number("123")
+        page.new_document.document_date("14.09.2017")
+        page.new_document.entry_date("14.09.2017")
+        page.new_document.deadline("24.09.2017")
+
+        sleep(10)

@@ -98,6 +98,15 @@ class Browser(object):
             except (ec.StaleElementReferenceException, ec.NoSuchElementException):
                 break
 
+    def select_type(self, locator, value, label=None):
+        self.wait.loading()
+        element = self.wait.element_appear(locator)
+        element.click()
+        self.set_text((By.XPATH, "//div[@class='modal-content']//input[@placeholder='Все поля']"),
+                      value + Keys.RETURN, label)
+        self.click((By.XPATH, "//tr[contains(., '%s')]" % value))
+        self.click_by_text("Выбрать")
+
     def set_text(self, locator, value, label=None):
         if value:
             self.wait.loading()
@@ -257,6 +266,8 @@ class Wait(object):
     def loading(self):
         WebDriverWait(self.driver, self.timeout).until_not(
             ec.visibility_of_element_located((By.XPATH, "//div[@class='loading-spinner']")))
+        WebDriverWait(self.driver, self.timeout).until_not(
+            ec.visibility_of_element_located((By.XPATH, "//div[@class='windows8']")))
 
 
 class Data(object):
