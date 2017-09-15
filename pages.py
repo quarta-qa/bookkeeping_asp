@@ -18,6 +18,224 @@ class MainPage(Browser):
     pass
 
 
+class CashExpenseRequestPage(Browser):
+
+    # Шапка документа
+    @property
+    def document_header(self):
+        return self.DocumentHeader(self.driver)
+
+    class DocumentHeader(Browser):
+
+        def document_number(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.document_number, value, "Номер документа")
+
+        def document_date(self, value):
+            self.set_date(CashExpenseRequestLocators.DocumentHeader.document_date, value, "Дата документа")
+
+        def document_kind(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.document_kind, "Вид документа")
+
+        def ofk_number(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.ofk_number, value, "Номер ОФК")
+
+        def entry_date(self, value):
+            self.set_date(CashExpenseRequestLocators.DocumentHeader.entry_date, value, "Дата проводки")
+
+        def operation(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.operation, "Операция")
+
+        def current_organization_account(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.current_organization_account, "Лицевой счет")
+
+        def short(self, value):
+            self.set_checkbox(CashExpenseRequestLocators.DocumentHeader.short, value, "Сокращенная")
+
+        def limit_date(self, value):
+            self.set_date(CashExpenseRequestLocators.DocumentHeader.limit_date, value, "Предельная дата исполнения")
+
+        def tracking_number(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.tracking_number, value, "Учетный номер обязательства")
+
+        def federal_targeted_investment_program(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.federal_targeted_investment_program, "Код объекта по ФАИП")
+
+        def priority(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.ofk_number, value, "Приоритет исполнения")
+
+        def currency_amount(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.document_number, value, "Сумма в валюте выплаты")
+
+        def currency_nds_amount(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.document_date, value, "Сумма НДС в валюте")
+
+        def currency_classifier(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.currency_classifier, "Код валюты по ОКВ")
+
+        def amount(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.amount, value, "Сумма в рублях")
+
+        def nds_amount(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.nds_amount, value, "Сумма НДС")
+
+        def amount_without_nds(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.amount_without_nds, value, "Сумма без НДС")
+
+        def is_advance(self, value):
+            self.set_checkbox(CashExpenseRequestLocators.DocumentHeader.is_advance, value, "Признак авансового платежа")
+
+        def payment_priority(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.payment_priority, value, "Очередность платежа")
+
+        def payment_form(self):
+            self.set_select(CashExpenseRequestLocators.DocumentHeader.payment_form, "Вид платежа")
+
+        def payment_purpose(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.payment_purpose, value, "Назначение платежа")
+
+        def document_foundation(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.document_foundation, "Документ-основание")
+
+        def document_foundation_kind(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.document_foundation_kind, "Вид")
+
+        def document_foundation_number(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.document_foundation_number, value, "Номер")
+
+        def document_foundation_date(self, value):
+            self.set_date(CashExpenseRequestLocators.DocumentHeader.document_foundation_date, value, "Дата")
+
+        def document_foundation_subject(self, value):
+            self.set_text(CashExpenseRequestLocators.DocumentHeader.document_foundation_subject, value, "Предмет")
+
+        def counterparty(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.counterparty, "Наименование / ФИО")
+
+        def counterparty_account_details(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.counterparty_account_details, "Банковский счет")
+
+        def is_employee(self, value):
+            self.set_checkbox(CashExpenseRequestLocators.DocumentHeader.is_employee, value, "Сотрудник")
+
+        def is_tax(self, value):
+            self.set_checkbox(CashExpenseRequestLocators.DocumentHeader.is_tax, value, "Налоговый платеж")
+
+        def chief(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.chief, "Руководитель (уполномоченное лицо)")
+
+        def chief_account(self):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.chief_account, "Главный бухгалтер (уполномоченное лицо)")
+
+        # Реквизиты документа-основания
+        @property
+        def requisites(self):
+            return self.Requisites(self.driver)
+
+    # Реквизиты документа-основания
+    @property
+    def requisites(self):
+        return self.Requisites(self.driver)
+
+    class Requisites(Browser):
+
+        def document(self):
+            self.set_type(CashExpenseRequestLocators.Requisites.document, "Документ")
+
+        def document_type(self):
+            self.set_type(CashExpenseRequestLocators.Requisites.document_type, "Вид")
+
+        def document_number(self):
+            self.set_text(CashExpenseRequestLocators.Requisites.document_number, "Номер")
+
+        def document_date(self, value):
+            self.set_date(CashExpenseRequestLocators.Requisites.document_date, value, "Дата")
+
+        def subject(self, value):
+            self.set_text(CashExpenseRequestLocators.Requisites.subject, value, "Предмет")
+
+    # Расшифровка заявки на кассовый расход
+    @property
+    def transcript(self):
+        return self.Transcript(self.driver)
+
+    class Transcript(Browser):
+
+        def activity_kind(self, value):
+            self.set_select(CashExpenseRequestLocators.Transcript.activity_kind, value, "Наименование вида средств для исполнения обязательства")
+
+        def kbk(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.kbk, "Код по БК плательщика")
+
+        def drawee_kbk_type(self, value):
+            self.set_select(CashExpenseRequestLocators.Transcript.drawee_kbk_type, value, "Тип КБК плательщика")
+
+        def kosgu(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.kosgu, "КОСГУ")
+
+        def cost_element(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.cost_element, "Вид затрат")
+
+        def recepient_kbk(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.recepient_kbk, "Код по БК получателя")
+
+        def recepient_kbk_type(self):
+            self.set_select(CashExpenseRequestLocators.Transcript.recepient_kbk_type, "Тип КБК Получателя")
+
+        def goal_code(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.goal_code, "Код цели (аналитический код)")
+
+        def department(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.department, "Подразделение")
+
+        def expenditure_goal_act(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.expenditure_goal_act, "Мероприятие")
+
+        def document_foundation_counterparty(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.document_foundation_counterparty, "Организация для Документа - основания")
+
+        def foundation(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.foundation, "Документ основания")
+
+        def report_code(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.report_code, "Код для отчетности")
+
+        def operation(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.operation, "Операция")
+
+        def currency_amount(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.currency_amount, value, "Сумма в валюте заявки")
+
+        def currency_nds_amount(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.currency_nds_amount, value, "Сумма НДС в валюте")
+
+        def amount(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.amount, value, "Сумма в рублях")
+
+        def nds_amount(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.nds_amount, value, "Сумма НДС")
+
+        def amount_without_nds(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.amount_without_nds, value, "Сумма без НДС")
+
+        def nds_percent(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.nds_percent, value, "% НДС")
+
+        def payment_purpose(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.payment_purpose, value, "Назначение платежа")
+
+        def comment(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.comment, value, "Примечание")
+
+        def drawee_subsidy_code(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.drawee_subsidy_code, value, "Код субсидии плательщика")
+
+        def recepient_subsidy_code(self, value):
+            self.set_text(CashExpenseRequestLocators.Transcript.recepient_subsidy_code, value, "Код субсидии получателя")
+
+        def act(self):
+            self.set_type(CashExpenseRequestLocators.Transcript.act, "Мероприятие по БР")
+
+
 class CashRequestPage(Browser):
 
     @property
@@ -32,13 +250,13 @@ class CashRequestPage(Browser):
 
         # Реквизиты документа
         def account_number(self, value):
-            self.select_type(CashRequestLocators.NewDocument.account_number, value, "Номер лицевого счета клиента")
+            self.set_type(CashRequestLocators.NewDocument.account_number, value, "Номер лицевого счета клиента")
 
         def tracking_number(self, value):
             self.set_text(CashRequestLocators.NewDocument.tracking_number, value, "Учетный номер обязательства")
 
         def operation(self, value):
-            self.select_type(CashRequestLocators.NewDocument.operation, value, "Операция")
+            self.set_type(CashRequestLocators.NewDocument.operation, value, "Операция")
 
         # Информация о документе
         def document_number(self, value):
