@@ -24,10 +24,24 @@ class CashPullRequestPage(Browser):
     def new_document(self):
         return self.NewDocument(self.driver)
 
+    @property
+    def holding_request(self):
+        return self.HoldingRequest(self.driver)
+
     def filter(self, value):
         self.set_text(CashPullRequestLocators.filter, value + Keys.RETURN, "Поиск записи")
         self.set_checkbox((By.XPATH, "//tr[contains(., '%s')]//input" % value))
 
+    class HoldingRequest(Browser):
+
+        def lddate_prov(self, value):
+            self.set_date(CashPullRequestLocators.HoldingRequest.lddate_prov, value, "Дата проводки")
+
+        def typical_operation(self, value):
+            self.set_type(CashPullRequestLocators.HoldingRequest.typical_operation, value, "Типовая операция")
+
+        def submit(self):
+            self.click(CashPullRequestLocators.HoldingRequest.submit)
 
     class NewDocument(Browser):
 

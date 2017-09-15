@@ -81,4 +81,11 @@ class TestSuite:
         page.new_document.click_by_text("Закрыть")
         page.filter("88005553535")
         page.click_by_text("Печать")
-        sleep(22)
+        page.click_by_text("Действие")
+        page.click_by_text("Провести")
+
+        page.holding_request.lddate_prov("12.09.2017")
+        page.holding_request.typical_operation("Снятие наличных (деньги в пути) (Все КОСГУ)")
+        page.holding_request.submit()
+
+        page.click_by_text("Закрыть")

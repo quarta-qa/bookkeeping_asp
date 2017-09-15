@@ -15,6 +15,11 @@ class CashPullRequestLocators(object):
 
     filter = (By.XPATH, "//input[@placeholder='Все поля']")
 
+    class HoldingRequest(object):
+        lddate_prov = (By.XPATH, "//input[@id='lddate_prov']")
+        typical_operation = (By.XPATH, "//button[@title='Выбрать']")
+        submit = (By.XPATH, "//button[.='Провести']")
+
     class NewDocument(object):
         # Реквизиты документа
         account_number = (By.XPATH, "(//button[@title='Выбрать'])[1]")
