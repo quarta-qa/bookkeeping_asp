@@ -37,7 +37,6 @@ class Browser(object):
 
     def click(self, locator, label=None):
         self.wait.loading()
-        self.scroll_to_top()
         element = self.wait.element_appear(locator)
         self.move_to_element(element)
         element.click()
@@ -98,10 +97,10 @@ class Browser(object):
             except (ec.StaleElementReferenceException, ec.NoSuchElementException):
                 break
 
-    def select_type(self, locator, value, label=None):
+    def set_type(self, locator, value, label=None):
         self.wait.loading()
         element = self.wait.element_appear(locator)
-        element.click()
+        self.click(locator)
         self.set_text((By.XPATH, "//div[@class='modal-content']//input[@placeholder='Все поля']"),
                       value + Keys.RETURN, label)
         self.click((By.XPATH, "//tr[contains(., '%s')]" % value))
@@ -159,10 +158,9 @@ class Browser(object):
         if label and self.log:
             print("[%s] [%s] выбор опции" % (strftime("%H:%M:%S", localtime()), label))
 
-    def set_select(self, value, order=1, label=None):
+    def set_select(self, locator, value, label=None):
         if value:
             self.wait.loading()
-            locator = (By.XPATH, "(//select)[%s]" % order)
             element = self.wait.element_appear(locator)
             Select(element).select_by_visible_text(value)
             if label and self.log:
