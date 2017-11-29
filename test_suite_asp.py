@@ -20,7 +20,7 @@ class TestSuite:
         Авторизация на портале
         """
         page = LoginPage(self.driver)
-        page.username("Пользователь 1")
+        page.username("Пользователь 101")
         page.password("111")
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учёт")
