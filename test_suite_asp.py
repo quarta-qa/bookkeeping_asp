@@ -17,11 +17,10 @@ class TestSuite:
 
     def test_login(self):
         page = LoginPage(self.driver)
-        page.username("Пользователь 1")
+        page.username("Пользователь 17")
         page.password("111")
         page.submit()
         sleep(1)
-
 
     def te1st_cash_expense_request(self):
         page = CashExpenseRequestPage(self.driver)
@@ -162,7 +161,6 @@ class TestSuite:
         page.holding_request.lddate_prov("12.09.2017")
         page.holding_request.typical_operation("Снятие наличных (деньги в пути) (Все КОСГУ)")
         page.holding_request.submit()
-
         page.click_by_text("Закрыть")
 
     def test_znv(self):
