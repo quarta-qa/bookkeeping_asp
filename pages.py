@@ -33,8 +33,8 @@ class CashExpenseRequestPage(Browser):
         def document_date(self, value):
             self.set_date(CashExpenseRequestLocators.DocumentHeader.document_date, value, "Дата документа")
 
-        def document_kind(self):
-            self.set_type(CashExpenseRequestLocators.DocumentHeader.document_kind, "Вид документа")
+        def document_kind(self,value):
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.document_kind,value, "Вид документа")
 
         def ofk_number(self, value):
             self.set_text(CashExpenseRequestLocators.DocumentHeader.ofk_number, value, "Номер ОФК")
