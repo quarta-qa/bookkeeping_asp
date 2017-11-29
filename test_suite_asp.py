@@ -27,6 +27,7 @@ class TestSuite:
         print(1)
         print(2)
         print(3)
+        print(4)
 
     def test_cash_expense_request(self):
         page = CashExpenseRequestPage(self.driver)
