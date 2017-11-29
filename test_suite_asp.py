@@ -16,17 +16,22 @@ class TestSuite:
         cls.driver.quit()
 
     def test_login(self):
+        """
+        Авторизация на портале
+        """
         page = LoginPage(self.driver)
-        page.username("Пользователь 17")
+        page.username("Пользователь 1")
         page.password("111")
         page.submit()
-        sleep(1)
+        page.wait.text_appear("Документы — Бухгалтерский учёт")
 
-    def te1st_cash_expense_request(self):
+
+    def test_cash_expense_request(self):
         page = CashExpenseRequestPage(self.driver)
         page.click_by_text("Заявка на кассовый расход")
         page.click_by_text("Добавить")
         page.click_by_text("Новый документ")
+
         page.document_header.document_number("")
         page.document_header.document_date("")
         page.document_header.document_kind("")
@@ -102,7 +107,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         page.click_by_text("Закрыть")
 
-    def te1st_getting_cash_request(self):
+    def test_getting_cash_request(self):
         page = CashPullRequestPage(self.driver)
         page.click_by_text("Заявка на получение наличных денег")
         page.click_by_text("Добавить")
