@@ -101,9 +101,9 @@ class CashPullRequestLocators(object):
         operation = (By.XPATH, "(//button[@title='Выбрать'])[2]")
         # Информация о документе
         document_number = (By.XPATH, "//input[@id='DocumentNumber']")
-        document_date = (By.XPATH, "//input[@id='documentDate']")
-        entry_date = (By.XPATH, "//input[@id='EntryDate']")
-        deadline = (By.XPATH, "//input[@id='Deadline']")
+        document_date = (By.XPATH, "//input[@id='date1']")
+        entry_date = (By.XPATH, "//input[@id='date2']")
+        deadline = (By.XPATH, "//input[@id='date3']")
         # Дополнительно - Доверенность
         trustee = (By.XPATH, "(//button[@title='Выбрать'])[3]")
         trustee_name_dative_case = (By.XPATH, "//input[@id='TrusteeNameDativeCase']")
@@ -131,3 +131,15 @@ class CashPullRequestLocators(object):
             payment_purpose = (By.XPATH, "//input[@id='PaymentPurpose']")
             amount = (By.XPATH, "//input[@id='amount']")
             comment = (By.XPATH, "//input[@id='Comment']")
+
+
+class ZNVLocators(object):
+    document_number = (By.XPATH, "//input[@id='documentNumber']")
+    document_date = (By.XPATH, "//input[@id='date1']")
+    personal_account = (By.XPATH, "(//button[@title='Выбрать'])[1]")
+    recipient_name = (By.XPATH, "(//button[@title='Выбрать'])[2]")
+    ofk_registration_number = (By.XPATH, "//input[@id='ofkRegistrationNumber']")
+    entry_date = (By.XPATH, "//input[@id='date1']")
+    typical_operation = (By.XPATH, "(//button[@title='Выбрать'])[3]")
+    recipient_account = (By.XPATH, "(//button[@title='Выбрать'])[4]")
+    document_type = (By.XPATH, "(//button[@title='Выбрать'])[5]")

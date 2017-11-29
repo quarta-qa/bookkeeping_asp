@@ -370,3 +370,32 @@ class CashPullRequestPage(Browser):
 
             def comment(self, value):
                 self.set_text(CashPullRequestLocators.NewDocument.NewLine.comment, value, "Примечание")
+
+
+class ZNVPage(Browser):
+    def document_number(self, value):
+        self.set_text(ZNVLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(ZNVLocators.document_date, value, "Дата документа")
+
+    def personal_account(self, value):
+        self.set_type(ZNVLocators.personal_account, value, "Лицевой счет")
+
+    def recipient_name(self, value):
+        self.set_type(ZNVLocators.recipient_name, value, "Наименование получателя")
+
+    def ofk_registration_number(self, value):
+        self.set_text(ZNVLocators.ofk_registration_number, value, "Номер УФК")
+
+    def entry_date(self, value):
+        self.set_date(ZNVLocators.entry_date, value, "Дата проводки")
+
+    def typical_operation(self, value):
+        self.set_type(ZNVLocators.typical_operation, value, "Типовая операция")
+
+    def recipient_account(self, value):
+        self.set_type(ZNVLocators.recipient_account, value, "Расчетный счет получателя")
+
+    def document_type(self, value):
+        self.set_type(ZNVLocators.document_type, value, "Тип документа")

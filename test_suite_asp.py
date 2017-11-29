@@ -16,21 +16,18 @@ class TestSuite:
         cls.driver.quit()
 
     def test_login(self):
-        """
-        Авторизация на портале
-        """
         page = LoginPage(self.driver)
         page.username("Пользователь 1")
         page.password("111")
         page.submit()
-        page.wait.text_appear("Бухгалтерский учет")
+        sleep(1)
 
-    def test_cash_expense_request(self):
+
+    def te1st_cash_expense_request(self):
         page = CashExpenseRequestPage(self.driver)
         page.click_by_text("Заявка на кассовый расход")
         page.click_by_text("Добавить")
         page.click_by_text("Новый документ")
-
         page.document_header.document_number("")
         page.document_header.document_date("")
         page.document_header.document_kind("")
@@ -106,7 +103,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         page.click_by_text("Закрыть")
 
-    def test_getting_cash_request(self):
+    def te1st_getting_cash_request(self):
         page = CashPullRequestPage(self.driver)
         page.click_by_text("Заявка на получение наличных денег")
         page.click_by_text("Добавить")
@@ -142,7 +139,7 @@ class TestSuite:
         page.new_document.click_by_text("Новую строку")
 
         page.new_document.new_line.kbk("110 1 11 02012 01 0000 120")
-        page.new_document.new_line.kbk_type("расходы")
+        page.new_document.new_line.kbk_type("Группировочный КБК (гКБК)")
         page.new_document.new_line.kosgu("110")
         # page.new_document.new_line.costs_type("")
         page.new_document.new_line.operation("Снятие наличных (деньги в пути) (Все КОСГУ)")
@@ -167,3 +164,21 @@ class TestSuite:
         page.holding_request.submit()
 
         page.click_by_text("Закрыть")
+
+    def test_znv(self):
+        page = ZNVPage(self.driver)
+        page.scroll_to_bottom()
+        page.click_by_text("Заявка на возврат")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page.document_number("1")
+        page.document_date("05.09.2017")
+        page.personal_account("14 счет")
+        # page.recipient_name("")
+        page.ofk_registration_number("2")
+        page.entry_date("05.09.2017")
+        page.typical_operation("Выбытие средств из временного распоряжения")
+        # page.recipient_account("")
+        page.document_type("Внебанковская заявка на возврат")
+        sleep(5)
+
