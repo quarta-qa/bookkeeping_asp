@@ -23,7 +23,8 @@ class TestSuite:
         page.username("Пользователь 1")
         page.password("111")
         page.submit()
-        page.wait.text_appear("Бухгалтерский учет")
+        page.wait.text_appear("Документы — Бухгалтерский учёт")
+        print(1)
 
     def test_cash_expense_request(self):
         page = CashExpenseRequestPage(self.driver)
