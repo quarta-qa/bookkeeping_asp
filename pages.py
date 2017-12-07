@@ -373,6 +373,14 @@ class CashPullRequestPage(Browser):
 
 
 class ZNVPage(Browser):
+    @property
+    def request(self):
+        return self.Request(self.driver)
+
+    @property
+    def doc(self):
+        return self.Doc(self.driver)
+
     def document_number(self, value):
         self.set_text(ZNVLocators.document_number, value, "Номер")
 
@@ -398,4 +406,17 @@ class ZNVPage(Browser):
         self.set_type(ZNVLocators.recipient_account, value, "Расчетный счет получателя")
 
     def document_type(self, value):
-        self.set_type(ZNVLocators.document_type, value, "Тип документа")
+        self.set_type(ZNVLocators.document_type, value, "Вид документа")
+
+    class Request(Browser):
+
+        def summa_rub(self, value):
+            self.set_text(ZNVLocators.Request.summa_rub, value, "Сумма в рублях")
+
+        def oktmo(self, value):
+            self.set_type(ZNVLocators.Request.oktmo, value, "Код по ОКТМО")
+
+    class Doc(Browser):
+
+        def number(self, value):
+            self.set_text(ZNVLocators.Doc.number, value, "Номер")

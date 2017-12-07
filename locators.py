@@ -143,3 +143,13 @@ class ZNVLocators(object):
     typical_operation = (By.XPATH, "(//button[@title='Выбрать'])[3]")
     recipient_account = (By.XPATH, "(//button[@title='Выбрать'])[4]")
     document_type = (By.XPATH, "(//button[@title='Выбрать'])[5]")
+
+    class Request(object):
+        #Закладка Расшифровка заявки
+        summa_rub = (By.XPATH, "//input[@id='outstandingPaymentDocumentAmount']")
+        oktmo = (By.XPATH, "(//button[@title='Выбрать'])[10]")
+
+    class Doc(object):
+        #Закладка Документы по зачислению невыясненного платежа
+        number = (By.XPATH, "//input[@id='outstandingPaymentDocumentNumber']")
+

@@ -23,10 +23,10 @@ class TestSuite:
         page.username("Пользователь 1")
         page.password("111")
         page.submit()
-        page.wait.text_appear("Документы — Бухгалтерский учёт")
+        page.wait.text_appear("Документы — Бухгалтерский учет")
 
 
-    def test_cash_expense_request(self):
+    def te1st_cash_expense_request(self):
         page = CashExpenseRequestPage(self.driver)
         page.click_by_text("Заявка на кассовый расход")
         page.click_by_text("Добавить")
@@ -107,7 +107,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         page.click_by_text("Закрыть")
 
-    def test_getting_cash_request(self):
+    def te1st_getting_cash_request(self):
         page = CashPullRequestPage(self.driver)
         page.click_by_text("Заявка на получение наличных денег")
         page.click_by_text("Добавить")
@@ -176,12 +176,18 @@ class TestSuite:
         page.click_by_text("Новый документ")
         page.document_number("1")
         page.document_date("05.09.2017")
-        page.personal_account("14 счет")
+        page.personal_account("14481000320 (Московская обл.)")
         # page.recipient_name("")
         page.ofk_registration_number("2")
         page.entry_date("05.09.2017")
         page.typical_operation("Выбытие средств из временного распоряжения")
         # page.recipient_account("")
         page.document_type("Внебанковская заявка на возврат")
-        sleep(5)
+        #sleep(5)
 
+        page.request.summa_rub("150.00")
+        page.request.oktmo("80 606 416")
+        # sleep(10)
+        page.click_by_text("Документ по зачислению невыясненного платежа")
+        page.doc.number("55")
+        sleep(10)
