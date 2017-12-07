@@ -294,6 +294,8 @@ class Wait(object):
             ec.visibility_of_element_located((By.XPATH, "//div[@class='loading-spinner']")))
         WebDriverWait(self.driver, self.timeout).until_not(
             ec.visibility_of_element_located((By.XPATH, "//div[@class='windows8']")))
+        WebDriverWait(self.driver, self.timeout).until_not(
+            ec.visibility_of_element_located((By.XPATH, "//div[@class='w2ui-lock']")))
 
 
 # Работа с данными
