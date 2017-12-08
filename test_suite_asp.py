@@ -192,9 +192,9 @@ class TestSuite:
         page.request.vid_zatrat("Прочие расходы")
         page.request.summa_nds("113.00")
         page.request.oktmo("80 606 416")
-        page.save_screenshot("test1", overwrite=True, default_folder="C:\\Test\\")
+        page.save_screenshot("test1", default_folder="C:\\Test\\")
         page.click_by_text("Документ по зачислению невыясненного платежа")
         page.doc.number("55")
         sleep(1)
-        page.save_screenshot("test2", overwrite=True, default_folder="C:\\Test\\")
+        page.save_screenshot("test2", default_folder="C:\\Test\\")
 
