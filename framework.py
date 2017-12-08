@@ -256,13 +256,16 @@ class Browser(object):
         :param overwrite: Overwite file if True
         :return:
         """
-        if self.driver.save_screenshot("%s%s.png" % (default_folder, name)) or overwrite:
-            self.driver.save_screenshot("%s%s.png" % (default_folder, name))
+        if os.path.isfile("%s%s.png" % (default_folder, name)):
+            if overwrite:
+                self.driver.save_screenshot("%s%s.png" % (default_folder, name))
+            else:
+                for i in range(100):
+                    if not os.path.isfile("%s%s-%s.png" % (default_folder, name, i + 1)):
+                        self.driver.save_screenshot("%s%s-%s.png" % (default_folder, name, i + 1))
+                        break
         else:
-            for i in range(100):
-                if not os.path.isfile("%s%s-%s.png" % (default_folder, name, i)):
-                    self.driver.save_screenshot("%s%s-%s.png" % (default_folder, name, i))
-                    break
+            self.driver.save_screenshot("%s%s.png" % (default_folder, name))
 
 
 class Date(object):
