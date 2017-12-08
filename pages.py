@@ -413,6 +413,24 @@ class ZNVPage(Browser):
         def summa_rub(self, value):
             self.set_text(ZNVLocators.Request.summa_rub, value, "Сумма в рублях")
 
+        def kbk(self, value):
+            self.set_type(ZNVLocators.Request.kbk, value, "КБК")
+
+        def kosgu(self, value):
+            self.set_type(ZNVLocators.Request.kosgu, value, "КОСГУ")
+
+        def stavka_nds(self, value):
+            self.set_text(ZNVLocators.Request.stavka_nds, value, "Ставка НДС")
+
+        def tip_kbk(self, value):
+            self.set_select(ZNVLocators.Request.tip_kbk, value, "Тип КБК")
+
+        def vid_zatrat(self, value):
+            self.set_type(ZNVLocators.Request.vid_zatrat, value, "Вид затрат")
+
+        def summa_nds(self, value):
+            self.set_text(ZNVLocators.Request.summa_nds, value, "Сумма НДС")
+
         def oktmo(self, value):
             self.set_type(ZNVLocators.Request.oktmo, value, "Код по ОКТМО")
 

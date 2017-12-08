@@ -147,6 +147,14 @@ class ZNVLocators(object):
     class Request(object):
         #Закладка Расшифровка заявки
         summa_rub = (By.XPATH, "//input[@id='outstandingPaymentDocumentAmount']")
+        kbk = (By.XPATH, "(//button[@title='Выбрать'])[6]")
+        kosgu = (By.XPATH, "(//button[@title='Выбрать'])[7]")
+        stavka_nds = (By.XPATH, "//input[@id='ndsPercent']")
+        tip_kbk = (By.XPATH, "//select[@name='kbkType']")
+        vid_zatrat = (By.XPATH, "(//button[@title='Выбрать'])[8]")
+        summa_nds = (By.XPATH, "//input[@id='ndsAmount']")
+        #Фрэйм Дополнительные реквизиты
+        kod_cely = (By.XPATH, "//select[@name='goalCode']")
         oktmo = (By.XPATH, "(//button[@title='Выбрать'])[10]")
 
     class Doc(object):
