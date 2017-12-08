@@ -171,6 +171,7 @@ class TestSuite:
     def test_znv(self):
         page = ZNVPage(self.driver)
         page.scroll_to_bottom()
+        page.save_screenshot("test1", overwrite=False, default_folder="C:\\test\\")
         page.click_by_text("Заявка на возврат")
         page.click_by_text("Добавить")
         page.click_by_text("Новый документ")
@@ -192,7 +193,8 @@ class TestSuite:
         page.request.vid_zatrat("Прочие расходы")
         page.request.summa_nds("113.00")
         page.request.oktmo("80 606 416")
-        sleep(10)
+
         page.click_by_text("Документ по зачислению невыясненного платежа")
         page.doc.number("55")
-        sleep(20)
+
+        sleep(1)

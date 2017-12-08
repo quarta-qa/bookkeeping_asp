@@ -248,6 +248,22 @@ class Browser(object):
         self.click((By.XPATH, "//span[@class='ui-button-text'][.='%s']" % months[month]))
         self.accept_alert()
 
+    def save_screenshot(self, name, default_folder="", overwrite=True):
+        """
+        Method making screenshot of current page of driver
+        :param name: Name of file. Extension is png by default
+        :param default_folder: Folder with script by default. Important: use raw-strings if you using different one
+        :param overwrite: Overwite file if True
+        :return:
+        """
+        if self.driver.save_screenshot("%s%s.png" % (default_folder, name)) or overwrite:
+            self.driver.save_screenshot("%s%s.png" % (default_folder, name))
+        else:
+            for i in range(100):
+                if not os.path.isfile("%s%s-%s.png" % (default_folder, name, i)):
+                    self.driver.save_screenshot("%s%s-%s.png" % (default_folder, name, i))
+                    break
+
 
 class Date(object):
     """
@@ -319,6 +335,3 @@ class Data(object):
     @staticmethod
     def get_data_by_number(data, parent, number=0):
         return data[parent][number]
-
-
-
