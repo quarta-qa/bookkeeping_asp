@@ -6,9 +6,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
+from xlutils.copy import copy as xlcopy
 import datetime
 import os
 import json
+import xlrd
+import hashlib
 
 
 class Browser(object):
@@ -338,3 +341,93 @@ class Data(object):
     @staticmethod
     def get_data_by_number(data, parent, number=0):
         return data[parent][number]
+
+    @staticmethod
+    def get_max_rows_and_cols(file):
+
+        rows_max = 0
+        cols_max = 0
+
+        for name in file.sheet_names():
+            sheet = file.sheet_by_name(name)
+            if rows_max < sheet.nrows:
+                rows_max = sheet.nrows
+            if cols_max < sheet.ncols:
+                cols_max = sheet.ncols
+
+        return [rows_max, cols_max]
+
+    # Сравнение excel файлов 1
+
+    def analyze_two_files(self, filename):
+
+        data = self.load_data("employee")
+        file = data["reportFile"]
+        reference_file = file["directory"] + filename
+        output_file = file["directoryCompare"] + filename
+
+        output_hash = self.md5(output_file)
+        reference_hash = self.md5(reference_file)
+        if output_hash == reference_hash:
+            print('Печатные формы одинаковы')
+        else:
+            # открываем исходный файл
+            output = xlrd.open_workbook(output_file, on_demand=True, formatting_info=True)
+            reference = xlrd.open_workbook(reference_file, on_demand=True, formatting_info=True)
+            if output.nsheets != reference.nsheets:
+                print('Количество книг не совпадает')
+            else:
+                print('Найдены ОШИБКИ в печатной форме: "%s"' % filename)
+
+                output_max = self.get_max_rows_and_cols(output)
+                reference_max =self.get_max_rows_and_cols(reference)
+                max_rows = max(reference_max[0], output_max[0])
+                max_cols = max(reference_max[1], output_max[1])
+
+                reference_new = xlcopy(reference)
+                for i in range(reference.nsheets):
+                    sheet = reference_new.get_sheet(i)
+                    sheet.write(max_rows, max_cols, "!")
+                reference_new.save(file["directory"] + "example.xls")
+
+                output_new = xlcopy(output)
+                for i in range(output.nsheets):
+                    sheet = output_new.get_sheet(i)
+                    sheet.write(max_rows, max_cols, "!")
+                output_new.save(file["directory"] + "example_new.xls")
+
+        return [file["directory"] + "example.xls", file["directory"] + "example_new.xls"]
+
+    @staticmethod
+    def compare_files(self, filename):
+
+        files = self.analyze_two_files(filename)
+
+        reference = xlrd.open_workbook(files[0], on_demand=True, formatting_info=True)
+        output = xlrd.open_workbook(files[1], on_demand=True, formatting_info=True)
+
+        for index in range(reference.nsheets):
+            reference_sheet = reference.sheet_by_index(index)
+            output_sheet = output.sheet_by_index(index)
+            reference_sheet_name = reference_sheet.name
+            output_sheet_name = output_sheet.name
+            if reference_sheet_name != output_sheet_name:
+                print("Название книги[%s] не совпадает с эталонным [%s]!" % (output_sheet_name, reference_sheet_name))
+            print("Книга [%s]:" % reference_sheet_name)
+            for i in range(reference_sheet.nrows):
+                for j in range(reference_sheet.ncols):
+                    reference_cell = reference_sheet.cell(i, j).value
+                    output_cell = output_sheet.cell(i, j).value
+                    if reference_cell != output_cell:
+                        print("\tЯчейка [%s, %s]. Значение [%s] не совпадает с эталонным [%s]!"
+                              % (i, j, output_cell, reference_cell))
+
+
+    # Получение хеша
+    @staticmethod
+    def md5(filename):
+        hash_md5 = hashlib.md5()
+        with open(filename, "rb") as f:
+            for chunk in iter(lambda: f.read(4096), b""):
+                hash_md5.update(chunk)
+        return hash_md5.hexdigest()
