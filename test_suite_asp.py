@@ -26,7 +26,7 @@ class TestSuite:
         page.wait.text_appear("Документы — Бухгалтерский учет")
 
 
-    def te1st_cash_expense_request(self):
+    def test_cash_expense_request(self):
         page = CashExpenseRequestPage(self.driver)
         page.click_by_text("Заявка на кассовый расход")
         page.click_by_text("Добавить")
@@ -168,7 +168,7 @@ class TestSuite:
         page.holding_request.submit()
         page.click_by_text("Закрыть")
 
-    def test_znv(self):
+    def te1st_znv(self):
         page = ZNVPage(self.driver)
         page.scroll_to_bottom()
         page.click_by_text("Заявка на возврат")

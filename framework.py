@@ -299,6 +299,10 @@ class Wait(object):
         return WebDriverWait(self.driver, self.timeout).until(
             ec.visibility_of_element_located((By.XPATH, "//*[contains(., '%s')]" % text)))
 
+    # Функция ожидания элемента пока не появится  в скрытых
+    def presence_of_element(self, locator):
+        return WebDriverWait(self.driver, self.timeout).until(ec.presence_of_element_located(locator))
+
     # Функция ожидания элемента пока не появится
     def element_appear(self, locator):
         return WebDriverWait(self.driver, self.timeout).until(ec.visibility_of_element_located(locator))
