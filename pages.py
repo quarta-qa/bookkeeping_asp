@@ -15,11 +15,13 @@ class LoginPage(Browser):
 
 class MainPage(Browser):
 
-    def mainMenu(self):
+    def click_button_menu(self):
+        sleep(5)
         self.click(MainLocators.menu)
 
-    def firstMenu(self, value):
-        self.click(MainLocators.)
+    def click_menu_section(self, value):
+        self.click_menu((By.XPATH, "//span[.='%s']" % value))
+        print(value)
 
 
 

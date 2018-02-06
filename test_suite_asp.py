@@ -30,7 +30,10 @@ class TestSuite:
         Закрытие года
         """
         page=MainPage(self.driver)
-
+        page.click_button_menu()
+        data = Data.load_data("menu")
+        page.click_menu_section(data["menu"]["firstLevel"]["calculation"])
+        page.click_menu_section(data["menu"]["secondLevel"]["calculations"])
 
 
 

@@ -13,6 +13,7 @@ import json
 import xlrd
 import hashlib
 
+TIMEOUT = 120
 
 class Browser(object):
     """
@@ -75,6 +76,15 @@ class Browser(object):
         element.click()
         if value and self.log:
             print("[%s] [%s] нажатие на элемент" % (strftime("%H:%M:%S", localtime()), value))
+
+    # выбор меню
+    def click_menu(self, locator):
+        sleep(1)
+        element = self.wait(locator)
+        webdriver.ActionChains(self.driver).move_to_element(element).perform()
+        element.click()
+        self.wait_for_loading()
+
 
     # Функция перехода на страницу
     def go_to(self, url):
