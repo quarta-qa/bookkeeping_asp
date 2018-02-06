@@ -1,0 +1,22 @@
+{"menu": {
+    "firstLevel": {
+      "calculation": "Расчеты",
+      "salary": "АИС «Зарплата.NET»",
+      "references": "Справочники",
+      "report": "Отчет"
+    },
+    "secondLevel": {
+      "statementProcessing": "Обработка выписки из л/с",
+      "unloadingInformationSUFD":
+         "Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)",
+      "unloadingInformation":"Выгрузка Сведений о денежном обязательстве в Электронный бюджет",
+      "calculations":"Расчеты"
+       },
+    "thirdLevel": {
+
+
+
+
+    }
+  }
+}
