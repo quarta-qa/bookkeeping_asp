@@ -8,7 +8,7 @@ class LoginLocators(object):
 
 
 class MainLocators(object):
-    pass
+    menu = (By.XPATH, "//button[@class='left-menu-toggle']")
 
 
 class CashExpenseRequestLocators(object):

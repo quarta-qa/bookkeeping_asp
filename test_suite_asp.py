@@ -20,10 +20,19 @@ class TestSuite:
         Авторизация на портале
         """
         page = LoginPage(self.driver)
-        page.username("Пользователь 1")
-        page.password("111")
+        page.username("Test1")
+        page.password("123")
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учет")
+
+    def test_closing_period(self):
+        """
+        Закрытие года
+        """
+        page=MainPage(self.driver)
+
+
+
 
 
     def test_cash_expense_request(self):

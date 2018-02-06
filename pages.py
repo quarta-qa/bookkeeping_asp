@@ -15,7 +15,12 @@ class LoginPage(Browser):
 
 class MainPage(Browser):
 
-    pass
+    def mainMenu(self):
+        self.click(MainLocators.menu)
+
+    def firstMenu(self, value):
+        self.click(MainLocators.)
+
 
 
 class CashExpenseRequestPage(Browser):
