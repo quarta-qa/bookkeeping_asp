@@ -25,12 +25,22 @@ class TestSuite:
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учет")
 
-    def test_closing_period(self):
-        """
-        Закрытие года
-        """
-        page=MenuPage(self.driver)
-        page.calculation()
+    def test_contract_with_supplier(self):
+        page = ContractWithSupplierPage(self.driver)
+        page.click_by_text("Договор с поставщиком")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page.documen_type("Договор")
+        page.number("1")
+        page.date("10.01.2018")
+        page.сounterparty("ПАО \"МегаФон\"")
+        page.date_begin("10.01.2018")
+        page.payment_type("аванс")
+        page.subject_contract("Услуги связи")
+        page.payment_terms("Ежемесячно равными долями")
+        page.note("Авансовые платежи")
+        assert "Text" in self.driver.page_source
+
 
 
 

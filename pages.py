@@ -112,6 +112,19 @@ class MenuPage(Browser):
         self.click(MenuLocators.salary)
         print("Меню - АИС «Зарплата.NET»")
 
+    # Журнал документов
+    def document_journal(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.document_journal)
+        print("Журнал документов")
+
+    # Корзина документов
+    def recycle_bin(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.recycle_bin)
+        print("Корзина документов")
 
 
 
@@ -536,3 +549,31 @@ class ZNVPage(Browser):
 
         def number(self, value):
             self.set_text(ZNVLocators.Doc.number, value, "Номер")
+
+class ContractWithSupplierPage(Browser):
+    def documen_type(self, value):
+        self.set_select2(ContractWithSupplierLocators.documen_type, value, "documenType")
+
+    def number(self, value):
+        self.set_text(ContractWithSupplierLocators.number, value, "number")
+
+    def date(self, value):
+        self.set_date(ContractWithSupplierLocators.date, value, "date")
+
+    def сounterparty(self, value):
+        self.set_select2(ContractWithSupplierLocators.сounterparty, value, "сounterparty")
+
+    def date_begin(self, value):
+        self.set_date(ContractWithSupplierLocators.date_begin, value, "dateBegin")
+
+    def payment_type(self, value):
+        self.set_select(ContractWithSupplierLocators.payment_type, value, "paymentType")
+
+    def subject_contract(self, value):
+        self.set_text(ContractWithSupplierLocators.subject_contract, value, "subjectContract")
+
+    def payment_terms(self, value):
+        self.set_text(ContractWithSupplierLocators.payment_terms, value, "paymentTerms")
+
+    def note(self, value):
+        self.set_text(ContractWithSupplierLocators.note, value, "Note")

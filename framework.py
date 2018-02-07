@@ -147,7 +147,7 @@ class Browser(object):
                 print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция заполнения поля Дата
-    def set_date(self, locator, value, label=None):
+    def set_date2(self, locator, value, label=None):
         if value:
             if value == "=":
                 value = Date.get_today_date()
@@ -157,6 +157,19 @@ class Browser(object):
             element.send_keys(value + Keys.TAB)
             if label and self.log:
                 print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
+            # Функция заполнения поля Дата
+    def set_date(self, locator, value, label=None):
+        if value:
+            if value == "=":
+                value = Date.get_today_date()
+            self.wait.loading()
+            element = self.wait.element_appear(locator)
+            element.clear()
+            element.send_keys(value + Keys.TAB)
+            if label and self.log:
+                print(
+                    "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция заполнения/снятия чек-бокса
     def set_checkbox(self, locator, value=True, label=None):
@@ -193,7 +206,7 @@ class Browser(object):
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция выбора значения из Select2
-    def set_select2(self, locator, value, label=None):
+    def set_select3(self, locator, value, label=None):
         if value:
             self.click(locator)
             self.set_text_and_check((By.XPATH, "//div[@id='select2-drop']//input"), value)
@@ -202,6 +215,18 @@ class Browser(object):
             self.wait.element_disappear((By.ID, "select2-drop"))
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
+            # Функция выбора значения из Select3
+    def set_select2(self, locator, value, label=None):
+        if value:
+            #self.click(locator)
+            self.set_text(locator, value)
+            sleep(1)
+            self.set_text(locator, Keys.ENTER)
+            if label and self.log:
+                print("[%s] [%s] выбор из списка значения \"%s\"" % (
+                strftime("%H:%M:%S", localtime()), label, value))
+
 
     # Функция выбора строки в таблице
     def table_select_row(self, order=1, label=None):

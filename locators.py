@@ -24,6 +24,8 @@ class MenuLocators(object):
     printed_forms = (By.XPATH, "//a[contains(.,'Печатные формы')]")
     remainsNFA = (By.XPATH, "//a[contains(.,'Остатки НФА')]")
     salary = (By.XPATH,"//a[contains(.,'АИС «Зарплата.NET»')]")
+    document_journal = (By.XPATH,"//a[contains(.,'Журнал документов')]")
+    recycle_bin = (By.XPATH, "//a[contains(.,'Корзина документов ')]")
 
 
 
@@ -178,3 +180,13 @@ class ZNVLocators(object):
         #Закладка Документы по зачислению невыясненного платежа
         number = (By.XPATH, "//input[@id='outstandingPaymentDocumentNumber']")
 
+class ContractWithSupplierLocators(object):
+    documen_type = (By.XPATH, "//*[@id='documentKind']//input")
+    number = (By.XPATH, "//*[@name='documentNumber']//input")
+    date = (By.XPATH, "//input[@id='date1']")
+    сounterparty = (By.XPATH, "//*[@id='counterparty']//input")
+    date_begin = (By.XPATH, "//input[@id='date2']")
+    payment_type = (By.XPATH, "//*[@id='considerationPeriod']//select")
+    subject_contract = (By.XPATH, "//*[@name='subject']//textarea")
+    payment_terms = (By.XPATH, "//*[@name='paymentTerm']//textarea")
+    note = (By.XPATH, "//*[@name='comment']//textarea")
