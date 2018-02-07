@@ -10,6 +10,23 @@ class LoginLocators(object):
 class MainLocators(object):
     menu = (By.XPATH, "//button[@class='left-menu-toggle']")
 
+class MenuLocators(object):
+    menu = (By.XPATH, "//button[@class='left-menu-toggle']")
+    calculation = (By.XPATH,"//a[contains(.,'Расчеты')]")
+    inner_calculation = (By.XPATH, "(//a[contains(.,'Расчеты')])[2]")
+    statement_processing = (By.XPATH,"//a[contains(.,'Обработка выписки из л/с')]")
+    unloading_informationSUFD = (By.XPATH,"//a[contains(.,'Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)')]")
+    unloading_information= (By.XPATH,"//a[contains(.,'Выгрузка Сведений о денежном обязательстве в Электронный бюджет')]")
+    references = (By.XPATH, "//a[contains(.,'Справочники')]")
+    report = (By.XPATH, "//a[contains(.,'Отчет')]")
+    turnover_statement = (By.XPATH, "//a[contains(.,'Оборотная ведомость')]")
+    summary_reporting = (By.XPATH, "//a[contains(.,'Сводная отчетность')]")
+    printed_forms = (By.XPATH, "//a[contains(.,'Печатные формы')]")
+    remainsNFA = (By.XPATH, "//a[contains(.,'Остатки НФА')]")
+    salary = (By.XPATH,"//a[contains(.,'АИС «Зарплата.NET»')]")
+
+
+
 
 class CashExpenseRequestLocators(object):
 

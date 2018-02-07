@@ -13,7 +13,7 @@ import json
 import xlrd
 import hashlib
 
-TIMEOUT = 120
+
 
 class Browser(object):
     """
@@ -80,11 +80,9 @@ class Browser(object):
     # выбор меню
     def click_menu(self, locator):
         sleep(1)
-        element = self.wait(locator)
+        element = self.driver.find_element_by_xpath(locator[1])
         webdriver.ActionChains(self.driver).move_to_element(element).perform()
         element.click()
-        self.wait_for_loading()
-
 
     # Функция перехода на страницу
     def go_to(self, url):
@@ -342,7 +340,7 @@ class Data(object):
     @staticmethod
     def load_data(file):
         script_path = os.path.dirname(__file__)
-        filename = os.path.join(script_path, '%s.json' % file)
+        filename = os.path.join(script_path, 'data\\%s.json' % file)
         return json.loads(open(filename, encoding="utf8").read())
 
     @staticmethod

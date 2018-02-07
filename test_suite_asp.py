@@ -29,16 +29,14 @@ class TestSuite:
         """
         Закрытие года
         """
-        page=MainPage(self.driver)
-        page.click_button_menu()
-        data = Data.load_data("menu")
-        page.click_menu_section(data["menu"]["firstLevel"]["calculation"])
-        page.click_menu_section(data["menu"]["secondLevel"]["calculations"])
+        page=MenuPage(self.driver)
+        page.calculation()
 
 
 
 
-    def test_cash_expense_request(self):
+
+    def te1st_cash_expense_request(self):
         page = CashExpenseRequestPage(self.driver)
         page.click_by_text("Заявка на кассовый расход")
         page.click_by_text("Добавить")

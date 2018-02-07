@@ -16,12 +16,103 @@ class LoginPage(Browser):
 class MainPage(Browser):
 
     def click_button_menu(self):
-        sleep(5)
+        sleep(3)
         self.click(MainLocators.menu)
 
-    def click_menu_section(self, value):
-        self.click_menu((By.XPATH, "//span[.='%s']" % value))
-        print(value)
+class MenuPage(Browser):
+
+    # Выход в меню
+    def open(self):
+        sleep(1)
+        self.click(MenuLocators.menu)
+
+    # Расчеты
+    def calculation(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.calculation)
+        sleep(1)
+        self.click(MenuLocators.inner_calculation)
+        print("Меню расчеты")
+
+    # Обработка выписки из л/с
+    def statement_processing(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.calculation)
+        sleep(1)
+        self.click(MenuLocators.statement_processing)
+        print("Обработка выписки из л/с")
+
+    # Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)
+    def unloading_information_sufd(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.calculation)
+        sleep(1)
+        self.click(MenuLocators.unloading_informationSUFD)
+        print("Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)")
+
+    # Выгрузка Сведений о денежном обязательстве в Электронный бюджет
+    def unloading_information(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.calculation)
+        sleep(1)
+        self.click(MenuLocators.unloading_information)
+        print("Выгрузка Сведений о денежном обязательстве в Электронный бюджет")
+
+    # Справочники
+    def references(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.references)
+        print("Меню - Справочники")
+
+    # Отчет - Оборотная ведомость
+    def turnover_statement(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.report)
+        sleep(1)
+        self.click(MenuLocators.turnover_statement)
+        print("Отчет - Оборотная ведомость")
+
+    # Отчет - Сводная отчетность
+    def summary_reporting(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.report)
+        sleep(1)
+        self.click(MenuLocators.summary_reporting)
+        print("Отчет - Сводная отчетность")
+
+    # Отчет - Печатные формы
+    def printed_forms(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.report)
+        sleep(1)
+        self.click(MenuLocators.printed_forms)
+        print("Отчет - Печатные формы")
+
+    # Отчет - Остатки НФА
+    def remains_nfa(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.report)
+        sleep(1)
+        self.click(MenuLocators.remainsNFA)
+        print("Отчет - Остатки НФА")
+
+    # АИС «Зарплата.NET»
+    def salary(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.salary)
+        print("Меню - АИС «Зарплата.NET»")
+
+
 
 
 
