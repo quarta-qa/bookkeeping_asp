@@ -184,13 +184,13 @@ class ZNVLocators(object):
 class ContractWithSupplierLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']//input")
     number = (By.XPATH, "//*[@name='documentNumber']//input")
-    date = (By.XPATH, "//input[@id='date1']")
+    date = (By.XPATH, "//*[@name='documentDate']//input")
     сounterparty = (By.XPATH, "//*[@name='counterparty']//input")
     bank_account_number= (By.XPATH, "//*[@name='transactionAccount']//input")
     uin = (By.XPATH, "//*[@name='chargeUniqueIdentifier']//input")
     currency = (By.XPATH, "//*[@name='currency']//input")
-    date_begin = (By.XPATH, "//input[@id='date2']")
-    date_end = (By.XPATH, "//input[@id='date3']")
+    date_begin = (By.XPATH, "//*[@name='startDate']//input")
+    date_end = (By.XPATH, "//*[@name='endDate']//input")
     payment_type = (By.XPATH, "//*[@name='considerationPeriod']//select")
     subject_contract = (By.XPATH, "//*[@name='subject']//textarea")
     payment_terms = (By.XPATH, "//*[@name='paymentTerm']//textarea")
@@ -199,7 +199,7 @@ class ContractWithSupplierLocators(object):
 
 class ContractWithSupplierDetailKBKPageLocators(object):
     financial_year = (By.XPATH, "//*[@name='financialYear']//input")
-    entry_date = (By.XPATH, "//input[@id='date10']")
+    entry_date = (By.XPATH, "//*[@name='entryDate']//input")
     operation = (By.XPATH, "//*[@name='operation']//input")
     kbk = (By.XPATH, "//*[@name='kbk']//input")
     kosgu = (By.XPATH, "//*[@name='kosgu']//input")
