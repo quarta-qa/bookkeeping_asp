@@ -208,7 +208,6 @@ class Browser(object):
     def set_select2(self, locator, value, label=None):
         if value:
             self.set_text(locator, value)
-            sleep(2)
             self.wait.element_appear((By.XPATH, "//li[.='%s']" % value)).click()
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:

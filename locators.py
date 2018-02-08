@@ -220,5 +220,5 @@ class CardIndexOSNMANPALocators(object):
     cost = (By.XPATH,"//*[@name='cost']//input")
     exclude_from_depreciation_accrual = (By.XPATH,"//*[@name='exludeFromDepreciationAccrual']//input")
     value_added_used = (By.XPATH,"//*[@name='valueAddedUsed']//input")
-    okof = (By.XPATH,"//*[@name='okof']//input")
+    okof = (By.XPATH, "//*[@name='okof']//input")
     amortization_group = (By.XPATH,"//*[@name='amortizationGroup']//input")

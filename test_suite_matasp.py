@@ -32,17 +32,17 @@ class TestSuite:
         page.click_by_text("Добавить")
         #page.click_by_text("Добавить папку")
         #суб-кнопки "Добавить - папку" на портале нет, в сценарии она есть
-        page = CardIndexOSNMANPAPage(self.driver, 5)
+        page = CardIndexOSNMANPAPage(self.driver)
         page.tag_no_first_part("10112")
         page.tag_no_second_part("1")
         page.tag_no("1011200001")
         page.full_name("Жилое здание, Малая Никитская, д.2")
         page.property_designation("Административное здание")
         page.start_up_date("05.07.1968")
-
         page.unit_of_measure("Штука")
+
+        page.scroll_to_bottom()
         page.cost("1430000.00")
-        sleep(5)
         page.exlude_from_depreciation_accrual()
         page.value_added_used("1200")
         page.okof("Здания производственные административные")
