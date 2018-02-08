@@ -146,26 +146,15 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    # Функция заполнения поля Дата
-    def set_date2(self, locator, value, label=None):
+              # Функция заполнения поля Дата
+    def     set_date(self, locator, value, label=None):
         if value:
             if value == "=":
                 value = Date.get_today_date()
             self.wait.loading()
             element = self.wait.element_appear(locator)
             element.clear()
-            element.send_keys(value + Keys.TAB)
-            if label and self.log:
-                print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
-
-            # Функция заполнения поля Дата
-    def set_date(self, locator, value, label=None):
-        if value:
-            if value == "=":
-                value = Date.get_today_date()
-            self.wait.loading()
-            element = self.wait.element_appear(locator)
-            element.clear()
+            sleep(1)
             element.send_keys(value + Keys.TAB)
             if label and self.log:
                 print(
@@ -205,7 +194,7 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    # Функция выбора значения из Select2
+    # Функция выбора значения из Select3
     def set_select3(self, locator, value, label=None):
         if value:
             self.click(locator)
@@ -216,13 +205,14 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-            # Функция выбора значения из Select3
+    # Функция выбора значения из Select2
     def set_select2(self, locator, value, label=None):
         if value:
             #self.click(locator)
             self.set_text(locator, value)
-            sleep(1)
+            sleep(3)
             self.set_text(locator, Keys.ENTER)
+            self.wait.element_disappear((By.ID, "//li[@title='%s']"% value))
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (
                 strftime("%H:%M:%S", localtime()), label, value))
@@ -262,27 +252,15 @@ class Browser(object):
             ec.visibility_of_element_located((By.XPATH, "//li[@class=' qq-upload-success']")))
 
     # Функция выбор месяца
-    def select_month(self, year, month):
-        months = {
-            1: "Янв",
-            2: "Фев",
-            3: "Мар",
-            4: "Апр",
-            5: "Май",
-            6: "Июнь",
-            7: "Июль",
-            8: "Авг",
-            9: "Сен",
-            10: "Окт",
-            11: "Ноя",
-            12: "Дек"
-        }
-        self.click((By.XPATH, "//a[@class='periods__btn btn seasons dropdown-toggle ng-binding']"))
-        sleep(2)
-        if year != datetime.date.today().year:
-            self.click((By.XPATH, "//span[.='prevLabel']"))
-        self.click((By.XPATH, "//span[@class='ui-button-text'][.='%s']" % months[month]))
-        self.accept_alert()
+    def select_month(self, month, year):
+        self.click((By.XPATH, "//button[@class='period-text dropdown-period-toggle']"))
+        sleep(1)
+        self.click((By.XPATH, "//*[span='%s']"% month))
+        sleep(1)
+        self.click((By.XPATH, "//*[span='%s']" % year))
+        sleep(1)
+        self.click((By.XPATH, "//span[@class='qa-icon-close']"))
+
 
     def save_screenshot(self, name, default_folder="", overwrite=True):
         """

@@ -27,6 +27,7 @@ class TestSuite:
 
     def test_contract_with_supplier(self):
         page = ContractWithSupplierPage(self.driver)
+        page.select_month("Январь", "2018")
         page.click_by_text("Договор с поставщиком")
         page.click_by_text("Добавить")
         page.click_by_text("Новый документ")
@@ -34,17 +35,45 @@ class TestSuite:
         page.number("1")
         page.date("10.01.2018")
         page.сounterparty("ПАО \"МегаФон\"")
+        page.bank_account_number("40702810838180130496")
+        page.uin("123123123")
+        page.currency("Российский рубль")
         page.date_begin("10.01.2018")
+        page.date_end("10.11.2018")
         page.payment_type("аванс")
         page.subject_contract("Услуги связи")
         page.payment_terms("Ежемесячно равными долями")
         page.note("Авансовые платежи")
-        assert "Text" in self.driver.page_source
-
-
-
-
-
+        sleep(1)
+        page.click_by_text("Детализация по КБК")
+        page.click_by_text("Добавить")
+        sleep(1)
+        # Заполнение строки документа
+        page = ContractWithSupplierPageDetailKBK(self.driver)
+        page.financial_year("2018")
+        page.entry_date("10.01.2018")
+        page.operation("Принятые БО текущего года  (221)")
+        page.kbk("0411 0000000000 000")
+        page.kosgu("221")
+        page.contract_subject("Услуги связи")
+        page.amounts_nds_percent("13")
+        page.amounts_amount("1200000")
+        page.advance("120000")
+        page.click_by_text("Сохранить", 2)
+        sleep(1)
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
+        sleep(2)
+        # Создание копии документа
+        page.select_month("Январь", "2018")
+        page.click_by_text("Добавить")
+        page.click_by_text("Копию документа")
+        sleep(1)
+        page.click_by_text("С обнулением суммы")
+        sleep(1)
+        page.click_by_text("Детализация по КБК")
+        page.click_by_text("Открыть")
+        sleep(1)
 
     def te1st_cash_expense_request(self):
         page = CashExpenseRequestPage(self.driver)

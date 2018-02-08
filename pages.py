@@ -552,28 +552,68 @@ class ZNVPage(Browser):
 
 class ContractWithSupplierPage(Browser):
     def documen_type(self, value):
-        self.set_select2(ContractWithSupplierLocators.documen_type, value, "documenType")
+        self.set_select2(ContractWithSupplierLocators.documen_type, value, "Вид документа")
 
     def number(self, value):
-        self.set_text(ContractWithSupplierLocators.number, value, "number")
+        self.set_text(ContractWithSupplierLocators.number, value, "Номер документа")
 
     def date(self, value):
-        self.set_date(ContractWithSupplierLocators.date, value, "date")
+        self.set_date(ContractWithSupplierLocators.date, value, "Дата создания документа")
 
     def сounterparty(self, value):
-        self.set_select2(ContractWithSupplierLocators.сounterparty, value, "сounterparty")
+        self.set_select2(ContractWithSupplierLocators.сounterparty, value, "Контрагент")
+
+    def bank_account_number(self, value):
+        self.set_select2(ContractWithSupplierLocators.bank_account_number, value, "Номер банковского счета")
+
+    def uin(self, value):
+        self.set_text(ContractWithSupplierLocators.uin, value, "УИН")
+
+    def currency(self, value):
+        self.set_select2(ContractWithSupplierLocators.currency, value, "Валюта")
 
     def date_begin(self, value):
-        self.set_date(ContractWithSupplierLocators.date_begin, value, "dateBegin")
+        self.set_date(ContractWithSupplierLocators.date_begin, value, "Дата начала")
+
+    def date_end(self, value):
+        self.set_date(ContractWithSupplierLocators.date_end, value, "Дата окончания")
 
     def payment_type(self, value):
-        self.set_select(ContractWithSupplierLocators.payment_type, value, "paymentType")
+        self.set_select(ContractWithSupplierLocators.payment_type, value, "Вид оплаты")
 
     def subject_contract(self, value):
-        self.set_text(ContractWithSupplierLocators.subject_contract, value, "subjectContract")
+        self.set_text(ContractWithSupplierLocators.subject_contract, value, "Предмет договора")
 
     def payment_terms(self, value):
-        self.set_text(ContractWithSupplierLocators.payment_terms, value, "paymentTerms")
+        self.set_text(ContractWithSupplierLocators.payment_terms, value, "Условие оплаты")
 
     def note(self, value):
-        self.set_text(ContractWithSupplierLocators.note, value, "Note")
+        self.set_text(ContractWithSupplierLocators.note, value, "Примечание")
+
+class ContractWithSupplierPageDetailKBK(Browser):
+    def financial_year(self, value):
+        self.set_text(ContractWithSupplierDetailKBKPageLocators.financial_year, value, "Финансовый год")
+
+    def entry_date(self, value):
+        self.set_date(ContractWithSupplierDetailKBKPageLocators.entry_date, value, "Дата проводки")
+
+    def operation(self, value):
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.operation, value, "Типовая операция")
+
+    def kbk(self, value):
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.kbk, value, "КБК")
+
+    def kosgu(self, value):
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.kosgu, value, "КОСГУ")
+
+    def contract_subject(self, value):
+        self.set_text(ContractWithSupplierDetailKBKPageLocators.contract_subject, value, "Предмет договора")
+
+    def amounts_amount(self, value):
+        self.set_text(ContractWithSupplierDetailKBKPageLocators.amounts_amount, value, "Сумма по договору с НДС")
+
+    def amounts_nds_percent(self, value):
+        self.set_text(ContractWithSupplierDetailKBKPageLocators.amounts_nds_percent, value, "% НДС")
+
+    def advance(self, value):
+        self.set_text(ContractWithSupplierDetailKBKPageLocators.advance, value, "Сумма аванса")
