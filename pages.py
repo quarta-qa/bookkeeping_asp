@@ -550,7 +550,10 @@ class ZNVPage(Browser):
         def number(self, value):
             self.set_text(ZNVLocators.Doc.number, value, "Номер")
 
+
+# Договор с поставщиком
 class ContractWithSupplierPage(Browser):
+
     def documen_type(self, value):
         self.set_select2(ContractWithSupplierLocators.documen_type, value, "Вид документа")
 
@@ -590,6 +593,8 @@ class ContractWithSupplierPage(Browser):
     def note(self, value):
         self.set_text(ContractWithSupplierLocators.note, value, "Примечание")
 
+
+#Договор с Поставщиком - добавление строки
 class ContractWithSupplierPageDetailKBK(Browser):
     def financial_year(self, value):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.financial_year, value, "Финансовый год")
@@ -617,3 +622,48 @@ class ContractWithSupplierPageDetailKBK(Browser):
 
     def advance(self, value):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.advance, value, "Сумма аванса")
+
+
+# Справочники - Картотека ОС,НМА,НПА
+class CardIndexOSNMANPAPage(Browser):
+
+    def tag_no_first_part(self, value):
+        self.set_text(CardIndexOSNMANPALocators.tag_no_first_part, value, "Первая часть инвентарного номера")
+
+    def tag_no_second_part(self, value):
+        self.set_text(CardIndexOSNMANPALocators.tag_no_second_part, value, "Вторая часть инвентарного номера")
+
+    def tag_no(self, value):
+        self.set_text(CardIndexOSNMANPALocators.tag_no, value, ">>>")
+
+    def full_name(self, value):
+        self.set_text(CardIndexOSNMANPALocators.full_name, value, "Полное наименование")
+
+    def property_designation(self, value):
+        self.set_text(CardIndexOSNMANPALocators.property_designation, value, "Назначение объекта")
+
+    def start_up_date(self, value):
+        self.set_date(CardIndexOSNMANPALocators.start_up_date, value, "Дата ввода в эксплуатацию")
+
+    def unit_of_measure(self, value):
+        self.set_select2(CardIndexOSNMANPALocators.unit_of_measure, value, "Единица измерения")
+
+    # Согласно сценарию на портале должно быть поле - Pull Down - "Папка"
+
+    def cost(self, value):
+        self.set_text(CardIndexOSNMANPALocators.cost, value, "Первоначальная стоимость")
+
+    def exlude_from_depreciation_accrual(self,  value=True):
+        self.set_checkbox(CardIndexOSNMANPALocators.exclude_from_depreciation_accrual, value, "Не начислять амортизацию")
+
+    def value_added_used(self, value):
+        self.set_text(CardIndexOSNMANPALocators.value_added_used, value, "Срок полезного использования (месяцев)")
+
+    def okof(self, value):
+        self.set_select2(CardIndexOSNMANPALocators.okof, value, "ОКОФ")
+
+    def amortization_group(self, value):
+        self.set_select2(CardIndexOSNMANPALocators.amortization_group, value, "Амортизационная группа")
+
+
+

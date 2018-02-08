@@ -14,7 +14,6 @@ import xlrd
 import hashlib
 
 
-
 class Browser(object):
     """
     Methods for working with browser
@@ -146,8 +145,8 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-              # Функция заполнения поля Дата
-    def     set_date(self, locator, value, label=None):
+    # Функция заполнения поля Дата
+    def set_date(self, locator, value, label=None):
         if value:
             if value == "=":
                 value = Date.get_today_date()
@@ -208,15 +207,12 @@ class Browser(object):
     # Функция выбора значения из Select2
     def set_select2(self, locator, value, label=None):
         if value:
-            #self.click(locator)
             self.set_text(locator, value)
-            sleep(3)
-            self.set_text(locator, Keys.ENTER)
-            self.wait.element_disappear((By.ID, "//li[@title='%s']"% value))
+            sleep(2)
+            self.wait.element_appear((By.XPATH, "//li[.='%s']" % value)).click()
+            self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:
-                print("[%s] [%s] выбор из списка значения \"%s\"" % (
-                strftime("%H:%M:%S", localtime()), label, value))
-
+                print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция выбора строки в таблице
     def table_select_row(self, order=1, label=None):
@@ -255,12 +251,11 @@ class Browser(object):
     def select_month(self, month, year):
         self.click((By.XPATH, "//button[@class='period-text dropdown-period-toggle']"))
         sleep(1)
-        self.click((By.XPATH, "//*[span='%s']"% month))
+        self.click((By.XPATH, "//*[span='%s']" % month))
         sleep(1)
         self.click((By.XPATH, "//*[span='%s']" % year))
         sleep(1)
         self.click((By.XPATH, "//span[@class='qa-icon-close']"))
-
 
     def save_screenshot(self, name, default_folder="", overwrite=True):
         """
@@ -395,7 +390,7 @@ class Data(object):
                 print('Найдены ОШИБКИ в печатной форме: "%s"' % filename)
 
                 output_max = self.get_max_rows_and_cols(output)
-                reference_max =self.get_max_rows_and_cols(reference)
+                reference_max = self.get_max_rows_and_cols(reference)
                 max_rows = max(reference_max[0], output_max[0])
                 max_cols = max(reference_max[1], output_max[1])
 
@@ -436,7 +431,6 @@ class Data(object):
                     if reference_cell != output_cell:
                         print("\tЯчейка [%s, %s]. Значение [%s] не совпадает с эталонным [%s]!"
                               % (i, j, output_cell, reference_cell))
-
 
     # Получение хеша
     @staticmethod

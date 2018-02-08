@@ -164,7 +164,7 @@ class ZNVLocators(object):
     document_type = (By.XPATH, "(//button[@title='Выбрать'])[5]")
 
     class Request(object):
-        #Закладка Расшифровка заявки
+        # Закладка Расшифровка заявки
         summa_rub = (By.XPATH, "//input[@id='outstandingPaymentDocumentAmount']")
         kbk = (By.XPATH, "(//button[@title='Выбрать'])[6]")
         kosgu = (By.XPATH, "(//button[@title='Выбрать'])[7]")
@@ -172,13 +172,14 @@ class ZNVLocators(object):
         tip_kbk = (By.XPATH, "//select[@name='kbkType']")
         vid_zatrat = (By.XPATH, "(//button[@title='Выбрать'])[8]")
         summa_nds = (By.XPATH, "//input[@id='ndsAmount']")
-        #Фрэйм Дополнительные реквизиты
+        # Фрэйм Дополнительные реквизиты
         kod_cely = (By.XPATH, "//select[@name='goalCode']")
         oktmo = (By.XPATH, "(//button[@title='Выбрать'])[10]")
 
     class Doc(object):
-        #Закладка Документы по зачислению невыясненного платежа
+        # Закладка Документы по зачислению невыясненного платежа
         number = (By.XPATH, "//input[@id='outstandingPaymentDocumentNumber']")
+
 
 class ContractWithSupplierLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']//input")
@@ -195,13 +196,29 @@ class ContractWithSupplierLocators(object):
     payment_terms = (By.XPATH, "//*[@name='paymentTerm']//textarea")
     note = (By.XPATH, "//*[@name='comment']//textarea")
 
+
 class ContractWithSupplierDetailKBKPageLocators(object):
-	financial_year = (By.XPATH, "//*[@name='financialYear']//input")
-	entry_date = (By.XPATH, "//input[@id='date10']")
-	operation = (By.XPATH, "//*[@name='operation']//input")
-	kbk = (By.XPATH, "//*[@name='kbk']//input")
-	kosgu = (By.XPATH, "//*[@name='kosgu']//input")
-	contract_subject = (By.XPATH, "//*[@name='contractSubject']//textarea")
-	amounts_amount = (By.XPATH, "//*[@name='amountsAmount']//input")
-	amounts_nds_percent = (By.XPATH, "//*[@name='amountsNdsPercent']//input")
-	advance = (By.XPATH, "//*[@name='advance']//input")
+    financial_year = (By.XPATH, "//*[@name='financialYear']//input")
+    entry_date = (By.XPATH, "//input[@id='date10']")
+    operation = (By.XPATH, "//*[@name='operation']//input")
+    kbk = (By.XPATH, "//*[@name='kbk']//input")
+    kosgu = (By.XPATH, "//*[@name='kosgu']//input")
+    contract_subject = (By.XPATH, "//*[@name='contractSubject']//textarea")
+    amounts_amount = (By.XPATH, "//*[@name='amountsAmount']//input")
+    amounts_nds_percent = (By.XPATH, "//*[@name='amountsNdsPercent']//input")
+    advance = (By.XPATH, "//*[@name='advance']//input")
+
+
+class CardIndexOSNMANPALocators(object):
+    tag_no_first_part = (By.XPATH, "//*[@name='tagNoFirstPart']//input")
+    tag_no_second_part = (By.XPATH, "//*[@name='tagNoSecondPart']//input")
+    tag_no = (By.XPATH, "//*[@name='tagNo']//input")
+    full_name = (By.XPATH, "//*[@name='fullName']//input")
+    property_designation = (By.XPATH, "//*[@name='propertyDesignation']//input")
+    start_up_date = (By.XPATH,"//*[@name='startUpDate']//input")
+    unit_of_measure = (By.XPATH,"//*[@name='unitOfMeasure']//input")
+    cost = (By.XPATH,"//*[@name='cost']//input")
+    exclude_from_depreciation_accrual = (By.XPATH,"//*[@name='exludeFromDepreciationAccrual']//input")
+    value_added_used = (By.XPATH,"//*[@name='valueAddedUsed']//input")
+    okof = (By.XPATH,"//*[@name='okof']//input")
+    amortization_group = (By.XPATH,"//*[@name='amortizationGroup']//input")
