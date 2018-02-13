@@ -134,6 +134,17 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
+    # Функция заполнения текстового поля без локатора
+    def set_text_wl(self, name, value, label=None):
+        if value:
+            self.wait.loading()
+            element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//*" % name))
+            element.clear()
+            element.send_keys(value)
+            if label and self.log:
+                print(
+                    "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
     # Функция заполнения текстового поля и проверка содержимого
     def set_text_and_check(self, locator, value, label=None):
         if value:
@@ -159,9 +170,32 @@ class Browser(object):
                 print(
                     "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
+    # Функция заполнения поля Дата без локатора
+    def set_date_wl(self, name, value, label=None):
+        if value:
+            if value == "=":
+                value = Date.get_today_date()
+            self.wait.loading()
+            element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//input" % name))
+            element.clear()
+            sleep(1)
+            element.send_keys(value + Keys.TAB)
+            if label and self.log:
+                print(
+                    "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
     # Функция заполнения/снятия чек-бокса
     def set_checkbox(self, locator, value=True, label=None):
         element = self.wait.element_appear(locator)
+        if element.is_selected() != value:
+            element.click()
+            if label and self.log:
+                print("[%s] [%s] установка флага в положение \"%s\"" % (strftime("%H:%M:%S",
+                                                                                 localtime()), label, value))
+
+    # Функция заполнения/снятия чек-бокса без локатора
+    def set_checkbox_wl(self, name, value=True, label=None):
+        element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//input" % name))
         if element.is_selected() != value:
             element.click()
             if label and self.log:
@@ -193,14 +227,23 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    # Функция выбора значения из Select3
-    def set_select3(self, locator, value, label=None):
+        # Функция выбора значения из выпадающего списка без локататора
+
+    def set_select_wl(self, name, value, label=None):
         if value:
-            self.click(locator)
-            self.set_text_and_check((By.XPATH, "//div[@id='select2-drop']//input"), value)
-            sleep(1)
-            self.click((By.XPATH, "//*[@role='option'][contains(normalize-space(), '%s')]" % value))
-            self.wait.element_disappear((By.ID, "select2-drop"))
+            self.wait.loading()
+            element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//select" % name))
+            Select(element).select_by_visible_text(value)
+            if label and self.log:
+                print("[%s] [%s] выбор из списка значения \"%s\"" % (
+                strftime("%H:%M:%S", localtime()), label, value))
+
+    # Функция выбора значения без локатора
+    def set_select2_wl(self, name, value, label=None):
+        if value:
+            self.set_text("//*[@name='%s']//input" % name, value)
+            self.wait.element_appear((By.XPATH, "//li[.='%s']" % value)).click()
+            self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
