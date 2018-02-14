@@ -8,10 +8,11 @@ class LoginLocators(object):
 
 
 class MainLocators(object):
-    menu = (By.XPATH, "//button[@class='left-menu-toggle']")
+    menu = (By.XPATH, "//button[contains(@class,'left-menu-toggle')]")
+    # menu_close = (By.XPATH, "//button[@class='left-menu-toggle active']")
 
 class MenuLocators(object):
-    menu = (By.XPATH, "//button[@class='left-menu-toggle']")
+    menu = (By.XPATH, "//button[contains(@class,'left-menu-toggle')]")
     calculation = (By.XPATH,"//a[contains(.,'Расчеты')]")
     inner_calculation = (By.XPATH, "(//a[contains(.,'Расчеты')])[2]")
     statement_processing = (By.XPATH,"//a[contains(.,'Обработка выписки из л/с')]")
@@ -26,8 +27,6 @@ class MenuLocators(object):
     salary = (By.XPATH,"//a[contains(.,'АИС «Зарплата.NET»')]")
     document_journal = (By.XPATH,"//a[contains(.,'Журнал документов')]")
     recycle_bin = (By.XPATH, "//a[contains(.,'Корзина документов ')]")
-
-
 
 
 class CashExpenseRequestLocators(object):
@@ -216,6 +215,7 @@ class CardIndexOSNMANPALocators(object):
     full_name = (By.XPATH, "//*[@name='fullName']//input")
     property_designation = (By.XPATH, "//*[@name='propertyDesignation']//input")
     start_up_date = (By.XPATH,"//*[@name='startUpDate']//input")
+    serialNumber = (By.XPATH, "//*[@name='serialNumber']//input")
     unit_of_measure = (By.XPATH,"//*[@name='unitOfMeasure']//input")
     cost = (By.XPATH,"//*[@name='cost']//input")
     exclude_from_depreciation_accrual = (By.XPATH,"//*[@name='exludeFromDepreciationAccrual']//input")

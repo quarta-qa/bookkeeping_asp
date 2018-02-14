@@ -18,7 +18,7 @@ class Browser(object):
     """
     Methods for working with browser
     """
-    def __init__(self, driver, timeout=60, log=True):
+    def __init__(self, driver: object, timeout: object = 60, log: object = True) -> object:
         self.driver = driver
         self.timeout = timeout
         self.log = log
@@ -241,7 +241,7 @@ class Browser(object):
     # Функция выбора значения без локатора
     def set_select2_wl(self, name, value, label=None):
         if value:
-            self.set_text("//*[@name='%s']//input" % name, value)
+            self.set_text((By.XPATH, "//*[@name='%s']//input" % name), value)
             self.wait.element_appear((By.XPATH, "//li[.='%s']" % value)).click()
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:

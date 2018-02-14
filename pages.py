@@ -68,6 +68,9 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.references)
         print("Меню - Справочники")
+        sleep(1)
+        self.open()
+
 
     # Отчет - Оборотная ведомость
     def turnover_statement(self):
@@ -625,6 +628,7 @@ class ContractWithSupplierPageDetailKBK(Browser):
 
 
 # Справочники - Картотека ОС,НМА,НПА
+# PageNewOSResidential building
 class CardIndexOSNMANPAPage(Browser):
 
     def tag_no_first_part(self, value):
@@ -654,7 +658,7 @@ class CardIndexOSNMANPAPage(Browser):
         self.set_text(CardIndexOSNMANPALocators.cost, value, "Первоначальная стоимость")
 
     def exlude_from_depreciation_accrual(self,  value=True):
-        self.set_checkbox(CardIndexOSNMANPALocators.exclude_from_depreciation_accrual, value, "Не начислять амортизацию")
+        self.set_checkbox(CardIndexOSNMANPALocators.exclude_from_depreciation_accrual, value, "Начислять амортизацию")
 
     def value_added_used(self, value):
         self.set_text(CardIndexOSNMANPALocators.value_added_used, value, "Срок полезного использования (месяцев)")
@@ -665,5 +669,5 @@ class CardIndexOSNMANPAPage(Browser):
     def amortization_group(self, value):
         self.set_select2(CardIndexOSNMANPALocators.amortization_group, value, "Амортизационная группа")
 
-
-
+    def serialNumber(self, value):
+        self.set_text(CardIndexOSNMANPALocators.serialNumber, value, "Серийный №")
