@@ -33,7 +33,7 @@ class TestSuite:
         # page.click_by_text("Добавить - Папку - Машины и оборудование") - на портале нет суб-кнопки, в сценарии есть
         # page.click_by_text("Добавить - Папку - Машины и оборудование") - на портале нет суб-кнопки, в сценарии есть
         # page.click_by_text("Добавить - Папку - Транспорт") - на портале нет суб-кнопки, в сценарии есть
-        # page.click_by_text("Добавить")
+        page.click_by_text("Добавить")
 
         # Создание ОС Жилое здание, Малая Никитская, д.2
 
@@ -86,7 +86,7 @@ class TestSuite:
         # Создание ОС "Копировальный аппарат"
 
         page.click_by_text("Добавить")
-        page.set_text_wl("tagNoFirstPart", "10134")
+        page.set_text_wl("tagNoFirstPart", "10134", "Первая часть инвентарного номера")
         page.set_text_wl("tagNoSecondPart", "2")
         page.set_text_wl("tagNo", "1013400002")
         page.set_text_wl("fullName", "Копировальный аппарат Xerox Phaser 8200")
