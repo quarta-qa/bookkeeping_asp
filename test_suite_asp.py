@@ -26,7 +26,7 @@ class TestSuite:
         page.wait.text_appear("Документы — Бухгалтерский учет")
 
     def test_contract_with_supplier(self):
-        page = ContractWithSupplierPage(self.driver)
+        page = ContractWithSupplierPage(self.driver, 5)
         page.select_month("Январь", "2018")
         page.click_by_text("Договор с поставщиком")
         page.click_by_text("Добавить")
@@ -35,7 +35,8 @@ class TestSuite:
         page.number("1")
         page.date("10.01.2018")
         page.сounterparty("ПАО \"МегаФон\"")
-        page.bank_account_number("40702810838180130496")
+        # page.bank_account_number(r'40702810838180130496 | ПАО "МегаФон"')
+        page.bank_account_number('40702810838180130496')
         page.uin("123123123")
         page.currency("Российский рубль")
         page.date_begin("10.01.2018")
