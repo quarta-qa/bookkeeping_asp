@@ -129,7 +129,10 @@ class MenuPage(Browser):
         self.click(MenuLocators.recycle_bin)
         print("Корзина документов")
 
-
+    # Документы
+    def to_main(self):
+        self.click(MenuLocators.eagle)
+        print("Документы — Бухгалтерский учет")
 
 
 class CashExpenseRequestPage(Browser):
@@ -597,8 +600,9 @@ class ContractWithSupplierPage(Browser):
         self.set_text(ContractWithSupplierLocators.note, value, "Примечание")
 
 
-#Договор с Поставщиком - добавление строки
+# Договор с Поставщиком - добавление строки
 class ContractWithSupplierPageDetailKBK(Browser):
+
     def financial_year(self, value):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.financial_year, value, "Финансовый год")
 
@@ -628,7 +632,6 @@ class ContractWithSupplierPageDetailKBK(Browser):
 
 
 # Справочники - Картотека ОС,НМА,НПА
-# PageNewOSResidential building
 class CardIndexOSNMANPAPage(Browser):
 
     def tag_no_first_part(self, value):
@@ -656,9 +659,6 @@ class CardIndexOSNMANPAPage(Browser):
 
     def cost(self, value):
         self.set_text(CardIndexOSNMANPALocators.cost, value, "Первоначальная стоимость")
-
-    def exlude_from_depreciation_accrual(self,  value=True):
-        self.set_checkbox(CardIndexOSNMANPALocators.exclude_from_depreciation_accrual, value, "Начислять амортизацию")
 
     def value_added_used(self, value):
         self.set_text(CardIndexOSNMANPALocators.value_added_used, value, "Срок полезного использования (месяцев)")

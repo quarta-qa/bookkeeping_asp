@@ -13,6 +13,7 @@ class MainLocators(object):
 
 class MenuLocators(object):
     menu = (By.XPATH, "//button[contains(@class,'left-menu-toggle')]")
+    eagle = (By.XPATH, "//*[@class='qa-header-icon-logo']")
     calculation = (By.XPATH,"//a[contains(.,'Расчеты')]")
     inner_calculation = (By.XPATH, "(//a[contains(.,'Расчеты')])[2]")
     statement_processing = (By.XPATH,"//a[contains(.,'Обработка выписки из л/с')]")
@@ -218,7 +219,8 @@ class CardIndexOSNMANPALocators(object):
     serialNumber = (By.XPATH, "//*[@name='serialNumber']//input")
     unit_of_measure = (By.XPATH,"//*[@name='unitOfMeasure']//input")
     cost = (By.XPATH,"//*[@name='cost']//input")
-    exclude_from_depreciation_accrual = (By.XPATH,"//*[@name='exludeFromDepreciationAccrual']//input")
     value_added_used = (By.XPATH,"//*[@name='valueAddedUsed']//input")
     okof = (By.XPATH, "//*[@name='okof']//input")
     amortization_group = (By.XPATH,"//*[@name='amortizationGroup']//input")
+
+
