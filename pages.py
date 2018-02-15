@@ -34,6 +34,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.inner_calculation)
         print("Меню расчеты")
+        self.open()
 
     # Обработка выписки из л/с
     def statement_processing(self):
@@ -43,6 +44,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.statement_processing)
         print("Обработка выписки из л/с")
+        self.open()
 
     # Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)
     def unloading_information_sufd(self):
@@ -52,6 +54,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.unloading_informationSUFD)
         print("Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)")
+        self.open()
 
     # Выгрузка Сведений о денежном обязательстве в Электронный бюджет
     def unloading_information(self):
@@ -61,6 +64,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.unloading_information)
         print("Выгрузка Сведений о денежном обязательстве в Электронный бюджет")
+        self.open()
 
     # Справочники
     def references(self):
@@ -80,6 +84,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.turnover_statement)
         print("Отчет - Оборотная ведомость")
+        self.open()
 
     # Отчет - Сводная отчетность
     def summary_reporting(self):
@@ -89,6 +94,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.summary_reporting)
         print("Отчет - Сводная отчетность")
+        self.open()
 
     # Отчет - Печатные формы
     def printed_forms(self):
@@ -98,6 +104,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.printed_forms)
         print("Отчет - Печатные формы")
+        self.open()
 
     # Отчет - Остатки НФА
     def remains_nfa(self):
@@ -107,6 +114,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.remainsNFA)
         print("Отчет - Остатки НФА")
+        self.open()
 
     # АИС «Зарплата.NET»
     def salary(self):
@@ -114,6 +122,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.salary)
         print("Меню - АИС «Зарплата.NET»")
+        self.open()
 
     # Журнал документов
     def document_journal(self):
@@ -121,6 +130,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.document_journal)
         print("Журнал документов")
+        self.open()
 
     # Корзина документов
     def recycle_bin(self):
@@ -128,6 +138,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.recycle_bin)
         print("Корзина документов")
+        self.open()
 
     # Документы
     def to_main(self):
