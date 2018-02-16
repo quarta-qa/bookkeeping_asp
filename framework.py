@@ -239,7 +239,7 @@ class Browser(object):
                 strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция выбора значения без локатора
-    def set_select2_wl(self, name, value, label=None,  exactly=True):
+    def set_select2_wl(self, name, value, label=None, exactly=True):
         if value:
             parent = self.wait.presence_of_element((By.XPATH, "//*[@name='%s']" % name))
             text_box = self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//input"))

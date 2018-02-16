@@ -516,7 +516,7 @@ class ZNVPage(Browser):
         self.set_date(ZNVLocators.document_date, value, "Дата документа")
 
     def personal_account(self, value):
-        self.set_type(ZNVLocators.personal_account, value, "Лицевой счет")
+        self.set_select2(ZNVLocators.personal_account, value, "Лицевой счет", exactly=False)
 
     def recipient_name(self, value):
         self.set_type(ZNVLocators.recipient_name, value, "Наименование получателя")

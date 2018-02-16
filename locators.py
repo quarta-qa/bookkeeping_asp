@@ -153,12 +153,13 @@ class CashPullRequestLocators(object):
 
 
 class ZNVLocators(object):
-    document_number = (By.XPATH, "//input[@id='documentNumber']")
-    document_date = (By.XPATH, "//input[@id='date1']")
-    personal_account = (By.XPATH, "(//button[@title='Выбрать'])[1]")
+    document_number = (By.XPATH, "//*[@name='documentNumber']//input") ### //*[@name='documentNumber']//input
+    document_date = (By.XPATH, "//*[@name='documentDate']//input") ### document_date = (By.XPATH, "//input[@id='date1']")
+    personal_account = (By.XPATH, "//*[@name='accountDetails']")
+
     recipient_name = (By.XPATH, "(//button[@title='Выбрать'])[2]")
     ofk_registration_number = (By.XPATH, "//input[@id='ofkRegistrationNumber']")
-    entry_date = (By.XPATH, "//input[@id='date1']")
+    entry_date = (By.XPATH, "//input[@id='entryDate']")
     typical_operation = (By.XPATH, "(//button[@title='Выбрать'])[3]")
     recipient_account = (By.XPATH, "(//button[@title='Выбрать'])[4]")
     document_type = (By.XPATH, "(//button[@title='Выбрать'])[5]")
