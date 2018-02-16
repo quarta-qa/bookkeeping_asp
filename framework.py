@@ -248,13 +248,17 @@ class Browser(object):
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция выбора значения из Select2
-    def set_select2(self, locator, value,  label=None, exactly=False):
+    def set_select2(self, locator, value,  label=None, exactly=True):
         if value:
-            self.set_text(locator, value)
+            parent = self.wait.presence_of_element(locator)
+            text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
+            text_box.clear()
+            text_box.send_keys(value)
+
             if exactly:
-                self.wait.element_appear((By.XPATH, "//li[.='%s']" % value)).click()
+                self.wait.element_appear((By.XPATH, locator[1] + "//li[.='%s']" % value)).click()
             else:
-                self.wait.element_appear((By.XPATH, "//li[contains(., '%s')]" % value)).click()
+                self.wait.element_appear((By.XPATH, locator[1] + "//li[contains(., '%s')]" % value)).click()
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))

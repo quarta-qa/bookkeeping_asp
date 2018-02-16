@@ -581,7 +581,7 @@ class ContractWithSupplierPage(Browser):
         self.set_select2(ContractWithSupplierLocators.сounterparty, value, "Контрагент")
 
     def bank_account_number(self, value):
-        self.set_select2(ContractWithSupplierLocators.bank_account_number, value, "Номер банковского счета")
+        self.set_select2(ContractWithSupplierLocators.bank_account_number, value, "Номер банковского счета", exactly=False)
 
     def uin(self, value):
         self.set_text(ContractWithSupplierLocators.uin, value, "УИН")
@@ -620,10 +620,10 @@ class ContractWithSupplierPageDetailKBK(Browser):
         self.set_select2(ContractWithSupplierDetailKBKPageLocators.operation, value, "Типовая операция")
 
     def kbk(self, value):
-        self.set_select2(ContractWithSupplierDetailKBKPageLocators.kbk, value, "КБК")
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.kbk, value, "КБК", exactly=False)
 
     def kosgu(self, value):
-        self.set_select2(ContractWithSupplierDetailKBKPageLocators.kosgu, value, "КОСГУ")
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def contract_subject(self, value):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.contract_subject, value, "Предмет договора")
