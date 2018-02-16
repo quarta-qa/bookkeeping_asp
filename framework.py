@@ -239,10 +239,17 @@ class Browser(object):
                 strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция выбора значения без локатора
-    def set_select2_wl(self, name, value, label=None):
+    def set_select2_wl(self, name, value, label=None,  exactly=True):
         if value:
-            self.set_text((By.XPATH, "//*[@name='%s']//input" % name), value)
-            self.wait.element_appear((By.XPATH, "//li[.='%s']" % value)).click()
+            parent = self.wait.presence_of_element((By.XPATH, "//*[@name='%s']" % name))
+            text_box = self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//input"))
+            text_box.clear()
+            text_box.send_keys(value)
+
+            if exactly:
+                self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//li[.='%s']" % value)).click()
+            else:
+                self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//li[contains(., '%s')]" % value)).click()
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
