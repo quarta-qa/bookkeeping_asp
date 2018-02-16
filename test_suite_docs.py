@@ -88,34 +88,47 @@ class TestSuite:
         page.click_by_text("Закрыть")
 
     def test_znv(self):
+        #Документ Заявка на возврат \ шапка документа
+        print("Документ Заявка на возврат \ шапка документа")
         page = ZNVPage(self.driver)
         page.scroll_to_bottom()
         page.click_by_text("Заявка на возврат")
         page.click_by_text("Добавить")
         page.click_by_text("Новый документ")
-        #page.document_number("5")
         page.set_text_wl("documentNumber", "5", "Номер")
-        #page.document_date("05.02.2018")
         page.set_date_wl("documentDate", "05.02.2018", "Дата")
-     #   page.personal_account("14481000320 (Московская обл.)")
         page.set_select2_wl("accountDetails", "14481000320 (Московская обл.)","поле Лицевой счет", exactly=False)
-        ## page.recipient_name("")
-     #   page.ofk_registration_number("2")
-     #   page.entry_date("05.09.2017")
-     #   page.typical_operation("Выбытие средств из временного распоряжения")
-        ## page.recipient_account("")
-     #   page.document_type("Внебанковская заявка на возврат")
+        page.set_select2_wl("recepient", "","Наименование получателя") #exactly=False исп. для точного совпадения
+        page.set_text_wl("ofkRegistrationNumber", "05.02.2018", "Номер УФК")
+        page.set_date_wl("entryDate", "05.02.2018", "Дата проводки")
+        page.set_select2_wl("operation", "Выбытие средств из временного распоряжения","Типовая операция", exactly=False)
+        page.set_select2_wl("recepientAccountDetails", "","Банковский счет")
+        page.set_select2_wl("documentKind", "Внебанковская заявка на возврат","Вид документа")
+
+        #Документ Заявка на возврат \ закладка Расшифровка заявки
+        print("Документ Заявка на возврат \ закладка Расшифровка заявки")
+        page.set_text_wl("outstandingPaymentDocumentAmount", "100.00","поле Первоначальная стоимость")
+        #page.set_text_wl("ndsPercent", "18","Ставка НДС")
+        page.set_text_wl("ndsAmount", "18","Сумма НДС")
+        page.set_select2_wl("kbk", "0410 9970092041 244", "КБК", exactly=False)
+        page.set_select_wl("kbkType", "Группировочный КБК (гКБК)", "Тип КБК")
+        page.set_select2_wl("kosgu", "290", "КОСГУ", exactly=False)
+        page.set_select2_wl("costElement", "Прочие расходы", "Вид затрат")
+
+        #Документ Заявка на возврат \ закладка Расшифровка заявки \ Дополнительные реквизиты
+        print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Дополнительные реквизиты")
+        page.set_text_wl("goalCode", "32", "Код цели")
+        page.set_select2_wl("investmentProgram", "Технопарк МФТИ, поселок Северный", "Код объекта по ФАИП")
+        page.set_select2_wl("oktmo", "40 333 000", "Код по ОКТМО", exactly=False)
+        page.set_select2_wl("expenditureGoalAct", "2008 - Договор", "Мероприятие")
+        page.set_select2_wl("department", "Договор подряда", "Группа учета")
+
+        #Документ Заявка на возврат \ закладка Расшифровка заявки \ Информация о платеже
+        print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Информация о платеже")
+
         sleep(20)
-        #page.request.summa_rub("100.00")
-        #page.request.kbk("0410 9970092041 244")
-        #page.request.kosgu("290")
-        #page.request.stavka_nds("13")
-        #page.request.tip_kbk("Группировочный КБК (гКБК)")
-        #page.request.vid_zatrat("Прочие расходы")
-        #page.request.summa_nds("113.00")
-        #page.request.oktmo("80 606 416")
+
         #page.save_screenshot("test1", default_folder="C:\\Test\\")
         #page.click_by_text("Документ по зачислению невыясненного платежа")
         #page.doc.number("55")
         #sleep(1)
-        #page.save_screenshot("test2", default_folder="C:\\Test\\")
