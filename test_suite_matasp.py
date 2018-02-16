@@ -149,8 +149,37 @@ class TestSuite:
         page.click_by_text("Закрыть")
         sleep(5)
 
-    # def test_creation_of_document_coming_TMC_and_OS(self):
-    #     page = MenuPage(self.driver)
-    #     page.references()
-    #     page.to_main()
-    #     sleep(5)
+    def test_creation_of_document_coming_TMC_and_OS(self):
+        page = MenuPage(self.driver)
+        page.click_button_eagle()
+        page.select_month("Январь", "2015")
+        page.click_by_text('Поступление НФА')
+        # page.click_by_text("Добавить - Новый документ") на портале нет суб-кнопки, в сценарии есть
+        page.click_by_text("Добавить")
+        page = Browser(self.driver)
+        # Информация о документе
+        page.set_text_wl("documentNumber", "Нач.ост.", "Номер")
+        page.set_select2_wl("documentKind", "Приёмный акт", "Приёмный акт")
+        page.set_date_wl("documentDate","01.01.2015","Дата")
+        page.set_date_wl("entryDate","01.01.2015","Дата проводки")
+        page.set_text_wl("comment", "Начальные остатки ОС", "Комментарий")
+        # Реквизиты документа
+        page.set_select2_wl("materiallyResponsiblePerson", "Абдуллина З.Ш.", "МОЛ")
+        page.set_select_wl("senderSenderType","Организация","Вид отправителя")
+        page.set_select2_wl("organization", 'ООО "КВАРТА ВК"',"МОЛ")
+        # Создать строку "ОС,НМА"
+        page.click_by_text("Добавить")
+        page.click_by_text("Новая строка ОС, НМА")
+        page.set_select2_wl("operation", "Приход ОС", "Типовая операция")
+        page.set_text_wl("tagNo", "1011200001", "Инвентарный №")
+        sleep(5)
+        #page.click_by_text("Сохранить")
+        #page.click_by_text("Закрыть")
+
+
+
+
+
+
+
+
