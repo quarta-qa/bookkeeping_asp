@@ -271,9 +271,9 @@ class Browser(object):
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция выбора строки в таблице
-    def table_select_row(self, order=1, label=None):
+    def table_select_row(self, text, order=1, label=None):
         self.wait.loading()
-        locator = (By.XPATH, "(//td/input[@type='checkbox'])[%s]" % order)
+        locator = (By.XPATH, "(//tr[contains(., '%s')]//input[@type='checkbox'])[%s]" % (text, order))
         self.set_checkbox(locator, True, label)
 
     # Функция выбора чек-бокса в таблице по порядку
