@@ -15,9 +15,7 @@ class LoginPage(Browser):
 
 class MainPage(Browser):
 
-    def click_button_menu(self):
-        sleep(3)
-        self.click(MainLocators.menu)
+    pass
 
 class MenuPage(Browser):
 
@@ -140,11 +138,10 @@ class MenuPage(Browser):
         print("Корзина документов")
         self.open()
 
-    # Документы
-    def to_main(self):
+    # Нажать на орла
+    def click_button_eagle(self):
+        sleep(1)
         self.click(MenuLocators.eagle)
-        print("Документы — Бухгалтерский учет")
-
 
 class CashExpenseRequestPage(Browser):
 
@@ -642,7 +639,7 @@ class ContractWithSupplierPageDetailKBK(Browser):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.advance, value, "Сумма аванса")
 
 
-# Справочники - Картотека ОС,НМА,НПА
+# Справочники - Картотека ОС,НМА,НПА - добавление строки
 class CardIndexOSNMANPAPage(Browser):
 
     def tag_no_first_part(self, value):
@@ -682,3 +679,16 @@ class CardIndexOSNMANPAPage(Browser):
 
     def serialNumber(self, value):
         self.set_text(CardIndexOSNMANPALocators.serialNumber, value, "Серийный №")
+
+
+# Учет нефинансовых активов - Поступление НФА - шапка документа
+
+class Receipt_of_non_financial_assets(Browser):
+    print("Receipt_of_non_financial_assets")
+
+# Учет нефинансовых активов - Поступление НФА - строка документа
+
+class Receipt_of_non_financial_assets_line():
+    print("Receipt_of_non_financial_assets_line")
+
+
