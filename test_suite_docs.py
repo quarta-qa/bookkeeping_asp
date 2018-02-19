@@ -28,6 +28,7 @@ class TestSuite:
 
     def te1st_getting_cash_request(self):
         page = CashPullRequestPage(self.driver)
+        page.scroll_to_bottom()
         page.click_by_text("Заявка на получение наличных денег")
         page.click_by_text("Добавить")
         page.click_by_text("Новый документ")
@@ -125,10 +126,24 @@ class TestSuite:
 
         #Документ Заявка на возврат \ закладка Расшифровка заявки \ Информация о платеже
         print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Информация о платеже")
+        page.set_text_wl("paymentPurpose", "Текст заполнения поля Назначения платежа", "Назначение платежа")
+        page.set_select_wl("paymentForm", "4 – срочно", "Вид платежа")
+        page.set_text_wl("paymentPurpose", "В первую очередь", "Очередность платежа")
 
-        sleep(20)
+        #Документ Заявка на возврат \ закладка Расшифровка заявки \ Документ-основание
+        print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Документ-основание")
+        page.set_select2_wl("documentFoundationKind", "Акт выполненных работ", "Вид документа-основание")
+        page.set_text_wl("documentFoundationNumber", "21", "Номер документа-основание")
+        page.set_date_wl("documentFoundationDate", "05.02.2018", "Дата документа-основания")
 
+        #Документ Заявка на возврат \ закладка Расшифровка заявки \ Реквизиты получателя
+        print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Реквизиты получателя")
+        page.set_select2_wl("recepientKbk", "РАГС", "КБК получателя")
+        page.set_select2_wl("recepientOktmo", "город Москва", "Код по ОКТМО Получателя", exactly=False)
+        page.click_by_text("Сохранить")
+        # assert "" in self.driver.page_source
+        assert page.wait.text_appear("Документ сохранен")
         #page.save_screenshot("test1", default_folder="C:\\Test\\")
-        #page.click_by_text("Документ по зачислению невыясненного платежа")
-        #page.doc.number("55")
-        #sleep(1)
+        sleep(10)
+
+
