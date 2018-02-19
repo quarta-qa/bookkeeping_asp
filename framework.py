@@ -18,7 +18,7 @@ class Browser(object):
     """
     Methods for working with browser
     """
-    def __init__(self, driver: object, timeout: object = 60, log: object = True) -> object:
+    def __init__(self, driver, timeout=60, log=True):
         self.driver = driver
         self.timeout = timeout
         self.log = log

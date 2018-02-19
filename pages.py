@@ -13,10 +13,6 @@ class LoginPage(Browser):
         self.click(LoginLocators.submit, "Войти")
 
 
-class MainPage(Browser):
-
-    pass
-
 class MenuPage(Browser):
 
     # Выход в меню
@@ -642,7 +638,7 @@ class ContractWithSupplierPageDetailKBK(Browser):
         self.set_select2(ContractWithSupplierDetailKBKPageLocators.cost_Element, value, "Вид затрат")
 
 
-# Справочники - Картотека ОС,НМА,НПА - добавление строки
+# Справочники - Картотека ОС,НМА,НПА - добавление документа
 class CardIndexOSNMANPAPage(Browser):
 
     def tag_no_first_part(self, value):
@@ -682,6 +678,8 @@ class CardIndexOSNMANPAPage(Browser):
 
     def serialNumber(self, value):
         self.set_text(CardIndexOSNMANPALocators.serialNumber, value, "Серийный №")
+    def group(self, value):
+        self.set_select2(CardIndexOSNMANPALocators.group, value, "Группа ОС, НМА, НПА")
 
 
 # Учет нефинансовых активов - Поступление НФА - шапка документа
@@ -694,4 +692,6 @@ class Receipt_of_non_financial_assets(Browser):
 class Receipt_of_non_financial_assets_line():
     print("Receipt_of_non_financial_assets_line")
 
-
+# Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
+class TemplatesofthecardOSNMANPA(Browser):
+    print("Templates_of_the_card_OSNMANPA")

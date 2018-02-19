@@ -219,6 +219,7 @@ class CardIndexOSNMANPALocators(object):
     property_designation = (By.XPATH, "//*[@name='propertyDesignation']//input")
     start_up_date = (By.XPATH,"//*[@name='startUpDate']//input")
     serialNumber = (By.XPATH, "//*[@name='serialNumber']//input")
+    group = (By.XPATH, "//li[contains(.,'С/блоки')]")
     unit_of_measure = (By.XPATH,"//*[@name='unitOfMeasure']")
     cost = (By.XPATH,"//*[@name='cost']//input")
     exclude_from_depreciation_accrual = (By.XPATH,"//*[@name='exludeFromDepreciationAccrual']//input")
