@@ -208,6 +208,7 @@ class ContractWithSupplierDetailKBKPageLocators(object):
     amounts_amount = (By.XPATH, "//*[@name='amountsAmount']//input")
     amounts_nds_percent = (By.XPATH, "//*[@name='amountsNdsPercent']//input")
     advance = (By.XPATH, "//*[@name='advance']//input")
+    cost_Element = (By.XPATH, "//*[@name='costElement']")
 
 
 class CardIndexOSNMANPALocators(object):

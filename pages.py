@@ -638,6 +638,9 @@ class ContractWithSupplierPageDetailKBK(Browser):
     def advance(self, value):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.advance, value, "Сумма аванса")
 
+    def cost_element(self, value):
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.cost_Element, value, "Вид затрат")
+
 
 # Справочники - Картотека ОС,НМА,НПА - добавление строки
 class CardIndexOSNMANPAPage(Browser):

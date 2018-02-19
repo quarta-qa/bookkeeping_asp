@@ -243,6 +243,7 @@ class Browser(object):
         if value:
             parent = self.wait.presence_of_element((By.XPATH, "//*[@name='%s']" % name))
             text_box = self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//input"))
+            self.click((By.XPATH, "//*[@name='%s']" % name + "//button[@title='Очистить']"))
             text_box.clear()
             text_box.send_keys(value)
 
@@ -259,6 +260,7 @@ class Browser(object):
         if value:
             parent = self.wait.presence_of_element(locator)
             text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
+            self.click((By.XPATH, locator[1] + "//button[@title='Очистить']"))
             text_box.clear()
             text_box.send_keys(value)
 
