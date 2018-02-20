@@ -255,7 +255,6 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    #------------------
     # Проверка текста в локаторе
     def check_text(self, name, value):
         fact_value = self.wait.element_appear(
@@ -266,8 +265,6 @@ class Browser(object):
         else:
             print("Значение :" + fact_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
-
-    # ------------------
 
     # Функция выбора значения из Select2
     def set_select2(self, locator, value,  label=None, exactly=True):
