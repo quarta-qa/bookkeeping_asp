@@ -502,63 +502,25 @@ class ZNVPage(Browser):
     def doc(self):
         return self.Doc(self.driver)
 
-    def document_number(self, value):
-        self.set_text(ZNVLocators.document_number, value, "Номер")
+    @property
+    def workers(self):
+        return self.Workers(self.driver)
 
-    def document_date(self, value):
-        self.set_date(ZNVLocators.document_date, value, "Дата документа")
-
-    def personal_account(self, value):
-        self.set_select2(ZNVLocators.personal_account, value, "Лицевой счет", exactly=False)
-
-    def recipient_name(self, value):
-        self.set_type(ZNVLocators.recipient_name, value, "Наименование получателя")
-
-    def ofk_registration_number(self, value):
-        self.set_text(ZNVLocators.ofk_registration_number, value, "Номер УФК")
-
-    def entry_date(self, value):
-        self.set_date(ZNVLocators.entry_date, value, "Дата проводки")
-
-    def typical_operation(self, value):
-        self.set_type(ZNVLocators.typical_operation, value, "Типовая операция")
-
-    def recipient_account(self, value):
-        self.set_type(ZNVLocators.recipient_account, value, "Расчетный счет получателя")
-
-    def document_type(self, value):
-        self.set_type(ZNVLocators.document_type, value, "Вид документа")
+    @property
+    def accounting(self):
+        return self.accounting(self.driver)
 
     class Request(Browser):
-
-        def summa_rub(self, value):
-            self.set_text(ZNVLocators.Request.summa_rub, value, "Сумма в рублях")
-
-        def kbk(self, value):
-            self.set_type(ZNVLocators.Request.kbk, value, "КБК")
-
-        def kosgu(self, value):
-            self.set_type(ZNVLocators.Request.kosgu, value, "КОСГУ")
-
-        def stavka_nds(self, value):
-            self.set_text(ZNVLocators.Request.stavka_nds, value, "Ставка НДС")
-
-        def tip_kbk(self, value):
-            self.set_select(ZNVLocators.Request.tip_kbk, value, "Тип КБК")
-
-        def vid_zatrat(self, value):
-            self.set_type(ZNVLocators.Request.vid_zatrat, value, "Вид затрат")
-
-        def summa_nds(self, value):
-            self.set_text(ZNVLocators.Request.summa_nds, value, "Сумма НДС")
-
-        def oktmo(self, value):
-            self.set_type(ZNVLocators.Request.oktmo, value, "Код по ОКТМО")
+        pass
 
     class Doc(Browser):
+        pass
 
-        def number(self, value):
-            self.set_text(ZNVLocators.Doc.number, value, "Номер")
+    class Workers(Browser):
+        pass
+
+    class Accounting(Browser):
+        pass
 
 
 class PKOPage(Browser):

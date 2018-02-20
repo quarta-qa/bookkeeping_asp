@@ -138,7 +138,7 @@ class Browser(object):
     def set_text_wl(self, name, value, label=None):
         if value:
             self.wait.loading()
-            element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//*" % name))
+            element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name))
             element.clear()
             element.send_keys(value)
             if label and self.log:
@@ -243,7 +243,7 @@ class Browser(object):
         if value:
             parent = self.wait.presence_of_element((By.XPATH, "//*[@name='%s']" % name))
             text_box = self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//input"))
-            self.click((By.XPATH, "//*[@name='%s']" % name + "//button[@title='Очистить']"))
+            #self.click((By.XPATH, "//*[@name='%s']" % name + "//button[@title='Очистить']"))
             text_box.clear()
             text_box.send_keys(value)
 
@@ -254,6 +254,21 @@ class Browser(object):
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
+    #------------------
+    # Проверка текста в локаторе
+    def check_text(self, name, value):
+        fact_value = self.wait.element_appear(
+            (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).text
+        if self.wait.element_appear(
+                (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).text == value:
+            print(fact_value + " - значение поля соответствует эталону - " + str(value))
+            return True
+        else:
+            print(fact_value + " - значение поля не соответствует эталону - " + str(value))
+            return False
+
+    # ------------------
 
     # Функция выбора значения из Select2
     def set_select2(self, locator, value,  label=None, exactly=True):
@@ -343,16 +358,6 @@ class Browser(object):
             return True
         else:
             File.add_text_in_file("logs", text_errors)
-            return False
-
-    # Проверка текста в локаторе
-    def check_text(self, value):
-        fact_value = self.wait.element_appear((By.XPATH, "//*[@class='form-control text-left ng-valid ng-touched ng-dirty']")).text
-        if self.wait.element_appear((By.XPATH, "//*[@class='form-control text-left ng-valid ng-touched ng-dirty']")).text == value:
-            print(fact_value + " - значение поля соответствует эталону - " + str(value))
-            return True
-        else:
-            print(fact_value + " - значение поля не соответствует эталону - " + str(value))
             return False
 
     # Проверка текста в локаторе с записью в логфайл

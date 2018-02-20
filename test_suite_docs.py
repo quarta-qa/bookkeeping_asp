@@ -88,7 +88,7 @@ class TestSuite:
         page.holding_request.submit()
         page.click_by_text("Закрыть")
 
-    def test_znv(self):
+    def te1st_znv(self):
         #Документ Заявка на возврат \ шапка документа
         print("Документ Заявка на возврат \ шапка документа")
         page = ZNVPage(self.driver)
@@ -108,46 +108,72 @@ class TestSuite:
 
         #Документ Заявка на возврат \ закладка Расшифровка заявки
         print("Документ Заявка на возврат \ закладка Расшифровка заявки")
-        page.set_text_wl("outstandingPaymentDocumentAmount", "100.00","поле Первоначальная стоимость")
+        page.click_by_text("Расшифровка заявки")
+        page.request.set_text_wl("outstandingPaymentDocumentAmount", "100.00","поле Сумма в рублях")
         #page.set_text_wl("ndsPercent", "18","Ставка НДС")
-        page.set_text_wl("ndsAmount", "18","Сумма НДС")
-        page.set_select2_wl("kbk", "0410 9970092041 244", "КБК", exactly=False)
-        page.set_select_wl("kbkType", "Группировочный КБК (гКБК)", "Тип КБК")
-        page.set_select2_wl("kosgu", "290", "КОСГУ", exactly=False)
-        page.set_select2_wl("costElement", "Прочие расходы", "Вид затрат")
+        page.request.set_text_wl("ndsAmount", "18","Сумма НДС")
+        page.request.set_select2_wl("kbk", "0410 9970092041 244", "КБК", exactly=False)
+        page.request.set_select_wl("kbkType", "Группировочный КБК (гКБК)", "Тип КБК")
+        page.request.set_select2_wl("kosgu", "290", "КОСГУ", exactly=False)
+        page.request.set_select2_wl("costElement", "Прочие расходы", "Вид затрат")
 
         #Документ Заявка на возврат \ закладка Расшифровка заявки \ Дополнительные реквизиты
         print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Дополнительные реквизиты")
-        page.set_text_wl("goalCode", "32", "Код цели")
-        page.set_select2_wl("investmentProgram", "Технопарк МФТИ, поселок Северный", "Код объекта по ФАИП")
-        page.set_select2_wl("oktmo", "Северный", "Код по ОКТМО", exactly=False)
-        page.set_select2_wl("expenditureGoalAct", "2008 - Договор", "Мероприятие")
-        page.set_select2_wl("department", "Договор подряда", "Группа учета")
+        page.request.set_text_wl("goalCode", "32", "Код цели")
+        page.request.set_select2_wl("investmentProgram", "Технопарк МФТИ, поселок Северный", "Код объекта по ФАИП")
+        page.request.set_select2_wl("oktmo", "40 333 000", "Код по ОКТМО", exactly=False)
+        page.request.set_select2_wl("expenditureGoalAct", "2008 - Договор", "Мероприятие")
+        page.request.set_select2_wl("department", "Договор подряда", "Группа учета")
 
         #Документ Заявка на возврат \ закладка Расшифровка заявки \ Информация о платеже
         print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Информация о платеже")
-        page.set_text_wl("paymentPurpose", "Текст заполнения поля Назначения платежа", "Назначение платежа")
-        page.set_select_wl("paymentForm", "4 – срочно", "Вид платежа")
-        page.set_text_wl("paymentPurpose", "В первую очередь", "Очередность платежа")
+        page.request.set_text_wl("paymentPurpose", "Текст заполнения поля Назначения платежа", "Назначение платежа")
+        page.request.set_select_wl("paymentForm", "4 – срочно", "Вид платежа")
+        page.request.set_text_wl("paymentPriority", "1", "Очередность платежа")
 
         #Документ Заявка на возврат \ закладка Расшифровка заявки \ Документ-основание
         print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Документ-основание")
-        page.set_select2_wl("documentFoundationKind", "Акт выполненных работ", "Вид документа-основание")
-        page.set_text_wl("documentFoundationNumber", "21", "Номер документа-основание")
-        page.set_date_wl("documentFoundationDate", "05.02.2018", "Дата документа-основания")
+        page.request.set_select2_wl("documentFoundationKind", "Акт выполненных работ", "Вид документа-основание")
+        page.request.set_text_wl("documentFoundationNumber", "21", "Номер документа-основание")
+        page.request.set_date_wl("documentFoundationDate", "05.02.2018", "Дата документа-основания")
 
         #Документ Заявка на возврат \ закладка Расшифровка заявки \ Реквизиты получателя
         print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Реквизиты получателя")
-        page.set_select2_wl("recepientKbk", "РАГС", "КБК получателя")
-        page.set_select2_wl("recepientOktmo", "город Москва", "Код по ОКТМО Получателя", exactly=False)
-        page.click_by_text("Сохранить")
-        # assert "" in self.driver.page_source
-        assert page.wait.text_appear("Документ сохранен")
+        page.request.set_select2_wl("recepientKbk", "РАГС", "КБК получателя")
+        page.request.set_select2_wl("recepientOktmo", "город Москва", "Код по ОКТМО Получателя", exactly=False)
         #page.save_screenshot("test1", default_folder="C:\\Test\\")
+
+        #Документ Заявка на возврат \ закладка Документ по зачислению невыясненного платежа
+        print("Документ Заявка на возврат \ закладка Документ по зачислению невыясненного платежа")
+        page.click_by_text("Документ по зачислению невыясненного платежа")
+        page.doc.set_text_wl("outstandingPaymentDocumentNumber", "1", "Номер")
+        page.doc.set_date_wl("outstandingPaymentDocumentDate", "05.02.2018", "Дата")
+        page.doc.set_text_wl("amount", "100.00","поле Сумма")
+        page.doc.set_text_wl("outstandingPaymentDocumentInn", "111","поле ИНН")
+        page.doc.set_text_wl("outstandingPaymentDocumentKpp", "222","поле КПП")
+        #page.save_screenshot("test1", default_folder="C:\\Test\\")
+
+        #Документ Заявка на возврат \ закладка Уполномоченные сотрудники
+        print("Документ Заявка на возврат \ закладка Уполномоченные сотрудники")
+        page.click_by_text("Уполномоченные сотрудники")
+        page.workers.set_select2_wl("chief", "Е.Ю.Петрова", "Руководитель (уполномоченное лицо)", exactly=False)
+        page.workers.set_select2_wl("chiefAccountant", "С.В. Васина", "Код по ОКТМО Получателя", exactly=False)
+        #page.save_screenshot("test1", default_folder="C:\\Test\\")
+
+        #Документ Заявка на возврат \ закладка Проводки
+        print("Документ Заявка на возврат \ закладка Проводки")
+        page.click_by_text("Проводки")
+        #page.save_screenshot("test1", default_folder="C:\\Test\\")
+
+        #Документ Заявка на возврат \ закладка Расшифровка заявки
+        print("Документ Заявка на возврат \ закладка Расшифровка заявки")
+        page.click_by_text("Расшифровка заявки")
+        page.request.click_by_text("Сохранить")
+        assert page.wait.text_appear("Документ сохранен")         ### assert "" in self.driver.page_source
+        print("Документ Заявка на возврат - ДОКУМЕНТ СОХРАНЕН")
         sleep(10)
 
-
-    def te1st_pko(self):
+    def test_pko(self):
         #Документ Приходный кассовый ордер \ Информация о документе
         print("Документ Приходный кассовый ордер\ Информация о документе")
         page = PKOPage(self.driver)
@@ -161,7 +187,7 @@ class TestSuite:
         print("Документ Приходный кассовый ордер\ Принято от")
         page.set_select2_wl("employee", "Петров А.В.","Сотрудник")
         page.set_select2_wl("organization", "МИФНС России № 46","Организация", exactly=False)
-        assert page.check_text(" УФК по г. Москвe (МИФНС России № 46 по г.Москве)")
+        assert page.check_text("receivedFrom", "УФК по г. Москвe (МИФНС России № 46 по г.Москве)")
         # page.set_date_wl("documentDate", "05.02.2018", "Дата")
         # page.set_date_wl("entryDate", "05.02.2018", "Дата проводки")
         # page.set_select2_wl("accountDetails", "14481000320 (Московская обл.)","поле Лицевой счет", exactly=False)
