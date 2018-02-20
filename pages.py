@@ -710,18 +710,23 @@ class CardIndexOSNMANPAPage(Browser):
     def group(self, value):
         self.set_select2(CardIndexOSNMANPALocators.group, value, "Группа ОС, НМА, НПА")
 
+    # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
+class TemplatesofthecardOSNMANPA(Browser):
+        print("Templates_of_the_card_OSNMANPA")
+
+    # Справочники - Материально - ответственные лица
+class Materially_responsible_person(Browser):
+        print("Materially_responsible_person")
 
 
 # Учет нефинансовых активов - Поступление НФА - шапка документа
-
 class Receipt_of_non_financial_assets(Browser):
     print("Receipt_of_non_financial_assets")
 
 # Учет нефинансовых активов - Поступление НФА - строка документа
-
-class Receipt_of_non_financial_assets_line():
+class Receipt_of_non_financial_assets_line(Browser):
     print("Receipt_of_non_financial_assets_line")
 
-# Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
-class TemplatesofthecardOSNMANPA(Browser):
-    print("Templates_of_the_card_OSNMANPA")
+# Массовое заполнение параметров ОС
+class Mass_filling_of_OS_parameters(Browser):
+    print("Mass_filling_of_OS_parameters")

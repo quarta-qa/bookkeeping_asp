@@ -25,7 +25,7 @@ class TestSuite:
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учет")
 
-        """""
+
     def test_adding_entries_to_the_directory_of_fixed_assets(self):
         page = MenuPage(self.driver)
         page.select_month("Сентябрь", "2018")
@@ -54,11 +54,11 @@ class TestSuite:
         page.cost("1430000.00")
         # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
         page.value_added_used("1200")
-        page.okof("Здания производственные административные")
         page.amortization_group("10 ГРУППА")
+        page.okof("Здания производственные административные")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        page.click_by_text("Да")
+        #page.click_by_text("Да")
         sleep(1)
 
         # Создание ОС "Ноутбук Toshiba"
@@ -82,9 +82,9 @@ class TestSuite:
         page.amortization_group(" 2 ГРУППА")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        page.click_by_text("Да")
+        # page.click_by_text("Да")
         sleep(1)
-
+        
         # Создание ОС "Копировальный аппарат"
 
         page.click_by_text("Добавить")
@@ -107,9 +107,9 @@ class TestSuite:
         page.set_select2_wl ("amortizationGroup", " 5 ГРУППА", "Амортизационная группа")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        page.click_by_text("Да")
+        # page.click_by_text("Да")
         sleep(1)
-
+    
         # Создание ОС "Автомобиль"
 
         page.click_by_text("Добавить")
@@ -134,9 +134,9 @@ class TestSuite:
         page.set_select2_wl("amortizationGroup", " 3 ГРУППА", "Амортизационная группа")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        page.click_by_text("Да")
+        # page.click_by_text("Да")
         sleep(1)
-
+        
     def test_creation_of_a_materially_responsible_person(self):
         page = MenuPage(self.driver)
         page.references()
@@ -182,7 +182,7 @@ class TestSuite:
         page.click_by_text("Закрыть",2)
         page.click_by_text("Сохранить",1)
         page.click_by_text("Закрыть",1)
-        """
+        
     def test_add_another_entry_to_the_asset_catalog(self):
         page = MenuPage(self.driver)
         page.click_button_eagle()
@@ -215,6 +215,7 @@ class TestSuite:
         # page.click_by_text("Сохранить")
 
     def test_create_a_new_asset_record_using_the_card_template(self):
+        # Создание Шаблона карточки ОС, НМА, НПА
         page = MenuPage(self.driver)
         page.click_button_eagle()
         page.select_month("Сентябрь", "2018")
@@ -223,15 +224,77 @@ class TestSuite:
         page.click_by_text('Добавить')
         page.set_text_wl("name", "Шкаф для документации", "Наименование объекта")
         page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
-        # по сценарию нужно выбрать папку из справочника "Картотека ОС,НМА,НПА", но новую папку нельзя добавить на портале
+        sleep(3)
+        # По сценарию нужно добавить папку "ХОЗ. ИНВЕНТАРЬ" в справочнике "Объекты ОС, НМА, НПА" но на портале нет функционал добавить папку
+        page.set_select2_wl("group", "Мебель", "Группа ОС, НМА, НПА")
+        page.set_select2_wl("okof", "Шкафы для документации", "ОКОФ")
+        page.set_select2_wl("amortizationGroup", " 4 ГРУППА", "Амортизационная группа")
+        page.click_by_text("Сохранить", 2)
+        page.click_by_text("Закрыть", 2)
+        # Создание новой записи основного средства с использованием созданного шаблона карточки ОС, НМА, НПА
+        # На портале не работает автозополнение полей при выборе шаблона карточки
+        # page.references()
+        # page.click_by_text('Объекты ОС, НМА, НПА')
+        # page.click_by_text("Добавить")
+        # page.set_text_wl("tagNoFirstPart", "10106", "Первая часть инвентарного номера")
+        # page.set_text_wl("tagNoSecondPart", "1", "Вторая часть инвентарного номера")
+        # page.set_select2_wl("template", "Шкаф для документации", "Шаблон карточки")
 
+    def test_copy_entries_to_the_directory_of_fixed_assets(self):
+        # Копирование записи ОС
+        page = MenuPage(self.driver)
+        page.references()
+        page.click_by_text('Объекты ОС, НМА, НПА')
+        page.click_by_text('Добавить')
+        page.click_by_text('Копию строки')
+        # Данной суб-кнопки нет на портале, по сценарию она должна быть
+    
+    def test_editing_copy_entries_to_the_directory_of_fixed_assets(self):
+        # Редактирование записи ОС
+        page = MenuPage(self.driver)
+        page.references()
+        page.click_by_text('Объекты ОС, НМА, НПА')
+        # Поиск строки по 'text' в локаторе
+        page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
+        page.click_by_text('Открыть')
+        page.set_text_wl("tagNoSecondPart", "2", "Вторая часть инвентарного номера")
+        page.set_text_wl("serialNumber", "JO4445567", "Серийный №")
+        sleep(3)
+        page.click_by_text('Сохранить')
+        page.click_by_text('Закрыть')
+        
+    def test_deletion_of_a_record_in_the_fixed_assets_directory(self):
+        # Удаление записи ОС
+        page = MenuPage(self.driver)
+        page.references()
+        page.click_by_text('Объекты ОС, НМА, НПА')
+        # Поиск строки по 'text' в локаторе
+        page.table_select_row("Жилое здание, Малая Никитская, д.2")
+        page.click_by_text('Удалить')
+        sleep(5)
+        page.click_by_text('Да')
+        page.click_by_text('Закрыть')
+        sleep(5)
+    # def test_print_inventory_card_OKUD0504031(self):
+        # Печать инвентарной карточки учета ОКУД 504031/функция печати недописана
 
+    # def test_printing_of_a_group_inventory_cardOKUD0504032(self):
+        # Печать инвентарной карточки учета ОКУД 504032/функция печати недописана
 
-
-
-
-
-
-
-
-
+    def test_Checking_the_mode_Mass_filling_of_OS_parameters(self):
+        # Проверка режима «Массовое заполнение параметров ОС»
+        page = MenuPage(self.driver)
+        page.references()
+        page.click_by_text('Объекты ОС, НМА, НПА')
+        page.table_select_row("Жилое здание, Малая Никитская, д.2")
+        page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
+        page.table_select_row("Копировальный аппарат Xerox Phaser 8200")
+        page.table_select_row("Автомобиль Volswagen passat 2.0 TFSI")
+        page.click_by_text("Действия")
+        page.click_by_text('Массовое заполнение параметров объектов')
+        page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
+        page.set_text_wl("propertyDesignation", "Массовое заполнение 3-х полей", "Назначение объекта")
+        page.set_date_wl("startUpDate", "25.02.2018", "Дата ввода в эксплуатацию")
+        page.set_date_wl("issueDate", "02.03.2018", "Дата выпуска")
+        page.click_by_text('Выполнить')
+        page.click_by_text('Закрыть')
