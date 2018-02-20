@@ -335,6 +335,36 @@ class Browser(object):
             self.driver.save_screenshot("%s%s.png" % (default_folder, name))
 
 
+    # Функция проверки текста в классе. Параметры: value - ожидаемый результат, class_name - имя класса, в котором
+    # будет извлечен текст, text_errors - текст ошибки, который будет записан в файл logs.txt
+    def checking_text_by_class(self, value, class_name, text_errors):
+        find_value = self.driver.find_element_by_class_name(class_name).text
+        if value == find_value:
+            return True
+        else:
+            File.add_text_in_file("logs", text_errors)
+            return False
+
+    # Проверка текста в локаторе
+    def check_text(self, value):
+        fact_value = self.wait.element_appear((By.XPATH, "//*[@class='form-control text-left ng-valid ng-touched ng-dirty']")).text
+        if self.wait.element_appear((By.XPATH, "//*[@class='form-control text-left ng-valid ng-touched ng-dirty']")).text == value:
+            print(fact_value + " - значение поля соответствует эталону - " + str(value))
+            return True
+        else:
+            print(fact_value + " - значение поля не соответствует эталону - " + str(value))
+            return False
+
+    # Проверка текста в локаторе с записью в логфайл
+    def check_text_and_logfile(self, locator, value, text_error):
+        if self.wait.element_appear(locator).text == value:
+            return True
+        else:
+            File.add_text_in_file("logs", text_error + str(value))
+            return False
+
+
+
 class Date(object):
     """
     Methods for working with date
@@ -498,3 +528,16 @@ class Data(object):
             for chunk in iter(lambda: f.read(4096), b""):
                 hash_md5.update(chunk)
         return hash_md5.hexdigest()
+
+
+class File(object):
+    """
+    Методы для работы с файлами
+    """
+    # Добавление текста в файл
+    @staticmethod
+    def add_text_in_file(filename, text):
+        with open(filename + ".txt") as my_file:
+            tmp = my_file.read()
+        with open(filename + ".txt", "w") as my_file:
+            my_file.write(tmp + "\n" + text)

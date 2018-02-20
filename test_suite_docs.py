@@ -120,7 +120,7 @@ class TestSuite:
         print("Документ Заявка на возврат \ закладка Расшифровка заявки \ Дополнительные реквизиты")
         page.set_text_wl("goalCode", "32", "Код цели")
         page.set_select2_wl("investmentProgram", "Технопарк МФТИ, поселок Северный", "Код объекта по ФАИП")
-        page.set_select2_wl("oktmo", "40 333 000", "Код по ОКТМО", exactly=False)
+        page.set_select2_wl("oktmo", "Северный", "Код по ОКТМО", exactly=False)
         page.set_select2_wl("expenditureGoalAct", "2008 - Договор", "Мероприятие")
         page.set_select2_wl("department", "Договор подряда", "Группа учета")
 
@@ -147,3 +147,23 @@ class TestSuite:
         sleep(10)
 
 
+    def te1st_pko(self):
+        #Документ Приходный кассовый ордер \ Информация о документе
+        print("Документ Приходный кассовый ордер\ Информация о документе")
+        page = PKOPage(self.driver)
+        page.scroll_to_bottom()
+        page.click_by_text("Приходный кассовый ордер")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page.set_select2_wl("documentKind", "Приходный кассовый ордер", "поле Вид документа")
+        page.set_text_wl("documentNumber", "2", "Номер")
+        #Документ Приходный кассовый ордер \ Принято от
+        print("Документ Приходный кассовый ордер\ Принято от")
+        page.set_select2_wl("employee", "Петров А.В.","Сотрудник")
+        page.set_select2_wl("organization", "МИФНС России № 46","Организация", exactly=False)
+        assert page.check_text(" УФК по г. Москвe (МИФНС России № 46 по г.Москве)")
+        # page.set_date_wl("documentDate", "05.02.2018", "Дата")
+        # page.set_date_wl("entryDate", "05.02.2018", "Дата проводки")
+        # page.set_select2_wl("accountDetails", "14481000320 (Московская обл.)","поле Лицевой счет", exactly=False)
+        # page.set_select2_wl("recepient", "","Наименование получателя")
+        sleep(10)

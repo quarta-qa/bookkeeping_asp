@@ -561,6 +561,9 @@ class ZNVPage(Browser):
             self.set_text(ZNVLocators.Doc.number, value, "Номер")
 
 
+class PKOPage(Browser):
+    pass
+
 # Договор с поставщиком
 class ContractWithSupplierPage(Browser):
 
