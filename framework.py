@@ -258,20 +258,21 @@ class Browser(object):
     # Функция выбора значения из Select2
     def set_select2(self, locator, value,  label=None, exactly=True):
         if value:
-            #parent = self.wait.presence_of_element(locator)
+            parent = self.wait.presence_of_element(locator)
             text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
-            element = self.wait.element_appear((By.XPATH, locator[1]+"//div[@class='input-group']"))
-            try:
-                element.find_element(By.XPATH, "//button[@title='Очистить']").click()
-            except ec.NoSuchElementException:
-                pass
+            # dots_button = self.wait.element_appear((By.XPATH, locator[1]+"//button[@title='Выбрать']"))
+            # try:
+            #
+            #     parent.find_element(By.XPATH, "//button[@title='Очистить']").click()
+            # except ec.NoSuchElementException:
+            #     pass
             text_box.clear()
             text_box.send_keys(value)
 
             if exactly:
-                self.wait.element_appear((By.XPATH, locator[1] + "//li[.='%s']" % value)).click()
+                self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and .='%s']" % value)).click()
             else:
-                self.wait.element_appear((By.XPATH, locator[1] + "//li[contains(., '%s')]" % value)).click()
+                self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and contains(., '%s')]" % value)).click()
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))

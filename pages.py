@@ -686,7 +686,7 @@ class CardIndexOSNMANPAPage(Browser):
     # Заявка на кассовый расход
 class ApplicationCashFlowPage(Browser):
     def documen_type(self, value):
-        self.set_text(ApplicationCashFlowLocators.documen_type, value, "Вид документа")
+        self.set_select2(ApplicationCashFlowLocators.documen_type, value, "Вид документа")
 
     def number(self, value):
         self.set_text(ApplicationCashFlowLocators.number, value, "Номер")
