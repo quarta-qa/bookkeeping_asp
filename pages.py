@@ -507,7 +507,7 @@ class ZNVPage(Browser):
 
     @property
     def accounting(self):
-        return self.accounting(self.driver)
+        return self.Accounting(self.driver)
 
     class Request(Browser):
         pass
@@ -523,7 +523,13 @@ class ZNVPage(Browser):
 
 
 class PKOPage(Browser):
-    pass
+    @property
+    def line(self):
+        return self.Line(self.driver)
+
+    class Line(Browser):
+        pass
+
 
 # Договор с поставщиком
 class ContractWithSupplierPage(Browser):

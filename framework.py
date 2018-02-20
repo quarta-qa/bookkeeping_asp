@@ -261,10 +261,10 @@ class Browser(object):
         fact_value = self.wait.element_appear(
             (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).get_attribute("title")
         if fact_value == value:
-            print(fact_value + " - значение поля соответствует эталону - " + str(value))
+            print(fact_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
             return True
         else:
-            print(fact_value + " - значение поля не соответствует эталону - " + str(value))
+            print("Значение :" + fact_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
     # ------------------
