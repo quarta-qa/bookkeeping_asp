@@ -69,7 +69,7 @@ class TestSuite:
         page.tag_no("1013400001")
         page.full_name("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
         page.start_up_date("01.09.2018")
-        page.serialNumber("JKN87628764")
+        page.serial_number("JKN87628764")
         page.unit_of_measure("Штука")
         sleep(1)
 

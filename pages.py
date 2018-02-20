@@ -69,7 +69,6 @@ class MenuPage(Browser):
         sleep(1)
         self.open()
 
-
     # Отчет - Оборотная ведомость
     def turnover_statement(self):
         self.open()
@@ -248,9 +247,9 @@ class CashExpenseRequestPage(Browser):
             self.set_type(CashExpenseRequestLocators.DocumentHeader.chief_account, "Главный бухгалтер (уполномоченное лицо)")
 
         # Реквизиты документа-основания
-        @property
-        def requisites(self):
-            return self.Requisites(self.driver)
+        # @property
+        # def requisites(self):
+        #     return self.Requisites(self.driver)
 
     # Реквизиты документа-основания
     @property
@@ -528,7 +527,6 @@ class PKOPage(Browser):
 
 # Договор с поставщиком
 class ContractWithSupplierPage(Browser):
-
     def documen_type(self, value):
         self.set_select2(ContractWithSupplierLocators.documen_type, value, "Вид документа")
 
@@ -641,11 +639,31 @@ class CardIndexOSNMANPAPage(Browser):
     def amortization_group(self, value):
         self.set_select2(CardIndexOSNMANPALocators.amortization_group, value, "Амортизационная группа")
 
-    def serialNumber(self, value):
+    def serial_number(self, value):
         self.set_text(CardIndexOSNMANPALocators.serialNumber, value, "Серийный №")
+
     def group(self, value):
         self.set_select2(CardIndexOSNMANPALocators.group, value, "Группа ОС, НМА, НПА")
 
+    # Заявка на кассовый расход
+class ApplicationCashFlowPage(Browser):
+    def documen_type(self, value):
+        self.set_text(ApplicationCashFlowLocators.documen_type, value, "Вид документа")
+
+    def number(self, value):
+        self.set_text(ApplicationCashFlowLocators.number, value, "Номер")
+
+    def date(self, value):
+        self.set_text(ApplicationCashFlowLocators.date, value, "Дата")
+
+    def personal_account(self, value):
+        self.set_select2(ApplicationCashFlowLocators.personal_account, value, "Лицевой счет")
+
+    def bank_account_number(self, value):
+        self.set_select2(ApplicationCashFlowLocators.bank_account_number, value, "Банковский счет")
+
+    def recipient(self, value):
+        self.set_select2(ApplicationCashFlowLocators.recipient, value, "Наименование контрагента или ФИО")
 
 # Учет нефинансовых активов - Поступление НФА - шапка документа
 
