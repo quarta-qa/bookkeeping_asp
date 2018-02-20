@@ -258,20 +258,16 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    #------------------
     # Проверка текста в локаторе
     def check_text(self, name, value):
         fact_value = self.wait.element_appear(
-            (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).text
-        if self.wait.element_appear(
-                (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).text == value:
-            print(fact_value + " - значение поля соответствует эталону - " + str(value))
+            (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).get_attribute("title")
+        if fact_value == value:
+            print(fact_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
             return True
         else:
-            print(fact_value + " - значение поля не соответствует эталону - " + str(value))
+            print("Значение :" + fact_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
-
-    # ------------------
 
     # Функция выбора значения из Select2
     def set_select2(self, locator, value,  label=None, exactly=True):
