@@ -525,6 +525,65 @@ class ZNVPage(Browser):
 class PKOPage(Browser):
     pass
 
+
+
+    # Заявка на кассовый расход
+class ApplicationCashFlowPage(Browser):
+    def documen_type(self, value):
+        self.set_select2(ApplicationCashFlowLocators.documen_type, value, "Вид документа")
+
+    def number(self, value):
+        self.set_text(ApplicationCashFlowLocators.number, value, "Номер")
+
+    def date(self, value):
+        self.set_date(ApplicationCashFlowLocators.date, value, "Дата")
+
+    def personal_account(self, value):
+        self.set_select2(ApplicationCashFlowLocators.personal_account, value, "Лицевой счет", exactly=False)
+
+    def bank_account_number(self, value):
+        self.set_select2(ApplicationCashFlowLocators.bank_account_number, value, "Банковский счет", exactly=False)
+
+    def recipient(self, value):
+        self.set_select2(ApplicationCashFlowLocators.recipient, value, "Наименование контрагента или ФИО")
+
+    def number_ufk(self, value):
+        self.set_text(ApplicationCashFlowLocators.number_ufk, value, "Номер УФК")
+
+    def limit_date(self, value):
+        self.set_date(ApplicationCashFlowLocators.limit_date, value, "Предельная дата исполнения")
+
+class DecodingOfTheApplicationPage(Browser):
+
+    def operation(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.operation, value, "Типовая операция")
+
+    def kbk(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.cost_element, value, "Вид затрат")
+
+    def amount(self, value):
+        self.set_text(DecodingOfTheApplicationLocators.amount, value, "Сумма в рублях")
+
+    def nds_percent(self, value):
+        self.set_text(DecodingOfTheApplicationLocators.nds_percent, value, "Ставка НДС")
+
+    def document_foundation_counterparty(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.document_foundation_counterparty, value,
+                         "Организация для документа-основания")
+
+    def foundation(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.foundation, value, "Документ-основание", exactly=False)
+
+    def comment(self, value):
+        self.set_text(DecodingOfTheApplicationLocators.comment, value, "Примечание")
+
+
 # Договор с поставщиком
 class ContractWithSupplierPage(Browser):
     def documen_type(self, value):
@@ -645,25 +704,7 @@ class CardIndexOSNMANPAPage(Browser):
     def group(self, value):
         self.set_select2(CardIndexOSNMANPALocators.group, value, "Группа ОС, НМА, НПА")
 
-    # Заявка на кассовый расход
-class ApplicationCashFlowPage(Browser):
-    def documen_type(self, value):
-        self.set_select2(ApplicationCashFlowLocators.documen_type, value, "Вид документа")
 
-    def number(self, value):
-        self.set_text(ApplicationCashFlowLocators.number, value, "Номер")
-
-    def date(self, value):
-        self.set_text(ApplicationCashFlowLocators.date, value, "Дата")
-
-    def personal_account(self, value):
-        self.set_select2(ApplicationCashFlowLocators.personal_account, value, "Лицевой счет")
-
-    def bank_account_number(self, value):
-        self.set_select2(ApplicationCashFlowLocators.bank_account_number, value, "Банковский счет")
-
-    def recipient(self, value):
-        self.set_select2(ApplicationCashFlowLocators.recipient, value, "Наименование контрагента или ФИО")
 
 # Учет нефинансовых активов - Поступление НФА - шапка документа
 

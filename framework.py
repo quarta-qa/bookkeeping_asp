@@ -135,10 +135,10 @@ class Browser(object):
                 print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция заполнения текстового поля без локатора
-    def set_text_wl(self, name, value, label=None):
+    def set_text_wl(self, name, value, label=None, order=1):
         if value:
             self.wait.loading()
-            element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name))
+            element = self.wait.element_appear((By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
             element.clear()
             element.send_keys(value)
             if label and self.log:
@@ -171,12 +171,13 @@ class Browser(object):
                     "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция заполнения поля Дата без локатора
-    def set_date_wl(self, name, value, label=None):
+    def set_date_wl(self, name, value, label=None, order=1):
         if value:
             if value == "=":
                 value = Date.get_today_date()
             self.wait.loading()
-            element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//input" % name))
+            locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
+            element = self.wait.element_appear(locator)
             element.clear()
             sleep(1)
             element.send_keys(value + Keys.TAB)
@@ -194,8 +195,9 @@ class Browser(object):
                                                                                  localtime()), label, value))
 
     # Функция заполнения/снятия чек-бокса без локатора
-    def set_checkbox_wl(self, name, value=True, label=None):
-        element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//input" % name))
+    def set_checkbox_wl(self, name, value=True, label=None, order=1):
+        locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
+        element = self.wait.element_appear(locator)
         if element.is_selected() != value:
             element.click()
             if label and self.log:
@@ -229,28 +231,29 @@ class Browser(object):
 
         # Функция выбора значения из выпадающего списка без локататора
 
-    def set_select_wl(self, name, value, label=None):
+    def set_select_wl(self, name, value, label=None, order=1):
         if value:
             self.wait.loading()
-            element = self.wait.element_appear((By.XPATH, "//*[@name='%s']//select" % name))
+            locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
+            element = self.wait.element_appear(locator)
             Select(element).select_by_visible_text(value)
             if label and self.log:
-                print("[%s] [%s] выбор из списка значения \"%s\"" % (
-                strftime("%H:%M:%S", localtime()), label, value))
+                print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
 
     # Функция выбора значения без локатора
-    def set_select2_wl(self, name, value, label=None, exactly=True):
+    def set_select2_wl(self, name, value, label=None, exactly=True, order=1):
         if value:
-            parent = self.wait.presence_of_element((By.XPATH, "//*[@name='%s']" % name))
-            text_box = self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//input"))
-            #self.click((By.XPATH, "//*[@name='%s']" % name + "//button[@title='Очистить']"))
+            locator = (By.XPATH,"(//*[@name='%s'])[%s]" % (name, order))
+            parent = self.wait.presence_of_element(locator)
+            text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
             text_box.clear()
             text_box.send_keys(value)
 
             if exactly:
-                self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//li[.='%s']" % value)).click()
+                self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and .='%s']" % value)).click()
             else:
-                self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//li[contains(., '%s')]" % value)).click()
+                self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and contains(., '%s')]" % value)).click()
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))

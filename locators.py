@@ -231,9 +231,25 @@ class CardIndexOSNMANPALocators(object):
     amortization_group = (By.XPATH,"//*[@name='amortizationGroup']")
 
 class ApplicationCashFlowLocators(object):
-    documen_type =  (By.XPATH, "//*[@name='documentKind']")
+    documen_type = (By.XPATH, "//*[@name='documentKind']")
     number =  (By.XPATH, "//*[@name='documentNumber']//input")
-    date =  (By.XPATH, "//*[@name='documentDate']//input")
-    personal_account =  (By.XPATH, "//*[@name='accountDetails']")
-    bank_account_number =  (By.XPATH, "//*[@name='counterpartyAccountDetails']")
-    recipient =  (By.XPATH, "//*[@name='counterparty']")
+    date = (By.XPATH, "//*[@name='documentDate']//input")
+    personal_account = (By.XPATH, "//*[@name='accountDetails']")
+    bank_account_number = (By.XPATH, "//*[@name='counterpartyAccountDetails']")
+    recipient = (By.XPATH, "//*[@name='counterparty']")
+    number_ufk = (By.XPATH, "//*[@name='ofkNumber']//input")
+    limit_date = (By.XPATH, "//*[@name='limitDate']//input")
+
+
+class DecodingOfTheApplicationLocators(object):
+
+    operation = (By.XPATH, "//div[@class='modal-content']//*[@name='operation']")
+    kbk = (By.XPATH, "//div[@class='modal-content']//*[@name='kbk']")
+    kosgu = (By.XPATH, "//*[@name='kosgu']")
+    cost_element = (By.XPATH, "//*[@name='costElement']")
+    amount = (By.XPATH, "//div[@class='modal-content']//*[@name='amount']//input")
+    nds_percent = (By.XPATH, "//*[@name='ndsPercent']//input")
+    document_foundation_counterparty = (By.XPATH, "//*[@name='documentFoundationCounterparty']")
+    foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='foundation']")
+    comment = (By.XPATH, "//*[@name='comment']//textarea")
+
