@@ -243,7 +243,7 @@ class Browser(object):
         if value:
             parent = self.wait.presence_of_element((By.XPATH, "//*[@name='%s']" % name))
             text_box = self.wait.element_appear((By.XPATH, "//*[@name='%s']" % name + "//input"))
-            self.click((By.XPATH, "//*[@name='%s']" % name + "//button[@title='Очистить']"))
+            #self.click((By.XPATH, "//*[@name='%s']" % name + "//button[@title='Очистить']"))
             text_box.clear()
             text_box.send_keys(value)
 
@@ -258,9 +258,13 @@ class Browser(object):
     # Функция выбора значения из Select2
     def set_select2(self, locator, value,  label=None, exactly=True):
         if value:
-            parent = self.wait.presence_of_element(locator)
+            #parent = self.wait.presence_of_element(locator)
             text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
-            self.click((By.XPATH, locator[1] + "//button[@title='Очистить']"))
+            element = self.wait.element_appear((By.XPATH, locator[1]+"//div[@class='input-group']"))
+            try:
+                element.find_element(By.XPATH, "//button[@title='Очистить']").click()
+            except ec.NoSuchElementException:
+                pass
             text_box.clear()
             text_box.send_keys(value)
 

@@ -35,7 +35,6 @@ class TestSuite:
         page.number("1")
         page.date("10.01.2018")
         page.сounterparty("ПАО \"МегаФон\"")
-        # page.bank_account_number(r'40702810838180130496 | ПАО "МегаФон"')
         page.bank_account_number('40702810838180130496')
         page.uin("123123123")
         page.currency("Российский рубль")
@@ -57,7 +56,6 @@ class TestSuite:
         page.kbk("0411 0000000000 000")
         page.kosgu("221")
         sleep(5)
-        #page.contract_subject("Услуги связи")
         page.amounts_nds_percent("13")
         page.amounts_amount("1200000")
         page.advance("120000")
@@ -67,7 +65,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         sleep(2)
         # Создание копии документа
-        page = ContractWithSupplierPage(self.driver, 5)
+        page = ContractWithSupplierPage(self.driver)
         page.select_month("Январь", "2018")
 
         page.click_by_text("Добавить")
@@ -109,4 +107,19 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
         sleep(2)
+
+    def test_application_cash_flow(self):
+        page = MenuPage(self.driver)
+        page.click_button_eagle()
+        page = ApplicationCashFlowPage(self.driver)
+        page.click_by_text("Заявка на кассовый расход")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page.documen_type("Платежное поручение")
+        page.number("1")
+        page.date("10.01.2018")
+        page.personal_account("ПАО Банк ВТБ")
+        page.bank_account_number("40702810838180130496")
+        page.recipient('ПАО "МегаФон"')
+
 
