@@ -187,7 +187,7 @@ class TestSuite:
         print("Документ Приходный кассовый ордер\ Принято от")
         page.set_select2_wl("employee", "Петров А.В.","Сотрудник")
         page.set_select2_wl("organization", "МИФНС России № 46","Организация", exactly=False)
-        assert page.check_text("receivedFrom", "УФК по г. Москвe (МИФНС России № 46 по г.Москве)")
+        page.check_text("receivedFrom", " УФК по г. Москве (МИФНС России № 46 по г.Москве)")
         # page.set_date_wl("documentDate", "05.02.2018", "Дата")
         # page.set_date_wl("entryDate", "05.02.2018", "Дата проводки")
         # page.set_select2_wl("accountDetails", "14481000320 (Московская обл.)","поле Лицевой счет", exactly=False)

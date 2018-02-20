@@ -259,9 +259,8 @@ class Browser(object):
     # Проверка текста в локаторе
     def check_text(self, name, value):
         fact_value = self.wait.element_appear(
-            (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).text
-        if self.wait.element_appear(
-                (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).text == value:
+            (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).get_attribute("title")
+        if fact_value == value:
             print(fact_value + " - значение поля соответствует эталону - " + str(value))
             return True
         else:
