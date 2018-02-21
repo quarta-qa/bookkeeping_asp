@@ -25,7 +25,7 @@ class TestSuite:
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учет")
 
-
+        """
     def test_adding_entries_to_the_directory_of_fixed_assets(self):
         page = MenuPage(self.driver)
         page.select_month("Сентябрь", "2018")
@@ -84,7 +84,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
         sleep(1)
-        
+
         # Создание ОС "Копировальный аппарат"
 
         page.click_by_text("Добавить")
@@ -102,14 +102,14 @@ class TestSuite:
         page.set_text_wl("cost", "18000.00", "Первоначальная стоимость")
         # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
         page.set_text_wl("valueAddedUsed", "120", "Срок полезного использования (месяцев)")
-        page.set_select2_wl("okof","Оборудование фоторепродукционное,копировальное и для обработки фотоматериалов", 
+        page.set_select2_wl("okof","Оборудование фоторепродукционное,копировальное и для обработки фотоматериалов",
         "ОКОФ")
         page.set_select2_wl ("amortizationGroup", " 5 ГРУППА", "Амортизационная группа")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
         sleep(1)
-    
+
         # Создание ОС "Автомобиль"
 
         page.click_by_text("Добавить")
@@ -136,21 +136,21 @@ class TestSuite:
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
         sleep(1)
-        
+
     def test_creation_of_a_materially_responsible_person(self):
+        # Создание материально-ответственного лица
         page = MenuPage(self.driver)
         page.references()
         page.click_by_text('Материально ответственные лица')
         page.click_by_text('Добавить')
         page.set_select2_wl("employee", "Абдуллина З.Ш.", "Ссылка на сотрудника")
-        sleep(2)
         # Выпадающего поля  "Категория МОЛ" нет на портале, в сценарии оно есть
         page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        sleep(5)
-        
+
     def test_creation_of_document_coming_TMC_and_OS(self):
+        # Создание поступление НФА и прикрепление созданных 4 ОС
         page = MenuPage(self.driver)
         page.click_button_eagle()
         page.select_month("Январь", "2018")
@@ -161,29 +161,28 @@ class TestSuite:
         # Информация о документе
         page.set_text_wl("documentNumber", "Нач.ост.", "Номер")
         page.set_select2_wl("documentKind", "Приёмный акт", "Приёмный акт")
-        page.set_date_wl("documentDate","01.01.2018","Дата")
-        page.set_date_wl("entryDate","01.01.2018","Дата проводки")
-        page.set_text_wl("comment", "Начальные остатки ОС", "Комментарий")
+        page.set_date_wl("documentDate", "01.01.2018", "Дата")
+        page.set_date_wl("entryDate", "01.01.2018", "Дата проводки")
         # Реквизиты документа
         page.set_select2_wl("materiallyResponsiblePerson", "Абдуллина З.Ш.", "МОЛ")
-        page.set_select_wl("senderSenderType","Организация","Вид отправителя")
-        page.set_select2_wl("organization", 'ООО "КВАРТА ВК"',"МОЛ")
+        page.set_select_wl("senderSenderType", "Организация", "Вид отправителя", order=2)
+        page.set_select2_wl("organization", 'ООО "КВАРТА ВК"', "Наименование отправителя")
+        page.set_text_wl("comment", "Начальные остатки ОС", "Комментарий")
         # Создать строку "ОС,НМА"
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
         page.set_select2_wl("operation", "Приход ОС", "Типовая операция")
         page.set_text_wl("tagNo", "1011200001", "Инвентарный №")
-        sleep(3)
         # Нет зависимости "Наименования" и "Инвентарного номера" (дописать тест стр. 13-16 после испр. ошибки)
         # Также не работает контексный поиск в справочнике "Картотека ОС, НМА, НПА"
         # ...
         page.click_by_text("Сохранить", 2)
-        sleep(2)
         page.click_by_text("Закрыть",2)
         page.click_by_text("Сохранить",1)
         page.click_by_text("Закрыть",1)
-        
+
     def test_add_another_entry_to_the_asset_catalog(self):
+        # Добавление в справочник ОС еще одной записи и помещение ее в папку
         page = MenuPage(self.driver)
         page.click_button_eagle()
         page.select_month("Сентябрь", "2018")
@@ -202,7 +201,7 @@ class TestSuite:
         sleep(1)
 
         # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется
-        page.set_select2_wl("group","С/блоки","Группа ОС, НМА, НПА")
+        page.set_select2_wl("group", "С/блоки", "Группа ОС, НМА, НПА")
         page.scroll_to_bottom()
         page.set_text_wl("cost", "25300.00", "Первоначальная стоимость")
         # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
@@ -230,8 +229,8 @@ class TestSuite:
         page.set_select2_wl("group", "Мебель", "Группа ОС, НМА, НПА")
         page.set_select2_wl("okof", "Шкафы для документации", "ОКОФ")
         page.set_select2_wl("amortizationGroup", " 4 ГРУППА", "Амортизационная группа")
-        page.click_by_text("Сохранить", 2)
-        page.click_by_text("Закрыть", 2)
+        page.click_by_text("Сохранить", order=2)
+        page.click_by_text("Закрыть", order=2)
         # Создание новой записи основного средства с использованием созданного шаблона карточки ОС, НМА, НПА
         # На портале не работает автозополнение полей при выборе шаблона карточки
         # page.references()
@@ -241,15 +240,14 @@ class TestSuite:
         # page.set_text_wl("tagNoSecondPart", "1", "Вторая часть инвентарного номера")
         # page.set_select2_wl("template", "Шкаф для документации", "Шаблон карточки")
 
-    def test_copy_entries_to_the_directory_of_fixed_assets(self):
-        # Копирование записи ОС
-        page = MenuPage(self.driver)
-        page.references()
-        page.click_by_text('Объекты ОС, НМА, НПА')
-        page.click_by_text('Добавить')
-        page.click_by_text('Копию строки')
-        # Данной суб-кнопки нет на портале, по сценарию она должна быть
-    
+    # def test_copy_entries_to_the_directory_of_fixed_assets(self):
+    #     # Копирование записи ОС
+    #     page.references()
+    #     page.click_by_text('Объекты ОС, НМА, НПА')
+    #     page.click_by_text('Добавить')
+    #     page.click_by_text('Копию строки')
+    #     # Данной суб-кнопки нет на портале, по сценарию она должна быть
+
     def test_editing_copy_entries_to_the_directory_of_fixed_assets(self):
         # Редактирование записи ОС
         page = MenuPage(self.driver)
@@ -263,11 +261,10 @@ class TestSuite:
         sleep(3)
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
-        
+
     def test_deletion_of_a_record_in_the_fixed_assets_directory(self):
         # Удаление записи ОС
-        page = MenuPage(self.driver)
-        page.references()
+        page = Browser(self.driver)
         page.click_by_text('Объекты ОС, НМА, НПА')
         # Поиск строки по 'text' в локаторе
         page.table_select_row("Жилое здание, Малая Никитская, д.2")
@@ -281,13 +278,12 @@ class TestSuite:
 
     # def test_printing_of_a_group_inventory_cardOKUD0504032(self):
         # Печать инвентарной карточки учета ОКУД 504032/функция печати недописана
-
-    def test_Checking_the_mode_Mass_filling_of_OS_parameters(self):
+        
+    def test_checking_the_mode_Mass_filling_of_OS_parameters(self):
         # Проверка режима «Массовое заполнение параметров ОС»
         page = MenuPage(self.driver)
         page.references()
         page.click_by_text('Объекты ОС, НМА, НПА')
-        page.table_select_row("Жилое здание, Малая Никитская, д.2")
         page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
         page.table_select_row("Копировальный аппарат Xerox Phaser 8200")
         page.table_select_row("Автомобиль Volswagen passat 2.0 TFSI")
@@ -299,10 +295,11 @@ class TestSuite:
         page.set_date_wl("issueDate", "02.03.2018", "Дата выпуска")
         page.click_by_text('Выполнить')
         page.click_by_text('Закрыть')
-
-    def test_Creat_a_new_folder_in_the_directory_Objects_OZ(self):
+        
+    def test_creat_a_new_folder_in_the_directory_Objects_OZ(self):
         # Создание новой папки в справочнике «Объекты ОЗ»
         page = MenuPage(self.driver)
+        page.select_month("Сентябрь", "2018")
         page.references()
         page.click_by_text('Объекты МЗ')
         page.click_by_text("Добавить")
@@ -313,10 +310,11 @@ class TestSuite:
         page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
-
-    def test_Creating_a_new_entry_in_the_directory_Objects_OZ(self):
+        """
+    def test_creating_a_new_entry_in_the_directory_Objects_OZ(self):
         # Создание новой записи в справочнике «Объекты ОЗ»
         page = MenuPage(self.driver)
+        page.select_month("Сентябрь", "2018")
         page.references()
         page.click_by_text('Объекты МЗ')
         page.click_by_text("Добавить")
@@ -329,3 +327,39 @@ class TestSuite:
         page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
+
+    # def test_copy_entry_in_the_directory_Objects_OZ(self):
+    #     # Копирование записи в справочнике «Объекты ОЗ»
+    #     page = MenuPage(self.driver)
+    #     page.table_select_row("Бумага формата А4")
+    #     page.click_by_text("Добавить")
+    #     page.click_by_text("Копию карточки")
+    #     # Данной суб-кнопки нет на портале, по сценарию она должна быть
+
+    def test_editing_created_entry_in_the_directory_Objects_OZ(self):
+        # Редактирование созданной записи в справочнике «Объекты ОЗ»
+        page = Browser(self.driver)
+        # page.click(By.XPATH, "//input[@placeholder='Все поля']")
+        page.set_text(By.XPATH, "//input[@placeholder='Все поля']", "Бумага формата А4")
+        sleep(5)
+        page.click(By.XPATH, "//div[@class='w2ui-icon icon-search-down w2ui-search-down']")
+        page.table_select_row("Бумага формата А4", order=1)
+        page.click_by_text("Открыть")
+        page.set_text_wl("tagNo", "555", "Шифр")
+        page.set_date_wl("name", "Бумага формата А3", "Наименование")
+        page.set_select2_wl("unitOfMeasure", "Упаковка", "Единица измерения")
+        page.set_select2_wl("group", "Канцтовары", "Группа материальных запасов")
+        page.set_select2_wl("parentHierarchy", "Канцелярские товары", "Входит в папку")
+        page.set_date_wl("validTill", "01.01.2030", "Дата актуальности")
+        page.click_by_text('Сохранить')
+        page.click_by_text('Закрыть')
+
+    def test_delete_created_entry_in_the_directory_Objects_OZ(self):
+        # Удаление созданной записи в справочнике «Объекты ОЗ»
+        page = Browser(self.driver)
+        page.table_select_row("Бумага формата А4")
+        page.click_by_text("Удалить")
+        page.click_by_text("Да")
+
+
+
