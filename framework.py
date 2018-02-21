@@ -301,7 +301,7 @@ class Browser(object):
             print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
-    def check_text_wl2(self, name, value, order=1):
+    def check_text_select(self, name, value, order=1):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//li" % (name, order)))
         actual_value = element.get_attribute("title")
