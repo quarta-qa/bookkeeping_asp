@@ -96,7 +96,7 @@ class TestSuite:
         page.click_by_text("Заявка на возврат")
         page.click_by_text("Добавить")
         page.click_by_text("Новый документ")
-        page.set_text_wl("documentNumber", "5", "Номер")
+        page.set_text_wl("documentNumber", "1", "Номер")
         page.set_date_wl("documentDate", "05.02.2018", "Дата")
         page.set_select2_wl("accountDetails", "14481000320 (Московская обл.)","поле Лицевой счет", exactly=False)
         page.set_select2_wl("recepient", "","Наименование получателя") #exactly=False исп. для точного совпадения
@@ -117,28 +117,28 @@ class TestSuite:
         page.request.set_select2_wl("kosgu", "290", "КОСГУ", exactly=False)
         page.request.set_select2_wl("costElement", "Прочие расходы", "Вид затрат")
 
-        #ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ Дополнительные реквизиты
-        print("ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ Дополнительные реквизиты")
+        #ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ блок Дополнительные реквизиты
+        print("ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ блок Дополнительные реквизиты")
         page.request.set_text_wl("goalCode", "32", "Код цели")
         page.request.set_select2_wl("investmentProgram", "Технопарк МФТИ, поселок Северный", "Код объекта по ФАИП")
         page.request.set_select2_wl("oktmo", "40 333 000", "Код по ОКТМО", exactly=False)
         page.request.set_select2_wl("expenditureGoalAct", "2008 - Договор", "Мероприятие")
         page.request.set_select2_wl("department", "Договор подряда", "Группа учета")
 
-        #ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ Информация о платеже
-        print("ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ Информация о платеже")
+        #ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ блок Информация о платеже
+        print("ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ блок Информация о платеже")
         page.request.set_text_wl("paymentPurpose", "Текст заполнения поля Назначения платежа", "Назначение платежа")
         page.request.set_select_wl("paymentForm", "4 – срочно", "Вид платежа")
         page.request.set_text_wl("paymentPriority", "1", "Очередность платежа")
 
-        #ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ Документ-основание
-        print("ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ Документ-основание")
+        #ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ блок Документ-основание
+        print("ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ блок Документ-основание")
         page.request.set_select2_wl("documentFoundationKind", "Акт выполненных работ", "Вид документа-основание")
         page.request.set_text_wl("documentFoundationNumber", "21", "Номер документа-основание")
         page.request.set_date_wl("documentFoundationDate", "05.02.2018", "Дата документа-основания")
 
-        #ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ Реквизиты получателя
-        print("ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ Реквизиты получателя")
+        #ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ блок Реквизиты получателя
+        print("ЗАЯВКА НА ВОЗВРАТ \ закладка Расшифровка заявки \ блок Реквизиты получателя")
         page.request.set_select2_wl("recepientKbk", "РАГС", "КБК получателя")
         page.request.set_select2_wl("recepientOktmo", "город Москва", "Код по ОКТМО Получателя", exactly=False)
         #page.request.save_screenshot("test1", default_folder="C:\\Test\\")
@@ -173,7 +173,7 @@ class TestSuite:
         print("ЗАЯВКА НА ВОЗВРАТ - ДОКУМЕНТ СОХРАНЕН")
         sleep(10)
 
-    def test_pko(self):
+    def te1st_pko(self):
         #ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ Информация о документе
         print("ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ Информация о документе")
         page = PKOPage(self.driver)
@@ -187,31 +187,75 @@ class TestSuite:
         print("ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ Принято от")
         page.set_select2_wl("employee", "Петров А.В.","Сотрудник")
         page.set_select2_wl("organization", "МИФНС России № 46","Организация", exactly=False)
-        assert page.check_text("receivedFrom", " УФК по г. Москве (МИФНС России № 46 по г.Москве)")
+        assert page.check_text_input("receivedFrom", " УФК по г. Москве (МИФНС России № 46 по г.Москве)")
         page.set_select2_wl("operation", "Выдача из кассы в подотчет (прочие расходы)", "Типовая операция")
         page.set_select2_wl("departmentUnit", "ФАМИРТ", "Группа учета")
         page.set_text_wl("cashReportNumber", "25", "Номер кассового отчета")
         page.set_text_wl("foundation", "Текст заполнения поля Основание", "Основание")
+
         #ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ блок Строки документа
         print("ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ блок Строки документа")
         page.click_by_text("Строки документа")
         page.line.click_by_text("Добавить")
         page.line.click_by_text("Новую строку")
-        sleep(5)
-        page.line.set_select2_wl("operation", "Выдача из кассы в подотчет (прочие расходы)", "Типовая операция")
-        page.line.set_select2_wl("kosgu", "Выдача из кассы в подотчет (прочие расходы)", "КОСГУ")
+        sleep(2)
+        page.line.set_select2_wl("operation", "Выдача из кассы в подотчет (прочие расходы)", "Типовая операция", order=2)
+        page.line.set_select2_wl("kosgu", "290", "КОСГУ", exactly=False)
         page.line.set_select2_wl("inventory", "TV кабель", "Номенклатура")
-        page.line.set_select2_wl("kbk", "(2017) - Больницы", "КБК")
+        page.line.set_select2_wl("kbk", "(2017) - Больницы", "КБК", exactly=False)
         page.line.set_select2_wl("expenseType", "Прочие расходы", "Вид затрат")
         page.line.set_text_wl("quantity", "20", "Количество")
-        page.line.set_text_wl("amount", "100.00","Сумма")
+        page.line.set_text_wl("amount", "100","Сумма", order=2)
         page.line.set_text_wl("ndsPercent", "18","Ставка НДС")
-        page.line.set_select2_wl("departmentUnit", "ФАМИРТ", "Группа учета")
+        assert page.check_text_input("amountWithoutNds", "84,75")
+        assert page.check_text_input("ndsAmount", "15,25")
+        page.line.set_select2_wl("departmentUnit", "ФАМИРТ", "Группа учета", order=2)
         page.line.set_select2_wl("recepient", "Зотова М.В.", "Получатель (МОЛ)")
-        page.line.set_text_wl("comment", "Текст заполнения поля Комментарий", "Комментарий")
+        page.line.set_text_wl("comment", "Текст заполнения поля Комментарий", "Комментарий", order=2)
         page.line.set_select2_wl("act", "2008 - Договор", "Мероприятие")
-        page.line.set_select_wl("CashTransactionCode", "53 Прочие выдачи", "Кассовый символ")
-        page.line.click_by_text("Сохранить")
+        page.line.set_select_wl("CashTransactionCode", "53 Прочие выдачи", "Кассовый символ", order=2)
+        sleep(2)
+        page.line.click_by_text("Сохранить",2)
 
+        #ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ блок Приложение
+        print("ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ блок Приложение")
+        page.click_by_text("Приложение")
+        #ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ блок Проводки
+        print("ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ блок Проводки")
+        page.click_by_text("Проводки")
+        #ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ блок Строки документа
+        print("ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ блок Строки документа")
+        page.click_by_text("Строки документа")
+        #page.accounting.save_screenshot("test1", default_folder="C:\\Test\\")
+        sleep(5)
+        page.line.click_by_text("Сохранить", 1)
+        assert page.wait.text_appear("Документ сохранен")
         print("ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР - ДОКУМЕНТ СОХРАНЕН")
-        sleep(10)
+
+    def test_zkr(self):
+        #ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Информация о документе
+        print("ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Информация о документе")
+        page = ZKRPage(self.driver)
+        page.scroll_to_bottom()
+        page.click_by_text("Заявка на кассовый расход")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page.set_select2_wl("documentKind", "Заявка на кассовый расход", "поле Вид документа")
+        page.set_select2_wl("accountDetails", "14481000320 (Московская обл.)", exactly=False)
+        page.set_select2_wl("counterparty", "МИФНС России № 46","Наименование контрагента или ФИО", exactly=False)
+        page.set_text_wl("documentNumber", "3")
+        page.set_text_wl("ofkNumber", "77", "Номер УФК")
+        assert page.check_text_select("counterpartyAccountDetails", "40101810800000010041")
+        sleep(5)
+        page.set_date_wl("documentDate", "05.02.2018")
+        page.set_date_wl("entryDate", "05.02.2018", "Дата проводки")
+        page.set_date_wl("limitDate", "10.02.2018", "Предельная дата исполнения")
+        page.set_select2_wl("operation", "(226) Оплата за прочие услуги", "Типовая операция")
+
+        # page.click_by_text("Реквизиты документа")
+        # page.set_select2_wl("currency", "Российский рубль", "Код валюты по ")
+        #
+        #
+        # page.set_text_wl("outstandingPaymentDocumentAmount", "100.00","поле Сумма в рублях")
+        # page.set_text_wl("ndsPercent", "18","Ставка НДС")
+        # assert page.check_text_input("ndsAmount", "15,25")

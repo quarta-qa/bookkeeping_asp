@@ -530,10 +530,19 @@ class PKOPage(Browser):
     class Line(Browser):
         pass
 
+class ZKRPage(Browser):
+    @property
+    def line(self):
+        return self.Line(self.driver)
+
+    class Line(Browser):
+        pass
 
 
 
-    # Заявка на кассовый расход
+
+
+                # Заявка на кассовый расход
 class ApplicationCashFlowPage(Browser):
     def documen_type(self, value):
         self.set_select2(ApplicationCashFlowLocators.documen_type, value, "Вид документа")

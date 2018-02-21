@@ -107,7 +107,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         sleep(2)
 
-    def test_application_cash_flow(self):
+    def te1st_application_cash_flow(self):
         page = MenuPage(self.driver)
         page.click_button_eagle()
         page = ApplicationCashFlowPage(self.driver)
@@ -142,8 +142,31 @@ class TestSuite:
         page.comment("Оплата за услуги связи Январь 2018")
         page.click_by_text("Сохранить", 2)
         sleep(1)
+        page.click_by_text("Назначение платежа")
+        page.click_by_text("Реквизиты документа")
+
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-
+    def test_application_cash_flow_temp(self):
+        page = MenuPage(self.driver, 5)
+        page.click_button_eagle()
+        page = ApplicationCashFlowPage(self.driver, 5)
+        page.click_by_text("Заявка на кассовый расход")
+        page.select_month("Январь", "2018")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        sleep(3)
+        page.click_by_text("Расшифровка заявки")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новую строку")
+        page = DecodingOfTheApplicationPage(self.driver, 5)
+        page.amount("100000")
+        page.nds_percent("18")
+        page.comment("Оплата за услуги связи Январь 2018")
+        print(page.check_text_input_wl("amount", "100 000,00", 2))
+        print(page.check_text_input_wl("ndsAmount", "15 254,24", 2))
+        print(page.check_text_input_wl("comment", "Оплата за услуги связи Январь 2018"))
+        sleep(10)
+        page.te
 
