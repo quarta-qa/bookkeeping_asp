@@ -301,6 +301,17 @@ class Browser(object):
             print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
+    def check_text_wl2(self, name, value, order=1):
+        element = self.wait.element_appear(
+            (By.XPATH, "(//*[@name='%s'])[%s]//li" % (name, order)))
+        actual_value = element.get_attribute("title")
+        if actual_value == value:
+            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            return True
+        else:
+            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            return False
+
     def check_text_locator(self, locator, value):
         element = self.wait.element_appear(locator)
         actual_value = element.get_attribute("value")
