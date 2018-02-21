@@ -149,17 +149,6 @@ class Browser(object):
                 print(
                     "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    # Функция заполнения текстового поля и проверка содержимого
-    def set_text_and_check(self, locator, value, label=None):
-        if value:
-            self.wait.loading()
-            element = self.wait.element_appear(locator)
-            element.clear()
-            element.send_keys(value)
-            self.wait.lamb(lambda x: element.get_attribute("value") == value)
-            if label and self.log:
-                print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
-
     # Функция заполнения поля Дата
     def set_date(self, locator, value, label=None):
         if value:
@@ -192,6 +181,20 @@ class Browser(object):
             if label and self.log:
                 print(
                     "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
+    # Функция заполнения текстового поля и проверка содержимого
+    def set_text_and_check(self, locator, value, label=None):
+        if value:
+            self.wait.loading()
+            element = self.wait.element_appear(locator)
+            element.clear()
+            element.send_keys(value)
+            self.wait.lamb(lambda x: element.get_attribute("value") == value)
+            if label and self.log:
+                print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
+
+
 
     # Функция заполнения/снятия чек-бокса
     def set_checkbox(self, locator, value=True, label=None):
@@ -278,8 +281,8 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    # Проверка текста в локаторе
-    def check_text(self, name, value):
+    # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте title
+    def check_text_title(self, name, value):
         fact_value = self.wait.element_appear(
             (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).get_attribute("title")
         if fact_value == value:
@@ -289,8 +292,8 @@ class Browser(object):
             print("Значение :" + fact_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
-            # Проверка текста без локатора
-    def check_text_wl(self, name, value, order=1):
+    # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте value
+    def check_text_input(self, name, value, order=1):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
         actual_value = element.get_attribute("value")
@@ -301,6 +304,7 @@ class Browser(object):
             print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
+    # Проверка текста без локатора в select(поле выбора из справочника)
     def check_text_select(self, name, value, order=1):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//li" % (name, order)))
@@ -312,6 +316,7 @@ class Browser(object):
             print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
+    # Проверка текста c локатором в input
     def check_text_locator(self, locator, value):
         element = self.wait.element_appear(locator)
         actual_value = element.get_attribute("value")
@@ -322,8 +327,8 @@ class Browser(object):
             print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
-            # Проверка текста без локатора в input
-    def check_text_input(self, name, value, order=1):
+    # Проверка текста без локатора в input
+    def check_text(self, name, value, order=1):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//input" % (name, order)))
         actual_value = element.get_attribute("value")
