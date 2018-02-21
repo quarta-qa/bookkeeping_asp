@@ -180,7 +180,7 @@ class Browser(object):
             if value == "=":
                 value = Date.get_today_date()
             self.wait.loading()
-            locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
+            locator = (By.XPATH, "(//*[@name='%s'])[%s]//input" % (name, order))
             element = self.wait.element_appear(locator)
             element.clear()
             sleep(1)

@@ -225,7 +225,8 @@ class TestSuite:
         page.set_text_wl("name", "Шкаф для документации", "Наименование объекта")
         page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
         sleep(3)
-        # По сценарию нужно добавить папку "ХОЗ. ИНВЕНТАРЬ" в справочнике "Объекты ОС, НМА, НПА" но на портале нет функционал добавить папку
+        # По сценарию нужно добавить папку "ХОЗ. ИНВЕНТАРЬ" в справочнике "Объекты ОС, НМА, НПА",
+        # но на портале нет функционала - добавить папку в справочнике "Объекты ОС,НМА,НПА"
         page.set_select2_wl("group", "Мебель", "Группа ОС, НМА, НПА")
         page.set_select2_wl("okof", "Шкафы для документации", "ОКОФ")
         page.set_select2_wl("amortizationGroup", " 4 ГРУППА", "Амортизационная группа")
@@ -297,4 +298,34 @@ class TestSuite:
         page.set_date_wl("startUpDate", "25.02.2018", "Дата ввода в эксплуатацию")
         page.set_date_wl("issueDate", "02.03.2018", "Дата выпуска")
         page.click_by_text('Выполнить')
+        page.click_by_text('Закрыть')
+
+    def test_Creat_a_new_folder_in_the_directory_Objects_OZ(self):
+        # Создание новой папки в справочнике «Объекты ОЗ»
+        page = MenuPage(self.driver)
+        page.references()
+        page.click_by_text('Объекты МЗ')
+        page.click_by_text("Добавить")
+        page.click_by_text("Новую папку")
+        page.set_text_wl("tagNo", "666", "Код")
+        page.set_text_wl("name", "Канцелярские товары", "Наименование")
+        sleep(5)
+        page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
+        page.click_by_text('Сохранить')
+        page.click_by_text('Закрыть')
+
+    def test_Creating_a_new_entry_in_the_directory_Objects_OZ(self):
+        # Создание новой записи в справочнике «Объекты ОЗ»
+        page = MenuPage(self.driver)
+        page.references()
+        page.click_by_text('Объекты МЗ')
+        page.click_by_text("Добавить")
+        page.click_by_text("Новую строку")
+        page.set_text_wl("tagNo", "555", "Шифр")
+        page.set_date_wl("name", "Бумага формата А4", "Наименование")
+        page.set_select2_wl("unitOfMeasure", "Упаковка", "Единица измерения")
+        page.set_select2_wl("group", "Канцтовары", "Группа материальных запасов")
+        page.set_select2_wl("parentHierarchy", "Канцелярские товары", "Входит в папку")
+        page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
+        page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
