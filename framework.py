@@ -180,7 +180,7 @@ class Browser(object):
             if value == "=":
                 value = Date.get_today_date()
             self.wait.loading()
-            locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
+            locator = (By.XPATH, "(//*[@name='%s'])[%s]//input" % (name, order))
             element = self.wait.element_appear(locator)
             element.clear()
             sleep(1)
@@ -204,7 +204,7 @@ class Browser(object):
 
     # Функция заполнения/снятия чек-бокса без локатора
     def set_checkbox_wl(self, name, value=True, label=None, order=1):
-        locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
+        locator = (By.XPATH, "(//*[@name='%s'])[%s]//input" % (name, order))
         element = self.wait.element_appear(locator)
         if element.is_selected() != value:
             element.click()
@@ -246,7 +246,7 @@ class Browser(object):
     def set_select_wl(self, name, value, label=None, order=1):
         if value:
             self.wait.loading()
-            locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
+            locator = (By.XPATH, "(//*[@name='%s'])[%s]//select" % (name, order))
             element = self.wait.element_appear(locator)
             Select(element).select_by_visible_text(value)
             if label:
