@@ -130,7 +130,7 @@ class TestSuite:
         page.click_by_text("Новую строку")
         page = DecodingOfTheApplicationPage(self.driver)
         #page.kbk("0411 0000000000 000")
-        page.set_select2_wl("kbk", "0411 0000000000 000", "ТЕСТ", exactly=False, order=2 )
+        page.set_select2_wl("kbk", "0411 0000000000 000",  exactly=False, order=2 )
         page.operation("(221) Оплата за услуги связи")
         page.kosgu("221")
         sleep(5)

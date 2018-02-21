@@ -141,6 +141,10 @@ class Browser(object):
             element = self.wait.element_appear((By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
             element.clear()
             element.send_keys(value)
+            if label:
+                pass
+            else:
+                label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
             if label and self.log:
                 print(
                     "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
@@ -181,6 +185,10 @@ class Browser(object):
             element.clear()
             sleep(1)
             element.send_keys(value + Keys.TAB)
+            if label:
+                pass
+            else:
+                label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
             if label and self.log:
                 print(
                     "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
@@ -200,6 +208,10 @@ class Browser(object):
         element = self.wait.element_appear(locator)
         if element.is_selected() != value:
             element.click()
+            if label:
+                pass
+            else:
+                label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
             if label and self.log:
                 print("[%s] [%s] установка флага в положение \"%s\"" % (strftime("%H:%M:%S",
                                                                                  localtime()), label, value))
@@ -237,6 +249,10 @@ class Browser(object):
             locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
             element = self.wait.element_appear(locator)
             Select(element).select_by_visible_text(value)
+            if label:
+                pass
+            else:
+                label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
@@ -249,12 +265,16 @@ class Browser(object):
             text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
             text_box.clear()
             text_box.send_keys(value)
-
             if exactly:
                 self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and .='%s']" % value)).click()
             else:
                 self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and contains(., '%s')]" % value)).click()
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
+
+            if label:
+                pass
+            else:
+                label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
