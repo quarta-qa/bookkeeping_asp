@@ -187,7 +187,7 @@ class TestSuite:
         print("ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ Принято от")
         page.set_select2_wl("employee", "Петров А.В.","Сотрудник")
         page.set_select2_wl("organization", "МИФНС России № 46","Организация", exactly=False)
-        assert page.check_text_input("receivedFrom", " УФК по г. Москве (МИФНС России № 46 по г.Москве)")
+        assert page.checker.check_text_input("receivedFrom", " УФК по г. Москве (МИФНС России № 46 по г.Москве)")
         page.set_select2_wl("operation", "Выдача из кассы в подотчет (прочие расходы)", "Типовая операция")
         page.set_select2_wl("departmentUnit", "ФАМИРТ", "Группа учета")
         page.set_text_wl("cashReportNumber", "25", "Номер кассового отчета")
@@ -207,8 +207,8 @@ class TestSuite:
         page.line.set_text_wl("quantity", "20", "Количество")
         page.line.set_text_wl("amount", "100","Сумма", order=2)
         page.line.set_text_wl("ndsPercent", "18","Ставка НДС")
-        assert page.check_text_input("amountWithoutNds", "84,75")
-        assert page.check_text_input("ndsAmount", "15,25")
+        assert page.checker.check_text_input("amountWithoutNds", "84,75")
+        assert page.checker.check_text_input("ndsAmount", "15,25")
         page.line.set_select2_wl("departmentUnit", "ФАМИРТ", "Группа учета", order=2)
         page.line.set_select2_wl("recepient", "Зотова М.В.", "Получатель (МОЛ)")
         page.line.set_text_wl("comment", "Текст заполнения поля Комментарий", "Комментарий", order=2)
@@ -245,17 +245,60 @@ class TestSuite:
         page.set_select2_wl("counterparty", "МИФНС России № 46","Наименование контрагента или ФИО", exactly=False)
         page.set_text_wl("documentNumber", "3")
         page.set_text_wl("ofkNumber", "77", "Номер УФК")
-        assert page.check_text_select("counterpartyAccountDetails", "40101810800000010041")
+        assert page.checker.check_text_select("counterpartyAccountDetails", "40101810800000010041")
         sleep(5)
         page.set_date_wl("documentDate", "05.02.2018")
         page.set_date_wl("entryDate", "05.02.2018", "Дата проводки")
         page.set_date_wl("limitDate", "10.02.2018", "Предельная дата исполнения")
         page.set_select2_wl("operation", "(226) Оплата за прочие услуги", "Типовая операция")
 
-        # page.click_by_text("Реквизиты документа")
-        # page.set_select2_wl("currency", "Российский рубль", "Код валюты по ")
-        #
-        #
+        #ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Реквизиты документа
+        print("ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Реквизиты документа")
+        page.request.click_by_text("Реквизиты документа")
+        page.request.set_select2_wl("currency", "Российский рубль", "Код валюты по ОКВ")
+        page.request.set_select2_wl("departmentUnit", "ФАМИРТ", "Группа учета")
+        page.request.set_select2_wl("faip", "Технопарк МФТИ, поселок Северный", "Код объекта по ФАИП")
+        page.request.set_text_wl("priority", "1", "Приоритет исполнения")
+        page.request.set_select_wl("paymentForm", "4 – срочно", "Вид платежа")
+        page.request.set_text_wl("paymentPurpose", "Текст заполнения поля Назначение платежа", "Назначение платежа")
+
+        #ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Документ-основание
+        print("ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Документ-основание")
+        page.doc.click_by_text("Документ-основание")
+        page.doc.set_select2_wl("foundation", "", "Документ-основание")
+        page.doc.set_text_wl("trackingNumber", "8", "Учетный номер обязательства")
+        page.doc.set_select2_wl("documentFoundaiontKind", "Договор", "Вид документ-основания")
+        page.doc.set_text_wl("documentFoundationNumber", "25", "Учетный номер обязательства")
+        page.doc.set_date_wl("documentFoundationDate", "05.02.2018")
+        page.doc.set_text_wl("documentFoundationSubject", "Текст заполнения поля Предмет", "Предмет")
+
+        #ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Расшифровка заявки
+        print("ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Расшифровка заявки")
+        page.click_by_text("Расшифровка заявки")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новую строку")
+        page.bid.set_select_wl("activityKind", "1 - Средства бюджета", "Вид стредств")
+        page.bid.set_select2_wl("operation", "(226) Оплата за прочие услуги", "Типовая операция", order=2)
+        page.bid.set_select2_wl("kbk", "(2016) 122 ЦА Командировки 212,222,226", "КБК плательщика", exactly=False, order=2)
+        page.bid.set_select_wl("draweeKbkType", "Группировочный КБК (гКБК)", "Тип КБК плательщика", order=2)
+        page.bid.set_select2_wl("kosgu", "226", "КОСГУ", exactly=False)
+
+
+
+        page.bid.set_select2_wl("costElement", "Прочие услуги", "Вид затрат")
+        page.bid.set_text_wl("amountWithoutNds", "100","Сумма без НДС", order=2)
+        page.bid.set_text_wl("ndsPercent", "18","Ставка НДС")
+        page.bid.set_text_wl("ndsAmount", "15,25","Сумма НДС", order=2)
+        page.bid.set_text_wl("amount", "84,75","Сумма в рублях", order=2)
+        # assert page.checker.check_text_input("amountWithoutNds", "84,75")
+        # assert page.checker.check_text_input("ndsAmount", "15,25")
+        page.bid.set_select2_wl("recepientKbk", "РАГС", "КБК получателя")
+
+
+
+
+
+
         # page.set_text_wl("outstandingPaymentDocumentAmount", "100.00","поле Сумма в рублях")
         # page.set_text_wl("ndsPercent", "18","Ставка НДС")
         # assert page.check_text_input("ndsAmount", "15,25")

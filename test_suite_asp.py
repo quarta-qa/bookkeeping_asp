@@ -25,7 +25,7 @@ class TestSuite:
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учет")
 
-    def te1st_contract_with_supplier(self):
+    def test_contract_with_supplier(self):
         page = ContractWithSupplierPage(self.driver, 5)
         page.select_month("Январь", "2018")
         page.click_by_text("Договор с поставщиком")
@@ -63,6 +63,8 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
         sleep(2)
+        # Проверка заполненой суммы
+
         # Создание копии документа
 
         page = ContractWithSupplierPage(self.driver)

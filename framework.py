@@ -23,6 +23,7 @@ class Browser(object):
         self.timeout = timeout
         self.log = log
         self.wait = Wait(self.driver, self.timeout)
+        self.checker = Checker(self.driver, self.timeout)
 
     #
     def accept_alert(self):
@@ -289,63 +290,6 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте title
-    def check_text_title(self, name, value):
-        fact_value = self.wait.element_appear(
-            (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).get_attribute("title")
-        if fact_value == value:
-            print(fact_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
-            return True
-        else:
-            print("Значение :" + fact_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
-            return False
-
-    # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте value
-    def check_text_input(self, name, value, order=1):
-        element = self.wait.element_appear(
-            (By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
-        actual_value = element.get_attribute("value")
-        if actual_value == value:
-            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
-            return True
-        else:
-            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
-            return False
-
-    # Проверка текста без локатора в select(поле выбора из справочника)
-    def check_text_select(self, name, value, order=1):
-        element = self.wait.element_appear(
-            (By.XPATH, "(//*[@name='%s'])[%s]//li" % (name, order)))
-        actual_value = element.get_attribute("title")
-        if actual_value == value:
-            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
-            return True
-        else:
-            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
-            return False
-
-    # Проверка текста c локатором в input
-    def check_text_locator(self, locator, value):
-        element = self.wait.element_appear(locator)
-        actual_value = element.get_attribute("value")
-        if actual_value == value:
-            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
-            return True
-        else:
-            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
-            return False
-
-    # Проверка текста без локатора в input
-    def check_text(self, name, value, order=1):
-        element = self.wait.element_appear(
-            (By.XPATH, "(//*[@name='%s'])[%s]//input" % (name, order)))
-        actual_value = element.get_attribute("value")
-        if actual_value == value:
-            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
-            return True
-        else:
-            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
-            return False
 
     # Функция выбора значения из Select2
     def set_select2(self, locator, value,  label=None, exactly=True):
@@ -504,6 +448,80 @@ class Wait(object):
         WebDriverWait(self.driver, self.timeout).until_not(
             ec.visibility_of_element_located((By.XPATH, "//div[@class='w2ui-lock']")))
 
+
+     # Проверка текста
+class Checker(object):
+    """
+    Methods for checking
+    """
+
+    def __init__(self, driver, timeout):
+        self.driver = driver
+        self.timeout = timeout
+        self.wait = Wait(self.driver, self.timeout)
+
+        # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте title
+
+    def check_text_title(self, name, value):
+        fact_value = self.wait.element_appear(
+            (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).get_attribute("title")
+        if fact_value == value:
+            print(fact_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            return True
+        else:
+            print("Значение :" + fact_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            return False
+
+            # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте value
+
+    def check_text_input(self, name, value, order=1):
+        element = self.wait.element_appear(
+            (By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
+        actual_value = element.get_attribute("value")
+        if actual_value == value:
+            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            return True
+        else:
+            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            return False
+
+            # Проверка текста без локатора в select(поле выбора из справочника)
+
+    def check_text_select(self, name, value, order=1):
+        element = self.wait.element_appear(
+            (By.XPATH, "(//*[@name='%s'])[%s]//li" % (name, order)))
+        actual_value = element.get_attribute("title")
+        if actual_value == value:
+            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            return True
+        else:
+            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            return False
+
+            # Проверка текста c локатором в input
+
+    def check_text_locator(self, locator, value):
+        element = self.wait.element_appear(locator)
+        actual_value = element.get_attribute("value")
+        if actual_value == value:
+            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            return True
+        else:
+            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            return False
+
+            # Проверка текста без локатора в input
+
+    def check_text(self, name, value, order=1):
+        element = self.wait.element_appear(
+            (By.XPATH, "(//*[@name='%s'])[%s]//input" % (name, order)))
+        actual_value = element.get_attribute("value")
+        if actual_value == value:
+            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            return True
+        else:
+            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            return False
 
 # Работа с данными
 class Data(object):
