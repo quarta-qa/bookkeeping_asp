@@ -105,6 +105,14 @@ class Browser(object):
         self.wait.loading()
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
+    # Функция поиска строки в таблице по текстовому полю "Все поля"
+    def search_string(self, value, label=None):
+        self.wait.loading()
+        self.set_text((By.XPATH, "//*[@placeholder='Все поля']"), value + Keys.RETURN, label)
+        if label and self.log:
+            print(
+                "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
     # Функция очистка поисковой строки если выбрано несколько фильтров
     def select2_clear(self, locator):
         self.wait.loading()

@@ -25,7 +25,7 @@ class TestSuite:
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учет")
 
-        """
+
     def test_adding_entries_to_the_directory_of_fixed_assets(self):
         page = MenuPage(self.driver)
         page.select_month("Сентябрь", "2018")
@@ -58,7 +58,7 @@ class TestSuite:
         page.okof("Здания производственные административные")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        #page.click_by_text("Да")
+        # page.click_by_text("Да")
         sleep(1)
 
         # Создание ОС "Ноутбук Toshiba"
@@ -129,8 +129,8 @@ class TestSuite:
         page.set_text_wl("cost", "1256000.00", "Первоначальная стоимость")
         # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
         page.set_text_wl("valueAddedUsed", "60", "Срок полезного использования (месяцев)")
-        page.set_select2_wl("okof",
-         "Автомобили легковые среднего класса (срабочим объемом двигателя свыше 1,8 до 3,5 лвключительно)", "ОКОФ")
+        page.set_select2_wl("okof", "Автомобили легковые среднего класса "
+                                    "(срабочим объемом двигателя свыше 1,8 до 3,5 лвключительно)", "ОКОФ")
         page.set_select2_wl("amortizationGroup", " 3 ГРУППА", "Амортизационная группа")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
@@ -310,7 +310,7 @@ class TestSuite:
         page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
-        """
+
     def test_creating_a_new_entry_in_the_directory_Objects_OZ(self):
         # Создание новой записи в справочнике «Объекты ОЗ»
         page = MenuPage(self.driver)
@@ -339,10 +339,7 @@ class TestSuite:
     def test_editing_created_entry_in_the_directory_Objects_OZ(self):
         # Редактирование созданной записи в справочнике «Объекты ОЗ»
         page = Browser(self.driver)
-        # page.click(By.XPATH, "//input[@placeholder='Все поля']")
-        page.set_text(By.XPATH, "//input[@placeholder='Все поля']", "Бумага формата А4")
-        sleep(5)
-        page.click(By.XPATH, "//div[@class='w2ui-icon icon-search-down w2ui-search-down']")
+        page.search_string("Бумага формата А4")
         page.table_select_row("Бумага формата А4", order=1)
         page.click_by_text("Открыть")
         page.set_text_wl("tagNo", "555", "Шифр")
@@ -353,13 +350,12 @@ class TestSuite:
         page.set_date_wl("validTill", "01.01.2030", "Дата актуальности")
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
+        sleep(2)
 
     def test_delete_created_entry_in_the_directory_Objects_OZ(self):
         # Удаление созданной записи в справочнике «Объекты ОЗ»
         page = Browser(self.driver)
-        page.table_select_row("Бумага формата А4")
+        page.search_string("Бумага формата А3")
+        page.table_select_row("Бумага формата А3", order=1)
         page.click_by_text("Удалить")
         page.click_by_text("Да")
-
-
-
