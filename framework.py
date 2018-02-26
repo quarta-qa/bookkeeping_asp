@@ -313,11 +313,18 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    # Функция выбора строки в таблице
+    # Функция выбора строки в таблице  и проставление чек-бокса
     def table_select_row(self, text, order=1, label=None):
         self.wait.loading()
         locator = (By.XPATH, "(//tr[contains(., '%s')]//input[@type='checkbox'])[%s]" % (text, order))
         self.set_checkbox(locator, True, label)
+
+    # Функция выбора строки в таблице и нажатие на неё
+    def table_select_row_click(self, text, order=1, label=None):
+        self.wait.loading()
+        locator = (By.XPATH, "(//tr[contains(., '%s')])[%s]" % (text, order))
+        self.click(locator)
+
 
     # Функция выбора чек-бокса в таблице по порядку
     def table_row_checkbox(self, order=1):
@@ -522,6 +529,7 @@ class Checker(object):
         else:
             print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
+
 
 # Работа с данными
 class Data(object):

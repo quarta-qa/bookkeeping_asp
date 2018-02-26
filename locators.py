@@ -185,6 +185,11 @@ class PKOLocators(object):
     pass
 
 
+
+class carryingOutOfDocumentsLocators(object):
+    lddate_prov = (By.XPATH, "//*[@name='lddate_prov']//input")
+    operation_master = (By.XPATH, "//*[@name='OperationMaster']")
+
 class ContractWithSupplierLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']")
     number = (By.XPATH, "//*[@name='documentNumber']//input")
@@ -239,6 +244,7 @@ class ApplicationCashFlowLocators(object):
     recipient = (By.XPATH, "//*[@name='counterparty']")
     number_ufk = (By.XPATH, "//*[@name='ofkNumber']//input")
     limit_date = (By.XPATH, "//*[@name='limitDate']//input")
+    foundation =(By.XPATH, "//div[@class='tab-content']//*[@name='foundation']")
 
 
 class DecodingOfTheApplicationLocators(object):

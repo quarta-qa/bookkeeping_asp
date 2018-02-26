@@ -539,6 +539,15 @@ class ZKRPage(Browser):
         pass
 
 
+    # Проведение документов
+class carryingOutOfDocumentsPage(Browser):
+
+    def lddate_prov(self, value):
+        self.set_date(carryingOutOfDocumentsLocators.lddate_prov, value, "Дата проводки")
+
+    def operation_master(self, value):
+        self.set_select2(carryingOutOfDocumentsLocators.operation_master, value, "Типовая операция")
+
 
 
 
@@ -567,6 +576,9 @@ class ApplicationCashFlowPage(Browser):
 
     def limit_date(self, value):
         self.set_date(ApplicationCashFlowLocators.limit_date, value, "Предельная дата исполнения")
+
+    def foundation(self, value):
+        self.set_select2(ApplicationCashFlowLocators.foundation, value, "Документ-основание", exactly=False)
 
 class DecodingOfTheApplicationPage(Browser):
 
