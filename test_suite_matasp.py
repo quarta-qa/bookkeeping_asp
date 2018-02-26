@@ -102,9 +102,9 @@ class TestSuite:
         page.set_text_wl("cost", "18000.00", "Первоначальная стоимость")
         # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
         page.set_text_wl("valueAddedUsed", "120", "Срок полезного использования (месяцев)")
-        page.set_select2_wl("okof","Оборудование фоторепродукционное,копировальное и для обработки фотоматериалов",
-        "ОКОФ")
-        page.set_select2_wl ("amortizationGroup", " 5 ГРУППА", "Амортизационная группа")
+        page.set_select2_wl("okof", "Оборудование фоторепродукционное,"
+                                    "копировальное и для обработки фотоматериалов", "ОКОФ")
+        page.set_select2_wl("amortizationGroup", " 5 ГРУППА", "Амортизационная группа")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
@@ -157,7 +157,6 @@ class TestSuite:
         page.click_by_text('Поступление НФА')
         # page.click_by_text("Добавить - Новый документ") на портале нет суб-кнопки, в сценарии есть
         page.click_by_text("Добавить")
-        page = Browser(self.driver)
         # Информация о документе
         page.set_text_wl("documentNumber", "Нач.ост.", "Номер")
         page.set_select2_wl("documentKind", "Приёмный акт", "Приёмный акт")
@@ -176,10 +175,10 @@ class TestSuite:
         # Нет зависимости "Наименования" и "Инвентарного номера" (дописать тест стр. 13-16 после испр. ошибки)
         # Также не работает контексный поиск в справочнике "Картотека ОС, НМА, НПА"
         # ...
-        page.click_by_text("Сохранить", 2)
-        page.click_by_text("Закрыть",2)
-        page.click_by_text("Сохранить",1)
-        page.click_by_text("Закрыть",1)
+        page.click_by_text("Сохранить", order=2)
+        page.click_by_text("Закрыть", order=2)
+        page.click_by_text("Сохранить", order=1)
+        page.click_by_text("Закрыть", order=1)
 
     def test_add_another_entry_to_the_asset_catalog(self):
         # Добавление в справочник ОС еще одной записи и помещение ее в папку
@@ -306,11 +305,11 @@ class TestSuite:
         page.click_by_text("Новую папку")
         page.set_text_wl("tagNo", "666", "Код")
         page.set_text_wl("name", "Канцелярские товары", "Наименование")
-        sleep(5)
         page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
-
+        sleep(2)
+        
     def test_creating_a_new_entry_in_the_directory_Objects_OZ(self):
         # Создание новой записи в справочнике «Объекты ОЗ»
         page = MenuPage(self.driver)
@@ -327,6 +326,7 @@ class TestSuite:
         page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
+        sleep(2)
 
     # def test_copy_entry_in_the_directory_Objects_OZ(self):
     #     # Копирование записи в справочнике «Объекты ОЗ»
@@ -342,7 +342,7 @@ class TestSuite:
         page.search_string("Бумага формата А4")
         page.table_select_row("Бумага формата А4", order=1)
         page.click_by_text("Открыть")
-        page.set_text_wl("tagNo", "555", "Шифр")
+        page.set_text_wl("tagNo", "666", "Шифр")
         page.set_date_wl("name", "Бумага формата А3", "Наименование")
         page.set_select2_wl("unitOfMeasure", "Упаковка", "Единица измерения")
         page.set_select2_wl("group", "Канцтовары", "Группа материальных запасов")
@@ -352,10 +352,71 @@ class TestSuite:
         page.click_by_text('Закрыть')
         sleep(2)
 
+    def test_creating_an_entry_in_the_Additional_characteristics_of_MZ(self):
+        # Cоздание записи во вкладке «Дополнительные характеристики МЗ»
+        page = Browser(self.driver)
+        page.search_string("Бумага формата А3")
+        page.table_select_row("Бумага формата А3", order=1)
+        page.click_by_text("Открыть")
+        page.scroll_to_bottom()
+        page.click_by_text("Добавить", order=2)
+        page.set_text_wl("name", "Бумага_Снегурочка", "Характеристика объекта", order=2)
+        page.set_text_wl("price", "150.00", "Цена")
+        page.set_date_wl("acquisitionDate", "15.09.2018", "Дата поступления")
+        page.click_by_text("Сохранить", order=2)
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
+        sleep(2)
+
     def test_delete_created_entry_in_the_directory_Objects_OZ(self):
         # Удаление созданной записи в справочнике «Объекты ОЗ»
         page = Browser(self.driver)
+        sleep(2)
         page.search_string("Бумага формата А3")
         page.table_select_row("Бумага формата А3", order=1)
         page.click_by_text("Удалить")
         page.click_by_text("Да")
+
+    def test_creation_of_a_new__materially_responsible_person(self):
+        # Создание записи в справочнике «МОЛ»
+        page = MenuPage(self.driver)
+        page.select_month("Сентябрь", "2018")
+        page.references()
+        page.click_by_text('Материально ответственные лица')
+        page.click_by_text("Добавить")
+        page.set_text_wl("name", "Иванов И.И.", "Краткое наименование")
+        page.set_text_wl("fullName", "Иванов Иван Иванович", "Полное наименование")
+        page.set_select2_wl("position", "Начальник отдела", "Должность")
+        page.set_select2_wl("department", "Департамент внешних коммуникаций", "Подразделение")
+        page.set_checkbox_wl("isWarehouseWorker")
+        page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
+        page.click_by_text("Сохранить")
+        sleep(1)
+        page.click_by_text("Закрыть")
+
+    def test_creation_document_receipt_OC(self):
+        # Создание документа «Приход ОС»
+        page = MenuPage(self.driver)
+        page.click_button_eagle()
+        page.select_month("Январь", "2012")
+        page.click_by_text("Поступление НФА")
+        page.click_by_text("Добавить")
+        page.set_text_wl("documentNumber", "1", "Номер")
+        page.set_select2_wl("documentKind", "Акт приема-передачи", "Вид документа")
+        page.set_date_wl("documentDate", "01.01.2012", "Дата")
+        page.set_date_wl("documentDate", "01.01.2012", "Дата проводки")
+        page.set_text_wl("comment", "Приход ОС от поставщика", "Комментарий")
+        page.set_select2_wl("materiallyResponsiblePerson", "Абдуллина З.Ш.", "МОЛ")
+        page.set_select_wl("senderSenderType", "Организация", "Вид отправителя")
+        page.set_select2_wl("organization", '"ООО "ОЛДИ 3"', "Наименование отправителя")
+
+
+
+
+
+
+
+
+
+
+

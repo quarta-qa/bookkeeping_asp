@@ -532,10 +532,24 @@ class PKOPage(Browser):
 
 class ZKRPage(Browser):
     @property
-    def line(self):
-        return self.Line(self.driver)
+    def request(self):
+        return self.Request(self.driver)
 
-    class Line(Browser):
+    class Request(Browser):
+        pass
+
+    @property
+    def doc(self):
+        return self.Doc(self.driver)
+
+    class Doc(Browser):
+        pass
+
+    @property
+    def bid(self):
+        return self.Bid(self.driver)
+
+    class Bid(Browser):
         pass
 
 
