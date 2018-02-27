@@ -393,7 +393,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         sleep(1)
         page.click_by_text("Закрыть")
-
+        
     def test_creation_document_receipt_OC(self):
         # Создание документа «Приход ОС»
         page = MenuPage(self.driver)

@@ -96,7 +96,19 @@ class Browser(object):
         self.wait.loading()
         webdriver.ActionChains(self.driver).move_to_element(element).perform()
 
-    # Функция скролирования вверх страницы
+    # Функция скролирования вниз страницы
+    def scroll_to_top(self):
+
+        self.wait.loading()
+        self.driver.execute_script("window.scrollTo(0, 0);")
+
+    # Функция скролирования вниз страницы
+    def scroll_to_bottom(self):
+
+        self.wait.loading()
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    # Функция скролирования модального окна вверх
     def scroll_modal_to_top(self, class_name='modal-body mCustomScrollbar', order=1):
         """
         Method for scrolling to top modal window
@@ -109,6 +121,7 @@ class Browser(object):
                modal.scrollTo(0, 0);
            """ % (class_name, order - 1))
 
+    # Функция скролирования модального окна вниз
     def scroll_modal_to_bottom(self, class_name='modal-body mCustomScrollbar', order=1):
         """
         Method for scrolling to bottom modal window
