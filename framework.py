@@ -677,8 +677,6 @@ class File(object):
 
     def analyze_two_files(self, filename):
 
-        # data = self.load_data("data")
-        # file = data["reportFile"]
         testDefault = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         testBuch = ('C:\\TestBuch\\')
         testCompare = ('C:\\Compare\\')
@@ -686,37 +684,33 @@ class File(object):
         reference_file = testDefault + filename
         output_file = testCompare + filename
 
-        output_hash = self.md5(output_file)
-        reference_hash = self.md5(reference_file)
-        if output_hash == reference_hash:
-            print('Печатные формы одинаковы')
-        else:
+        #output_hash = self.md5(output_file)
+        #reference_hash = self.md5(reference_file)
             # открываем исходный файл
-            output = xlrd.open_workbook(output_file, on_demand=True, formatting_info=True)
-            reference = xlrd.open_workbook(reference_file, on_demand=True, formatting_info=True)
-            if output.nsheets != reference.nsheets:
-                print('Количество книг не совпадает')
-            else:
-                print('Найдены ОШИБКИ в печатной форме: "%s"' % filename)
+        output = xlrd.open_workbook(output_file, on_demand=True, formatting_info=True)
+        reference = xlrd.open_workbook(reference_file, on_demand=True, formatting_info=True)
+        if output.nsheets != reference.nsheets:
+            print('Количество книг не совпадает')
+        else:
 
-                output_max = self.get_max_rows_and_cols(output)
-                reference_max = self.get_max_rows_and_cols(reference)
-                max_rows = max(reference_max[0], output_max[0])
-                max_cols = max(reference_max[1], output_max[1])
+            output_max = self.get_max_rows_and_cols(output)
+            reference_max = self.get_max_rows_and_cols(reference)
+            max_rows = max(reference_max[0], output_max[0])
+            max_cols = max(reference_max[1], output_max[1])
 
-                reference_new = xlcopy(reference)
-                for i in range(reference.nsheets):
-                    sheet = reference_new.get_sheet(i)
-                    sheet.write(max_rows, max_cols, "!")
-                reference_new.save(testDefault + "example.xls")
+            reference_new = xlcopy(reference)
+            for i in range(reference.nsheets):
+                sheet = reference_new.get_sheet(i)
+                sheet.write(max_rows, max_cols, "!")
+            reference_new.save(testDefault + "example.xls")
 
-                output_new = xlcopy(output)
-                for i in range(output.nsheets):
-                    sheet = output_new.get_sheet(i)
-                    sheet.write(max_rows, max_cols, "!")
-                output_new.save(testDefault + "example_new.xls")
+            output_new = xlcopy(output)
+            for i in range(output.nsheets):
+                sheet = output_new.get_sheet(i)
+                sheet.write(max_rows, max_cols, "!")
+            output_new.save(testDefault + "example_new.xls")
 
-        return [testDefault + "example.xls", testDefault + "example_new.xls"]
+            return [testDefault + "example.xls", testDefault + "example_new.xls"]
 
 
 
@@ -726,7 +720,8 @@ class File(object):
         testDefault = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         reference = xlrd.open_workbook(files[0], on_demand=True, formatting_info=True)
         output = xlrd.open_workbook(files[1], on_demand=True, formatting_info=True)
-
+        flag = True
+        print("[%s] ПРОВЕРКА ПЕЧАТНОЙ ФОРМЫ : \"%s\"" % (strftime("%H:%M:%S", localtime()), filename))
         for index in range(reference.nsheets):
             reference_sheet = reference.sheet_by_index(index)
             output_sheet = output.sheet_by_index(index)
@@ -734,19 +729,23 @@ class File(object):
             output_sheet_name = output_sheet.name
             if reference_sheet_name != output_sheet_name:
                 print("Название книги[%s] не совпадает с эталонным [%s]!" % (output_sheet_name, reference_sheet_name))
-
             for i in range(reference_sheet.nrows):
                 for j in range(reference_sheet.ncols):
                     reference_cell = reference_sheet.cell(i, j).value
                     output_cell = output_sheet.cell(i, j).value
                     if reference_cell != output_cell:
+                        if flag:
+                            flag = False
                         print("Книга [%s]:" % reference_sheet_name)
                         print("\tЯчейка [%s, %s]. Значение [%s] не совпадает с эталонным [%s]!"
                               % (i+1, j+1,reference_cell, output_cell))
+
         reference.release_resources()
         output.release_resources()
         del reference
         del output
+        if flag:
+            print("[%s] Печатные формы одинаковы" % (strftime("%H:%M:%S", localtime())))
         os.remove(testDefault + "example.xls")
         os.remove(testDefault + "example_new.xls")
 

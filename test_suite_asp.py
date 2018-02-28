@@ -264,7 +264,7 @@ class TestSuite:
         page.select_month("Январь", "2018")
         page.table_select_row('ПАО "МегаФон"')
         page.click_by_text("Печать")
-        sleep(15)
+        sleep(10)
         #page.file.file_copy('Заявка на кассовый расход.xls')
         page.file.compare_files('Заявка на кассовый расход.xls')
 
