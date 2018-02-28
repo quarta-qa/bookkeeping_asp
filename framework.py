@@ -11,6 +11,7 @@ import datetime
 import os
 import json
 import xlrd
+import xlwt
 import hashlib
 import shutil
 
@@ -642,6 +643,20 @@ class File(object):
         # Копируем полученную печатную форму в отдельный каталог C:\TestBuch
         shutil.copy2(testDefault+filename,testBuch+path)
         #os.remove(filename) удаление  файла из Downloads
+        if os.access(testDefault + "example.xls", os.F_OK):
+            pass
+        else:
+            workbook = xlwt.Workbook()
+            sheet = workbook.add_sheet("Лист1")
+            sheet.write(0, 0, 'Тест')
+            workbook.save(testDefault + "example.xls")
+        if os.access(testDefault + "example_new.xls", os.F_OK):
+            pass
+        else:
+            workbook = xlwt.Workbook()
+            sheet = workbook.add_sheet("Лист1")
+            sheet.write(0, 0, 'Тест')
+            workbook.save(testDefault + "example_new.xls")
 
     @staticmethod
     def get_max_rows_and_cols(file):
