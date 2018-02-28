@@ -9,6 +9,7 @@ class LoginLocators(object):
 
 class MainLocators(object):
     menu = (By.XPATH, "//button[contains(@class,'left-menu-toggle')]")
+
     # menu_close = (By.XPATH, "//button[@class='left-menu-toggle active']")
 
 class MenuLocators(object):

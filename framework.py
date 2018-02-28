@@ -12,6 +12,7 @@ import os
 import json
 import xlrd
 import hashlib
+import shutil
 
 
 class Browser(object):
@@ -24,6 +25,7 @@ class Browser(object):
         self.log = log
         self.wait = Wait(self.driver, self.timeout)
         self.checker = Checker(self.driver, self.timeout)
+        self.file = File(self.driver,self.timeout)
 
     #
     def accept_alert(self):
@@ -412,6 +414,10 @@ class Date(object):
     def get_today_date():
         return datetime.date.today().strftime("%d.%m.%Y")
 
+    @staticmethod
+    def get_today_file():
+        return datetime.date.today().strftime("%Y%d%m")
+
 
 class Wait(object):
     """
@@ -536,6 +542,14 @@ class Data(object):
     """
     Methods for working with data
     """
+    def __init__(self, driver, timeout=60, log=True):
+        self.driver = driver
+        self.timeout = timeout
+        self.log = log
+        self.wait = Wait(self.driver, self.timeout)
+        self.checker = Checker(self.driver, self.timeout)
+        self.file = File(self.driver,self.timeout)
+
     @staticmethod
     def load_data(file):
         script_path = os.path.dirname(__file__)
@@ -552,6 +566,54 @@ class Data(object):
     @staticmethod
     def get_data_by_number(data, parent, number=0):
         return data[parent][number]
+
+
+
+
+class File(object):
+    """
+    Методы для работы с файлами
+    """
+    def __init__(self, driver, timeout):
+        self.driver = driver
+        self.timeout = timeout
+        self.wait = Wait(self.driver, self.timeout)
+        self.date = Date()
+
+    # Добавление текста в файл
+    @staticmethod
+    def add_text_in_file(filename, text):
+        with open(filename + ".txt") as my_file:
+            tmp = my_file.read()
+        with open(filename + ".txt", "w") as my_file:
+            my_file.write(tmp + "\n" + text)
+
+
+    def file_copy(self,filename):
+        testDefault = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
+        testBuch = ('C:\\TestBuch\\')
+
+        # Проверка наличия папки C:\TestBuch
+        if os.access(testBuch, os.F_OK ):
+            pass
+        else:
+            os.mkdir(testBuch)
+        # Проверка наличия папки C:\Users\'Доменное имя пользователя'\Downloads
+        if os.access(testDefault, os.F_OK ):
+            pass
+        else:
+            os.mkdir(testDefault)
+        #os.chdir(testBuch)
+        path=self.date.get_today_file()
+        # Проверка наличия папки с датой проведения теста
+        if os.access(testBuch+path, os.F_OK ):
+            pass
+        else:
+            os.mkdir(testBuch+path)
+        #os.chdir(testDefault)
+        # Копируем полученную печатную форму в отдельный каталог C:\TestBuch
+        shutil.copy2(testDefault+filename,testBuch+path)
+        #os.remove(filename) удаление  файла из Downloads
 
     @staticmethod
     def get_max_rows_and_cols(file):
@@ -572,10 +634,14 @@ class Data(object):
 
     def analyze_two_files(self, filename):
 
-        data = self.load_data("employee")
-        file = data["reportFile"]
-        reference_file = file["directory"] + filename
-        output_file = file["directoryCompare"] + filename
+        # data = self.load_data("data")
+        # file = data["reportFile"]
+        testDefault = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
+        testBuch = ('C:\\TestBuch\\')
+        testCompare = ('C:\\Compare\\')
+        self.file_copy(filename)
+        reference_file = testDefault + filename
+        output_file = testCompare + filename
 
         output_hash = self.md5(output_file)
         reference_hash = self.md5(reference_file)
@@ -599,17 +665,17 @@ class Data(object):
                 for i in range(reference.nsheets):
                     sheet = reference_new.get_sheet(i)
                     sheet.write(max_rows, max_cols, "!")
-                reference_new.save(file["directory"] + "example.xls")
+                reference_new.save(testDefault + "example.xls")
 
                 output_new = xlcopy(output)
                 for i in range(output.nsheets):
                     sheet = output_new.get_sheet(i)
                     sheet.write(max_rows, max_cols, "!")
-                output_new.save(file["directory"] + "example_new.xls")
+                output_new.save(testDefault + "example_new.xls")
 
-        return [file["directory"] + "example.xls", file["directory"] + "example_new.xls"]
+        return [testDefault + "example.xls", testDefault + "example_new.xls"]
 
-    @staticmethod
+
     def compare_files(self, filename):
 
         files = self.analyze_two_files(filename)
@@ -624,12 +690,13 @@ class Data(object):
             output_sheet_name = output_sheet.name
             if reference_sheet_name != output_sheet_name:
                 print("Название книги[%s] не совпадает с эталонным [%s]!" % (output_sheet_name, reference_sheet_name))
-            print("Книга [%s]:" % reference_sheet_name)
+
             for i in range(reference_sheet.nrows):
                 for j in range(reference_sheet.ncols):
                     reference_cell = reference_sheet.cell(i, j).value
                     output_cell = output_sheet.cell(i, j).value
                     if reference_cell != output_cell:
+                        print("Книга [%s]:" % reference_sheet_name)
                         print("\tЯчейка [%s, %s]. Значение [%s] не совпадает с эталонным [%s]!"
                               % (i, j, output_cell, reference_cell))
 
@@ -641,16 +708,3 @@ class Data(object):
             for chunk in iter(lambda: f.read(4096), b""):
                 hash_md5.update(chunk)
         return hash_md5.hexdigest()
-
-
-class File(object):
-    """
-    Методы для работы с файлами
-    """
-    # Добавление текста в файл
-    @staticmethod
-    def add_text_in_file(filename, text):
-        with open(filename + ".txt") as my_file:
-            tmp = my_file.read()
-        with open(filename + ".txt", "w") as my_file:
-            my_file.write(tmp + "\n" + text)

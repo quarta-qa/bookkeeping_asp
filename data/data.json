@@ -1,8 +1,17 @@
 {
-    "accounts": [
+    "accounts":
+    [
         {
             "username": "admin",
             "password": "quarta"
         }
-    ]
+    ],
+
+    "reportFile":
+    {
+        "directory": "C:\\Users\\%username%\\Downloads\\",
+        "directoryCompare": "C:\\Compare\\",
+        "directoryTestBuch": "C:\\TestBuch\\",
+        "directoryDefault": "D:\\python\\automation_pytest\\"
+    }
 }

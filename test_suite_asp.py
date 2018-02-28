@@ -115,7 +115,7 @@ class TestSuite:
         sleep(2)
 
 
-    def test_application_cash_flow(self):
+    def te1st_application_cash_flow(self):
         page = MenuPage(self.driver)
         page.click_button_eagle()
         page = ApplicationCashFlowPage(self.driver)
@@ -254,6 +254,8 @@ class TestSuite:
         page.lddate_prov("10.01.2018")
         #page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
+        page.wait.text_appear('Результат проведения документов')
+        page.click_by_text("Закрыть")
         # Проверка печатных форм
         page = MenuPage(self.driver)
         page.click_button_eagle()
@@ -262,6 +264,10 @@ class TestSuite:
         page.select_month("Январь", "2018")
         page.table_select_row('ПАО "МегаФон"')
         page.click_by_text("Печать")
+        sleep(15)
+        #page.file.file_copy('Заявка на кассовый расход.xls')
+        page.file.compare_files('Заявка на кассовый расход.xls')
+
 
 
 
