@@ -719,10 +719,11 @@ class File(object):
         return [testDefault + "example.xls", testDefault + "example_new.xls"]
 
 
+
     def compare_files(self, filename):
 
         files = self.analyze_two_files(filename)
-
+        testDefault = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         reference = xlrd.open_workbook(files[0], on_demand=True, formatting_info=True)
         output = xlrd.open_workbook(files[1], on_demand=True, formatting_info=True)
 
@@ -741,7 +742,13 @@ class File(object):
                     if reference_cell != output_cell:
                         print("Книга [%s]:" % reference_sheet_name)
                         print("\tЯчейка [%s, %s]. Значение [%s] не совпадает с эталонным [%s]!"
-                              % (i, j, output_cell, reference_cell))
+                              % (i+1, j+1,reference_cell, output_cell))
+        reference.release_resources()
+        output.release_resources()
+        del reference
+        del output
+        os.remove(testDefault + "example.xls")
+        os.remove(testDefault + "example_new.xls")
 
     # Получение хеша
     @staticmethod
