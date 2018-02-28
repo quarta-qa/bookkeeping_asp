@@ -134,9 +134,9 @@ class MenuPage(Browser):
         self.open()
 
     # Нажать на орла
-    def click_button_eagle(self):
+    def click_to_eagle(self):
         sleep(1)
-        self.click(MenuLocators.eagle)
+        self.click(MenuLocators.eagle, "Значок орла")
 
 class CashExpenseRequestPage(Browser):
 

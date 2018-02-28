@@ -136,7 +136,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
         sleep(1)
-
+        
     def test_creation_of_a_materially_responsible_person(self):
         # Создание материально-ответственного лица
         page = MenuPage(self.driver)
@@ -147,12 +147,13 @@ class TestSuite:
         # Выпадающего поля  "Категория МОЛ" нет на портале, в сценарии оно есть
         page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
         page.click_by_text("Сохранить")
+        sleep(2)
         page.click_by_text("Закрыть")
-
-    def test_creation_of_document_coming_TMC_and_OS(self):
+        
+    def test_creation_of_document_admission_NFA_and_attachment_4OC(self):
         # Создание поступление НФА и прикрепление созданных 4 ОС
-        page = MenuPage(self.driver)
-        page.click_button_eagle()
+        page = MenuPage(self.driver, 5)
+        page.click_to_eagle()
         page.select_month("Февраль", "2018")
         page.click_by_text('Поступление НФА')
         # page.click_by_text("Добавить - Новый документ") на портале нет суб-кнопки, в сценарии есть
@@ -164,7 +165,7 @@ class TestSuite:
         page.set_date_wl("entryDate", "01.02.2018", "Дата проводки")
         # Реквизиты документа
         page.set_select2_wl("materiallyResponsiblePerson", "Абдуллина З.Ш.", "МОЛ")
-        page.set_select_wl("senderSenderType", "Организация", "Вид отправителя", order=2)
+        page.set_select_wl("senderSenderType", "Организация", "Вид отправителя")
         page.set_select2_wl("organization", 'ООО "КВАРТА ВК"', "Наименование отправителя")
         page.set_text_wl("comment", "Начальные остатки ОС", "Комментарий")
         # Создать строку "ОС,НМА"
@@ -183,7 +184,7 @@ class TestSuite:
     def test_add_another_entry_to_the_asset_catalog(self):
         # Добавление в справочник ОС еще одной записи и помещение ее в папку
         page = MenuPage(self.driver)
-        page.click_button_eagle()
+        page.click_to_eagle()
         page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Объекты ОС, НМА, НПА')
@@ -215,7 +216,7 @@ class TestSuite:
     def test_create_a_new_asset_record_using_the_card_template(self):
         # Создание Шаблона карточки ОС, НМА, НПА
         page = MenuPage(self.driver)
-        page.click_button_eagle()
+        page.click_to_eagle()
         page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Шаблоны карточки ОС, НМА, НПА')
@@ -246,7 +247,7 @@ class TestSuite:
     #     page.click_by_text('Добавить')
     #     page.click_by_text('Копию строки')
     #     # Данной суб-кнопки нет на портале, по сценарию она должна быть
-
+    
     def test_editing_copy_entries_to_the_directory_of_fixed_assets(self):
         # Редактирование записи ОС
         page = MenuPage(self.driver)
@@ -264,7 +265,6 @@ class TestSuite:
     def test_deletion_of_a_record_in_the_fixed_assets_directory(self):
         # Удаление записи ОС
         page = Browser(self.driver)
-        page.click_by_text('Объекты ОС, НМА, НПА')
         # Поиск строки по 'text' в локаторе
         page.table_select_row("Жилое здание, Малая Никитская, д.2")
         page.click_by_text('Удалить')
@@ -309,7 +309,7 @@ class TestSuite:
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
         sleep(2)
-        
+
     def test_creating_a_new_entry_in_the_directory_Objects_OZ(self):
         # Создание новой записи в справочнике «Объекты ОЗ»
         page = MenuPage(self.driver)
@@ -335,7 +335,7 @@ class TestSuite:
     #     page.click_by_text("Добавить")
     #     page.click_by_text("Копию карточки")
     #     # Данной суб-кнопки нет на портале, по сценарию она должна быть
-
+        
     def test_editing_created_entry_in_the_directory_Objects_OZ(self):
         # Редактирование созданной записи в справочнике «Объекты ОЗ»
         page = Browser(self.driver)
@@ -380,7 +380,7 @@ class TestSuite:
     def test_creation_of_a_new__materially_responsible_person(self):
         # Создание записи в справочнике «МОЛ»
         page = MenuPage(self.driver)
-        page.select_month("Февраль", "2018")
+        page.click_to_eagle()
         page.references()
         page.click_by_text('Материально ответственные лица')
         page.click_by_text("Добавить")
@@ -397,7 +397,7 @@ class TestSuite:
     def test_creation_document_receipt_OC(self):
         # Создание документа «Приход ОС»
         page = MenuPage(self.driver)
-        page.click_button_eagle()
+        page.click_to_eagle()
         page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Объекты ОС, НМА, НПА')
@@ -414,7 +414,7 @@ class TestSuite:
         sleep(1)
 
         # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется
-        page.scroll_modal_to_bottom()
+        page.scroll_to_bottom()
         page.set_text_wl("cost", "7500.00", "Первоначальная стоимость")
         # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
         page.set_text_wl("valueAddedUsed", "36", "Срок полезного использования (месяцев)")
@@ -423,7 +423,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
         sleep(1)
-        page.click_button_eagle()
+        page.click_to_eagle()
         page.click_by_text("Поступление НФА")
         page.click_by_text("Добавить")
         page.set_text_wl("documentNumber", "1", "Номер")
@@ -450,13 +450,87 @@ class TestSuite:
         page.click_by_text('Сохранить', order=1)
         page.click_by_text("Закрыть")
 
+    # def test_checking_the_mode_check_Mass_receipt_of_OS_NMA(self):
+    #     # Проверка режима «Массовое поступление ОС,НМА»
+    #     page = Browser(self.driver)
+    #     page.table_select_row('ООО "ОЛДИ 3"', order=1)
+    #     page.click_by_text('Открыть')
+    #     page.table_select_row("Приход машин и оборудования через подотчет", order=1)
+    #     page.click_by_text('Добавить')
+    #     page.click_by_text('Массовое поступление ОС, НМА')
+    #     page.accept_alert('Ок')
+        # При нажатие на суб-кнопку "Массовое поступление ОС, НМА" появляется уведомление- Функционал не реализован
+        
+    def test_carrying_out_document_admission_NFA(self):
+        # Проведение документа «Поступление НФА»
+        page = MenuPage(self.driver, 5)
+        page.click_to_eagle()
+        page.click_by_text('Поступление НФА')
+        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.click_by_text('Действия')
+        page.click_by_text('Провести')
+        page.set_date_wl("lddate_prov", "01.01.2017", "Дата проводки")
+        page.set_select2_wl("OperationMaster", "Приход машин и оборудования через подотчет", "Типовая операция")
+        page.click((By.XPATH, "//button[.='Провести']"), "Провести")
+        page.click_by_text('Закрыть')
+        
+    def test_viewing_of_document_admission_NFA(self):
+        # Просмотр проведения документа «Поступление НФА»
+        page = Browser(self.driver)
+        # page.click_to_eagle()
+        # page.click_by_text('Поступление НФА')
+        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.click_by_text('Действия')
+        page.click_by_text('Просмотр проводок')
+        
+    def test_сhecking_the_print_receipt_of_materials(self):
+        # Проверка печати «Акта приемки материалов»
+        page = MenuPage(self.driver, 5)
+        page.click_to_eagle()
+        page.click_by_text('Поступление НФА')
+        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.click_by_text('Печать')
+        page.click_by_text('Акт приемки материалов')
+        sleep(5)
+        page.file.compare_files('Акт приемки материалов.xls')
 
+    def test_checking_the_printing_of_a_receipt_receipt_for_valuables(self):
+        # Проверка печати «Приходного ордера на приемку материальных ценностей»
+        page = Browser(self.driver)
+        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.click_by_text('Печать')
+        page.click_by_text('Приходный ордер на приемку материальных ценностей')
+        sleep(5)
+        page.file.compare_files('Приходный ордер на приемку материальных ценностей.xls')
+        
+    def test_checking_the_printing_of_act_acceptance_transfer_of_objects_of_non_financial_assets(self):
+        # Проверка печати «Акта о приеме-передаче объектов нефинансовых активов»
+        page = Browser(self.driver)
+        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.click_by_text('Печать')
+        page.click_by_text('Приходный ордер на приемку материальных ценностей')
+        sleep(5)
+        page.set_text_wl("foundationDocument", "Акт о приеме-передаче объектов нефинансовых активов", "Основание")
+        page.set_text_wl("foundationNumber", "1", "Номер")
+        page.set_date_wl("", "01.01.2018", "Дата")
+        page.click_by_text('Сформировать')
+        sleep(1)
+        page.file.compare_files('Акт о приеме-передаче объектов нефинансовых активов.xls')
 
-
-
-
-
-
-
-
-
+    def test_checking_the_printing_of_act_on_acceptance_of_the_repaired_objects_of_fixed_assets(self):
+        # Проверка печати «Акта о приеме-сдаче отремонтированных,
+        # реконструированных и модернизированных объектов основных средств»
+        page = Browser(self.driver)
+        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.click_by_text('Печать')
+        page.click_by_text('Акт о приеме-сдаче отремонтированных,'
+                           ' реконструированных и модернизированных объектов основных средств')
+        sleep(2)
+        page.click_by_text('Добавить')
+        page.set_text_wl("positionPrintedName", "Директор", "Должность")
+        page.set_date_wl("employeePrintedName", "Иванов И.И.", "Расшифровка подписи")
+        page.set_date_wl("inventoryDateFrom", "01.01.2018", "Срок инвентаризации с")
+        page.set_text_wl("inventoryDateTo", "28.02.2018", "по")
+        page.click_by_text('Сформировать')
+        page.file.compare_files('Акт о приеме-сдаче отремонтированных,'
+                                ' реконструированных и модернизированных объектов основных средств.xls')
