@@ -28,7 +28,7 @@ class TestSuite:
 
     def test_adding_entries_to_the_directory_of_fixed_assets(self):
         page = MenuPage(self.driver)
-        page.select_month("Сентябрь", "2018")
+        page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Объекты ОС, НМА, НПА')
         # page.click_by_text("Добавить - Папку - Транспорт") - на портале нет суб-кнопки, в сценарии есть
@@ -45,7 +45,7 @@ class TestSuite:
         page.tag_no("1011200001")
         page.full_name("Жилое здание, Малая Никитская, д.2")
         page.property_designation("Административное здание")
-        page.start_up_date("05.09.2018")
+        page.start_up_date("05.02.2018")
         page.unit_of_measure("Штука")
         sleep(1)
 
@@ -68,7 +68,7 @@ class TestSuite:
         page.tag_no_second_part("1")
         page.tag_no("1013400001")
         page.full_name("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
-        page.start_up_date("01.09.2018")
+        page.start_up_date("01.02.2018")
         page.serial_number("JKN87628764")
         page.unit_of_measure("Штука")
         sleep(1)
@@ -92,7 +92,7 @@ class TestSuite:
         page.set_text_wl("tagNoSecondPart", "2", "Вторая часть инвентарного номера")
         page.set_text_wl("tagNo", "1013400002", ">>>")
         page.set_text_wl("fullName", "Копировальный аппарат Xerox Phaser 8200", "Полное наименование")
-        page.set_date_wl("startUpDate", "16.09.2018", "Дата ввода в эксплуатацию")
+        page.set_date_wl("startUpDate", "16.02.2018", "Дата ввода в эксплуатацию")
         page.set_text_wl("serialNumber", "GH57654898672FGD", "Серийный №")
         page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
         sleep(1)
@@ -118,8 +118,8 @@ class TestSuite:
         page.set_text_wl("tagNo", "1013500001", ">>>")
         page.set_text_wl("fullName", "Автомобиль Volswagen passat 2.0 TFSI", "Полное наименование")
         page.set_text_wl("propertyDesignation", "ООО Германика", "Поставщик")
-        page.set_date_wl("issueDate", "23.06.2018", "Дата выпуска")
-        page.set_date_wl("startUpDate", "15.09.2018", "Дата ввода в эксплуатацию")
+        page.set_date_wl("issueDate", "23.02.2018", "Дата выпуска")
+        page.set_date_wl("startUpDate", "15.03.2018", "Дата ввода в эксплуатацию")
         page.set_text_wl("serialNumber", "BNV876876JH093S", "Серийный №")
         page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
         sleep(1)
@@ -153,15 +153,15 @@ class TestSuite:
         # Создание поступление НФА и прикрепление созданных 4 ОС
         page = MenuPage(self.driver)
         page.click_button_eagle()
-        page.select_month("Январь", "2018")
+        page.select_month("Февраль", "2018")
         page.click_by_text('Поступление НФА')
         # page.click_by_text("Добавить - Новый документ") на портале нет суб-кнопки, в сценарии есть
         page.click_by_text("Добавить")
         # Информация о документе
         page.set_text_wl("documentNumber", "Нач.ост.", "Номер")
         page.set_select2_wl("documentKind", "Приёмный акт", "Приёмный акт")
-        page.set_date_wl("documentDate", "01.01.2018", "Дата")
-        page.set_date_wl("entryDate", "01.01.2018", "Дата проводки")
+        page.set_date_wl("documentDate", "01.02.2018", "Дата")
+        page.set_date_wl("entryDate", "01.02.2018", "Дата проводки")
         # Реквизиты документа
         page.set_select2_wl("materiallyResponsiblePerson", "Абдуллина З.Ш.", "МОЛ")
         page.set_select_wl("senderSenderType", "Организация", "Вид отправителя", order=2)
@@ -184,7 +184,7 @@ class TestSuite:
         # Добавление в справочник ОС еще одной записи и помещение ее в папку
         page = MenuPage(self.driver)
         page.click_button_eagle()
-        page.select_month("Сентябрь", "2018")
+        page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Объекты ОС, НМА, НПА')
         page.click_by_text('Добавить')
@@ -193,8 +193,8 @@ class TestSuite:
         page.set_text_wl("tagNo", "1013400003", ">>>")
         page.set_text_wl("fullName", "Систмный блок", "Полное наименование")
         page.set_text_wl("propertyDesignation", "ООО 'ОЛДИ'", "Поставщик")
-        page.set_date_wl("issueDate", "01.09.2018", "Дата выпуска")
-        page.set_date_wl("startUpDate", "01.09.2018", "Дата ввода в эксплуатацию")
+        page.set_date_wl("issueDate", "01.02.2018", "Дата выпуска")
+        page.set_date_wl("startUpDate", "01.02.2018", "Дата ввода в эксплуатацию")
         page.set_text_wl("serialNumber", "JO4445566", "Серийный №")
         page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
         sleep(1)
@@ -216,7 +216,7 @@ class TestSuite:
         # Создание Шаблона карточки ОС, НМА, НПА
         page = MenuPage(self.driver)
         page.click_button_eagle()
-        page.select_month("Сентябрь", "2018")
+        page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Шаблоны карточки ОС, НМА, НПА')
         page.click_by_text('Добавить')
@@ -291,14 +291,14 @@ class TestSuite:
         page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
         page.set_text_wl("propertyDesignation", "Массовое заполнение 3-х полей", "Назначение объекта")
         page.set_date_wl("startUpDate", "25.02.2018", "Дата ввода в эксплуатацию")
-        page.set_date_wl("issueDate", "02.03.2018", "Дата выпуска")
+        page.set_date_wl("issueDate", "02.02.2018", "Дата выпуска")
         page.click_by_text('Выполнить')
         page.click_by_text('Закрыть')
         
     def test_creat_a_new_folder_in_the_directory_Objects_OZ(self):
         # Создание новой папки в справочнике «Объекты ОЗ»
         page = MenuPage(self.driver)
-        page.select_month("Сентябрь", "2018")
+        page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Объекты МЗ')
         page.click_by_text("Добавить")
@@ -313,7 +313,7 @@ class TestSuite:
     def test_creating_a_new_entry_in_the_directory_Objects_OZ(self):
         # Создание новой записи в справочнике «Объекты ОЗ»
         page = MenuPage(self.driver)
-        page.select_month("Сентябрь", "2018")
+        page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Объекты МЗ')
         page.click_by_text("Добавить")
@@ -362,7 +362,7 @@ class TestSuite:
         page.click_by_text("Добавить", order=2)
         page.set_text_wl("name", "Бумага_Снегурочка", "Характеристика объекта", order=2)
         page.set_text_wl("price", "150.00", "Цена")
-        page.set_date_wl("acquisitionDate", "15.09.2018", "Дата поступления")
+        page.set_date_wl("acquisitionDate", "15.02.2018", "Дата поступления")
         page.click_by_text("Сохранить", order=2)
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
@@ -380,7 +380,7 @@ class TestSuite:
     def test_creation_of_a_new__materially_responsible_person(self):
         # Создание записи в справочнике «МОЛ»
         page = MenuPage(self.driver)
-        page.select_month("Сентябрь", "2018")
+        page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Материально ответственные лица')
         page.click_by_text("Добавить")
@@ -393,22 +393,62 @@ class TestSuite:
         page.click_by_text("Сохранить")
         sleep(1)
         page.click_by_text("Закрыть")
-
+        
     def test_creation_document_receipt_OC(self):
         # Создание документа «Приход ОС»
         page = MenuPage(self.driver)
         page.click_button_eagle()
-        page.select_month("Январь", "2012")
+        page.select_month("Февраль", "2018")
+        page.references()
+        page.click_by_text('Объекты ОС, НМА, НПА')
+        page.click_by_text("Добавить")
+        page.set_text_wl("tagNoFirstPart", "10134", "Первая часть инвентарного номера")
+        page.set_text_wl("tagNoSecondPart", "4", "Вторая часть инвентарного номера")
+        page.set_text_wl("tagNo", "1013400004", ">>>")
+        page.set_text_wl("fullName", "Принтер Epson 35C", "Полное наименование")
+        page.set_text_wl("propertyDesignation", '"ООО "ОЛДИ 3""', "Поставщик")
+        page.set_date_wl("issueDate", "01.02.2018", "Дата выпуска")
+        page.set_date_wl("startUpDate", "01.02.2018", "Дата ввода в эксплуатацию")
+        page.set_text_wl("serialNumber", "MDV87628764", "Серийный №")
+        page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
+        sleep(1)
+
+        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется
+        page.scroll_modal_to_bottom()
+        page.set_text_wl("cost", "7500.00", "Первоначальная стоимость")
+        # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
+        page.set_text_wl("valueAddedUsed", "36", "Срок полезного использования (месяцев)")
+        page.set_select2_wl("amortizationGroup", " 2 ГРУППА", "Амортизационная группа")
+        page.set_select2_wl("okof", "Устройства ввода и вывода информации", "ОКОФ")
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
+        sleep(1)
+        page.click_button_eagle()
         page.click_by_text("Поступление НФА")
         page.click_by_text("Добавить")
         page.set_text_wl("documentNumber", "1", "Номер")
         page.set_select2_wl("documentKind", "Акт приема-передачи", "Вид документа")
-        page.set_date_wl("documentDate", "01.01.2012", "Дата")
-        page.set_date_wl("documentDate", "01.01.2012", "Дата проводки")
+        page.set_date_wl("documentDate", "01.02.2018", "Дата")
+        page.set_date_wl("entryDate", "01.02.2018", "Дата проводки")
         page.set_text_wl("comment", "Приход ОС от поставщика", "Комментарий")
         page.set_select2_wl("materiallyResponsiblePerson", "Абдуллина З.Ш.", "МОЛ")
         page.set_select_wl("senderSenderType", "Организация", "Вид отправителя")
-        page.set_select2_wl("organization", '"ООО "ОЛДИ 3"', "Наименование отправителя")
+        page.set_select2_wl("organization", 'ООО "ОЛДИ 3"', "Наименование отправителя")
+        page.click_by_text('Добавить')
+        page.click_by_text('Новая строка ОС, НМА')
+        page.set_select2_wl("operation", "Приход машин и оборудования через подотчет", "Типовая операция")
+        # Нет зависимости "Наименования" и "Инвентарного номера" (дописать тест стр. 40 после испр. ошибки)
+        # Также не работает контексный поиск в справочнике "Картотека ОС, НМА, НПА"
+        # и механизм автозаполнения полей по нажатие на кнопку "Новое" в "Новом объекте ОС, НМА" (смтр. стр. 39)
+        page.set_text_wl("tagNo", "1013400004", "Инвентарный №")
+        page.set_text_wl("amount", "7500.00", "Сумма по документу", order=2)
+        page.scroll_modal_to_bottom()
+        page.set_select2_wl("kbk", "110 0408 23 4 10 90019 242", "КБК", exactly=False)
+        page.set_select2_wl("kosgu", "310", "КОСГУ", exactly=False)
+        page.set_select2_wl("costElement", "Увеличение стоимости основных средств", "Вид затрат")
+        page.click_by_text('Сохранить', order=2)
+        page.click_by_text('Сохранить', order=1)
+        page.click_by_text("Закрыть")
 
 
 

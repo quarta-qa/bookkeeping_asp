@@ -98,15 +98,43 @@ class Browser(object):
         self.wait.loading()
         webdriver.ActionChains(self.driver).move_to_element(element).perform()
 
-    # Функция скролирования вверх страницы
+    # Функция скролирования вниз страницы
     def scroll_to_top(self):
+
         self.wait.loading()
         self.driver.execute_script("window.scrollTo(0, 0);")
 
-    # Функция скролирования вниз
+    # Функция скролирования вниз страницы
     def scroll_to_bottom(self):
+
         self.wait.loading()
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    # Функция скролирования модального окна вверх
+    def scroll_modal_to_top(self, class_name='modal-body mCustomScrollbar', order=1):
+        """
+        Method for scrolling to top modal window
+        :param class_name: tag class of modal window. there is value by default. change it if tag is different
+        :param order: order in case of few modal windows. order starts from 0. that's why there is decreasing by 1
+        :return:
+        """
+        self.driver.execute_script("""
+               var modal = document.getElementsByClassName('%s')[%s];
+               modal.scrollTo(0, 0);
+           """ % (class_name, order - 1))
+
+    # Функция скролирования модального окна вниз
+    def scroll_modal_to_bottom(self, class_name='modal-body mCustomScrollbar', order=1):
+        """
+        Method for scrolling to bottom modal window
+        :param class_name: tag class of modal window. there is value by default. change it if tag is different
+        :param order: order in case of few modal windows. order starts from 0. that's why there is decreasing by 1
+        :return:
+        """
+        self.driver.execute_script("""
+               var modal = document.getElementsByClassName('%s')[%s];
+               modal.scrollTo(0, modal.scrollHeight);
+           """ % (class_name, order - 1))
 
     # Функция поиска строки в таблице по текстовому полю "Все поля"
     def search_string(self, value, label=None):
