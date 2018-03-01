@@ -240,7 +240,7 @@ class TestSuite:
 
 
         # Проведение документов
-    def test_carrying_out_of_documents(self):
+    def te1st_carrying_out_of_documents(self):
         page = MenuPage(self.driver)
         page.click_button_eagle()
         page = ApplicationCashFlowPage(self.driver)
@@ -267,6 +267,47 @@ class TestSuite:
         sleep(10)
         #page.file.file_copy('Заявка на кассовый расход.xls')
         page.file.compare_files('Заявка на кассовый расход.xls')
+
+    def test_payment_order_through_contract_with_the_supplier(self):
+        page = ContractWithSupplierPage(self.driver, 5)
+        page.select_month("Январь", "2018")
+        page.click_by_text("Договор с поставщиком")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page.documen_type("Договор")
+        page.number("3")
+        page.date("24.01.2018")
+        sleep(4)
+        page.сounterparty(' Акционерное общество "Ай-Теко"')
+        page.bank_account_number('40702810300000114301')
+        page.uin("123123123")
+        page.currency("Российский рубль")
+        page.date_begin("10.01.2018")
+        page.date_end("10.11.2018")
+        page.payment_type("аванс")
+        page.subject_contract("по счетам/этапам")
+        page.payment_terms("Факт поставки, подтвержденный накладными")
+        page.note("Поставка оборудования")
+        sleep(1)
+        # Заполнение строки документа
+        page.click_by_text("Детализация по КБК")
+        page.click_by_text("Добавить")
+        page = ContractWithSupplierPageDetailKBK(self.driver)
+        page.financial_year("2018")
+        page.entry_date("20.01.2018")
+        page.operation("Принятие на учет бюджетных обязательств (310)")
+        page.kbk("0411 0000000000 000")
+        page.kosgu("310")
+        sleep(3)
+        page.amounts_amount("35000")
+        page.checker.check_text_input("amountsAmountWithoutNds","35 000,00")
+
+        page.click_by_text("Сохранить", 2)
+        sleep(1)
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
+        sleep(2)
+
 
 
 
