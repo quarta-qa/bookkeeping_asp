@@ -268,15 +268,27 @@ class TestSuite:
         # Поиск строки по 'text' в локаторе
         page.table_select_row("Жилое здание, Малая Никитская, д.2")
         page.click_by_text('Удалить')
-        sleep(5)
         page.click_by_text('Да')
         page.click_by_text('Закрыть')
-        sleep(5)
-    # def test_print_inventory_card_OKUD0504031(self):
-        # Печать инвентарной карточки учета ОКУД 504031/функция печати недописана
+
+    def test_print_inventory_card_OKUD0504031(self):
+        # Печать инвентарной карточки учета ОКУД 504031
+        page = Browser(self.driver)
+        page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)", order=1)
+        page.click_by_text('Печать')
+        page.click_by_text('Инвентарная карточка учета (форма по ОКУД 0504031)')
+        sleep(2)
+        page.file.compare_files('Инвентарная карточка НФА.xls')
 
     # def test_printing_of_a_group_inventory_cardOKUD0504032(self):
-        # Печать инвентарной карточки учета ОКУД 504032/функция печати недописана
+        # Печать инвентарной карточки учета ОКУД 504032
+        # page = Browser(self.driver)
+        # page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)", order=1)
+        # page.click_by_text('Печать')
+        # page.click_by_text('Групповая инвентарная карточка (форма по ОКУД 0504032)')
+        # sleep(2)
+        # # На портале не формируется файл, нельзя проверить печатную форму
+        # page.file.compare_files('Групповая инвентарная карточка НФА.xls')
         
     def test_checking_the_mode_Mass_filling_of_OS_parameters(self):
         # Проверка режима «Массовое заполнение параметров ОС»
@@ -393,9 +405,9 @@ class TestSuite:
         page.click_by_text("Сохранить")
         sleep(1)
         page.click_by_text("Закрыть")
-        
-    def test_creation_document_receipt_OC(self):
-        # Создание документа «Приход ОС»
+       
+    def test_creation_document_admission_NFA(self):
+        # Создание документа «Поступление НФА»
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Февраль", "2018")
@@ -463,9 +475,7 @@ class TestSuite:
         
     def test_carrying_out_document_admission_NFA(self):
         # Проведение документа «Поступление НФА»
-        page = MenuPage(self.driver, 5)
-        page.click_to_eagle()
-        page.click_by_text('Поступление НФА')
+        page = Browser(self.driver)
         page.table_select_row('ООО "ОЛДИ 3"', order=1)
         page.click_by_text('Действия')
         page.click_by_text('Провести')
@@ -485,15 +495,15 @@ class TestSuite:
         
     def test_сhecking_the_print_receipt_of_materials(self):
         # Проверка печати «Акта приемки материалов»
-        page = MenuPage(self.driver, 5)
-        page.click_to_eagle()
+        page = MenuPage(self.driver)
+        page.select_month("Февраль", "2018")
         page.click_by_text('Поступление НФА')
         page.table_select_row('ООО "ОЛДИ 3"', order=1)
         page.click_by_text('Печать')
         page.click_by_text('Акт приемки материалов')
         sleep(5)
         page.file.compare_files('Акт приемки материалов.xls')
-
+        
     def test_checking_the_printing_of_a_receipt_receipt_for_valuables(self):
         # Проверка печати «Приходного ордера на приемку материальных ценностей»
         page = Browser(self.driver)
@@ -501,21 +511,22 @@ class TestSuite:
         page.click_by_text('Печать')
         page.click_by_text('Приходный ордер на приемку материальных ценностей')
         sleep(5)
-        page.file.compare_files('Приходный ордер на приемку материальных ценностей.xls')
+        page.file.compare_files('Приходный ордер на приемку материальных ценностей (НФА).xls')
         
     def test_checking_the_printing_of_act_acceptance_transfer_of_objects_of_non_financial_assets(self):
         # Проверка печати «Акта о приеме-передаче объектов нефинансовых активов»
+        # page = Browser(self.driver)
         page = Browser(self.driver)
         page.table_select_row('ООО "ОЛДИ 3"', order=1)
         page.click_by_text('Печать')
-        page.click_by_text('Приходный ордер на приемку материальных ценностей')
-        sleep(5)
+        page.click_by_text('Акт о приеме-передаче объектов нефинансовых активов')
         page.set_text_wl("foundationDocument", "Акт о приеме-передаче объектов нефинансовых активов", "Основание")
         page.set_text_wl("foundationNumber", "1", "Номер")
-        page.set_date_wl("", "01.01.2018", "Дата")
+        page.set_date_wl("foundationDate", "01.01.2018", "Дата")
         page.click_by_text('Сформировать')
-        sleep(1)
+        sleep(2)
         page.file.compare_files('Акт о приеме-передаче объектов нефинансовых активов.xls')
+        sleep(2)
 
     def test_checking_the_printing_of_act_on_acceptance_of_the_repaired_objects_of_fixed_assets(self):
         # Проверка печати «Акта о приеме-сдаче отремонтированных,
@@ -526,11 +537,54 @@ class TestSuite:
         page.click_by_text('Акт о приеме-сдаче отремонтированных,'
                            ' реконструированных и модернизированных объектов основных средств')
         sleep(2)
-        page.click_by_text('Добавить')
+        page.click_by_text('Добавить', order=2)
         page.set_text_wl("positionPrintedName", "Директор", "Должность")
         page.set_date_wl("employeePrintedName", "Иванов И.И.", "Расшифровка подписи")
         page.set_date_wl("inventoryDateFrom", "01.01.2018", "Срок инвентаризации с")
         page.set_text_wl("inventoryDateTo", "28.02.2018", "по")
         page.click_by_text('Сформировать')
+        sleep(2)
         page.file.compare_files('Акт о приеме-сдаче отремонтированных,'
                                 ' реконструированных и модернизированных объектов основных средств.xls')
+        sleep(2)
+
+    def test_editing_created_document_admission_NFA(self):
+        # Редактирование созданной записи в документе «Поступление НФА»
+        page = Browser(self.driver)
+        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.click_by_text('Открыть')
+        page.table_select_row("7 500,00", order=1)
+        page.click_by_text('Добавить')
+        page.click_by_text('Копию строки')
+        page.table_select_row("7 500,00", order=1)
+        page.click_by_text('Открыть')
+        page.set_select2_wl("kbk", "110 0408 23 4 10 90019 851", "КБК", exactly=False)
+        page.click_by_text('Сохранить', order=2)
+        page.click_by_text('Сохранить', order=1)
+        sleep(2)
+        page.click_by_text("Закрыть")
+
+    def test_mass_parameter_replacement_in_the_document_lines_admission_NFA(self):
+        # Массовая замена параметров в строках документа «Поступление НФА»
+        # page = Browser(self.driver)
+        page = MenuPage(self.driver)
+        page.select_month("Февраль", "2018")
+        page.click_by_text('Поступление НФА')
+        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.click_by_text('Открыть')
+        page.scroll_to_bottom()
+        page.table_choose_all_checkbox('Выбрать все строки')
+        page.click_by_text('Замена')
+        page.set_select2_wl("operation", "Приход машин и оборудования через подотчет", "Типовая операция")
+        page.set_select2_wl("kbk", "110 0408 23 4 10 90019 242", "Код бюджетной классификации", exactly=False)
+        sleep(2)
+        page.click_by_text('Выполнить')
+        page.click_by_text('Закрыть', order=2)
+        page.click_by_text('Сохранить')
+        page.click_by_text('Закрыть')
+
+    def test_accrual_of_Amortization_on_the_OS_under_the_account(self):
+        # Начисление Амортизации на ОС по счету
+        page = MenuPage(self.driver)
+        page.select_month("Февраль", "2018")
+        page.click_by_text('Начисление амортизации')

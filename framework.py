@@ -137,14 +137,6 @@ class Browser(object):
                modal.scrollTo(0, modal.scrollHeight);
            """ % (class_name, order - 1))
 
-    # Функция поиска строки в таблице по текстовому полю "Все поля"
-    def search_string(self, value, label=None):
-        self.wait.loading()
-        self.set_text((By.XPATH, "//*[@placeholder='Все поля']"), value + Keys.RETURN, label)
-        if label and self.log:
-            print(
-                "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
-
     # Функция очистка поисковой строки если выбрано несколько фильтров
     def select2_clear(self, locator):
         self.wait.loading()
@@ -233,9 +225,6 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-
-
-
     # Функция заполнения/снятия чек-бокса
     def set_checkbox(self, locator, value=True, label=None):
         element = self.wait.element_appear(locator)
@@ -284,8 +273,7 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-        # Функция выбора значения из выпадающего списка без локататора
-
+    # Функция выбора значения из выпадающего списка без локататора
     def set_select_wl(self, name, value, label=None, order=1):
         if value:
             self.wait.loading()
@@ -298,7 +286,6 @@ class Browser(object):
                 label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
-
 
     # Функция выбора значения без локатора
     def set_select2_wl(self, name, value, label=None, exactly=True, order=1):
@@ -320,7 +307,6 @@ class Browser(object):
                 label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
-
 
     # Функция выбора значения из Select2
     def set_select2(self, locator, value,  label=None, exactly=True):
@@ -344,18 +330,33 @@ class Browser(object):
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
+    # Функция поиска строки в таблице по текстовому полю "Все поля"
+    def search_string(self, value, label=None):
+        self.wait.loading()
+        self.set_text((By.XPATH, "//*[@placeholder='Все поля']"), value + Keys.RETURN, label)
+        if label and self.log:
+            print(
+                "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+
+    # Функция выбора строки в таблице и нажатие на неё
+    def table_select_row_click(self, text, order=1, label=None):
+        self.wait.loading()
+        locator = (By.XPATH, "(//tr[contains(., '%s')])[%s]" % (text, order))
+        self.click(locator, label)
+
     # Функция выбора строки в таблице  и проставление чек-бокса
     def table_select_row(self, text, order=1, label=None):
         self.wait.loading()
         locator = (By.XPATH, "(//tr[contains(., '%s')]//input[@type='checkbox'])[%s]" % (text, order))
         self.set_checkbox(locator, True, label)
 
-    # Функция выбора строки в таблице и нажатие на неё
-    def table_select_row_click(self, text, order=1, label=None):
+    # Функция проставления всех чек-боксов в таблице
+    def table_choose_all_checkbox(self, label=None):
         self.wait.loading()
-        locator = (By.XPATH, "(//tr[contains(., '%s')])[%s]" % (text, order))
-        self.click(locator)
-
+        sleep(1)
+        locator = (By.XPATH, "(//*[@class='w2ui-col-header  ']//input)")
+        self.set_checkbox(locator, label)
+        sleep(1)
 
     # Функция выбора чек-бокса в таблице по порядку
     def table_row_checkbox(self, order=1):
@@ -577,7 +578,7 @@ class Data(object):
         self.log = log
         self.wait = Wait(self.driver, self.timeout)
         self.checker = Checker(self.driver, self.timeout)
-        self.file = File(self.driver,self.timeout)
+        self.file = File(self.driver, self.timeout)
 
     @staticmethod
     def load_data(file):
