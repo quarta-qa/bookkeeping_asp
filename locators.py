@@ -9,26 +9,29 @@ class LoginLocators(object):
 
 class MainLocators(object):
     menu = (By.XPATH, "//button[contains(@class,'left-menu-toggle')]")
-
     # menu_close = (By.XPATH, "//button[@class='left-menu-toggle active']")
+
 
 class MenuLocators(object):
     menu = (By.XPATH, "//button[contains(@class,'left-menu-toggle')]")
     eagle = (By.XPATH, "//*[@class='qa-header-icon-logo']")
-    calculation = (By.XPATH,"//a[contains(.,'Расчеты')]")
+    calculation = (By.XPATH, "//a[contains(.,'Расчеты')]")
     inner_calculation = (By.XPATH, "(//a[contains(.,'Расчеты')])[2]")
-    statement_processing = (By.XPATH,"//a[contains(.,'Обработка выписки из л/с')]")
-    unloading_informationSUFD = (By.XPATH,"//a[contains(.,'Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)')]")
-    unloading_information= (By.XPATH,"//a[contains(.,'Выгрузка Сведений о денежном обязательстве в Электронный бюджет')]")
+    statement_processing = (By.XPATH, "//a[contains(.,'Обработка выписки из л/с')]")
+    unloading_informationSUFD = (
+        By.XPATH, "//a[contains(.,'Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)')]")
+    unloading_information = (
+        By.XPATH, "//a[contains(.,'Выгрузка Сведений о денежном обязательстве в Электронный бюджет')]")
     references = (By.XPATH, "//a[contains(.,'Справочники')]")
     report = (By.XPATH, "//a[contains(.,'Отчет')]")
     turnover_statement = (By.XPATH, "//a[contains(.,'Оборотная ведомость')]")
     summary_reporting = (By.XPATH, "//a[contains(.,'Сводная отчетность')]")
     printed_forms = (By.XPATH, "//a[contains(.,'Печатные формы')]")
     remainsNFA = (By.XPATH, "//a[contains(.,'Остатки НФА')]")
-    salary = (By.XPATH,"//a[contains(.,'АИС «Зарплата.NET»')]")
-    document_journal = (By.XPATH,"//a[contains(.,'Журнал документов')]")
+    salary = (By.XPATH, "//a[contains(.,'АИС «Зарплата.NET»')]")
+    document_journal = (By.XPATH, "//a[contains(.,'Журнал документов')]")
     recycle_bin = (By.XPATH, "//a[contains(.,'Корзина документов ')]")
+
 
 # оборотная ведомость
 class TurnoverStatementLocators(object):
@@ -38,6 +41,7 @@ class TurnoverStatementLocators(object):
     balance_sheet_account_group = (By.XPATH, "//*[@name='balanceSheetAccountGroup']")
     account_unit = (By.XPATH, "//account-units-dropdown-input[@name='accountUnits']//select")
     is_only_out_balance = (By.XPATH, "//check-input[@name='isOnlyOutBalance']//input")
+
 
 class CashExpenseRequestLocators(object):
 
@@ -111,11 +115,8 @@ class CashExpenseRequestLocators(object):
         recepient_subsidy_code = (By.XPATH, "//input[@id='recepientSubsidyCode']")
         act = (By.XPATH, "(//button[@title='Выбрать'])[23]")
 
-
-
-class CashPullRequestLocators(object):
-
-    filter = (By.XPATH, "//input[@placeholder='Все поля']")
+    class CashPullRequestLocators(object):
+        filter = (By.XPATH, "//input[@placeholder='Все поля']")
 
     class HoldingRequest(object):
         lddate_prov = (By.XPATH, "//input[@id='lddate_prov']")
@@ -162,8 +163,8 @@ class CashPullRequestLocators(object):
 
 
 class ZNVLocators(object):
-    document_number = (By.XPATH, "//*[@name='documentNumber']//input") ### //*[@name='documentNumber']//input
-    document_date = (By.XPATH, "//*[@name='documentDate']//input") ### document_date = (By.XPATH, "//input[@id='date1']")
+    document_number = (By.XPATH, "//*[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//*[@name='documentDate']//input")
     personal_account = (By.XPATH, "//*[@name='accountDetails']")
 
     recipient_name = (By.XPATH, "(//button[@title='Выбрать'])[2]")
@@ -204,6 +205,7 @@ class IncomingOrderLocators(object):
     foundation = (By.XPATH, "//text-area-input[@name='foundation']//textarea")
     operation = (By.XPATH, "//*[@name='operation']")
 
+
 # Добавление  строки в ПКО
 class IncomingOrderAddLineLocators(object):
     operation = (By.XPATH, "//div[@class='modal in']//*[@name='operation']")
@@ -222,13 +224,10 @@ class IncomingOrderAddLineLocators(object):
     act = (By.XPATH, "//expenditure-goal-act-classifier[@name='act']")
     cash_transaction_code = (By.XPATH, "//cash-transaction-code-dropdown-input[@name='CashTransactionCode']//select")
 
-
-
 # Локаторы для экспорта в УФК
 class exportUFKLocators(object):
     account_details = (By.XPATH, "//*[@name='accountDetails']")
     file_number = (By.XPATH, "//*[@name='fileNumber']//input")
-
 
 # Локаторы для проведения документа
 class carryingOutOfDocumentsLocators(object):
@@ -240,7 +239,7 @@ class ContractWithSupplierLocators(object):
     number = (By.XPATH, "//*[@name='documentNumber']//input")
     date = (By.XPATH, "//*[@name='documentDate']//input")
     сounterparty = (By.XPATH, "//*[@name='counterparty']")
-    bank_account_number= (By.XPATH, "//*[@name='transactionAccount']")
+    bank_account_number = (By.XPATH, "//*[@name='transactionAccount']")
     uin = (By.XPATH, "//*[@name='chargeUniqueIdentifier']//input")
     currency = (By.XPATH, "//*[@name='currency']")
     date_begin = (By.XPATH, "//*[@name='startDate']//input")
@@ -275,27 +274,26 @@ class CardIndexOSNMANPALocators(object):
     group = (By.XPATH, "//li[contains(.,'С/блоки')]")
     unit_of_measure = (By.XPATH, "//*[@name='unitOfMeasure']")
     cost = (By.XPATH, "//*[@name='cost']//input")
-    exclude_from_depreciation_accrual = (By.XPATH,"//*[@name='exludeFromDepreciationAccrual']//input")
+    exclude_from_depreciation_accrual = (By.XPATH, "//*[@name='exludeFromDepreciationAccrual']//input")
     value_added_used = (By.XPATH, "//*[@name='valueAddedUsed']//input")
     amortization_group = (By.XPATH, "//*[@name='amortizationGroup']")
     okof = (By.XPATH, "//*[@name='okof']")
 
-class ApplicationCashFlowLocators(object):
 
+class ApplicationCashFlowLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']")
-    number =  (By.XPATH, "//*[@name='documentNumber']//input")
+    number = (By.XPATH, "//*[@name='documentNumber']//input")
     date = (By.XPATH, "//*[@name='documentDate']//input")
     personal_account = (By.XPATH, "//*[@name='accountDetails']")
     bank_account_number = (By.XPATH, "//*[@name='counterpartyAccountDetails']")
     recipient = (By.XPATH, "//*[@name='counterparty']")
     number_ufk = (By.XPATH, "//*[@name='ofkNumber']//input")
     limit_date = (By.XPATH, "//*[@name='limitDate']//input")
-    foundation =(By.XPATH, "//div[@class='tab-content']//*[@name='foundation']")
-    operation =(By.XPATH, "//*[@name='operation']")
+    foundation = (By.XPATH, "//div[@class='tab-content']//*[@name='foundation']")
+    operation = (By.XPATH, "//*[@name='operation']")
 
 
 class DecodingOfTheApplicationLocators(object):
-
     operation = (By.XPATH, "//div[@class='modal-content']//*[@name='operation']")
     kbk = (By.XPATH, "//div[@class='modal-content']//*[@name='kbk']")
     kosgu = (By.XPATH, "//*[@name='kosgu']")
@@ -305,7 +303,8 @@ class DecodingOfTheApplicationLocators(object):
     document_foundation_counterparty = (By.XPATH, "//*[@name='documentFoundationCounterparty']")
     foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='foundation']")
     comment = (By.XPATH, "//*[@name='comment']//textarea")
-    draweeKbkType=(By.XPATH, "//*[@name='draweeKbkType']//select")
+    draweeKbkType = (By.XPATH, "//*[@name='draweeKbkType']//select")
+
 
 class InvoiceFromTheSupplierLocators(object):
     document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
@@ -316,6 +315,7 @@ class InvoiceFromTheSupplierLocators(object):
     department = (By.XPATH, "//department-classifier[@name='Department']")
     note = (By.XPATH, "//text-area-input[@name='comment']//textarea")
 
+
 class InvoiceFromTheSupplierAddLineLocators(object):
     add = (By.XPATH, "//button[contains(.,'Добавить')]")
     add_new = (By.XPATH, "//a[.='Новую строку']")
@@ -325,4 +325,3 @@ class InvoiceFromTheSupplierAddLineLocators(object):
     comment = (By.XPATH, "//div[@class='modal in']//*[@name='comment']//textarea")
     amount = (By.XPATH, "//amount-input[@name='amount']//input")
     vat_percent = (By.XPATH, "//nds-percent-input[@name='vatPercent']//input")
-

@@ -138,8 +138,8 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.eagle, "Значок орла")
 
-class CashExpenseRequestPage(Browser):
 
+class CashExpenseRequestPage(Browser):
     # Шапка документа
     @property
     def document_header(self):
@@ -154,7 +154,7 @@ class CashExpenseRequestPage(Browser):
             self.set_date(CashExpenseRequestLocators.DocumentHeader.document_date, value, "Дата документа")
 
         def document_kind(self,value):
-            self.set_type(CashExpenseRequestLocators.DocumentHeader.document_kind,value, "Вид документа")
+            self.set_type(CashExpenseRequestLocators.DocumentHeader.document_kind, value, "Вид документа")
 
         def ofk_number(self, value):
             self.set_text(CashExpenseRequestLocators.DocumentHeader.ofk_number, value, "Номер ОФК")
@@ -175,10 +175,12 @@ class CashExpenseRequestPage(Browser):
             self.set_date(CashExpenseRequestLocators.DocumentHeader.limit_date, value, "Предельная дата исполнения")
 
         def tracking_number(self, value):
-            self.set_text(CashExpenseRequestLocators.DocumentHeader.tracking_number, value, "Учетный номер обязательства")
+            self.set_text(
+                CashExpenseRequestLocators.DocumentHeader.tracking_number, value, "Учетный номер обязательства")
 
         def federal_targeted_investment_program(self):
-            self.set_type(CashExpenseRequestLocators.DocumentHeader.federal_targeted_investment_program, "Код объекта по ФАИП")
+            self.set_type(
+                CashExpenseRequestLocators.DocumentHeader.federal_targeted_investment_program, "Код объекта по ФАИП")
 
         def priority(self, value):
             self.set_text(CashExpenseRequestLocators.DocumentHeader.ofk_number, value, "Приоритет исполнения")
@@ -244,7 +246,8 @@ class CashExpenseRequestPage(Browser):
             self.set_type(CashExpenseRequestLocators.DocumentHeader.chief, "Руководитель (уполномоченное лицо)")
 
         def chief_account(self):
-            self.set_type(CashExpenseRequestLocators.DocumentHeader.chief_account, "Главный бухгалтер (уполномоченное лицо)")
+            self.set_type(
+                CashExpenseRequestLocators.DocumentHeader.chief_account, "Главный бухгалтер (уполномоченное лицо)")
 
         # Реквизиты документа-основания
         # @property
@@ -281,7 +284,9 @@ class CashExpenseRequestPage(Browser):
     class Transcript(Browser):
 
         def activity_kind(self, value):
-            self.set_select(CashExpenseRequestLocators.Transcript.activity_kind, value, "Наименование вида средств для исполнения обязательства")
+            self.set_select(
+                CashExpenseRequestLocators.Transcript.activity_kind,
+                value, "Наименование вида средств для исполнения обязательства")
 
         def kbk(self):
             self.set_type(CashExpenseRequestLocators.Transcript.kbk, "Код по БК плательщика")
@@ -311,7 +316,9 @@ class CashExpenseRequestPage(Browser):
             self.set_type(CashExpenseRequestLocators.Transcript.expenditure_goal_act, "Мероприятие")
 
         def document_foundation_counterparty(self):
-            self.set_type(CashExpenseRequestLocators.Transcript.document_foundation_counterparty, "Организация для Документа - основания")
+            self.set_type(
+                CashExpenseRequestLocators.Transcript.document_foundation_counterparty,
+                "Организация для Документа - основания")
 
         def foundation(self):
             self.set_type(CashExpenseRequestLocators.Transcript.foundation, "Документ основания")
@@ -350,7 +357,8 @@ class CashExpenseRequestPage(Browser):
             self.set_text(CashExpenseRequestLocators.Transcript.drawee_subsidy_code, value, "Код субсидии плательщика")
 
         def recepient_subsidy_code(self, value):
-            self.set_text(CashExpenseRequestLocators.Transcript.recepient_subsidy_code, value, "Код субсидии получателя")
+            self.set_text(
+                CashExpenseRequestLocators.Transcript.recepient_subsidy_code, value, "Код субсидии получателя")
 
         def act(self):
             self.set_type(CashExpenseRequestLocators.Transcript.act, "Мероприятие по БР")
@@ -530,6 +538,7 @@ class PKOPage(Browser):
     class Line(Browser):
         pass
 
+
 class ZKRPage(Browser):
     @property
     def request(self):
@@ -549,11 +558,12 @@ class ZKRPage(Browser):
     def bid(self):
         return self.Bid(self.driver)
 
+
     class Bid(Browser):
         pass
 
 
-    # Проведение документов
+# Проведение документов
 class carryingOutOfDocumentsPage(Browser):
 
     def lddate_prov(self, value):
@@ -562,7 +572,8 @@ class carryingOutOfDocumentsPage(Browser):
     def operation_master(self, value):
         self.set_select2(carryingOutOfDocumentsLocators.operation_master, value, "Типовая операция")
 
-  # Экспорт в УФК
+
+# Экспорт в УФК
 class exportUFKPage(Browser):
     def account_details(self, value):
         self.set_select2(exportUFKLocators.account_details, value, "Банк", exactly=False)
@@ -570,7 +581,8 @@ class exportUFKPage(Browser):
     def file_number(self, value):
         self.set_text(exportUFKLocators.file_number, value, "Порядковый № файла")
 
-    # оборотная ведомость
+
+# оборотная ведомость
 class TurnoverStatementPage(Browser):
     def date_from(self, value):
         self.set_date(TurnoverStatementLocators.date_from, value, "Период с")
@@ -623,6 +635,7 @@ class IncomingOrderPage(Browser):
     def operation(self, value):
         self.set_select2(IncomingOrderLocators.operation, value, "Типовая операция")
 
+
 # Добавление строки в ПКО
 class IncomingOrderAddLinePage(Browser):
     def operation(self, value):
@@ -670,9 +683,9 @@ class IncomingOrderAddLinePage(Browser):
     def cash_transaction_code(self, value):
         self.set_select(IncomingOrderAddLineLocators.cash_transaction_code, value, "Кассовый символ")
 
+
 # Заявка на кассовый расход
 class ApplicationCashFlowPage(Browser):
-
 
     def documen_type(self, value):
         self.set_select2(ApplicationCashFlowLocators.documen_type, value, "Вид документа")
@@ -705,7 +718,7 @@ class ApplicationCashFlowPage(Browser):
         self.set_select2(ApplicationCashFlowLocators.operation, value, "Типовая операция", exactly=False)
 
 
-#Заявка на кассовый расход добавление строки
+# Заявка на кассовый расход добавление строки
 class DecodingOfTheApplicationPage(Browser):
     def operation(self, value):
         self.set_select2(DecodingOfTheApplicationLocators.operation, value, "Типовая операция")
@@ -736,8 +749,7 @@ class DecodingOfTheApplicationPage(Browser):
         self.set_text(DecodingOfTheApplicationLocators.comment, value, "Примечание")
 
     def draweeKbkType(self, value):
-        self.set_select(DecodingOfTheApplicationLocators.draweeKbkType, value,
-                         "Тип КБК плательщика")
+        self.set_select(DecodingOfTheApplicationLocators.draweeKbkType, value, "Тип КБК плательщика")
 
 
 # Договор с поставщиком
@@ -755,7 +767,8 @@ class ContractWithSupplierPage(Browser):
         self.set_select2(ContractWithSupplierLocators.сounterparty, value, "Контрагент")
 
     def bank_account_number(self, value):
-        self.set_select2(ContractWithSupplierLocators.bank_account_number, value, "Номер банковского счета", exactly=False)
+        self.set_select2(
+            ContractWithSupplierLocators.bank_account_number, value, "Номер банковского счета", exactly=False)
 
     def uin(self, value):
         self.set_text(ContractWithSupplierLocators.uin, value, "УИН")
@@ -873,7 +886,8 @@ class InvoiceFromTheSupplierPage(Browser):
         self.set_select2(InvoiceFromTheSupplierLocators.supplier, value, "Постащик")
 
     def supplier_account_detail(self, value):
-        self.set_select2(InvoiceFromTheSupplierLocators.supplier_account_detail, value, "Номер банковского счета", exactly=False)
+        self.set_select2(
+            InvoiceFromTheSupplierLocators.supplier_account_detail, value, "Номер банковского счета", exactly=False)
 
     def account_details(self, value):
         self.set_select2(InvoiceFromTheSupplierLocators.account_details, value, "Заказчик Лицевой счет", exactly=False)

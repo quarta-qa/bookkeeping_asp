@@ -58,17 +58,16 @@ class TestSuite:
         page.amounts_nds_percent("13")
         page.amounts_amount("1200000")
         page.advance("120000")
-        page.checker.check_text_input("amountsAmountWithoutNds","1 061 946,90")
+        page.checker.check_text_input("amountsAmountWithoutNds", "1 061 946,90")
         page.checker.check_text_input("amountsNdsAmount", "138 053,10")
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
         # Проверка заполненой суммы
-
         # Создание копии документа
         page = ContractWithSupplierPage(self.driver)
         page.select_month("Январь", "2018")
-        page.table_select_row('ПАО "МегаФон"','Выбор документа из которого будем делать копию')
+        page.table_select_row('ПАО "МегаФон"', 'Выбор документа из которого будем делать копию')
         page.click_by_text("Добавить")
         page.click_by_text("Копию документа")
         sleep(1)
@@ -109,7 +108,6 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-
     def te1st_application_cash_flow(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
@@ -130,7 +128,7 @@ class TestSuite:
         # Заполнение вкладки дкоумент основание
         page.click_by_text("Документ-основание")
         page.foundation("1 от 10.01.2018")
-        page.checker.check_text_select("documentFoundaiontKind",'Договор с поставщиком')
+        page.checker.check_text_select("documentFoundaiontKind", 'Договор с поставщиком')
         page.checker.check_text_input("documentFoundationNumber", '1')
         page.checker.check_text_input("documentFoundationSubject", 'Услуги связи')
         page.checker.check_text_input("documentFoundationDate", '10.01.2018')
@@ -139,16 +137,15 @@ class TestSuite:
         page.click_by_text("Добавить")
         page.click_by_text("Новую строку")
         page = DecodingOfTheApplicationPage(self.driver)
-        #page.kbk("0411 0000000000 000")
-        page.set_select2_wl("kbk", "0411 0000000000 000",  exactly=False, order=2 )
+        page.kbk("0411 0000000000 000")
         page.operation("(221) Оплата за услуги связи")
         page.kosgu("221")
         sleep(5)
         page.cost_element("Услуги связи")
         page.amount("100000")
         page.nds_percent("18")
-        page.checker.check_text_input("amountWithoutNds", "84 745,76",2)
-        page.checker.check_text_input("ndsAmount", "15 254,24",2)
+        page.checker.check_text_input("amountWithoutNds", "84 745,76", 2)
+        page.checker.check_text_input("ndsAmount", "15 254,24", 2)
         page.document_foundation_counterparty('ПАО "МегаФон"')
         page.foundation("1 от 10.01.2018")
         page.comment("Оплата за услуги связи Январь 2018")
@@ -160,26 +157,23 @@ class TestSuite:
         page.checker.check_text_input("paymentPurpose",
                                       "(07104110000000000000 221 - 100000.00)(л/сч )Услуги связи,в т.ч.НДС 15254.24")
         page.click_by_text("Сохранить")
-           # Добавляем копию строки
+        # Добавляем копию строки
         page.click_by_text("Расшифровка заявки")
         # Исправить после доработки функционала!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         # page.click_by_text("Добавить")
         # page.click_by_text("Копию строки")
-
         page.click_by_text("Добавить")
         page.click_by_text("Новую строку")
         page.comment("Строка для удаления")
         sleep(5)
-        #page.wait.text_disappear("Документ сохранён")
+        # page.wait.text_disappear("Документ сохранён")
         page.click_by_text("Сохранить", 2)
-
         page.search_string('Строка для удаления', 'Выбор строки для удаления')
         page.table_select_row_click('Строка для удаления')
         page.click_by_text("Удалить")
         page.click_by_text("Да")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-
         # Создание копии документа
         page.table_select_row('ПАО "МегаФон"')
         page.click_by_text("Добавить")
@@ -201,7 +195,7 @@ class TestSuite:
         page.checker.check_text_input("documentFoundationNumber", '2')
         page.checker.check_text_input("documentFoundationSubject", 'Транспортные услуги')
         page.checker.check_text_input("documentFoundationDate", '10.01.2018')
-        #редактируем строку
+        # редактируем строку
         page.click_by_text("Расшифровка заявки")
         page.click_by_text("Открыть")
         page = DecodingOfTheApplicationPage(self.driver)
@@ -218,9 +212,7 @@ class TestSuite:
         page.foundation("2 от 10.01.2018")
         page.comment("Оплата транспортных услуг Январь 2018")
         page.click_by_text("Сохранить", 2)
-
         page.click_by_text("Сохранить")
-
         page.click_by_text("Реквизиты документа")
         page.click_by_text("Назначения платежа")
         page.checker.check_text_input("paymentPurpose",
@@ -229,7 +221,6 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
         sleep(3)
-
 
     # Проведение документов
     def te1st_carrying_out_of_documents(self):
@@ -244,7 +235,7 @@ class TestSuite:
         page.click_by_text("Провести помеченные")
         page = carryingOutOfDocumentsPage(self.driver)
         page.lddate_prov("10.01.2018")
-        #page.operation_master("") указываем если требуется проводку
+        # page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
         page.wait.text_appear('Результат проведения документов')
         page.click_by_text("Закрыть")
@@ -257,7 +248,6 @@ class TestSuite:
         page.table_select_row('ПАО "МегаФон"')
         page.click_by_text("Печать")
         sleep(10)
-        #page.file.file_copy('Заявка на кассовый расход.xls')
         File.compare_files('Заявка на кассовый расход.xls')
 
     def te1st_payment_order_through_contract_with_the_supplier(self):
@@ -294,13 +284,12 @@ class TestSuite:
         page.kosgu("310")
         sleep(3)
         page.amounts_amount("35000")
-        page.checker.check_text_input("amountsAmountWithoutNds","35 000,00")
+        page.checker.check_text_input("amountsAmountWithoutNds", "35 000,00")
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-
-        # Добавляем документ счет от поставщика
+    # Добавляем документ счет от поставщика
     def te1st_invoice_from_the_supplier(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
@@ -318,7 +307,7 @@ class TestSuite:
         page.note('Поставка оборудования , январь 2018')
         sleep(4)
 
-        # Добавляем документ счет от поставщика строку
+    # Добавляем документ счет от поставщика строку
     def te1st_invoice_from_the_supplier_add_line(self):
         page = InvoiceFromTheSupplierAddLinePage(self.driver)
         page.click_by_text("Добавить")
@@ -358,16 +347,16 @@ class TestSuite:
         page = ApplicationCashFlowPage(self.driver)
         page.table_select_row('Акционерное общество "Ай-Теко"')
         page.click_by_text("Действие")
-        element=self.driver.find_element(By.XPATH, "//li[a='Создать документ по выбору']")
+        element = self.driver.find_element(By.XPATH, "//li[a='Создать документ по выбору']")
         page.move_to_element(element)
         page.click_by_text("Заявка на кассовый расход")
-        page.checker.check_text_select('documentKind','Заявка на кассовый расход')
+        page.checker.check_text_select('documentKind', 'Заявка на кассовый расход')
         page.number("3")
         page.date("31.01.2018")
         page.limit_date("31.12.2018")
         page.personal_account("УФК л/с 03951000710")
-        page.checker.check_text_select('counterparty',' Акционерное общество "Ай-Теко"')
-        page.checker.check_text_select('counterpartyAccountDetails',"40702810300000114301")
+        page.checker.check_text_select('counterparty', ' Акционерное общество "Ай-Теко"')
+        page.checker.check_text_select('counterpartyAccountDetails', "40702810300000114301")
         page.number_ufk("123456789012345")
         page.operation('Оплата за приобретение ОС')
         # Заполнение вкладки дкоумент основание
@@ -792,8 +781,6 @@ class TestSuite:
         page.click_by_text("Да")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-
-
         page.table_select_row('ООО Аудиторская компания "Аудит Проф Гарант"')
         page.click_by_text("Печать")
         sleep(10)
@@ -823,7 +810,6 @@ class TestSuite:
         # Расшифровка заявки - добавление строки
         page.click_by_text("Расшифровка заявки")
         page.click_by_text("Открыть")
-
         page = DecodingOfTheApplicationPage(self.driver)
         page.kbk("0411 0000000000 000")
         page.draweeKbkType('Классификация расходов бюджетов (КРБ)')
@@ -860,42 +846,4 @@ class TestSuite:
         page.click_by_text("Сохранить")
         sleep(5)
         File.checking_file_export_UFK()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

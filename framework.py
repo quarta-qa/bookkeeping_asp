@@ -178,7 +178,8 @@ class Browser(object):
     def set_text_wl(self, name, value, label=None, order=1):
         if value:
             self.wait.loading()
-            element = self.wait.element_appear((By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
+            element = self.wait.element_appear(
+                (By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
             element.clear()
             element.send_keys(value)
             if label:
@@ -301,17 +302,16 @@ class Browser(object):
     # Функция выбора значения без локатора
     def set_select2_wl(self, name, value, label=None, exactly=True, order=1):
         if value:
-            locator = (By.XPATH,"(//*[@name='%s'])[%s]" % (name, order))
-            parent = self.wait.presence_of_element(locator)
+            locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
             text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
             text_box.clear()
             text_box.send_keys(value)
             if exactly:
                 self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and .='%s']" % value)).click()
             else:
-                self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and contains(., '%s')]" % value)).click()
+                self.wait.element_appear(
+                    (By.XPATH, locator[1] + "//li[@role='treeitem' and contains(., '%s')]" % value)).click()
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
-
             if label:
                 pass
             else:
@@ -322,7 +322,6 @@ class Browser(object):
     # Функция выбора значения из Select2
     def set_select2(self, locator, value,  label=None, exactly=True):
         if value:
-            parent = self.wait.presence_of_element(locator)
             text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
             # dots_button = self.wait.element_appear((By.XPATH, locator[1]+"//button[@title='Выбрать']"))
             # try:
@@ -336,11 +335,11 @@ class Browser(object):
             if exactly:
                 self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and .='%s']" % value)).click()
             else:
-                self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and contains(., '%s')]" % value)).click()
+                self.wait.element_appear(
+                    (By.XPATH, locator[1] + "//li[@role='treeitem' and contains(., '%s')]" % value)).click()
             self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
             if label and self.log:
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
-
 
     # Функция выбора строки в таблице и нажатие на неё
     def table_select_row_click(self, text, order=1, label=None):
@@ -418,7 +417,6 @@ class Browser(object):
         else:
             self.driver.save_screenshot("%s%s.png" % (default_folder, name))
 
-
     # Функция проверки текста в классе. Параметры: value - ожидаемый результат, class_name - имя класса, в котором
     # будет извлечен текст, text_errors - текст ошибки, который будет записан в файл logs.txt
     def checking_text_by_class(self, value, class_name, text_errors):
@@ -436,7 +434,6 @@ class Browser(object):
         else:
             File.add_text_in_file("logs", text_error + str(value))
             return False
-
 
 
 class Date(object):
@@ -498,19 +495,14 @@ class Wait(object):
             ec.presence_of_element_located((By.XPATH, "//*[contains(., 'Документ сохранен')]")))
 
 
-     # Проверка текста
+# Проверка текста
 class Checker(object):
-    """
-    Methods for checking
-    """
-
     def __init__(self, driver, timeout):
         self.driver = driver
         self.timeout = timeout
         self.wait = Wait(self.driver, self.timeout)
 
-        # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте title
-
+    # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте title
     def check_text_title(self, name, value):
         fact_value = self.wait.element_appear(
             (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).get_attribute("title")
@@ -521,8 +513,7 @@ class Checker(object):
             print("Значение :" + fact_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
-            # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте value
-
+    # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте value
     def check_text_input(self, name, value, order=1):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
@@ -573,13 +564,11 @@ class Checker(object):
             return False
 
 
-    # Работа с данными
+# Работа с данными
 class Data(object):
     """
     Methods for working with data
     """
-
-
     @staticmethod
     def load_data(file):
         script_path = os.path.dirname(__file__)
@@ -598,8 +587,6 @@ class Data(object):
         return data[parent][number]
 
 
-
-
 class File(object):
     """
     Методы для работы с файлами
@@ -614,70 +601,64 @@ class File(object):
 
     @staticmethod
     def file_copy(filename):
-        testDefault = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
-        testBuch = ('C:\\TestBuch\\')
-
+        test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
+        test_buch = ('C:\\TestBuch\\')
         # Проверка наличия папки C:\TestBuch
-        if os.access(testBuch, os.F_OK ):
+        if os.access(test_buch, os.F_OK ):
             pass
         else:
-            os.mkdir(testBuch)
+            os.mkdir(test_buch)
         # Проверка наличия папки C:\Users\'Доменное имя пользователя'\Downloads
-        if os.access(testDefault, os.F_OK ):
+        if os.access(test_default, os.F_OK ):
             pass
         else:
-            os.mkdir(testDefault)
-        # os.chdir(testBuch)
+            os.mkdir(test_default)
+        # os.chdir(test_buch)
         path = Date.get_today_file()
         # Проверка наличия папки с датой проведения теста
-        if os.access(testBuch+path, os.F_OK ):
+        if os.access(test_buch+path, os.F_OK ):
             pass
         else:
-            os.mkdir(testBuch+path)
-        # os.chdir(testDefault)
+            os.mkdir(test_buch+path)
+        # os.chdir(test_default)
         # Копируем полученную печатную форму в отдельный каталог C:\TestBuch
-        shutil.copy2(testDefault + filename, testBuch+path)
+        shutil.copy2(test_default + filename, test_buch+path)
         # os.remove(filename) удаление  файла из Downloads
-        if os.access(testDefault + "example.xls", os.F_OK):
+        if os.access(test_default + "example.xls", os.F_OK):
             pass
         else:
             workbook = xlwt.Workbook()
             sheet = workbook.add_sheet("Лист1")
             sheet.write(0, 0, 'Тест')
-            workbook.save(testDefault + "example.xls")
-        if os.access(testDefault + "example_new.xls", os.F_OK):
+            workbook.save(test_default + "example.xls")
+        if os.access(test_default + "example_new.xls", os.F_OK):
             pass
         else:
             workbook = xlwt.Workbook()
             sheet = workbook.add_sheet("Лист1")
             sheet.write(0, 0, 'Тест')
-            workbook.save(testDefault + "example_new.xls")
+            workbook.save(test_default + "example_new.xls")
 
     @staticmethod
     def get_max_rows_and_cols(file):
-
         rows_max = 0
         cols_max = 0
-
         for name in file.sheet_names():
             sheet = file.sheet_by_name(name)
             if rows_max < sheet.nrows:
                 rows_max = sheet.nrows
             if cols_max < sheet.ncols:
                 cols_max = sheet.ncols
-
         return [rows_max, cols_max]
 
     # Сравнение excel файлов 1
     @staticmethod
     def analyze_two_files(filename):
-
         test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         test_compare = ('C:\\Compare\\')
         File.file_copy(filename)
         reference_file = test_default + filename
         output_file = test_compare + filename
-
         # output_hash = self.md5(output_file)
         # reference_hash = self.md5(reference_file)
         # открываем исходный файл
@@ -686,7 +667,6 @@ class File(object):
         if output.nsheets != reference.nsheets:
             print('Количество книг не совпадает')
         else:
-
             output_max = File.get_max_rows_and_cols(output)
             reference_max = File.get_max_rows_and_cols(reference)
             max_rows = max(reference_max[0], output_max[0])
@@ -697,18 +677,15 @@ class File(object):
                 sheet = reference_new.get_sheet(i)
                 sheet.write(max_rows, max_cols, "!")
             reference_new.save(test_default + "example.xls")
-
             output_new = xlcopy(output)
             for i in range(output.nsheets):
                 sheet = output_new.get_sheet(i)
                 sheet.write(max_rows, max_cols, "!")
             output_new.save(test_default + "example_new.xls")
-
             return [test_default + "example.xls", test_default + "example_new.xls"]
 
     @staticmethod
     def compare_files(filename):
-
         files = File.analyze_two_files(filename)
         test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         reference = xlrd.open_workbook(files[0], on_demand=True, formatting_info=True)
@@ -732,7 +709,6 @@ class File(object):
                         print("Книга [%s]:" % reference_sheet_name)
                         print("\tЯчейка [%s, %s]. Значение [%s] не совпадает с эталонным [%s]!"
                               % (i+1, j+1,reference_cell, output_cell))
-
         reference.release_resources()
         output.release_resources()
         del reference
@@ -757,10 +733,7 @@ class File(object):
         flag = True
         for file in os.listdir(test_default):
             if file.endswith(".ZR3"):
-                grop = os.path.join(test_default, file)
                 print("[%s] Фаил с именем [%s] Выгружен" % (strftime("%H:%M:%S", localtime()), file))
                 flag = False
-
-
         if flag:
             print("[%s] Файлов выгрузки не найдено" % strftime("%H:%M:%S", localtime()))
