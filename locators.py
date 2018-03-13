@@ -229,10 +229,12 @@ class exportUFKLocators(object):
     account_details = (By.XPATH, "//*[@name='accountDetails']")
     file_number = (By.XPATH, "//*[@name='fileNumber']//input")
 
+
 # Локаторы для проведения документа
 class carryingOutOfDocumentsLocators(object):
     lddate_prov = (By.XPATH, "//*[@name='lddate_prov']//input")
     operation_master = (By.XPATH, "//*[@name='OperationMaster']")
+
 
 class ContractWithSupplierLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']")

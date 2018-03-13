@@ -563,6 +563,21 @@ class Checker(object):
             print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
+    def check_message(self, value):
+        element = self.wait.element_appear(
+            (By.XPATH, "//document-execution-result/div"))
+        actual_value = ' '.join(element.text.split('\n'))
+        print(actual_value)
+        print('Проверка...')
+        print("Ф:{%s}" % actual_value)
+        print("О:{%s}" % str(value))
+        if actual_value == value:
+            print("СООТВЕТСТВУЕТ")
+            return True
+        else:
+            print("НЕ СООТВЕТСТВУЕТ")
+            return False
+
 
 # Работа с данными
 class Data(object):

@@ -846,4 +846,10 @@ class TestSuite:
         page.click_by_text("Сохранить")
         sleep(5)
         File.checking_file_export_UFK()
+        page.click_by_text("Действия")
+        page.click_by_text("Аннулировать заявку")
+        page.wait.text_appear('Результат аннулирования документов')
+        page.wait.text_appear('Аннулировано документов: 1')
+        page.checker.check_message('Аннулировано документов: 1 Не аннулировано: 0')
+        page.click_by_text("Закрыть")
 
