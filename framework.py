@@ -612,8 +612,8 @@ class File(object):
         with open(filename + ".txt", "w") as my_file:
             my_file.write(tmp + "\n" + text)
 
-
-    def file_copy(self,filename):
+    @staticmethod
+    def file_copy(filename):
         testDefault = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         testBuch = ('C:\\TestBuch\\')
 
@@ -636,7 +636,7 @@ class File(object):
             os.mkdir(testBuch+path)
         # os.chdir(testDefault)
         # Копируем полученную печатную форму в отдельный каталог C:\TestBuch
-        shutil.copy2(testDefault+filename,testBuch+path)
+        shutil.copy2(testDefault + filename, testBuch+path)
         # os.remove(filename) удаление  файла из Downloads
         if os.access(testDefault + "example.xls", os.F_OK):
             pass
@@ -669,12 +669,12 @@ class File(object):
         return [rows_max, cols_max]
 
     # Сравнение excel файлов 1
-
-    def analyze_two_files(self, filename):
+    @staticmethod
+    def analyze_two_files(filename):
 
         test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         test_compare = ('C:\\Compare\\')
-        self.file_copy(filename)
+        File.file_copy(filename)
         reference_file = test_default + filename
         output_file = test_compare + filename
 
@@ -687,8 +687,8 @@ class File(object):
             print('Количество книг не совпадает')
         else:
 
-            output_max = self.get_max_rows_and_cols(output)
-            reference_max = self.get_max_rows_and_cols(reference)
+            output_max = File.get_max_rows_and_cols(output)
+            reference_max = File.get_max_rows_and_cols(reference)
             max_rows = max(reference_max[0], output_max[0])
             max_cols = max(reference_max[1], output_max[1])
 
@@ -706,11 +706,10 @@ class File(object):
 
             return [test_default + "example.xls", test_default + "example_new.xls"]
 
+    @staticmethod
+    def compare_files(filename):
 
-
-    def compare_files(self, filename):
-
-        files = self.analyze_two_files(filename)
+        files = File.analyze_two_files(filename)
         test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         reference = xlrd.open_workbook(files[0], on_demand=True, formatting_info=True)
         output = xlrd.open_workbook(files[1], on_demand=True, formatting_info=True)

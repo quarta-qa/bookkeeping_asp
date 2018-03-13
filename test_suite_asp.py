@@ -258,7 +258,7 @@ class TestSuite:
         page.click_by_text("Печать")
         sleep(10)
         #page.file.file_copy('Заявка на кассовый расход.xls')
-        page.file.compare_files('Заявка на кассовый расход.xls')
+        File.compare_files('Заявка на кассовый расход.xls')
 
     def te1st_payment_order_through_contract_with_the_supplier(self):
         page = MenuPage(self.driver)
@@ -425,7 +425,7 @@ class TestSuite:
         page.click_by_text("Печать")
         sleep(10)
         # page.file.file_copy('Заявка на кассовый расход.xls')
-        page.file.compare_files('Заявка на кассовый расход (1).xls')
+        File.compare_files('Заявка на кассовый расход (1).xls')
         sleep(10)
 
     def te1st_turnover_statement_one(self):
@@ -441,7 +441,7 @@ class TestSuite:
         page.wait.text_appear('Печать "Оборотная ведомость"')
         page.click_by_text('Печать "Оборотная ведомость"')
         sleep(10)
-        page.file.compare_files('Оборотная ведомость.xls')
+        File.compare_files('Оборотная ведомость.xls')
 
     def te1st_incoming_order(self):
         page = MenuPage(self.driver)
@@ -576,7 +576,7 @@ class TestSuite:
         page.table_select_row('Снято с расчетного счета')
         page.click_by_text("Печать")
         sleep(10)
-        page.file.compare_files('Приходный кассовый ордер.xls')
+        File.compare_files('Приходный кассовый ордер.xls')
 
     def te1st_incoming_order_copy_doc(self):
         page = MenuPage(self.driver)
@@ -693,7 +693,7 @@ class TestSuite:
         page.table_select_row('Оприходавано в кассу')
         page.click_by_text("Печать")
         sleep(10)
-        page.file.compare_files('Приходный кассовый ордер (1).xls')
+        File.compare_files('Приходный кассовый ордер (1).xls')
 
     def te1st_invoice_from_the_supplier_two(self):
         page = MenuPage(self.driver)
@@ -797,7 +797,7 @@ class TestSuite:
         page.table_select_row('ООО Аудиторская компания "Аудит Проф Гарант"')
         page.click_by_text("Печать")
         sleep(10)
-        page.file.compare_files('Заявка на кассовый расход (2).xls')
+        File.compare_files('Заявка на кассовый расход (2).xls')
 
         # Создание копии документа
         page.table_select_row('ООО Аудиторская компания "Аудит Проф Гарант"')
