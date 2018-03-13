@@ -290,7 +290,7 @@ class Browser(object):
     # Функция выбора значения без локатора
     def set_select2_wl(self, name, value, label=None, exactly=True, order=1):
         if value:
-            locator = (By.XPATH,"(//*[@name='%s'])[%s]" % (name, order))
+            locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
             parent = self.wait.presence_of_element(locator)
             text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
             text_box.clear()
