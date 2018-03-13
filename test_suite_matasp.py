@@ -304,7 +304,7 @@ class TestSuite:
         page.click_by_text('Печать')
         page.click_by_text('Инвентарная карточка учета (форма по ОКУД 0504031)')
         sleep(2)
-        page.file.compare_files('Инвентарная карточка НФА.xls')
+        File.compare_files('Инвентарная карточка НФА.xls')
 
     # def test_printing_of_a_group_inventory_cardOKUD0504032(self):
         # Печать инвентарной карточки учета ОКУД 504032, стр. 31
@@ -316,7 +316,7 @@ class TestSuite:
         # page.click_by_text('Печать')
         # page.click_by_text('Групповая инвентарная карточка (форма по ОКУД 0504032)')
         # sleep(2)
-        # page.file.compare_files('Групповая инвентарная карточка НФА.xls')
+        # File.compare_files('Групповая инвентарная карточка НФА.xls')
         
     def test_checking_the_mode_Mass_filling_of_OS_parameters(self):
         # Проверка режима «Массовое заполнение параметров ОС», стр. 31-32
@@ -560,7 +560,7 @@ class TestSuite:
         page.click_by_text('Печать')
         page.click_by_text('Акт приемки материалов')
         sleep(5)
-        page.file.compare_files('Акт приемки материалов.xls')
+        File.compare_files('Акт приемки материалов.xls')
 
     def test_checking_the_printing_of_a_receipt_receipt_for_valuables(self):
         # Проверка печати «Приходного ордера на приемку материальных ценностей», стр. 43-48
@@ -570,7 +570,7 @@ class TestSuite:
         page.click_by_text('Печать')
         page.click_by_text('Приходный ордер на приемку материальных ценностей')
         sleep(5)
-        page.file.compare_files('Приходный ордер на приемку материальных ценностей (НФА).xls')
+        File.compare_files('Приходный ордер на приемку материальных ценностей (НФА).xls')
 
     def test_checking_the_printing_of_act_acceptance_transfer_of_objects_of_non_financial_assets(self):
         # Проверка печати «Акта о приеме-передаче объектов нефинансовых активов», стр. 43-48
@@ -584,7 +584,7 @@ class TestSuite:
         page.set_date_wl("foundationDate", "01.02.2018", "Дата")
         page.click_by_text('Сформировать')
         sleep(2)
-        page.file.compare_files('Акт о приеме-передаче объектов нефинансовых активов.xls')
+        File.compare_files('Акт о приеме-передаче объектов нефинансовых активов.xls')
         sleep(2)
 
     def test_checking_the_printing_of_act_on_acceptance_of_the_repaired_objects_of_fixed_assets(self):
@@ -604,7 +604,7 @@ class TestSuite:
         page.set_text_wl("inventoryDateTo", "28.02.2018", "по")
         page.click_by_text('Сформировать')
         sleep(2)
-        page.file.compare_files('Акт о приеме-сдаче отремонтированных,'
+        File.compare_files('Акт о приеме-сдаче отремонтированных,'
                            ' реконструированных и модернизированных объектов основных средств.xls')
         sleep(2)
         
@@ -686,7 +686,7 @@ class TestSuite:
         # page = Browser(self.driver)
         # page.table_select_row("4 074,08", "1")
         # page.click_by_text('Печать')
-        # page.file.compare_files('Ведомость начисления амортизации.xls')
+        # File.compare_files('Ведомость начисления амортизации.xls')
         # Появляется ошибка XML
 
     def test_deletion_of_the_calculation_of_depreciation(self):
