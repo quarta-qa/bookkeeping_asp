@@ -30,6 +30,14 @@ class MenuLocators(object):
     document_journal = (By.XPATH,"//a[contains(.,'Журнал документов')]")
     recycle_bin = (By.XPATH, "//a[contains(.,'Корзина документов ')]")
 
+# оборотная ведомость
+class TurnoverStatementLocators(object):
+    date_from = (By.XPATH, "//date-input[@name='dateFrom']//input")
+    date_to = (By.XPATH, "//date-input[@name='dateTo']//input")
+    balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
+    balance_sheet_account_group = (By.XPATH, "//*[@name='balanceSheetAccountGroup']")
+    account_unit = (By.XPATH, "//account-units-dropdown-input[@name='accountUnits']//select")
+    is_only_out_balance = (By.XPATH, "//check-input[@name='isOnlyOutBalance']//input")
 
 class CashExpenseRequestLocators(object):
 
@@ -182,11 +190,47 @@ class ZNVLocators(object):
         # Закладка Документы по зачислению невыясненного платежа
         number = (By.XPATH, "//input[@id='outstandingPaymentDocumentNumber']")
 
-class PKOLocators(object):
-    pass
+
+#   ПКО
+class IncomingOrderLocators(object):
+    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
+    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    employee = (By.XPATH, "//employee-classifier[@name='employee']")
+    organization = (By.XPATH, "//counterparty-classifier[@name='organization']")
+    received_from = (By.XPATH, "//text-input[@name='receivedFrom']//input")
+    department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
+    cash_report_number = (By.XPATH, "//text-input[@name='cashReportNumber']//input")
+    foundation = (By.XPATH, "//text-area-input[@name='foundation']//textarea")
+    operation = (By.XPATH, "//*[@name='operation']")
+
+# Добавление  строки в ПКО
+class IncomingOrderAddLineLocators(object):
+    operation = (By.XPATH, "//div[@class='modal in']//*[@name='operation']")
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+    expense_type = (By.XPATH, "//cost-elements-classifier[@name='expenseType']")
+    inventory = (By.XPATH, "//material-inventory-classifier[@name='inventory']")
+    quantity = (By.XPATH, "//number-input[@name='quantity']//input")
+    amount = (By.XPATH, "//amount-input[@name='amount']//input")
+    amount_without_nds = (By.XPATH, "//currency-input[@name='amountWithoutNds']//input")
+    nds_percent = (By.XPATH, "//nds-percent-input[@name='ndsPercent']//input")
+    nds_amount = (By.XPATH, "//currency-input[@name='ndsAmount']//input")
+    department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
+    recepient = (By.XPATH, "//materially-responsible-person-classifier[@name='recepient']")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    act = (By.XPATH, "//expenditure-goal-act-classifier[@name='act']")
+    cash_transaction_code = (By.XPATH, "//cash-transaction-code-dropdown-input[@name='CashTransactionCode']//select")
 
 
 
+# Локаторы для экспорта в УФК
+class exportUFKLocators(object):
+    account_details = (By.XPATH, "//*[@name='accountDetails']")
+    file_number = (By.XPATH, "//*[@name='fileNumber']//input")
+
+
+# Локаторы для проведения документа
 class carryingOutOfDocumentsLocators(object):
     lddate_prov = (By.XPATH, "//*[@name='lddate_prov']//input")
     operation_master = (By.XPATH, "//*[@name='OperationMaster']")
@@ -237,6 +281,7 @@ class CardIndexOSNMANPALocators(object):
     okof = (By.XPATH, "//*[@name='okof']")
 
 class ApplicationCashFlowLocators(object):
+
     documen_type = (By.XPATH, "//*[@name='documentKind']")
     number =  (By.XPATH, "//*[@name='documentNumber']//input")
     date = (By.XPATH, "//*[@name='documentDate']//input")
@@ -246,6 +291,7 @@ class ApplicationCashFlowLocators(object):
     number_ufk = (By.XPATH, "//*[@name='ofkNumber']//input")
     limit_date = (By.XPATH, "//*[@name='limitDate']//input")
     foundation =(By.XPATH, "//div[@class='tab-content']//*[@name='foundation']")
+    operation =(By.XPATH, "//*[@name='operation']")
 
 
 class DecodingOfTheApplicationLocators(object):
@@ -259,4 +305,24 @@ class DecodingOfTheApplicationLocators(object):
     document_foundation_counterparty = (By.XPATH, "//*[@name='documentFoundationCounterparty']")
     foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='foundation']")
     comment = (By.XPATH, "//*[@name='comment']//textarea")
+    draweeKbkType=(By.XPATH, "//*[@name='draweeKbkType']//select")
+
+class InvoiceFromTheSupplierLocators(object):
+    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    supplier = (By.XPATH, "//counterparty-classifier[@name='supplier']")
+    supplier_account_detail = (By.XPATH, "//counterparty-account-details-classifier[@name='supplierAccountDetail']")
+    account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
+    department = (By.XPATH, "//department-classifier[@name='Department']")
+    note = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+
+class InvoiceFromTheSupplierAddLineLocators(object):
+    add = (By.XPATH, "//button[contains(.,'Добавить')]")
+    add_new = (By.XPATH, "//a[.='Новую строку']")
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
+    comment = (By.XPATH, "//div[@class='modal in']//*[@name='comment']//textarea")
+    amount = (By.XPATH, "//amount-input[@name='amount']//input")
+    vat_percent = (By.XPATH, "//nds-percent-input[@name='vatPercent']//input")
 

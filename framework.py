@@ -26,7 +26,7 @@ class Browser(object):
         self.log = log
         self.wait = Wait(self.driver, self.timeout)
         self.checker = Checker(self.driver, self.timeout)
-        self.file = File(self.driver,self.timeout)
+
 
     #
     def accept_alert(self):
@@ -240,6 +240,7 @@ class Browser(object):
     def set_checkbox(self, locator, value=True, label=None):
         element = self.wait.element_appear(locator)
         if element.is_selected() != value:
+            self.move_to_element(element)
             element.click()
             if label and self.log:
                 print("[%s] [%s] установка флага в положение \"%s\"" % (strftime("%H:%M:%S",
@@ -250,6 +251,7 @@ class Browser(object):
         locator = (By.XPATH, "(//*[@name='%s'])[%s]//input" % (name, order))
         element = self.wait.element_appear(locator)
         if element.is_selected() != value:
+            self.move_to_element(element)
             element.click()
             if label:
                 pass
@@ -263,6 +265,7 @@ class Browser(object):
     def set_checkbox_by_order(self, order=1, value=True, label=None):
         element = self.wait.element_appear((By.XPATH, "(//input[@type='checkbox'])[%s]" % order))
         if element.is_selected() != value:
+            self.move_to_element(element)
             element.click()
             if label and self.log:
                 print("[%s] [%s] установка флага в положение \"%s\"" % (strftime("%H:%M:%S",
@@ -489,6 +492,8 @@ class Wait(object):
             ec.visibility_of_element_located((By.XPATH, "//div[@class='windows8']")))
         WebDriverWait(self.driver, self.timeout).until_not(
             ec.visibility_of_element_located((By.XPATH, "//div[@class='w2ui-lock']")))
+        WebDriverWait(self.driver, self.timeout).until_not(
+            ec.presence_of_element_located((By.XPATH, "//*[contains(., 'Документ сохранен')]")))
 
 
      # Проверка текста
@@ -552,7 +557,7 @@ class Checker(object):
             print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
-            # Проверка текста без локатора в input
+    # Проверка текста без локатора в input
 
     def check_text(self, name, value, order=1):
         element = self.wait.element_appear(
@@ -566,18 +571,12 @@ class Checker(object):
             return False
 
 
-# Работа с данными
+    # Работа с данными
 class Data(object):
     """
     Methods for working with data
     """
-    def __init__(self, driver, timeout=60, log=True):
-        self.driver = driver
-        self.timeout = timeout
-        self.log = log
-        self.wait = Wait(self.driver, self.timeout)
-        self.checker = Checker(self.driver, self.timeout)
-        self.file = File(self.driver,self.timeout)
+
 
     @staticmethod
     def load_data(file):
@@ -603,12 +602,6 @@ class File(object):
     """
     Методы для работы с файлами
     """
-    def __init__(self, driver, timeout):
-        self.driver = driver
-        self.timeout = timeout
-        self.wait = Wait(self.driver, self.timeout)
-        self.date = Date()
-
     # Добавление текста в файл
     @staticmethod
     def add_text_in_file(filename, text):
@@ -632,17 +625,17 @@ class File(object):
             pass
         else:
             os.mkdir(testDefault)
-        #os.chdir(testBuch)
-        path=self.date.get_today_file()
+        # os.chdir(testBuch)
+        path = Date.get_today_file()
         # Проверка наличия папки с датой проведения теста
         if os.access(testBuch+path, os.F_OK ):
             pass
         else:
             os.mkdir(testBuch+path)
-        #os.chdir(testDefault)
+        # os.chdir(testDefault)
         # Копируем полученную печатную форму в отдельный каталог C:\TestBuch
         shutil.copy2(testDefault+filename,testBuch+path)
-        #os.remove(filename) удаление  файла из Downloads
+        # os.remove(filename) удаление  файла из Downloads
         if os.access(testDefault + "example.xls", os.F_OK):
             pass
         else:
@@ -677,16 +670,15 @@ class File(object):
 
     def analyze_two_files(self, filename):
 
-        testDefault = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
-        testBuch = ('C:\\TestBuch\\')
-        testCompare = ('C:\\Compare\\')
+        test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
+        test_compare = ('C:\\Compare\\')
         self.file_copy(filename)
-        reference_file = testDefault + filename
-        output_file = testCompare + filename
+        reference_file = test_default + filename
+        output_file = test_compare + filename
 
-        #output_hash = self.md5(output_file)
-        #reference_hash = self.md5(reference_file)
-            # открываем исходный файл
+        # output_hash = self.md5(output_file)
+        # reference_hash = self.md5(reference_file)
+        # открываем исходный файл
         output = xlrd.open_workbook(output_file, on_demand=True, formatting_info=True)
         reference = xlrd.open_workbook(reference_file, on_demand=True, formatting_info=True)
         if output.nsheets != reference.nsheets:
@@ -702,22 +694,22 @@ class File(object):
             for i in range(reference.nsheets):
                 sheet = reference_new.get_sheet(i)
                 sheet.write(max_rows, max_cols, "!")
-            reference_new.save(testDefault + "example.xls")
+            reference_new.save(test_default + "example.xls")
 
             output_new = xlcopy(output)
             for i in range(output.nsheets):
                 sheet = output_new.get_sheet(i)
                 sheet.write(max_rows, max_cols, "!")
-            output_new.save(testDefault + "example_new.xls")
+            output_new.save(test_default + "example_new.xls")
 
-            return [testDefault + "example.xls", testDefault + "example_new.xls"]
+            return [test_default + "example.xls", test_default + "example_new.xls"]
 
 
 
     def compare_files(self, filename):
 
         files = self.analyze_two_files(filename)
-        testDefault = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
+        test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         reference = xlrd.open_workbook(files[0], on_demand=True, formatting_info=True)
         output = xlrd.open_workbook(files[1], on_demand=True, formatting_info=True)
         flag = True
@@ -746,8 +738,8 @@ class File(object):
         del output
         if flag:
             print("[%s] Печатные формы одинаковы" % (strftime("%H:%M:%S", localtime())))
-        os.remove(testDefault + "example.xls")
-        os.remove(testDefault + "example_new.xls")
+        os.remove(test_default + "example.xls")
+        os.remove(test_default + "example_new.xls")
 
     # Получение хеша
     @staticmethod
@@ -757,3 +749,17 @@ class File(object):
             for chunk in iter(lambda: f.read(4096), b""):
                 hash_md5.update(chunk)
         return hash_md5.hexdigest()
+
+    @staticmethod
+    def checking_file_export_UFK():
+        test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
+        flag = True
+        for file in os.listdir(test_default):
+            if file.endswith(".ZR3"):
+                grop = os.path.join(test_default, file)
+                print("[%s] Фаил с именем [%s] Выгружен" % (strftime("%H:%M:%S", localtime()), file))
+                flag = False
+
+
+        if flag:
+            print("[%s] Файлов выгрузки не найдено" % strftime("%H:%M:%S", localtime()))

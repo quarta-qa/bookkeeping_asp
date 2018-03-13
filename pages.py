@@ -562,11 +562,118 @@ class carryingOutOfDocumentsPage(Browser):
     def operation_master(self, value):
         self.set_select2(carryingOutOfDocumentsLocators.operation_master, value, "Типовая операция")
 
+  # Экспорт в УФК
+class exportUFKPage(Browser):
+    def account_details(self, value):
+        self.set_select2(exportUFKLocators.account_details, value, "Банк", exactly=False)
+
+    def file_number(self, value):
+        self.set_text(exportUFKLocators.file_number, value, "Порядковый № файла")
+
+    # оборотная ведомость
+class TurnoverStatementPage(Browser):
+    def date_from(self, value):
+        self.set_date(TurnoverStatementLocators.date_from, value, "Период с")
+
+    def date_to(self, value):
+        self.set_date(TurnoverStatementLocators.date_to, value, "по")
+
+    def balance_sheet_account(self, value):
+        self.set_select2(TurnoverStatementLocators.balance_sheet_account, value, "Счет")
+
+    def balance_sheet_account_group(self, value):
+        self.set_select2(TurnoverStatementLocators.balance_sheet_account_group, value, "Группа счетов")
+
+    def account_unit(self, value):
+        self.set_select(TurnoverStatementLocators.account_unit, value, "Единица измерения")
+
+    def is_only_out_balance(self, value):
+        self.set_checkbox(TurnoverStatementLocators.is_only_out_balance, value, "По забалансовым счетам")
 
 
+# Приходно кассовый ордер
+class IncomingOrderPage(Browser):
+    def document_kind(self, value):
+        self.set_select2(IncomingOrderLocators.document_kind, value, "Вид документа")
 
-                # Заявка на кассовый расход
+    def document_number(self, value):
+        self.set_text(IncomingOrderLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(IncomingOrderLocators.document_date, value, "Дата")
+
+    def employee(self, value):
+        self.set_select2(IncomingOrderLocators.employee, value, "Сотрудник")
+
+    def organization(self, value):
+        self.set_select2(IncomingOrderLocators.organization, value, "Организация")
+
+    def received_from(self, value):
+        self.set_text(IncomingOrderLocators.received_from, value, "Принято от")
+
+    def department_unit(self, value):
+        self.set_select2(IncomingOrderLocators.department_unit, value, "Группа учета")
+
+    def cash_report_number(self, value):
+        self.set_text(IncomingOrderLocators.cash_report_number, value, "Номер кассового отчета")
+
+    def foundation(self, value):
+        self.set_text(IncomingOrderLocators.foundation, value, "Основание")
+
+    def operation(self, value):
+        self.set_select2(IncomingOrderLocators.operation, value, "Типовая операция")
+
+# Добавление строки в ПКО
+class IncomingOrderAddLinePage(Browser):
+    def operation(self, value):
+        self.set_select2(IncomingOrderAddLineLocators.operation, value, "Типовая операция")
+
+    def kbk(self, value):
+        self.set_select2(IncomingOrderAddLineLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(IncomingOrderAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def expense_type(self, value):
+        self.set_select2(IncomingOrderAddLineLocators.expense_type, value, "Вид затрат")
+
+    def inventory(self, value):
+        self.set_select2(IncomingOrderAddLineLocators.inventory, value, "Номенклатура")
+
+    def quantity(self, value):
+        self.set_text(IncomingOrderAddLineLocators.quantity, value, "Количество")
+
+    def amount(self, value):
+        self.set_text(IncomingOrderAddLineLocators.amount, value, "Сумма")
+
+    def amount_without_nds(self, value):
+        self.set_text(IncomingOrderAddLineLocators.amount_without_nds, value, "Сумма без НДС")
+
+    def nds_percent(self, value):
+        self.set_text(IncomingOrderAddLineLocators.nds_percent, value, "Ставка НДС")
+
+    def nds_amount(self, value):
+        self.set_text(IncomingOrderAddLineLocators.nds_amount, value, "Сумма НДС")
+
+    def department_unit(self, value):
+        self.set_select2(IncomingOrderAddLineLocators.department_unit, value, "Группа учета")
+
+    def recepient(self, value):
+        self.set_select2(IncomingOrderAddLineLocators.recepient, value, "Получатель (МОЛ)")
+
+    def comment(self, value):
+        self.set_text(IncomingOrderAddLineLocators.comment, value, "Комментарий")
+
+    def act(self, value):
+        self.set_select2(IncomingOrderAddLineLocators.act, value, "Мероприятие")
+
+    def cash_transaction_code(self, value):
+        self.set_select(IncomingOrderAddLineLocators.cash_transaction_code, value, "Кассовый символ")
+
+# Заявка на кассовый расход
 class ApplicationCashFlowPage(Browser):
+
+
     def documen_type(self, value):
         self.set_select2(ApplicationCashFlowLocators.documen_type, value, "Вид документа")
 
@@ -594,8 +701,12 @@ class ApplicationCashFlowPage(Browser):
     def foundation(self, value):
         self.set_select2(ApplicationCashFlowLocators.foundation, value, "Документ-основание", exactly=False)
 
-class DecodingOfTheApplicationPage(Browser):
+    def operation(self, value):
+        self.set_select2(ApplicationCashFlowLocators.operation, value, "Типовая операция", exactly=False)
 
+
+#Заявка на кассовый расход добавление строки
+class DecodingOfTheApplicationPage(Browser):
     def operation(self, value):
         self.set_select2(DecodingOfTheApplicationLocators.operation, value, "Типовая операция")
 
@@ -624,10 +735,14 @@ class DecodingOfTheApplicationPage(Browser):
     def comment(self, value):
         self.set_text(DecodingOfTheApplicationLocators.comment, value, "Примечание")
 
+    def draweeKbkType(self, value):
+        self.set_select(DecodingOfTheApplicationLocators.draweeKbkType, value,
+                         "Тип КБК плательщика")
+
 
 # Договор с поставщиком
 class ContractWithSupplierPage(Browser):
-    def documen_type(self, value):
+    def document_type(self, value):
         self.set_select2(ContractWithSupplierLocators.documen_type, value, "Вид документа")
 
     def number(self, value):
@@ -744,6 +859,58 @@ class CardIndexOSNMANPAPage(Browser):
 
     def group(self, value):
         self.set_select2(CardIndexOSNMANPALocators.group, value, "Группа ОС, НМА, НПА")
+
+
+# счет от поставщика
+class InvoiceFromTheSupplierPage(Browser):
+    def document_number(self, value):
+        self.set_text(InvoiceFromTheSupplierLocators.document_number, value, "Номер документа")
+
+    def document_date(self, value):
+        self.set_date(InvoiceFromTheSupplierLocators.document_date, value, "Дата")
+
+    def supplier(self, value):
+        self.set_select2(InvoiceFromTheSupplierLocators.supplier, value, "Постащик")
+
+    def supplier_account_detail(self, value):
+        self.set_select2(InvoiceFromTheSupplierLocators.supplier_account_detail, value, "Номер банковского счета", exactly=False)
+
+    def account_details(self, value):
+        self.set_select2(InvoiceFromTheSupplierLocators.account_details, value, "Заказчик Лицевой счет", exactly=False)
+
+    def department(self, value):
+        self.set_select2(InvoiceFromTheSupplierLocators.department, value, "Подразделение")
+
+    def note(self, value):
+        self.set_text(InvoiceFromTheSupplierLocators.note, value, "Примечание")
+
+
+# счет от поставщика добавление строки
+class InvoiceFromTheSupplierAddLinePage(Browser):
+    def add(self, value):
+        self.click(InvoiceFromTheSupplierAddLineLocators.add,  "add")
+
+    def add_new(self, value):
+        self.click(InvoiceFromTheSupplierAddLineLocators.add_new, "addNew")
+
+    def kbk(self, value):
+        self.set_select2(InvoiceFromTheSupplierAddLineLocators.kbk, value, "kbk", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(InvoiceFromTheSupplierAddLineLocators.kosgu, value, "kosgu", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(InvoiceFromTheSupplierAddLineLocators.cost_element, value, "costElement")
+
+    def comment(self, value):
+        self.set_text(InvoiceFromTheSupplierAddLineLocators.comment, value, "comment")
+
+    def amount(self, value):
+        self.set_text(InvoiceFromTheSupplierAddLineLocators.amount, value, "amount")
+
+    def vat_percent(self, value):
+        self.set_text(InvoiceFromTheSupplierAddLineLocators.vat_percent, value, "vatPercent")
+
 
     # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
 class TemplatesofthecardOSNMANPA(Browser):
