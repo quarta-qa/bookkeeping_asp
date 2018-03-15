@@ -153,8 +153,8 @@ class TestSuite:
         page.click_by_text("Сохранить")
         sleep(2)
         page.click_by_text("Закрыть")
-        
-    def test_creation_of_document_admission_NFA_and_attachment_4OC(self):
+
+    def test_creation_of_document_admission_nfa_and_attachment_4oc(self):
         # Создание поступление НФА и прикрепление созданных 4-ех ОС, 12-16 стр.
         # При добавлении новых строк "ОС,НМА,НПА" и выборе созданного ОС из справочника "Картотека, ОС, НМА, НПА"
         # присутствует ошибка отображения новых документов. Ошибка №234 в TFS.
@@ -231,7 +231,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def test_carrying_out_document_admission_NFA1(self):
+    def test_carrying_out_document_admission_nfa1(self):
         # Проведение документа Поступление НФА с 4-мя записями ОС, стр. 16
         page = Browser(self.driver, 5)
         page.table_select_row('ООО "КВАРТА ВК"', order=1)
@@ -242,7 +242,7 @@ class TestSuite:
         sleep(3)
         page.click_by_text('Закрыть')
 
-    def test_viewing_of_document_admission_NFA(self):
+    def test_viewing_of_document_admission_nfa(self):
         # Просмотр проводок по документу Поступление НФА с 4-мя записями ОС, стр. 16.
         
         page = Browser(self.driver, 5)
@@ -357,7 +357,7 @@ class TestSuite:
         page.click_by_text('Да')
         page.click_by_text('Закрыть')
         
-    def test_print_inventory_card_OKUD0504031(self):
+    def test_print_inventory_card_okud_0504031(self):
         # Печать инвентарной карточки учета ОКУД 504031, стр. 30
 
         page = Browser(self.driver)
@@ -379,7 +379,7 @@ class TestSuite:
         # sleep(2)
         # page.file.compare_files('Групповая инвентарная карточка НФА.xls')
 
-    def test_checking_the_mode_Mass_filling_of_OS_parameters(self):
+    def test_checking_the_mode_mass_filling_of_os_parameters(self):
         # Проверка режима «Массовое заполнение параметров ОС», стр. 31-32
         
         page = MenuPage(self.driver)
@@ -398,7 +398,7 @@ class TestSuite:
         page.click_by_text('Выполнить')
         page.click_by_text('Закрыть')
 
-    def test_creating_a_new_entry_in_the_directory_Objects_OZ(self):
+    def test_creating_a_new_entry_in_the_directory_objects_oz(self):
         # Создание новой записи в справочнике «Объекты ОЗ», стр. 31-33
 
         # Создание первой записи
@@ -439,7 +439,7 @@ class TestSuite:
     #     page.click_by_text("Добавить")
     #     page.click_by_text("Копию карточки")
 
-    def test_editing_created_entry_in_the_directory_Objects_OZ(self):
+    def test_editing_created_entry_in_the_directory_objects_oz(self):
         # Редактирование созданной записи в справочнике «Объекты ОЗ», стр.34
 
         page = Browser(self.driver)
@@ -456,7 +456,7 @@ class TestSuite:
         page.click_by_text('Закрыть')
         sleep(2)
 
-    def test_delete_created_entry_in_the_directory_Objects_OZ(self):
+    def test_delete_created_entry_in_the_directory_objects_oz(self):
         # Удаление созданной записи в справочнике «Объекты ОЗ», стр. 35
 
         page = Browser(self.driver)
@@ -469,7 +469,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         sleep(2)
 
-    def test_creating_an_entry_in_the_Additional_characteristics_of_MZ(self):
+    def test_creating_an_entry_in_the_additional_characteristics_of_mz(self):
         # Cоздание записи во вкладке «Дополнительные характеристики МЗ», стр. 35-36
 
         page = Browser(self.driver)
@@ -504,11 +504,11 @@ class TestSuite:
         sleep(1)
         page.click_by_text("Закрыть")
 
-    def test_creation_document_admission_NFA(self):
+    def test_creation_document_admission_nfa(self):
         # Создание документа «Поступление НФА», стр.38-40
-        # По сценарию по нажатию на кнопку "Нов." должно открываться мадальное окно ОС(оно должно быть над текущим окном),
-        # после его заполнения и сохранения одинаковые поля должны заполняться в Поступление НФА,
-        # но вместо этого перебрасывает в шапку документа без сохранения строки, ошибка в TFS 1714
+        # По сценарию по нажатию на кнопку "Нов." должно открываться модальное окно ОС
+        # (оно должно быть над текущим окном),после его заполнения и сохранения одинаковые поля должны заполняться
+        # в Поступление НФА, но вместо этого перебрасывает в шапку документа без сохранения строки, ошибка в TFS 1714
 
         page = MenuPage(self.driver)
         page.select_month("Февраль", "2018")
@@ -534,7 +534,6 @@ class TestSuite:
         page.click((By.XPATH, "//a[contains(.,'Новое')]"), "Новое")
         page.click_by_text("Сохранить", order=2)
         # При нажатие на кнопку "Сохранить - order=2" строка не сохраняется
-
 
         page.set_text_wl("tagNoFirstPart", "10134", "Первая часть инвентарного номера")
         page.set_text_wl("tagNoSecondPart", "4", "Вторая часть инвентарного номера")
@@ -664,7 +663,7 @@ class TestSuite:
     #                        ' реконструированных и модернизированных объектов основных средств.xls')
     #     sleep(2)
 
-    def test_editing_created_document_admission_NFA(self):
+    def test_editing_created_document_admission_nfa(self):
         # Редактирование созданной записи в документе «Поступление НФА», 48-49
         # Т.к. документ №1 от 01.02.2018 формируется не правильно, для тестирования был создан аналогичный документ
         # (заполненный вручную) от 01.01.2018. После исправления бага изменить дату!
@@ -686,7 +685,7 @@ class TestSuite:
         sleep(2)
         page.click_by_text("Закрыть")
 
-    def test_mass_parameter_replacement_in_the_document_lines_admission_NFA(self):
+    def test_mass_parameter_replacement_in_the_document_lines_admission_nfa(self):
         # Массовая замена параметров в строках документа «Поступление НФА», стр. 50-52
         # Т.к. документ №1 от 01.02.2018 формируется не правильно, для тестирования был создан аналогичный документ
         # (заполненный вручную) от 01.01.2018. После исправления бага изменить дату!
@@ -705,8 +704,7 @@ class TestSuite:
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
 
-
-    def test_carrying_of_the_amended_document_admission_NFA(self):
+    def test_carrying_of_the_amended_document_admission_nfa(self):
         # Проведение измененного документа «Поступление НФА»
         # Т.к. документ №1 от 01.02.2018 формируется не правильно, для тестирования был создан аналогичный документ
         # (заполненный вручную) от 01.01.2018. После исправления бага изменить дату!
@@ -721,7 +719,7 @@ class TestSuite:
         sleep(2)
         page.click_by_text('Закрыть')
 
-    def test_accrual_of_Amortization_on_the_OS_under_the_account(self):
+    def test_accrual_of_amortization_on_the_os_under_the_account(self):
         # Начисление Амортизации на ОС по счету, стр. 52-54
 
         page = MenuPage(self.driver, 5)

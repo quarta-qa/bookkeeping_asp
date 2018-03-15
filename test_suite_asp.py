@@ -852,4 +852,3 @@ class TestSuite:
         page.wait.text_appear('Аннулировано документов: 1')
         page.checker.check_message('Аннулировано документов: 1 Не аннулировано: 0')
         page.click_by_text("Закрыть")
-

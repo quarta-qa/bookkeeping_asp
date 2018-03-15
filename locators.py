@@ -115,8 +115,9 @@ class CashExpenseRequestLocators(object):
         recepient_subsidy_code = (By.XPATH, "//input[@id='recepientSubsidyCode']")
         act = (By.XPATH, "(//button[@title='Выбрать'])[23]")
 
-    class CashPullRequestLocators(object):
-        filter = (By.XPATH, "//input[@placeholder='Все поля']")
+
+class CashPullRequestLocators(object):
+    filter = (By.XPATH, "//input[@placeholder='Все поля']")
 
     class HoldingRequest(object):
         lddate_prov = (By.XPATH, "//input[@id='lddate_prov']")
