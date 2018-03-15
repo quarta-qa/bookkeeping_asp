@@ -908,22 +908,22 @@ class InvoiceFromTheSupplierAddLinePage(Browser):
         self.click(InvoiceFromTheSupplierAddLineLocators.add_new, "addNew")
 
     def kbk(self, value):
-        self.set_select2(InvoiceFromTheSupplierAddLineLocators.kbk, value, "kbk", exactly=False)
+        self.set_select2(InvoiceFromTheSupplierAddLineLocators.kbk, value, "КБК", exactly=False)
 
     def kosgu(self, value):
-        self.set_select2(InvoiceFromTheSupplierAddLineLocators.kosgu, value, "kosgu", exactly=False)
+        self.set_select2(InvoiceFromTheSupplierAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_element(self, value):
-        self.set_select2(InvoiceFromTheSupplierAddLineLocators.cost_element, value, "costElement")
+        self.set_select2(InvoiceFromTheSupplierAddLineLocators.cost_element, value, "Вид затрат")
 
     def comment(self, value):
-        self.set_text(InvoiceFromTheSupplierAddLineLocators.comment, value, "comment")
+        self.set_text(InvoiceFromTheSupplierAddLineLocators.comment, value, "Примечание")
 
     def amount(self, value):
-        self.set_text(InvoiceFromTheSupplierAddLineLocators.amount, value, "amount")
+        self.set_text(InvoiceFromTheSupplierAddLineLocators.amount, value, "Сумма к оплате")
 
     def vat_percent(self, value):
-        self.set_text(InvoiceFromTheSupplierAddLineLocators.vat_percent, value, "vatPercent")
+        self.set_text(InvoiceFromTheSupplierAddLineLocators.vat_percent, value, "Ставка НДС")
 
 
     # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
