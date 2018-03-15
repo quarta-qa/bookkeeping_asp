@@ -883,7 +883,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         # Помечаем документ
         page.table_select_row('01.03.2018')
-        page.click_by_text("Действия")
+        page.click_by_text("Действие")
         element = self.driver.find_element(By.XPATH, "//li[a='Создать документ по выбору']")
         page.move_to_element(element)
         page.click_by_text("Заявка на кассовый расход")
@@ -894,8 +894,9 @@ class TestSuite:
         # page.number("4")
         # page.date("02.03.2018")
         # page.limit_date("12.03.2018")
+        page = ApplicationCashFlowPage(self.driver)
         page.personal_account("УФК л/с 03951000710")
-        page.checker.check_text_select('counterparty', ' ГУП "МТРК')
+        page.checker.check_text_select('counterparty', 'ГУП "МТРК')
         page.checker.check_text_select('counterpartyAccountDetails', "30302810900000023400")
         page.number_ufk("123456789012345")
         page.operation('Оплата за приобретение ОС')
@@ -916,9 +917,26 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Реквизиты документа")
         page.click_by_text("Назначения платежа")
-        page.checker.check_text_input("paymentPurpose",
-                                      "(07104110000000000000 310 - 125000.00)(л/сч 03951000710)"
-                                      "Увеличение стоимости основных средств,в т.ч.НДС 19067.80")
+        page.checker.check_text_input("paymentPurpose","(07104110000000000000 225 - 250000.00)(л/сч 03951000710)текущий ремонт.НДС не обл.")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
+
+    def test_return_request(self):
+        page = ReturnRequestPage(self.driver)
+        page.document_number("15")
+        page.document_date("documentDate")
+        page.account_details("accountDetails")
+        page.recepient("recepient")
+        page.ofk_registration_number("073")
+        page.entry_date("entryDate")
+        page.operation("operation")
+        page.recepient_account_details("recepientAccountDetails")
+        page.kbk("kbk")
+        page.kosgu("kosgu")
+        page.kbk_type("kbkType")
+        page.cost_element("costElement")
+        page.outstanding_payment_document_amount("outstandingPaymentDocumentAmount")
+        page.nds_percent("ndsPercent")
+        page.nds_amount("ndsAmount")
+
 

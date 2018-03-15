@@ -115,7 +115,6 @@ class CashExpenseRequestLocators(object):
         recepient_subsidy_code = (By.XPATH, "//input[@id='recepientSubsidyCode']")
         act = (By.XPATH, "(//button[@title='Выбрать'])[23]")
 
-
 class CashPullRequestLocators(object):
     filter = (By.XPATH, "//input[@placeholder='Все поля']")
 
@@ -236,7 +235,6 @@ class carryingOutOfDocumentsLocators(object):
     lddate_prov = (By.XPATH, "//*[@name='lddate_prov']//input")
     operation_master = (By.XPATH, "//*[@name='OperationMaster']")
 
-
 class ContractWithSupplierLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']")
     number = (By.XPATH, "//*[@name='documentNumber']//input")
@@ -328,3 +326,20 @@ class InvoiceFromTheSupplierAddLineLocators(object):
     comment = (By.XPATH, "//div[@class='modal in']//*[@name='comment']//textarea")
     amount = (By.XPATH, "//amount-input[@name='amount']//input")
     vat_percent = (By.XPATH, "//nds-percent-input[@name='vatPercent']//input")
+
+class ReturnRequestLocators(object):
+    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
+    recepient = (By.XPATH, "//counterparty-classifier[@name='recepient']")
+    ofk_registration_number = (By.XPATH, "//text-input[@name='ofkRegistrationNumber']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
+    recepient_account_details = (By.XPATH, "//*[@name='recepientAccountDetails']")
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+    kbk_type = (By.XPATH, "//kbk-type-dropdown-input[@name='kbkType']")
+    cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
+    outstanding_payment_document_amount = (By.XPATH, "//*[@name='outstandingPaymentDocumentAmount']//input")
+    nds_percent = (By.XPATH, "//nds-percent-input[@name='ndsPercent']//input")
+    nds_amount = (By.XPATH, "//currency-input[@name='ndsAmount']//input")
