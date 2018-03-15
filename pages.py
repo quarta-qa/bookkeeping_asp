@@ -752,6 +752,54 @@ class DecodingOfTheApplicationPage(Browser):
         self.set_select(DecodingOfTheApplicationLocators.draweeKbkType, value, "Тип КБК плательщика")
 
 
+class ReturnRequestPage(Browser):
+    def document_number(self, value):
+        self.set_text(ReturnRequestLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(ReturnRequestLocators.document_date, value, "Дата")
+
+    def account_details(self, value):
+        self.set_select2(ReturnRequestLocators.account_details, value, "Лицевой счет")
+
+    def recepient(self, value):
+        self.set_select2(ReturnRequestLocators.recepient, value, "Наименование получателя")
+
+    def ofk_registration_number(self, value):
+        self.set_text(ReturnRequestLocators.ofk_registration_number, value, "Номер УФК")
+
+    def entry_date(self, value):
+        self.set_date(ReturnRequestLocators.entry_date, value, "Дата проводки")
+
+    def operation(self, value):
+        self.set_select2(ReturnRequestLocators.operation, value, "Типовая операция")
+
+    def recepient_account_details(self, value):
+        self.set_select2(ReturnRequestLocators.recepient_account_details, value, "Банковский счет")
+
+    def kbk(self, value):
+        self.set_select2(ReturnRequestLocators.kbk, value, "КБК")
+
+    def kosgu(self, value):
+        self.set_select2(ReturnRequestLocators.kosgu, value, "КОСГУ")
+
+    def kbk_type(self, value):
+        self.set_select2(ReturnRequestLocators.kbk_type, value, "Тип КБК")
+
+    def cost_element(self, value):
+        self.set_select2(ReturnRequestLocators.cost_element, value, "Вид затрат")
+
+    def outstanding_payment_document_amount(self, value):
+        self.set_text(ReturnRequestLocators.outstanding_payment_document_amount, value,
+                      "Сумма в рублях")
+
+    def nds_percent(self, value):
+        self.set_text(ReturnRequestLocators.nds_percent, value, "Ставка НДС")
+
+    def nds_amount(self, value):
+        self.set_text(ReturnRequestLocators.nds_amount, value, "ndsAmount")
+
+
 # Договор с поставщиком
 class ContractWithSupplierPage(Browser):
     def document_type(self, value):
