@@ -25,36 +25,37 @@ class TestSuite:
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учет")
 
-    def test_adding_entries_to_the_directory_of_fixed_assets(self):
+    def telst_adding_entries_to_the_directory_of_fixed_assets(self):
         # Добавление в справочник «Объекты ОС,НМА,НПА» 4 основных средства, стр. 8-10
 
         page = MenuPage(self.driver)
         page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Объекты ОС, НМА, НПА')
+        # page.click_by_text("Добавить - Папку - Транспорт") - на портале нет суб-кнопки, в сценарии есть
+        # page.click_by_text("Добавить - Папку - Машины и оборудование") - на портале нет суб-кнопки, в сценарии есть
+        # page.click_by_text("Добавить - Папку - Здания") - на портале нет суб-кнопки, в сценарии есть
+        # page.click_by_text("Добавить - Папку - Транспорт") - на портале нет суб-кнопки, в сценарии есть
+        # page.click_to_eagle("Сохранить")
 
-        # page.click_by_text("Добавить - Папку - Транспорт") - на портале нет суб-кнопки, в сценарии есть
-        # page.click_by_text("Добавить - Папку - Машины и оборудование") - на портале нет суб-кнопки, в сценарии есть
-        # page.click_by_text("Добавить - Папку - Машины и оборудование") - на портале нет суб-кнопки, в сценарии есть
-        # page.click_by_text("Добавить - Папку - Транспорт") - на портале нет суб-кнопки, в сценарии есть
-        page.click_by_text("Добавить")
-        
         # Создание ОС Жилое здание, Малая Никитская, д.2
 
         page = CardIndexOSNMANPAPage(self.driver)
+        page.click_by_text("Добавить")
         page.tag_no_first_part("10112")
         page.tag_no_second_part("1")
-        page.tag_no("1011200001")
+        page.checker.check_text("tagNo", "1011200001")
+        # page.tag_no("1011200001") - если не работает автозаполнение
         page.full_name("Жилое здание, Малая Никитская, д.2")
         page.property_designation("Административное здание")
-        page.start_up_date("16.02.2018")
+        page.issue_date("11.02.2018")
+        page.start_up_date("11.02.2018")
         page.unit_of_measure("Штука")
         sleep(1)
-
-        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется
+        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
         page.scroll_to_bottom()
         page.cost("1430000.00")
-        # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
+        # Нет чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока". Дописать после исправления.
         page.value_added_used("1200")
         page.amortization_group("10 ГРУППА")
         page.okof("Здания производственные административные")
@@ -68,17 +69,18 @@ class TestSuite:
         page.click_by_text("Добавить")
         page.tag_no_first_part("10134")
         page.tag_no_second_part("1")
-        page.tag_no("1013400001")
+        page.checker.check_text("tagNo", "1013400001")
+        # page.tag_no("1013400001") - если не работает автозаполнение
         page.full_name("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
-        page.start_up_date("16.02.2018")
+        page.issue_date("12.02.2018")
+        page.start_up_date("12.02.2018")
         page.serial_number("JKN87628764")
         page.unit_of_measure("Штука")
         sleep(1)
-
-        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется
+        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
         page.scroll_to_bottom()
         page.cost("36500.00")
-        # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
+        # Нет чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока". Дописать после исправления.
         page.value_added_used("36")
         page.okof("ЭВМ общего назначения")
         page.amortization_group(" 2 ГРУППА")
@@ -90,156 +92,173 @@ class TestSuite:
         # Создание ОС "Копировальный аппарат"
 
         page.click_by_text("Добавить")
-        page.set_text_wl("tagNoFirstPart", "10134", "Первая часть инвентарного номера")
-        page.set_text_wl("tagNoSecondPart", "2", "Вторая часть инвентарного номера")
-        page.set_text_wl("tagNo", "1013400002", ">>>")
-        page.set_text_wl("fullName", "Копировальный аппарат Xerox Phaser 8200", "Полное наименование")
-        page.set_date_wl("startUpDate", "16.02.2018", "Дата ввода в эксплуатацию")
-        page.set_text_wl("serialNumber", "GH57654898672FGD", "Серийный №")
-        page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
+        page.tag_no_first_part("10134")
+        page.tag_no_second_part("2")
+        page.checker.check_text("tagNo", "1013400002")
+        # page.tag_no("1013400002") - если не работает автозаполнение
+        page.full_name("Копировальный аппарат Xerox Phaser 8200")
+        page.issue_date("13.02.2018")
+        page.start_up_date("13.02.2018")
+        page.serial_number("GH57654898672FGD")
+        page.unit_of_measure("Штука")
         sleep(1)
-
-        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется
+        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
         page.scroll_to_bottom()
-        page.set_text_wl("cost", "18000.00", "Первоначальная стоимость")
-        # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
-        page.set_text_wl("valueAddedUsed", "120", "Срок полезного использования (месяцев)")
-        page.set_select2_wl("okof", "Оборудование фоторепродукционное,"
-                                    "копировальное и для обработки фотоматериалов", "ОКОФ")
-        page.set_select2_wl("amortizationGroup", " 5 ГРУППА", "Амортизационная группа")
+        page.cost("18000.00")
+        # Нет чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока". Дописать после исправления.
+        page.value_added_used("120")
+        page.okof("Оборудование фоторепродукционное,копировальное и для обработки фотоматериалов")
+        page.amortization_group(" 5 ГРУППА")
         page.click_by_text("Сохранить")
+        sleep(1)
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
-        sleep(1)
 
         # Создание ОС "Автомобиль"
 
         page.click_by_text("Добавить")
-        page.set_text_wl("tagNoFirstPart", "10135", "Первая часть инвентарного номера")
-        page.set_text_wl("tagNoSecondPart", "1", "Вторая часть инвентарного номера")
-        page.set_text_wl("tagNo", "1013500001", ">>>")
-        page.set_text_wl("fullName", "Автомобиль Volswagen passat 2.0 TFSI", "Полное наименование")
-        page.set_text_wl("propertyDesignation", "ООО Германика", "Поставщик")
-        page.set_date_wl("issueDate", "16.02.2018", "Дата выпуска")
-        page.set_date_wl("startUpDate", "16.02.2018", "Дата ввода в эксплуатацию")
-        page.set_text_wl("serialNumber", "BNV876876JH093S", "Серийный №")
-        page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
+        page.tag_no_first_part("10135")
+        page.tag_no_second_part("1")
+        page.checker.check_text("tagNo", "1013500001")
+        # page.tag_no("1013500001") - если не работает автозаполнение
+        page.full_name("Автомобиль Volswagen passat 2.0 TFSI")
+        page.supplier('ООО "АВТОС"')
+        page.issue_date("14.02.2018")
+        page.start_up_date("14.02.2018")
+        page.serial_number("BNV876876JH093S")
+        page.unit_of_measure("Штука")
         sleep(1)
-
-        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется
-        
+        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
         page.scroll_to_bottom()
-        page.set_text_wl("cost", "1256000.00", "Первоначальная стоимость")
-        # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
-        page.set_text_wl("valueAddedUsed", "60", "Срок полезного использования (месяцев)")
-        page.set_select2_wl("okof", "Автомобили легковые среднего класса "
-                                    "(срабочим объемом двигателя свыше 1,8 до 3,5 лвключительно)", "ОКОФ")
-        page.set_select2_wl("amortizationGroup", " 3 ГРУППА", "Амортизационная группа")
+        page.cost("1256000.00")
+        # Нет чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока".
+        page.value_added_used("60")
+        page.okof("Автомобили легковые среднего класса (срабочим объемом двигателя свыше 1,8 до 3,5 лвключительно)")
+        page.amortization_group(" 3 ГРУППА")
         page.click_by_text("Сохранить")
+        sleep(1)
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
-        sleep(1)
 
-    def test_creation_of_a_materially_responsible_person(self):
+    def telst_creation_of_a_materially_responsible_person(self):
         # Создание материально-ответственного лица, стр. 11-12
-        
         page = MenuPage(self.driver)
         page.references()
-        page.click_by_text('Материально ответственные лица')
-        page.click_by_text('Добавить')
-        page.set_select2_wl("employee", "Абдуллина З.Ш.", "Ссылка на сотрудника")
-        # Выпадающего поля  "Категория МОЛ" нет на портале, в сценарии оно есть
-        page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
+        page.click_by_text("Материально ответственные лица")
+        page.click_by_text("Добавить")
+        page = MateriallyResponsiblePersonPage(self.driver, 5)
+        page.employee("Ротко С.В.")
+        page.checker.check_text("name", "Ротко С.В.")
+        page.checker.check_text("fullName", "Ротко Сергей Васильевич")
+        # page.name("Абдуллина З.Ш.") - если не работает автозаполнение
+        # page.full_name("Абдуллина Зульфия Шайдулловна") - если не работает автозаполнение
+        # Текстового поля "Код" нет на портале. Дописать после исправления.
+        # Выпадающего поля  "Категория МОЛ" нет на портале. Дописать после исправления.
+        page.valid_till("01.01.2050")
         page.click_by_text("Сохранить")
-        sleep(2)
         page.click_by_text("Закрыть")
+        sleep(1)
 
     def test_creation_of_document_admission_nfa_and_attachment_4oc(self):
         # Создание поступление НФА и прикрепление созданных 4-ех ОС, 12-16 стр.
-        # При добавлении новых строк "ОС,НМА,НПА" и выборе созданного ОС из справочника "Картотека, ОС, НМА, НПА"
-        # присутствует ошибка отображения новых документов. Ошибка №234 в TFS.
+        # При заполнении поля "Инвентарный №" ссылочное поле "Наименование" автоматически не заполняется
+        #  Ошибка №234 в TFS.
 
         page = MenuPage(self.driver, 5)
         page.select_month("Февраль", "2018")
+        page.click_to_eagle()
         page.click_by_text('Поступление НФА')
-        # page.click_by_text("Добавить - Новый документ") на портале нет суб-кнопки, в сценарии есть
+        # page.click_by_text("Добавить - Новый документ") на портале нет суб-кнопки. Дописать после исправления.
         page.click_by_text("Добавить")
+        # ШАПКА ДОКУМЕНТА
+        page = ReceiptOfNonFinancialAssetsCapPage(self.driver, 5)
+        page.document_number("Пр.акт.")
+        page.document_kind("Начальные остатки")
+        page.document_date("01.02.2018")
+        page.entry_date("01.02.2018")
+        page.materially_responsible_person("Ротко С.В.")
+        page.sender_sender_type("Организация")
+        page.organization('ООО "КВАРТА ВК"')
+        page.comment("Начальные остатки ОС")
 
-        # ИНФОРМАЦИЯ О ДОКУМЕНТЕ
-        page.set_text_wl("documentNumber", "Нач.ост.", "Номер")
-        page.set_select2_wl("documentKind", "Приёмный акт", "Приёмный акт")
-        page.set_date_wl("documentDate", "01.02.2018", "Дата")
-        page.set_date_wl("entryDate", "01.02.2018", "Дата проводки")
-
-        # РЕКВИЗИТЫ ДОКУМЕНТА
-        page.set_select2_wl("materiallyResponsiblePerson", "Абдуллина З.Ш.", "МОЛ")
-        page.set_select_wl("senderSenderType", "Организация", "Вид отправителя")
-        page.set_select2_wl("organization", 'ООО "КВАРТА ВК"', "Наименование отправителя")
-        page.set_text_wl("comment", "Начальные остатки ОС", "Комментарий")
-
+        # СТРОКА ДОКУМЕНТА
         # СОЗДАТЬ СТРОКУ "ОС,НМА" - Жилое здание, Малая Никитская, д.2
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
-        page.set_select2_wl("operation", "Начальные остатки Здания", "Типовая операция")
-        page.set_text_wl("tagNo", "1011200001", "Инвентарный №")
-        page.set_text_wl("amount", "1 430 000.00", "Сумма по документу", order=2)
-        page.set_text_wl("amortization", "600 600.00", "Амортизация")
-        page.set_text_wl("comment", "начальные остатки", "Комментарий")
-        page.set_select2_wl("kbk", "(2016) - ЦА 242", "КБК", exactly=False)
+        page = ReceiptOfNonFinancialAssetsRowPage(self.driver, 5)
+        page.operation("Начальные остатки Здания")
+        page.tag_no("1011200001")
+        page.checker.check_text_input("tagNo", "Жилое здание, Малая Никитская, д.2")
+        page.amount("1 430 000.00")
+        page.checker.check_text("accountableAmount", "1 430 000.00")
+        page.amortization("600 600.00")
+        page.comment("Начальные остатки")
         page.scroll_modal_to_bottom()
-        page.set_select2_wl("kosgu", "310", "КОСГУ", exactly=False)
+        page.kbk("(2016) - ЦА 242")
+        page.kosgu("310")
         page.click_by_text("Сохранить", order=2)
 
         # СОЗДАТЬ СТРОКУ "ОС,НМА" - Ноутбук Toshiba
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
-        page.set_select2_wl("operation", "Начальные остатки Машины и оборудование", "Типовая операция")
-        page.set_text_wl("tagNo", "1013400001", "Инвентарный №")
-        page.set_text_wl("amount", "36 500.00", "Сумма по документу", order=2)
-        page.set_text_wl("amortization", "28 389.89", "Амортизация")
-        page.set_text_wl("comment", "начальные остатки", "Комментарий")
-        page.set_select2_wl("kbk", "(2016) - ЦА 242", "КБК", exactly=False)
+        page = ReceiptOfNonFinancialAssetsRowPage(self.driver, 5)
+        page.operation("Начальные остатки Машины и оборудование")
+        page.tag_no("1013400001")
+        page.checker.check_text_input("tagNo", "Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
+        page.amount("36 500.00")
+        page.checker.check_text("accountableAmount", "36 500.00")
+        page.amortization("28 389.89")
+        page.comment("Начальные остатки")
         page.scroll_modal_to_bottom()
-        page.set_select2_wl("kosgu", "310", "КОСГУ", exactly=False)
+        page.kbk("(2016) - ЦА 242")
+        page.kosgu("310")
         page.click_by_text("Сохранить", order=2)
 
         # СОЗДАТЬ СТРОКУ "ОС,НМА" - Копировальный аппарат
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
-        page.set_select2_wl("operation", "Начальные остатки Машины и оборудование", "Типовая операция")
-        page.set_text_wl("tagNo", "1013400002", "Инвентарный №")
-        page.set_text_wl("amount", "18 000.00", "Сумма по документу", order=2)
-        page.set_text_wl("amortization", "3 150.00", "Амортизация")
-        page.set_text_wl("comment", "начальные остатки", "Комментарий")
-        page.set_select2_wl("kbk", "(2016) - ЦА 242", "КБК", exactly=False)
+        page = ReceiptOfNonFinancialAssetsRowPage(self.driver, 5)
+        page.operation("Начальные остатки Машины и оборудование")
+        page.tag_no("1013400002")
+        page.checker.check_text_input("tagNo", "Копировальный аппарат Xerox Phaser 8200")
+        page.amount("18 000.00")
+        page.checker.check_text("accountableAmount", "18 000.00")
+        page.amortization("3 150.00")
+        page.comment("Начальные остатки")
         page.scroll_modal_to_bottom()
-        page.set_select2_wl("kosgu", "310", "КОСГУ", exactly=False)
+        page.kbk("(2016) - ЦА 242")
+        page.kosgu("310")
         page.click_by_text("Сохранить", order=2)
 
         # СОЗДАТЬ СТРОКУ "ОС,НМА" - Автомобиль
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
-        page.set_select2_wl("operation", "Начальные остатки Машины и оборудование", "Типовая операция")
-        page.set_text_wl("tagNo", "1013500001", "Инвентарный №")
-        page.set_text_wl("amount", "1 256 000.00", "Сумма по документу", order=2)
-        page.set_text_wl("amortization", "62 800.00", "Амортизация")
-        page.set_text_wl("comment", "начальные остатки", "Комментарий")
-        page.set_select2_wl("kbk", "(2016) - ЦА 242", "КБК", exactly=False)
+        page = ReceiptOfNonFinancialAssetsRowPage(self.driver, 5)
+        page.operation("Начальные остатки Машины и оборудование")
+        page.tag_no("1013400002")
+        page.checker.check_text_input("tagNo", "Автомобиль Volswagen passat 2.0 TFSI")
+        page.amount("1 256 000.00")
+        page.checker.check_text("accountableAmount", "1 256 000.00")
+        page.amortization("62 800.00")
+        page.comment("Начальные остатки")
         page.scroll_modal_to_bottom()
-        page.set_select2_wl("kosgu", "310", "КОСГУ", exactly=False)
+        page.kbk("(2016) - ЦА 242")
+        page.kosgu("310")
         page.click_by_text("Сохранить", order=2)
         page.click_by_text("Сохранить")
+        sleep(5)
         page.click_by_text("Закрыть")
 
-    def test_carrying_out_document_admission_nfa1(self):
+    def test_carrying_out_document_admission_nfa(self):
         # Проведение документа Поступление НФА с 4-мя записями ОС, стр. 16
+
         page = Browser(self.driver, 5)
-        page.table_select_row('ООО "КВАРТА ВК"', order=1)
+        page.table_select_row('ООО "КВАРТА ВК"')
         page.click_by_text('Действия')
         page.click_by_text('Провести')
+        page.checker.check_message("Проведено документов: 1 Не проведено: 0")
         page.set_date_wl("lddate_prov", "01.02.2018", "Дата проводки")
         page.click((By.XPATH, "//button[.='Провести']"), "Провести")
-        sleep(3)
         page.click_by_text('Закрыть')
 
     def test_viewing_of_document_admission_nfa(self):
@@ -249,8 +268,7 @@ class TestSuite:
         page.table_select_row('ООО "КВАРТА ВК"')
         page.click_by_text('Действия')
         page.click_by_text('Просмотр проводок')
-        sleep(3)
-        
+
     def test_add_another_entry_to_the_asset_catalog(self):
         # Добавление в справочник ОС еще одной записи и помещение ее в папку, стр. 16-19
         # По сценарию созданную запись нужно поместить в папку, но суб-кнопки "Добавить-Новую папку" на портале нет,

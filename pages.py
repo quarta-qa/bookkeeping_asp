@@ -153,7 +153,7 @@ class CashExpenseRequestPage(Browser):
         def document_date(self, value):
             self.set_date(CashExpenseRequestLocators.DocumentHeader.document_date, value, "Дата документа")
 
-        def document_kind(self,value):
+        def document_kind(self, value):
             self.set_type(CashExpenseRequestLocators.DocumentHeader.document_kind, value, "Вид документа")
 
         def ofk_number(self, value):
@@ -564,7 +564,7 @@ class ZKRPage(Browser):
 
 
 # Проведение документов
-class carryingOutOfDocumentsPage(Browser):
+class CarryingOutOfDocumentsPage(Browser):
 
     def lddate_prov(self, value):
         self.set_date(carryingOutOfDocumentsLocators.lddate_prov, value, "Дата проводки")
@@ -574,7 +574,7 @@ class carryingOutOfDocumentsPage(Browser):
 
 
 # Экспорт в УФК
-class exportUFKPage(Browser):
+class ExportUfkPage(Browser):
     def account_details(self, value):
         self.set_select2(exportUFKLocators.account_details, value, "Банк", exactly=False)
 
@@ -748,7 +748,7 @@ class DecodingOfTheApplicationPage(Browser):
     def comment(self, value):
         self.set_text(DecodingOfTheApplicationLocators.comment, value, "Примечание")
 
-    def draweeKbkType(self, value):
+    def drawee_kbk_type(self, value):
         self.set_select(DecodingOfTheApplicationLocators.draweeKbkType, value, "Тип КБК плательщика")
 
 
@@ -892,8 +892,14 @@ class CardIndexOSNMANPAPage(Browser):
     def full_name(self, value):
         self.set_text(CardIndexOSNMANPALocators.full_name, value, "Полное наименование")
 
+    def supplier(self, value):
+        self.set_text(CardIndexOSNMANPALocators.supplier, value, "Поставщик")
+
     def property_designation(self, value):
         self.set_text(CardIndexOSNMANPALocators.property_designation, value, "Назначение объекта")
+
+    def issue_date(self, value):
+        self.set_date(CardIndexOSNMANPALocators.issue_date, value, "Дата выпуска")
 
     def start_up_date(self, value):
         self.set_date(CardIndexOSNMANPALocators.start_up_date, value, "Дата ввода в эксплуатацию")
@@ -901,7 +907,7 @@ class CardIndexOSNMANPAPage(Browser):
     def unit_of_measure(self, value):
         self.set_select2(CardIndexOSNMANPALocators.unit_of_measure, value, "Единица измерения")
 
-    # Согласно сценарию на портале должно быть поле - Pull Down - "Папка"
+# Согласно сценарию на портале должно быть поле - Pull Down - "Папка"
 
     def cost(self, value):
         self.set_text(CardIndexOSNMANPALocators.cost, value, "Первоначальная стоимость")
@@ -922,8 +928,79 @@ class CardIndexOSNMANPAPage(Browser):
         self.set_select2(CardIndexOSNMANPALocators.group, value, "Группа ОС, НМА, НПА")
 
 
-# счет от поставщика
+# Справочники - Материально - ответственные лица
+class MateriallyResponsiblePersonPage(Browser):
+
+    def employee(self, value):
+        self.set_select2(MateriallyResponsiblePersonLocators.employee, value, "Ссылка на сотрудника")
+
+    def name(self, value):
+        self.set_text(MateriallyResponsiblePersonLocators.name, value, "Краткое наименование")
+
+    def full_name(self, value):
+        self.set_text(MateriallyResponsiblePersonLocators.full_name, value, "Полное наименование")
+
+    def valid_till(self, value):
+        self.set_date(MateriallyResponsiblePersonLocators.valid_till, value, "Дата актуальности")
+
+
+# Учет нефинансовых активов - Поступление НФА - шапка документа
+class ReceiptOfNonFinancialAssetsCapPage(Browser):
+
+    def document_number(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsCapLocators.document_number, value, "Номер")
+
+    def document_kind(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.document_kind, value, "Вид документа")
+
+    def document_date(self, value):
+        self.set_date(ReceiptOfNonFinancialAssetsCapLocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(ReceiptOfNonFinancialAssetsCapLocators.entry_date, value, "Дата проводки")
+
+    def materially_responsible_person(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.materially_responsible_person, value,
+                         "МОЛ")
+
+    def sender_sender_type(self, value):
+        self.set_select(ReceiptOfNonFinancialAssetsCapLocators.sender_sender_type, value, "Вид отправителя")
+
+    def organization(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.organization, value, "Наименование отправителя")
+
+    def comment(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsCapLocators.comment, value, "Комментарий")
+
+
+# Учет нефинансовых активов - Поступление НФА - строка документа
+class ReceiptOfNonFinancialAssetsRowPage(Browser):
+
+    def operation(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.operation, value, "Типовая операция")
+
+    def tag_no(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsRowLocators.tag_no, value, "Инвентарный №")
+
+    def amount(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsRowLocators.amount, value, "Сумма по документу")
+
+    def amortization(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsRowLocators.amortization, value, "Амортизация")
+
+    def comment(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsRowLocators.comment, value, "Комментарий")
+
+    def kbk(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.kosgu, value, "КОСГУ", exactly=False)
+
+
+# Cчет от Поставщика
 class InvoiceFromTheSupplierPage(Browser):
+
     def document_number(self, value):
         self.set_text(InvoiceFromTheSupplierLocators.document_number, value, "Номер документа")
 
@@ -947,7 +1024,7 @@ class InvoiceFromTheSupplierPage(Browser):
         self.set_text(InvoiceFromTheSupplierLocators.note, value, "Примечание")
 
 
-# счет от поставщика добавление строки
+# Cчет от поставщика - добавление строки
 class InvoiceFromTheSupplierAddLinePage(Browser):
     def add(self, value):
         self.click(InvoiceFromTheSupplierAddLineLocators.add,  "add")
@@ -974,23 +1051,10 @@ class InvoiceFromTheSupplierAddLinePage(Browser):
         self.set_text(InvoiceFromTheSupplierAddLineLocators.vat_percent, value, "Ставка НДС")
 
 
-    # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
-class TemplatesofthecardOSNMANPA(Browser):
-        print("Templates_of_the_card_OSNMANPA")
-
-    # Справочники - Материально - ответственные лица
-class Materially_responsible_person(Browser):
-        print("Materially_responsible_person")
-
-
-# Учет нефинансовых активов - Поступление НФА - шапка документа
-class Receipt_of_non_financial_assets(Browser):
-    print("Receipt_of_non_financial_assets")
-
-# Учет нефинансовых активов - Поступление НФА - строка документа
-class Receipt_of_non_financial_assets_line(Browser):
-    print("Receipt_of_non_financial_assets_line")
-
-# Массовое заполнение параметров ОС
-class Mass_filling_of_OS_parameters(Browser):
-    print("Mass_filling_of_OS_parameters")
+# # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
+# class TemplatesofthecardOSNMANPA(Browser):
+#         print("Templates_of_the_card_OSNMANPA")
+#
+# # Массовое заполнение параметров ОС
+# class Mass_filling_of_OS_parameters(Browser):
+#     print("Mass_filling_of_OS_parameters")

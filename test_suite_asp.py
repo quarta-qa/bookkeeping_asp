@@ -108,7 +108,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_application_cash_flow(self):
+    def telst_application_cash_flow(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page = ApplicationCashFlowPage(self.driver)
@@ -233,7 +233,7 @@ class TestSuite:
         page.table_select_row('ФГУ Автобаза №2')
         page.click_by_text("Действия")
         page.click_by_text("Провести помеченные")
-        page = carryingOutOfDocumentsPage(self.driver)
+        page = CarryingOutOfDocumentsPage(self.driver)
         page.lddate_prov("10.01.2018")
         # page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
@@ -398,7 +398,7 @@ class TestSuite:
         page.table_select_row('Акционерное общество "Ай-Теко"')
         page.click_by_text("Действия")
         page.click_by_text("Провести помеченные")
-        page = carryingOutOfDocumentsPage(self.driver)
+        page = CarryingOutOfDocumentsPage(self.driver)
         page.lddate_prov("31.01.2018")
         # page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
@@ -548,7 +548,7 @@ class TestSuite:
         page.table_select_row('Снято с расчетного счета')
         page.click_by_text("Действия")
         page.click_by_text("Провести помеченные")
-        page = carryingOutOfDocumentsPage(self.driver)
+        page = CarryingOutOfDocumentsPage(self.driver)
         page.lddate_prov("22.01.2018")
         # page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
@@ -665,7 +665,7 @@ class TestSuite:
         page.table_select_row('Оприходавано в кассу')
         page.click_by_text("Действия")
         page.click_by_text("Провести помеченные")
-        page = carryingOutOfDocumentsPage(self.driver)
+        page = CarryingOutOfDocumentsPage(self.driver)
         page.lddate_prov("25.01.2018")
         # page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
@@ -746,7 +746,7 @@ class TestSuite:
         page.click_by_text("Новую строку")
         page = DecodingOfTheApplicationPage(self.driver)
         page.kbk("0411 0000000000 000")
-        page.draweeKbkType('Классификация расходов бюджетов (КРБ)')
+        page.drawee_kbk_type('Классификация расходов бюджетов (КРБ)')
         page.operation("(226) Оплата за прочие услуги")
         page.kosgu("226")
         sleep(5)
@@ -812,7 +812,7 @@ class TestSuite:
         page.click_by_text("Открыть")
         page = DecodingOfTheApplicationPage(self.driver)
         page.kbk("0411 0000000000 000")
-        page.draweeKbkType('Классификация расходов бюджетов (КРБ)')
+        page.drawee_kbk_type('Классификация расходов бюджетов (КРБ)')
         page.operation("(226) Оплата за прочие услуги")
         page.kosgu("226")
         sleep(5)
@@ -840,12 +840,12 @@ class TestSuite:
         page.click_by_text("Действия")
         page.click_by_text("Экспорт в УФК")
         page.wait.text_appear('Экспорт данных в СУФД ФК')
-        page = exportUFKPage(self.driver)
+        page = ExportUfkPage(self.driver)
         page.account_details("ПАО Банк ВТБ")
         page.file_number("1")
         page.click_by_text("Сохранить")
         sleep(5)
-        File.checking_file_export_UFK()
+        File.checking_file_export_ufk()
         page.click_by_text("Действия")
         page.click_by_text("Аннулировать заявку")
         page.wait.text_appear('Результат аннулирования документов')
@@ -917,7 +917,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Реквизиты документа")
         page.click_by_text("Назначения платежа")
-        page.checker.check_text_input("paymentPurpose","(07104110000000000000 225 - 250000.00)(л/сч 03951000710)текущий ремонт.НДС не обл.")
+        page.checker.check_text_input("paymentPurpose", "(07104110000000000000 225 - 250000.00)(л/сч 03951000710)текущий ремонт.НДС не обл.")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 

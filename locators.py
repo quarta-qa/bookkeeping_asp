@@ -269,7 +269,9 @@ class CardIndexOSNMANPALocators(object):
     tag_no_second_part = (By.XPATH, "//*[@name='tagNoSecondPart']//input")
     tag_no = (By.XPATH, "//*[@name='tagNo']//input")
     full_name = (By.XPATH, "//*[@name='fullName']//input")
+    supplier = (By.XPATH, "//*[@name='supplier']//input")
     property_designation = (By.XPATH, "//*[@name='propertyDesignation']//input")
+    issue_date = (By.XPATH, "//*[@name='issueDate']//input")
     start_up_date = (By.XPATH, "//*[@name='startUpDate']//input")
     serialNumber = (By.XPATH, "//*[@name='serialNumber']//input")
     group = (By.XPATH, "//li[contains(.,'С/блоки')]")
@@ -280,6 +282,34 @@ class CardIndexOSNMANPALocators(object):
     amortization_group = (By.XPATH, "//*[@name='amortizationGroup']")
     okof = (By.XPATH, "//*[@name='okof']")
 
+
+class MateriallyResponsiblePersonLocators(object):
+    employee = (By.XPATH, "//*[@name='employee']")
+    name = (By.XPATH, "//*[@name='name']//input")
+    full_name = (By.XPATH, "//*[@name='fullName']//input")
+    valid_till = (By.XPATH, "//*[@name='validTill']//input")
+
+
+class ReceiptOfNonFinancialAssetsCapLocators(object):
+    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    materially_responsible_person = \
+        (By.XPATH, "//materially-responsible-person-classifier[@name='materiallyResponsiblePerson']")
+    sender_sender_type = (By.XPATH, "//income-sender-type-enum[@name='senderSenderType']//select")
+    organization = (By.XPATH, "//counterparty-classifier[@name='organization']")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+
+
+class ReceiptOfNonFinancialAssetsRowLocators(object):
+    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
+    tag_no = (By.XPATH, "//number-input[@name='tagNo']//input")
+    amount = (By.XPATH, "//amount-input[@name='amount']//input")
+    amortization = (By.XPATH, "//currency-input[@name='amortization']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
 
 class ApplicationCashFlowLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']")

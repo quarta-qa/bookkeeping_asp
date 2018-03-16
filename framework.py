@@ -99,7 +99,7 @@ class Browser(object):
         self.wait.loading()
         webdriver.ActionChains(self.driver).move_to_element(element).perform()
 
-    # Функция скролирования вниз страницы
+    # Функция скролирования вверх страницы
     def scroll_to_top(self):
 
         self.wait.loading()
@@ -533,7 +533,7 @@ class Checker(object):
             print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
             return False
 
-            # Проверка текста без локатора в select(поле выбора из справочника)
+    # Проверка текста без локатора в select(поле выбора из справочника)
 
     def check_text_select(self, name, value, order=1):
         element = self.wait.element_appear(
@@ -751,7 +751,7 @@ class File(object):
         return hash_md5.hexdigest()
 
     @staticmethod
-    def checking_file_export_UFK():
+    def checking_file_export_ufk():
         test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         flag = True
         for file in os.listdir(test_default):
