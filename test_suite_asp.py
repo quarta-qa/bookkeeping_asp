@@ -1029,7 +1029,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         page.table_select_row('01.04.2018')
         page.click_by_text("Печать")
-        sleep(10)
+        sleep(8)
         File.compare_files('Заявка на получение наличных денег.xls')
 
 
