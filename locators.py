@@ -19,7 +19,8 @@ class MenuLocators(object):
     inner_calculation = (By.XPATH, "(//a[contains(.,'Расчеты')])[2]")
     statement_processing = (By.XPATH, "//a[contains(.,'Обработка выписки из л/с')]")
     unloading_informationSUFD = (
-        By.XPATH, "//a[contains(.,'Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)')]")
+        By.XPATH, "//a[contains(.,'Выгрузка Сведений о бюджетном обязательстве (загрузка)"
+                  " в формате СУФД ФК (или Электронного бюджета)')]")
     unloading_information = (
         By.XPATH, "//a[contains(.,'Выгрузка Сведений о денежном обязательстве в Электронный бюджет')]")
     references = (By.XPATH, "//a[contains(.,'Справочники')]")
@@ -91,7 +92,7 @@ class CashExpenseRequestLocators(object):
     class Transcript(object):
         activity_kind = (By.XPATH, "//select[@name='activityKind']")
         kbk = (By.XPATH, "(//button[@title='Выбрать'])[12]")
-        drawee_kbk_type = (By.XPATH, "//select[@name='draweeKbkType']")
+        drawee_kbk_type = (By.XPATH, "//select[@name='drawee_kbk_type']")
         kosgu = (By.XPATH, "(//button[@title='Выбрать'])[13]")
         cost_element = (By.XPATH, "(//button[@title='Выбрать'])[14]")
         recepient_kbk = (By.XPATH, "(//button[@title='Выбрать'])[15]")
@@ -114,6 +115,7 @@ class CashExpenseRequestLocators(object):
         drawee_subsidy_code = (By.XPATH, "//input[@id='draweeSubsidyCode']")
         recepient_subsidy_code = (By.XPATH, "//input[@id='recepientSubsidyCode']")
         act = (By.XPATH, "(//button[@title='Выбрать'])[23]")
+
 
 class CashPullRequestLocators(object):
     filter = (By.XPATH, "//input[@placeholder='Все поля']")
@@ -224,16 +226,18 @@ class IncomingOrderAddLineLocators(object):
     act = (By.XPATH, "//expenditure-goal-act-classifier[@name='act']")
     cash_transaction_code = (By.XPATH, "//cash-transaction-code-dropdown-input[@name='CashTransactionCode']//select")
 
+
 # Локаторы для экспорта в УФК
-class exportUFKLocators(object):
+class ExportUFKLocators(object):
     account_details = (By.XPATH, "//*[@name='accountDetails']")
     file_number = (By.XPATH, "//*[@name='fileNumber']//input")
 
 
 # Локаторы для проведения документа
-class carryingOutOfDocumentsLocators(object):
+class CarryingOutOfDocumentsLocators(object):
     lddate_prov = (By.XPATH, "//*[@name='lddate_prov']//input")
     operation_master = (By.XPATH, "//*[@name='OperationMaster']")
+
 
 class ContractWithSupplierLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']")
@@ -334,7 +338,7 @@ class DecodingOfTheApplicationLocators(object):
     document_foundation_counterparty = (By.XPATH, "//*[@name='documentFoundationCounterparty']")
     foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='foundation']")
     comment = (By.XPATH, "//*[@name='comment']//textarea")
-    draweeKbkType = (By.XPATH, "//*[@name='draweeKbkType']//select")
+    draweeKbkType = (By.XPATH, "//*[@name='drawee_kbk_type']//select")
 
 
 class InvoiceFromTheSupplierLocators(object):
@@ -357,6 +361,8 @@ class InvoiceFromTheSupplierAddLineLocators(object):
     amount = (By.XPATH, "//amount-input[@name='amount']//input")
     vat_percent = (By.XPATH, "//nds-percent-input[@name='vatPercent']//input")
 
+
+# Заявка на возврат
 class ReturnRequestLocators(object):
     document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
     document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
@@ -373,3 +379,39 @@ class ReturnRequestLocators(object):
     outstanding_payment_document_amount = (By.XPATH, "//*[@name='outstandingPaymentDocumentAmount']//input")
     nds_percent = (By.XPATH, "//nds-percent-input[@name='ndsPercent']//input")
     nds_amount = (By.XPATH, "//currency-input[@name='ndsAmount']//input")
+    chief = (By.XPATH, "//*[@name='chief']")
+    chief_accountant = (By.XPATH, "//*[@name='chiefAccountant']")
+
+
+# Заявка на получение наличных денег
+class ApplicationForCashWithdrawalLocators(object):
+    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    deadline = (By.XPATH, "//date-input[@name='deadline']//input")
+    account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
+    tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
+    operation_master = (By.XPATH, "//operation-master-hierarchy-classifier[@name='OperationMaster']")
+    trustee = (By.XPATH, "//employee-classifier[@name='Trustee']")
+    trustee_position_dative_case = (By.XPATH, "//*[@name='trusteePositionDativeCase']//input")
+    trustee_name_dative_case = (By.XPATH, "//text-input[@name='trusteeNameDativeCase']//input")
+    trustee_position = (By.XPATH, "//position-classifier[@name='TrusteePosition']")
+    chief = (By.XPATH, "//signatory-classifier[@name='Chief']")
+    accountant_general = (By.XPATH, "//*[@name='AccountantGeneral']")
+    foundation = (By.XPATH, "//text-area-input[@name='foundation']//textarea")
+    check_series = (By.XPATH, "//text-input[@name='checkSeries']//input")
+    check_number = (By.XPATH, "//number-input[@name='checkNumber']//input")
+    check_date = (By.XPATH, "//date-input[@name='checkDate']//input")
+    check_valid_till = (By.XPATH, "//date-input[@name='checkValidTill']//input")
+
+
+# Заявка на получение наличных денег добавление строк
+class ApplicationForCashWithdrawalAddLineLocators(object):
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
+    cash_transaction_code = (By.XPATH, "//*[@name='CashTransactionCode']//select")
+    funds_source = (By.XPATH, "//*[@name='fundsSource']//select")
+    amount = (By.XPATH, "//div[@class='modal-content']//*[@name='amount']//input")
+    payment_purpose = (By.XPATH, "//text-area-input[@name='paymentPurpose']//textarea")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
