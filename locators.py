@@ -91,7 +91,7 @@ class CashExpenseRequestLocators(object):
     class Transcript(object):
         activity_kind = (By.XPATH, "//select[@name='activityKind']")
         kbk = (By.XPATH, "(//button[@title='Выбрать'])[12]")
-        drawee_kbk_type = (By.XPATH, "//select[@name='draweeKbkType']")
+        drawee_kbk_type = (By.XPATH, "//select[@name='drawee_kbk_type']")
         kosgu = (By.XPATH, "(//button[@title='Выбрать'])[13]")
         cost_element = (By.XPATH, "(//button[@title='Выбрать'])[14]")
         recepient_kbk = (By.XPATH, "(//button[@title='Выбрать'])[15]")
@@ -304,7 +304,7 @@ class DecodingOfTheApplicationLocators(object):
     document_foundation_counterparty = (By.XPATH, "//*[@name='documentFoundationCounterparty']")
     foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='foundation']")
     comment = (By.XPATH, "//*[@name='comment']//textarea")
-    draweeKbkType = (By.XPATH, "//*[@name='draweeKbkType']//select")
+    draweeKbkType = (By.XPATH, "//*[@name='drawee_kbk_type']//select")
 
 
 class InvoiceFromTheSupplierLocators(object):
@@ -327,6 +327,8 @@ class InvoiceFromTheSupplierAddLineLocators(object):
     amount = (By.XPATH, "//amount-input[@name='amount']//input")
     vat_percent = (By.XPATH, "//nds-percent-input[@name='vatPercent']//input")
 
+
+# Заявка на возврат
 class ReturnRequestLocators(object):
     document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
     document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
@@ -343,3 +345,27 @@ class ReturnRequestLocators(object):
     outstanding_payment_document_amount = (By.XPATH, "//*[@name='outstandingPaymentDocumentAmount']//input")
     nds_percent = (By.XPATH, "//nds-percent-input[@name='ndsPercent']//input")
     nds_amount = (By.XPATH, "//currency-input[@name='ndsAmount']//input")
+    chief = (By.XPATH, "//*[@name='chief']")
+    chief_accountant = (By.XPATH, "//*[@name='chiefAccountant']")
+
+
+# Заявка на получение наличных денег
+class ApplicationForCashWithdrawalLocators(object):
+    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    deadline = (By.XPATH, "//date-input[@name='deadline']//input")
+    account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
+    tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
+    operation_master = (By.XPATH, "//operation-master-hierarchy-classifier[@name='OperationMaster']")
+    trustee = (By.XPATH, "//employee-classifier[@name='Trustee']")
+    trusteePositionDativeCase=(By.XPATH, "//*[@name='trustee_position_dative_case']//input")
+    trustee_name_dative_case = (By.XPATH, "//text-input[@name='trusteeNameDativeCase']//input")
+    trustee_position = (By.XPATH, "//position-classifier[@name='TrusteePosition']")
+    chief = (By.XPATH, "//signatory-classifier[@name='Chief']")
+    accountant_general = (By.XPATH, "//*[@name='AccountantGeneral']")
+    foundation = (By.XPATH, "//text-area-input[@name='foundation']//textarea")
+    check_series = (By.XPATH, "//text-input[@name='checkSeries']//input")
+    check_number = (By.XPATH, "//number-input[@name='checkNumber']//input")
+    check_date = (By.XPATH, "//date-input[@name='checkDate']//input")
+    check_valid_till = (By.XPATH, "//date-input[@name='checkValidTill']//input")

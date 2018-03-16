@@ -153,7 +153,7 @@ class CashExpenseRequestPage(Browser):
         def document_date(self, value):
             self.set_date(CashExpenseRequestLocators.DocumentHeader.document_date, value, "Дата документа")
 
-        def document_kind(self,value):
+        def document_kind(self, value):
             self.set_type(CashExpenseRequestLocators.DocumentHeader.document_kind, value, "Вид документа")
 
         def ofk_number(self, value):
@@ -558,14 +558,12 @@ class ZKRPage(Browser):
     def bid(self):
         return self.Bid(self.driver)
 
-
     class Bid(Browser):
         pass
 
 
 # Проведение документов
-class carryingOutOfDocumentsPage(Browser):
-
+class CarryingOutOfDocumentsPage(Browser):
     def lddate_prov(self, value):
         self.set_date(carryingOutOfDocumentsLocators.lddate_prov, value, "Дата проводки")
 
@@ -574,7 +572,7 @@ class carryingOutOfDocumentsPage(Browser):
 
 
 # Экспорт в УФК
-class exportUFKPage(Browser):
+class ExportUFKPage(Browser):
     def account_details(self, value):
         self.set_select2(exportUFKLocators.account_details, value, "Банк", exactly=False)
 
@@ -748,10 +746,11 @@ class DecodingOfTheApplicationPage(Browser):
     def comment(self, value):
         self.set_text(DecodingOfTheApplicationLocators.comment, value, "Примечание")
 
-    def draweeKbkType(self, value):
+    def drawee_kbk_type(self, value):
         self.set_select(DecodingOfTheApplicationLocators.draweeKbkType, value, "Тип КБК плательщика")
 
 
+#  Заявка на возврат
 class ReturnRequestPage(Browser):
     def document_number(self, value):
         self.set_text(ReturnRequestLocators.document_number, value, "Номер")
@@ -760,7 +759,7 @@ class ReturnRequestPage(Browser):
         self.set_date(ReturnRequestLocators.document_date, value, "Дата")
 
     def account_details(self, value):
-        self.set_select2(ReturnRequestLocators.account_details, value, "Лицевой счет")
+        self.set_select2(ReturnRequestLocators.account_details, value, "Лицевой счет", exactly=False)
 
     def recepient(self, value):
         self.set_select2(ReturnRequestLocators.recepient, value, "Наименование получателя")
@@ -775,13 +774,13 @@ class ReturnRequestPage(Browser):
         self.set_select2(ReturnRequestLocators.operation, value, "Типовая операция")
 
     def recepient_account_details(self, value):
-        self.set_select2(ReturnRequestLocators.recepient_account_details, value, "Банковский счет")
+        self.set_select2(ReturnRequestLocators.recepient_account_details, value, "Банковский счет", exactly=False)
 
     def kbk(self, value):
-        self.set_select2(ReturnRequestLocators.kbk, value, "КБК")
+        self.set_select2(ReturnRequestLocators.kbk, value, "КБК", exactly=False)
 
     def kosgu(self, value):
-        self.set_select2(ReturnRequestLocators.kosgu, value, "КОСГУ")
+        self.set_select2(ReturnRequestLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def kbk_type(self, value):
         self.set_select2(ReturnRequestLocators.kbk_type, value, "Тип КБК")
@@ -798,6 +797,73 @@ class ReturnRequestPage(Browser):
 
     def nds_amount(self, value):
         self.set_text(ReturnRequestLocators.nds_amount, value, "ndsAmount")
+
+    def chief(self, value):
+        self.set_select2(ReturnRequestLocators.chief, value, "Руководитель (уполномоченное лицо)", exactly=False)
+
+    def chief_accountant(self, value):
+        self.set_select2(
+            ReturnRequestLocators.chief_accountant, value, "Главный бухгалтер (уполномоченное лицо)", exactly=False)
+
+
+# Заявка на получение наличных денег
+class ApplicationForCashWithdrawalPage(Browser):
+    def document_number(self, value):
+        self.set_text(ApplicationForCashWithdrawalLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(ApplicationForCashWithdrawalLocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(ApplicationForCashWithdrawalLocators.entry_date, value, "Дата проводки")
+
+    def deadline(self, value):
+        self.set_date(ApplicationForCashWithdrawalLocators.deadline, value, "Предельная дата исполнения")
+
+    def account_details(self, value):
+        self.set_select2(ApplicationForCashWithdrawalLocators.account_details, value, "Лицевой счет", exactly=False)
+
+    def tracking_number(self, value):
+        self.set_text(ApplicationForCashWithdrawalLocators.tracking_number, value, "Учетный номер обязательства")
+
+    def operation_master(self, value):
+        self.set_select2(
+            ApplicationForCashWithdrawalLocators.operation_master, value, "Типовая операция", exactly=False)
+
+    def trustee(self, value):
+        self.set_select2(ApplicationForCashWithdrawalLocators.trustee, value, "Доверенное лицо")
+
+    def trustee_name_dative_case(self, value):
+        self.set_text(ApplicationForCashWithdrawalLocators.trustee_name_dative_case, value, "ФИО в дательном падеже")
+
+    def trustee_position(self, value):
+        self.set_select2(ApplicationForCashWithdrawalLocators.trustee_position, value, "Должность")
+
+    def trustee_position_dative_case(self, value):
+        self.set_select2(
+            ApplicationForCashWithdrawalLocators.trusteePositionDativeCase, value, "Должность в дательном падеже")
+
+    def chief(self, value):
+        self.set_select2(ApplicationForCashWithdrawalLocators.chief, value, "Руководитель", exactly=False)
+
+    def accountant_general(self, value):
+        self.set_select2(
+            ApplicationForCashWithdrawalLocators.accountant_general, value, "Главный бухгалтер", exactly=False)
+
+    def foundation(self, value):
+        self.set_text(ApplicationForCashWithdrawalLocators.foundation, value, "Основание")
+
+    def check_series(self, value):
+        self.set_text(ApplicationForCashWithdrawalLocators.check_series, value, "Серия чека")
+
+    def check_number(self, value):
+        self.set_text(ApplicationForCashWithdrawalLocators.check_number, value, "Номер чека")
+
+    def check_date(self, value):
+        self.set_date(ApplicationForCashWithdrawalLocators.check_date, value, "Дата чека")
+
+    def check_valid_till(self, value):
+        self.set_date(ApplicationForCashWithdrawalLocators.check_valid_till, value, "Срок действия чека")
 
 
 # Договор с поставщиком
@@ -949,10 +1015,10 @@ class InvoiceFromTheSupplierPage(Browser):
 
 # счет от поставщика добавление строки
 class InvoiceFromTheSupplierAddLinePage(Browser):
-    def add(self, value):
+    def add(self):
         self.click(InvoiceFromTheSupplierAddLineLocators.add,  "add")
 
-    def add_new(self, value):
+    def add_new(self):
         self.click(InvoiceFromTheSupplierAddLineLocators.add_new, "addNew")
 
     def kbk(self, value):
@@ -974,23 +1040,26 @@ class InvoiceFromTheSupplierAddLinePage(Browser):
         self.set_text(InvoiceFromTheSupplierAddLineLocators.vat_percent, value, "Ставка НДС")
 
 
-    # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
+# Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
 class TemplatesofthecardOSNMANPA(Browser):
         print("Templates_of_the_card_OSNMANPA")
 
-    # Справочники - Материально - ответственные лица
-class Materially_responsible_person(Browser):
+
+# Справочники - Материально - ответственные лица
+class MateriallyResponsiblePerson(Browser):
         print("Materially_responsible_person")
 
 
 # Учет нефинансовых активов - Поступление НФА - шапка документа
-class Receipt_of_non_financial_assets(Browser):
+class ReceiptOfNonFinancialAssets(Browser):
     print("Receipt_of_non_financial_assets")
 
+
 # Учет нефинансовых активов - Поступление НФА - строка документа
-class Receipt_of_non_financial_assets_line(Browser):
+class ReceiptOfNonFinancialAssetsLine(Browser):
     print("Receipt_of_non_financial_assets_line")
 
+
 # Массовое заполнение параметров ОС
-class Mass_filling_of_OS_parameters(Browser):
+class MassFillingOfOSParameters(Browser):
     print("Mass_filling_of_OS_parameters")

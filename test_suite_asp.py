@@ -233,7 +233,7 @@ class TestSuite:
         page.table_select_row('ФГУ Автобаза №2')
         page.click_by_text("Действия")
         page.click_by_text("Провести помеченные")
-        page = carryingOutOfDocumentsPage(self.driver)
+        page = CarryingOutOfDocumentsPage(self.driver)
         page.lddate_prov("10.01.2018")
         # page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
@@ -398,7 +398,7 @@ class TestSuite:
         page.table_select_row('Акционерное общество "Ай-Теко"')
         page.click_by_text("Действия")
         page.click_by_text("Провести помеченные")
-        page = carryingOutOfDocumentsPage(self.driver)
+        page = CarryingOutOfDocumentsPage(self.driver)
         page.lddate_prov("31.01.2018")
         # page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
@@ -548,11 +548,12 @@ class TestSuite:
         page.table_select_row('Снято с расчетного счета')
         page.click_by_text("Действия")
         page.click_by_text("Провести помеченные")
-        page = carryingOutOfDocumentsPage(self.driver)
+        page = CarryingOutOfDocumentsPage(self.driver)
         page.lddate_prov("22.01.2018")
         # page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
         page.wait.text_appear('Результат проведения документов')
+        page.checker.check_message("Проведено")
         page.click_by_text("Закрыть")
         page.table_select_row('Снято с расчетного счета')
         page.click_by_text("Действия")
@@ -665,7 +666,7 @@ class TestSuite:
         page.table_select_row('Оприходавано в кассу')
         page.click_by_text("Действия")
         page.click_by_text("Провести помеченные")
-        page = carryingOutOfDocumentsPage(self.driver)
+        page = CarryingOutOfDocumentsPage(self.driver)
         page.lddate_prov("25.01.2018")
         # page.operation_master("") указываем если требуется проводку
         page.click_by_text("Провести", order=3)
@@ -746,7 +747,7 @@ class TestSuite:
         page.click_by_text("Новую строку")
         page = DecodingOfTheApplicationPage(self.driver)
         page.kbk("0411 0000000000 000")
-        page.draweeKbkType('Классификация расходов бюджетов (КРБ)')
+        page.drawee_kbk_type('Классификация расходов бюджетов (КРБ)')
         page.operation("(226) Оплата за прочие услуги")
         page.kosgu("226")
         sleep(5)
@@ -812,7 +813,7 @@ class TestSuite:
         page.click_by_text("Открыть")
         page = DecodingOfTheApplicationPage(self.driver)
         page.kbk("0411 0000000000 000")
-        page.draweeKbkType('Классификация расходов бюджетов (КРБ)')
+        page.drawee_kbk_type('Классификация расходов бюджетов (КРБ)')
         page.operation("(226) Оплата за прочие услуги")
         page.kosgu("226")
         sleep(5)
@@ -840,7 +841,7 @@ class TestSuite:
         page.click_by_text("Действия")
         page.click_by_text("Экспорт в УФК")
         page.wait.text_appear('Экспорт данных в СУФД ФК')
-        page = exportUFKPage(self.driver)
+        page = ExportUFKPage(self.driver)
         page.account_details("ПАО Банк ВТБ")
         page.file_number("1")
         page.click_by_text("Сохранить")
@@ -853,7 +854,7 @@ class TestSuite:
         page.checker.check_message('Аннулировано документов: 1 Не аннулировано: 0')
         page.click_by_text("Закрыть")
 
-    def test_invoice_from_the_supplier_three(self):
+    def te1st_invoice_from_the_supplier_three(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Март", "2018")
@@ -888,7 +889,7 @@ class TestSuite:
         page.move_to_element(element)
         page.click_by_text("Заявка на кассовый расход")
         page.checker.check_text_select('documentKind', 'Заявка на кассовый расход')
-        page.checker.check_text_input('documentNumber','4')
+        page.checker.check_text_input('documentNumber', '4')
         page.checker.check_text_input('documentDate', '02.03.2018')
         page.checker.check_text_input('limitDate', '12.03.2018')
         # page.number("4")
@@ -917,26 +918,113 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Реквизиты документа")
         page.click_by_text("Назначения платежа")
-        page.checker.check_text_input("paymentPurpose","(07104110000000000000 225 - 250000.00)(л/сч 03951000710)текущий ремонт.НДС не обл.")
+        page.checker.check_text_input(
+            "paymentPurpose", "(07104110000000000000 225 - 250000.00)(л/сч 03951000710)текущий ремонт.НДС не обл.")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def test_return_request(self):
+    def te1st_return_request(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Март", "2018")
+        page.click_by_text("Заявка на возврат")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
         page = ReturnRequestPage(self.driver)
         page.document_number("15")
-        page.document_date("documentDate")
-        page.account_details("accountDetails")
-        page.recepient("recepient")
+        page.document_date("01.03.2018")
+        page.account_details("ПАО Банк ВТБ")
+        page.recepient('ЗАО "ГЛОБУС-ТЕЛЕКОМ"')
         page.ofk_registration_number("073")
-        page.entry_date("entryDate")
-        page.operation("operation")
-        page.recepient_account_details("recepientAccountDetails")
-        page.kbk("kbk")
-        page.kosgu("kosgu")
-        page.kbk_type("kbkType")
-        page.cost_element("costElement")
-        page.outstanding_payment_document_amount("outstandingPaymentDocumentAmount")
-        page.nds_percent("ndsPercent")
-        page.nds_amount("ndsAmount")
+        page.entry_date("01.03.2018")
+        page.operation("(226) Возврат авансового платежа на л/сч")
+        page.recepient_account_details("40702810400000002194")
+        page.kbk("0411 0000000000 000")
+        page.kosgu("226")
+        page.outstanding_payment_document_amount("500,00")
+        page.click_by_text("Уполномоченные сотрудники")
+        page.chief("Е.Ю.Петрова")
+        page.chief_accountant("С.В. Васина")
+        page.click_by_text("Сохранить")
+        page.click_by_text("Расшифровка заявки")
+        page.click_by_text("Назначение платежа")
+        page.checker.check_text_input("paymentPurpose", "()(л/сч ).НДС не обл.")
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
+        page.table_select_row('ЗАО "ГЛОБУС-ТЕЛЕКОМ"')
+        page.click_by_text("Печать")
+        sleep(10)
+        File.compare_files('Заявка на возврат.xls')
+        page.click_by_text("Действия")
+        page.click_by_text("Провести помеченные")
+        page = CarryingOutOfDocumentsPage(self.driver)
+        page.lddate_prov("05.03.2018")
+        page.operation_master("(226) Возврат авансового платежа на л/сч")
+        page.click_by_text("Провести", order=2)
+        page.wait.text_appear('Результат проведения документов')
+        page.checker.check_message("Проведено")
+        page.click_by_text("Закрыть")
+        page.click_by_text("Действия")
+        page.click_by_text("Экспорт в УФК")
+        page.wait.text_appear('Экспорт данных в СУФД ФК')
+        page = ExportUFKPage(self.driver)
+        page.account_details("ПАО Банк ВТБ")
+        page.file_number("1")
+        page.click_by_text("Сохранить")
+        sleep(5)
+        File.checking_file_export_UFK()
+        page.click_by_text("Действия")
+        page.click_by_text("Аннулировать заявку")
+        page.wait.text_appear('Результат аннулирования документов')
+        page.checker.check_message('Аннулировано документов: 1 Не аннулировано: 0')
+        page.click_by_text("Закрыть")
+
+    def test_application_for_cash_withdrawal(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Март", "2018")
+        page.click_by_text("Заявка на получение наличных денег")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page = ApplicationForCashWithdrawalPage(self.driver)
+        page.document_number("20")
+        page.document_date("01.04.2018")
+        page.entry_date("01.04.2018")
+        page.deadline("11.04.2018")
+        page.account_details("ПАО Банк ВТБ")
+        page.tracking_number("123")
+        # page.operation_master("OperationMaster")
+        page.click_by_text("Дополнительно")
+        page.trustee("Канакова Е.Д.")
+        page.trustee_name_dative_case("Канаковой Елене")
+        page.trustee_position("Ведущий специалист-эксперт")
+        page.trustee_position_dative_case("Ведущему специалист-эксперту")
+        page.checker.check_text_input("trusteePassport", 'Паспорт гражданина РФ серия 22  №691179,'
+                                                         ' выдан 1 февраля 2011 года,'
+                                                         ' ОУФМС России по Нижегородской обл.'
+                                                         ' в Автозаводском р-н г. Нижнего Новгорода')
+        page.check_series("МЕ")
+        page.check_number("12160977")
+        page.check_date("30.04.2018")
+        page.check_valid_till("30.05.2018")
+        page.chief("Н.В. Шубина")
+        page.accountant_general("С.В. Васина")
+        page.foundation("Основание")
+        sleep(5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

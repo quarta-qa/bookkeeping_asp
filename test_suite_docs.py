@@ -280,7 +280,7 @@ class TestSuite:
         page.bid.set_select_wl("activityKind", "1 - Средства бюджета", "Вид стредств")
         page.bid.set_select2_wl("operation", "(226) Оплата за прочие услуги", "Типовая операция", order=2)
         page.bid.set_select2_wl("kbk", "(2016) 122 ЦА Командировки 212,222,226", "КБК плательщика", exactly=False, order=2)
-        page.bid.set_select_wl("draweeKbkType", "Группировочный КБК (гКБК)", "Тип КБК плательщика", order=2)
+        page.bid.set_select_wl("drawee_kbk_type", "Группировочный КБК (гКБК)", "Тип КБК плательщика", order=2)
         page.bid.set_select2_wl("kosgu", "226", "КОСГУ", exactly=False)
 
 

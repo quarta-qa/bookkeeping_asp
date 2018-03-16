@@ -512,13 +512,16 @@ class Checker(object):
 
     # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте title
     def check_text_title(self, name, value):
-        fact_value = self.wait.element_appear(
+        actual_value = self.wait.element_appear(
             (By.XPATH, "//*[@name='%s']//*[self::input or self::textarea]" % name)).get_attribute("title")
-        if fact_value == value:
-            print(fact_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+        print('[%s]Проверка...' % strftime("%H:%M:%S", localtime()))
+        print("Ф:{%s}" % actual_value)
+        print("О:{%s}" % str(value))
+        if actual_value == value:
+            print("[%s] СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return True
         else:
-            print("Значение :" + fact_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            print("[%s] НЕ СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return False
 
     # Проверка текста без локатора в input или textarea(поля ввода) в атрибуте value
@@ -526,24 +529,29 @@ class Checker(object):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
         actual_value = element.get_attribute("value")
+        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
+        print("Ф:{%s}" % actual_value)
+        print("О:{%s}" % str(value))
         if actual_value == value:
-            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            print("[%s] СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return True
         else:
-            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            print("[%s] НЕ СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return False
 
-            # Проверка текста без локатора в select(поле выбора из справочника)
-
+    # Проверка текста без локатора в select(поле выбора из справочника)
     def check_text_select(self, name, value, order=1):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//li" % (name, order)))
         actual_value = element.get_attribute("title")
+        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
+        print("Ф:{%s}" % actual_value)
+        print("О:{%s}" % str(value))
         if actual_value == value:
-            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            print("[%s] СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return True
         else:
-            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            print("[%s] НЕ СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return False
 
             # Проверка текста c локатором в input
@@ -551,11 +559,14 @@ class Checker(object):
     def check_text_locator(self, locator, value):
         element = self.wait.element_appear(locator)
         actual_value = element.get_attribute("value")
+        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
+        print("Ф:{%s}" % actual_value)
+        print("О:{%s}" % str(value))
         if actual_value == value:
-            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            print("[%s] СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return True
         else:
-            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            print("[%s] НЕ СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return False
 
     # Проверка текста без локатора в input
@@ -564,11 +575,14 @@ class Checker(object):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//input" % (name, order)))
         actual_value = element.get_attribute("value")
+        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
+        print("Ф:{%s}" % actual_value)
+        print("О:{%s}" % str(value))
         if actual_value == value:
-            print(actual_value + " - значение поля СООТВЕТСТВУЕТ эталону - " + str(value))
+            print("[%s] СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return True
         else:
-            print("Значение :" + actual_value + " значение поля НЕ СООТВЕТСТВУЕТ эталону :" + str(value))
+            print("[%s] НЕ СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return False
 
     def check_message(self, value):
@@ -576,14 +590,14 @@ class Checker(object):
             (By.XPATH, "//document-execution-result/div"))
         actual_value = ' '.join(element.text.split('\n'))
         print(actual_value)
-        print('Проверка...')
+        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
         print("Ф:{%s}" % actual_value)
         print("О:{%s}" % str(value))
         if actual_value == value:
-            print("СООТВЕТСТВУЕТ")
+            print("[%s] СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return True
         else:
-            print("НЕ СООТВЕТСТВУЕТ")
+            print("[%s] НЕ СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return False
 
 
