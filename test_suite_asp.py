@@ -831,7 +831,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_application_cash_flow_export_UFK(self):
+    def te1st_application_cash_flow_export_ufk(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page = ApplicationCashFlowPage(self.driver)
@@ -846,7 +846,7 @@ class TestSuite:
         page.file_number("1")
         page.click_by_text("Сохранить")
         sleep(5)
-        File.checking_file_export_UFK()
+        File.checking_file_export_ufk()
         page.click_by_text("Действия")
         page.click_by_text("Аннулировать заявку")
         page.wait.text_appear('Результат аннулирования документов')
@@ -972,7 +972,7 @@ class TestSuite:
         page.file_number("1")
         page.click_by_text("Сохранить")
         sleep(5)
-        File.checking_file_export_UFK()
+        File.checking_file_export_ufk()
         page.click_by_text("Действия")
         page.click_by_text("Аннулировать заявку")
         page.wait.text_appear('Результат аннулирования документов')
@@ -982,7 +982,7 @@ class TestSuite:
     def test_application_for_cash_withdrawal(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
-        page.select_month("Март", "2018")
+        page.select_month("Апрель", "2018")
         page.click_by_text("Заявка на получение наличных денег")
         page.click_by_text("Добавить")
         page.click_by_text("Новый документ")
@@ -1011,6 +1011,26 @@ class TestSuite:
         page.accountant_general("С.В. Васина")
         page.foundation("Основание")
         sleep(5)
+        # Добавляем строку документа
+        page.click_by_text("Строки документа")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новую строку")
+        page = ApplicationForCashWithdrawalAddLinePage(self.driver)
+        page.kbk("0411 0000000000 000")
+        page.kosgu("211")
+        page.cost_element("Услуги VIP-зала")
+        page.funds_source("1 - Средства бюджета")
+        page.cash_transaction_code("40 Выдачи на заработную плату и выплаты социального характера")
+        page.amount("2800000,00")
+        page.payment_purpose("Премия")
+        page.comment("40")
+        page.click_by_text("Сохранить", 2)
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
+        page.table_select_row('01.04.2018')
+        page.click_by_text("Печать")
+        sleep(10)
+        File.compare_files('Заявка на получение наличных денег.xls')
 
 
 

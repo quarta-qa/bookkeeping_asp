@@ -565,19 +565,19 @@ class ZKRPage(Browser):
 # Проведение документов
 class CarryingOutOfDocumentsPage(Browser):
     def lddate_prov(self, value):
-        self.set_date(carryingOutOfDocumentsLocators.lddate_prov, value, "Дата проводки")
+        self.set_date(CarryingOutOfDocumentsLocators.lddate_prov, value, "Дата проводки")
 
     def operation_master(self, value):
-        self.set_select2(carryingOutOfDocumentsLocators.operation_master, value, "Типовая операция")
+        self.set_select2(CarryingOutOfDocumentsLocators.operation_master, value, "Типовая операция")
 
 
 # Экспорт в УФК
 class ExportUFKPage(Browser):
     def account_details(self, value):
-        self.set_select2(exportUFKLocators.account_details, value, "Банк", exactly=False)
+        self.set_select2(ExportUFKLocators.account_details, value, "Банк", exactly=False)
 
     def file_number(self, value):
-        self.set_text(exportUFKLocators.file_number, value, "Порядковый № файла")
+        self.set_text(ExportUFKLocators.file_number, value, "Порядковый № файла")
 
 
 # оборотная ведомость
@@ -840,8 +840,8 @@ class ApplicationForCashWithdrawalPage(Browser):
         self.set_select2(ApplicationForCashWithdrawalLocators.trustee_position, value, "Должность")
 
     def trustee_position_dative_case(self, value):
-        self.set_select2(
-            ApplicationForCashWithdrawalLocators.trusteePositionDativeCase, value, "Должность в дательном падеже")
+        self.set_text(
+            ApplicationForCashWithdrawalLocators.trustee_position_dative_case, value, "Должность в дательном падеже")
 
     def chief(self, value):
         self.set_select2(ApplicationForCashWithdrawalLocators.chief, value, "Руководитель", exactly=False)
@@ -864,6 +864,34 @@ class ApplicationForCashWithdrawalPage(Browser):
 
     def check_valid_till(self, value):
         self.set_date(ApplicationForCashWithdrawalLocators.check_valid_till, value, "Срок действия чека")
+
+
+# Заявка на получение наличных денег добавление строки
+class ApplicationForCashWithdrawalAddLinePage(Browser):
+    def kbk(self, value):
+        self.set_select2(ApplicationForCashWithdrawalAddLineLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(ApplicationForCashWithdrawalAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(ApplicationForCashWithdrawalAddLineLocators.cost_element, value, "Вид затрат")
+
+    def cash_transaction_code(self, value):
+        self.set_select(ApplicationForCashWithdrawalAddLineLocators.cash_transaction_code, value,
+                        "Вид средств для исполнения обязательств")
+
+    def funds_source(self, value):
+        self.set_select(ApplicationForCashWithdrawalAddLineLocators.funds_source, value, "Кассовый символ")
+
+    def amount(self, value):
+        self.set_text(ApplicationForCashWithdrawalAddLineLocators.amount, value, "Сумма")
+
+    def payment_purpose(self, value):
+        self.set_text(ApplicationForCashWithdrawalAddLineLocators.payment_purpose, value, "Назначение платежа")
+
+    def comment(self, value):
+        self.set_text(ApplicationForCashWithdrawalAddLineLocators.comment, value, "Примечание")
 
 
 # Договор с поставщиком

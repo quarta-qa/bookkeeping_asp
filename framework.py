@@ -27,7 +27,6 @@ class Browser(object):
         self.wait = Wait(self.driver, self.timeout)
         self.checker = Checker(self.driver, self.timeout)
 
-
     #
     def accept_alert(self):
         try:
@@ -342,7 +341,7 @@ class Browser(object):
                 print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
     # Функция поиска строки в таблице по текстовому полю "Все поля"
-    def search_string(self, value, label=None):
+    def search_string2(self, value, label=None):
         self.wait.loading()
         self.set_text((By.XPATH, "//*[@placeholder='Все поля']"), value + Keys.RETURN, label)
         if label and self.log:
@@ -529,7 +528,7 @@ class Checker(object):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
         actual_value = element.get_attribute("value")
-        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
+        print('[%s]Проверка...' % strftime("%H:%M:%S", localtime()))
         print("Ф:{%s}" % actual_value)
         print("О:{%s}" % str(value))
         if actual_value == value:
@@ -544,7 +543,7 @@ class Checker(object):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//li" % (name, order)))
         actual_value = element.get_attribute("title")
-        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
+        print('[%s]Проверка...' % strftime("%H:%M:%S", localtime()))
         print("Ф:{%s}" % actual_value)
         print("О:{%s}" % str(value))
         if actual_value == value:
@@ -559,7 +558,7 @@ class Checker(object):
     def check_text_locator(self, locator, value):
         element = self.wait.element_appear(locator)
         actual_value = element.get_attribute("value")
-        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
+        print('[%s]Проверка...' % strftime("%H:%M:%S", localtime()))
         print("Ф:{%s}" % actual_value)
         print("О:{%s}" % str(value))
         if actual_value == value:
@@ -575,7 +574,7 @@ class Checker(object):
         element = self.wait.element_appear(
             (By.XPATH, "(//*[@name='%s'])[%s]//input" % (name, order)))
         actual_value = element.get_attribute("value")
-        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
+        print('[%s]Проверка...' % strftime("%H:%M:%S", localtime()))
         print("Ф:{%s}" % actual_value)
         print("О:{%s}" % str(value))
         if actual_value == value:
@@ -590,7 +589,7 @@ class Checker(object):
             (By.XPATH, "//document-execution-result/div"))
         actual_value = ' '.join(element.text.split('\n'))
         print(actual_value)
-        print('[%s]Проверка...'% strftime("%H:%M:%S", localtime()))
+        print('[%s]Проверка...' % strftime("%H:%M:%S", localtime()))
         print("Ф:{%s}" % actual_value)
         print("О:{%s}" % str(value))
         if actual_value == value:
@@ -641,19 +640,19 @@ class File(object):
         test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         test_buch = ('C:\\TestBuch\\')
         # Проверка наличия папки C:\TestBuch
-        if os.access(test_buch, os.F_OK ):
+        if os.access(test_buch, os.F_OK):
             pass
         else:
             os.mkdir(test_buch)
         # Проверка наличия папки C:\Users\'Доменное имя пользователя'\Downloads
-        if os.access(test_default, os.F_OK ):
+        if os.access(test_default, os.F_OK):
             pass
         else:
             os.mkdir(test_default)
         # os.chdir(test_buch)
         path = Date.get_today_file()
         # Проверка наличия папки с датой проведения теста
-        if os.access(test_buch+path, os.F_OK ):
+        if os.access(test_buch+path, os.F_OK):
             pass
         else:
             os.mkdir(test_buch+path)
@@ -745,7 +744,7 @@ class File(object):
                             flag = False
                         print("Книга [%s]:" % reference_sheet_name)
                         print("\tЯчейка [%s, %s]. Значение [%s] не совпадает с эталонным [%s]!"
-                              % (i+1, j+1,reference_cell, output_cell))
+                              % (i+1, j+1, reference_cell, output_cell))
         reference.release_resources()
         output.release_resources()
         del reference
@@ -765,7 +764,7 @@ class File(object):
         return hash_md5.hexdigest()
 
     @staticmethod
-    def checking_file_export_UFK():
+    def checking_file_export_ufk():
         test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
         flag = True
         for file in os.listdir(test_default):
