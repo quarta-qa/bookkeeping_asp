@@ -369,13 +369,13 @@ class Browser(object):
         sleep(1)
 
     # Функция выбора чек-бокса в таблице по порядку
-    def table_row_checkbox(self, order=1):
+    """def table_row_checkbox(self, order=1):
         self.wait.loading()
         sleep(1)
         locator = (By.XPATH, "(//td/input[@type='checkbox'])[%s]" % order)
         self.set_checkbox(locator, True)
         sleep(1)
-
+    """
     # Функция выбора радио-баттон в таблице по порядку
     def table_row_radio(self, order=1):
         self.wait.loading()
@@ -638,7 +638,7 @@ class File(object):
     @staticmethod
     def file_copy(filename):
         test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
-        test_buch = ('C:\\TestBuch\\')
+        test_buch = ("C:\\TestBuch\\")
         # Проверка наличия папки C:\TestBuch
         if os.access(test_buch, os.F_OK):
             pass
@@ -769,6 +769,9 @@ class File(object):
         flag = True
         for file in os.listdir(test_default):
             if file.endswith(".ZR3"):
+                print("[%s] Фаил с именем [%s] Выгружен" % (strftime("%H:%M:%S", localtime()), file))
+                flag = False
+            if file.endswith(".ZS3"):
                 print("[%s] Фаил с именем [%s] Выгружен" % (strftime("%H:%M:%S", localtime()), file))
                 flag = False
         if flag:
