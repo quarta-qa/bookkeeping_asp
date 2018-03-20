@@ -272,13 +272,15 @@ class CardIndexOSNMANPALocators(object):
     tag_no_first_part = (By.XPATH, "//*[@name='tagNoFirstPart']//input")
     tag_no_second_part = (By.XPATH, "//*[@name='tagNoSecondPart']//input")
     tag_no = (By.XPATH, "//*[@name='tagNo']//input")
+    template = (By.XPATH, "//*[@name='template']")
     full_name = (By.XPATH, "//*[@name='fullName']//input")
-    supplier = (By.XPATH, "//*[@name='supplier']//input")
+    supplier = (By.XPATH, "//*[@name='supplier']")
     property_designation = (By.XPATH, "//*[@name='propertyDesignation']//input")
     issue_date = (By.XPATH, "//*[@name='issueDate']//input")
     start_up_date = (By.XPATH, "//*[@name='startUpDate']//input")
     serialNumber = (By.XPATH, "//*[@name='serialNumber']//input")
-    group = (By.XPATH, "//li[contains(.,'С/блоки')]")
+    # group = (By.XPATH, "//li[contains(.,'С/блоки')]")
+    group = (By.XPATH, "//*[@name='group']")
     unit_of_measure = (By.XPATH, "//*[@name='unitOfMeasure']")
     cost = (By.XPATH, "//*[@name='cost']//input")
     exclude_from_depreciation_accrual = (By.XPATH, "//*[@name='exludeFromDepreciationAccrual']//input")
@@ -314,6 +316,15 @@ class ReceiptOfNonFinancialAssetsRowLocators(object):
     comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
     kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
     kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+
+
+class CreateATemplateForTheCardOSNMANPALocators(object):
+    name = (By.XPATH, "//text-input[@name='name']//input")
+    unit_of_measure = (By.XPATH, "//okei-classifier[@name='unitOfMeasure']")
+    group = (By.XPATH, "//basic-facilities-group-classifier[@name='group']")
+    okof = (By.XPATH, "//okof-hierarchy-classifier[@name='okof']")
+    amortization_group = (By.XPATH, "//amortization-group-classifier[@name='amortizationGroup']")
+
 
 class ApplicationCashFlowLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']")

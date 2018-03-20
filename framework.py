@@ -500,7 +500,10 @@ class Wait(object):
             ec.visibility_of_element_located((By.XPATH, "//div[@class='w2ui-lock']")))
         WebDriverWait(self.driver, self.timeout).until_not(
             ec.presence_of_element_located((By.XPATH, "//*[contains(., 'Документ сохранен')]")))
-
+        WebDriverWait(self.driver, self.timeout).until_not(
+            ec.visibility_of_element_located((By.XPATH, "//*[contains(., 'Элемент успешно сохранен')]")))
+        WebDriverWait(self.driver, self.timeout).until_not(
+            ec.visibility_of_element_located((By.XPATH, "//*[contains(., 'Успешно сохранено')]")))
 
 # Проверка текста
 class Checker(object):

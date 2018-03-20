@@ -48,9 +48,9 @@ class TestSuite:
         # page.tag_no("1011200001") - если не работает автозаполнение
         page.full_name("Жилое здание, Малая Никитская, д.2")
         page.property_designation("Административное здание")
+        page.unit_of_measure("Штука")
         page.issue_date("11.02.2018")
         page.start_up_date("11.02.2018")
-        page.unit_of_measure("Штука")
         sleep(1)
         # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
         page.scroll_to_bottom()
@@ -72,18 +72,18 @@ class TestSuite:
         page.checker.check_text("tagNo", "1013400001")
         # page.tag_no("1013400001") - если не работает автозаполнение
         page.full_name("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
-        page.issue_date("12.02.2018")
-        page.start_up_date("12.02.2018")
-        page.serial_number("JKN87628764")
         page.unit_of_measure("Штука")
+        page.issue_date("12.02.2018")
+        page.serial_number("JKN87628764")
+        page.start_up_date("12.02.2018")
         sleep(1)
         # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
         page.scroll_to_bottom()
         page.cost("36500.00")
         # Нет чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока". Дописать после исправления.
         page.value_added_used("36")
-        page.okof("ЭВМ общего назначения")
         page.amortization_group(" 2 ГРУППА")
+        page.okof("ЭВМ общего назначения")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
@@ -97,18 +97,18 @@ class TestSuite:
         page.checker.check_text("tagNo", "1013400002")
         # page.tag_no("1013400002") - если не работает автозаполнение
         page.full_name("Копировальный аппарат Xerox Phaser 8200")
-        page.issue_date("13.02.2018")
-        page.start_up_date("13.02.2018")
-        page.serial_number("GH57654898672FGD")
         page.unit_of_measure("Штука")
+        page.issue_date("13.02.2018")
+        page.serial_number("GH57654898672FGD")
+        page.start_up_date("13.02.2018")
         sleep(1)
         # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
         page.scroll_to_bottom()
         page.cost("18000.00")
         # Нет чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока". Дописать после исправления.
         page.value_added_used("120")
-        page.okof("Оборудование фоторепродукционное,копировальное и для обработки фотоматериалов")
         page.amortization_group(" 5 ГРУППА")
+        page.okof("Оборудование фоторепродукционное,копировальное и для обработки фотоматериалов")
         page.click_by_text("Сохранить")
         sleep(1)
         page.click_by_text("Закрыть")
@@ -122,56 +122,54 @@ class TestSuite:
         page.checker.check_text("tagNo", "1013500001")
         # page.tag_no("1013500001") - если не работает автозаполнение
         page.full_name("Автомобиль Volswagen passat 2.0 TFSI")
+        page.unit_of_measure("Штука")
         page.supplier('ООО "АВТОС"')
         page.issue_date("14.02.2018")
-        page.start_up_date("14.02.2018")
         page.serial_number("BNV876876JH093S")
-        page.unit_of_measure("Штука")
+        page.start_up_date("14.02.2018")
         sleep(1)
         # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
         page.scroll_to_bottom()
         page.cost("1256000.00")
         # Нет чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока".
         page.value_added_used("60")
-        page.okof("Автомобили легковые среднего класса (срабочим объемом двигателя свыше 1,8 до 3,5 лвключительно)")
         page.amortization_group(" 3 ГРУППА")
+        page.okof("Автомобили легковые среднего класса (срабочим объемом двигателя свыше 1,8 до 3,5 лвключительно)")
         page.click_by_text("Сохранить")
         sleep(1)
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
 
-    def telst_creation_of_a_materially_responsible_person(self):
+    def test_creation_of_a_materially_responsible_person(self):
         # Создание материально-ответственного лица, стр. 11-12
         page = MenuPage(self.driver)
         page.references()
         page.click_by_text("Материально ответственные лица")
         page.click_by_text("Добавить")
-        page = MateriallyResponsiblePersonPage(self.driver, 5)
+        page = MateriallyResponsiblePersonPage(self.driver)
         page.employee("Ротко С.В.")
         page.checker.check_text("name", "Ротко С.В.")
         page.checker.check_text("fullName", "Ротко Сергей Васильевич")
-        # page.name("Абдуллина З.Ш.") - если не работает автозаполнение
-        # page.full_name("Абдуллина Зульфия Шайдулловна") - если не работает автозаполнение
+        # page.name("Ротко С.В.") - если не работает автозаполнение
+        # page.full_name("Ротко Сергей Васильевич") - если не работает автозаполнение
         # Текстового поля "Код" нет на портале. Дописать после исправления.
         # Выпадающего поля  "Категория МОЛ" нет на портале. Дописать после исправления.
         page.valid_till("01.01.2050")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        sleep(1)
 
     def test_creation_of_document_admission_nfa_and_attachment_4oc(self):
         # Создание поступление НФА и прикрепление созданных 4-ех ОС, 12-16 стр.
         # При заполнении поля "Инвентарный №" ссылочное поле "Наименование" автоматически не заполняется
         #  Ошибка №234 в TFS.
 
-        page = MenuPage(self.driver, 5)
-        page.select_month("Февраль", "2018")
+        page = MenuPage(self.driver)
         page.click_to_eagle()
-        page.click_by_text('Поступление НФА')
+        page.click_by_text("Поступление НФА")
         # page.click_by_text("Добавить - Новый документ") на портале нет суб-кнопки. Дописать после исправления.
         page.click_by_text("Добавить")
         # ШАПКА ДОКУМЕНТА
-        page = ReceiptOfNonFinancialAssetsCapPage(self.driver, 5)
+        page = ReceiptOfNonFinancialAssetsCapPage(self.driver)
         page.document_number("Пр.акт.")
         page.document_kind("Начальные остатки")
         page.document_date("01.02.2018")
@@ -185,12 +183,12 @@ class TestSuite:
         # СОЗДАТЬ СТРОКУ "ОС,НМА" - Жилое здание, Малая Никитская, д.2
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
-        page = ReceiptOfNonFinancialAssetsRowPage(self.driver, 5)
+        page = ReceiptOfNonFinancialAssetsRowPage(self.driver)
         page.operation("Начальные остатки Здания")
         page.tag_no("1011200001")
-        page.checker.check_text_input("tagNo", "Жилое здание, Малая Никитская, д.2")
-        page.amount("1 430 000.00")
-        page.checker.check_text("accountableAmount", "1 430 000.00")
+        page.checker.check_text_input("item", "Жилое здание, Малая Никитская, д.2")
+        page.amount("1 430 000,00")
+        page.checker.check_text("accountableAmount", "1 430 000,00")
         page.amortization("600 600.00")
         page.comment("Начальные остатки")
         page.scroll_modal_to_bottom()
@@ -201,12 +199,12 @@ class TestSuite:
         # СОЗДАТЬ СТРОКУ "ОС,НМА" - Ноутбук Toshiba
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
-        page = ReceiptOfNonFinancialAssetsRowPage(self.driver, 5)
+        page = ReceiptOfNonFinancialAssetsRowPage(self.driver)
         page.operation("Начальные остатки Машины и оборудование")
         page.tag_no("1013400001")
-        page.checker.check_text_input("tagNo", "Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
-        page.amount("36 500.00")
-        page.checker.check_text("accountableAmount", "36 500.00")
+        page.checker.check_text_input("item", "Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
+        page.amount("36 500,00")
+        page.checker.check_text("accountableAmount", "36 500,00")
         page.amortization("28 389.89")
         page.comment("Начальные остатки")
         page.scroll_modal_to_bottom()
@@ -217,12 +215,12 @@ class TestSuite:
         # СОЗДАТЬ СТРОКУ "ОС,НМА" - Копировальный аппарат
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
-        page = ReceiptOfNonFinancialAssetsRowPage(self.driver, 5)
+        page = ReceiptOfNonFinancialAssetsRowPage(self.driver)
         page.operation("Начальные остатки Машины и оборудование")
         page.tag_no("1013400002")
-        page.checker.check_text_input("tagNo", "Копировальный аппарат Xerox Phaser 8200")
-        page.amount("18 000.00")
-        page.checker.check_text("accountableAmount", "18 000.00")
+        page.checker.check_text_input("item", "Копировальный аппарат Xerox Phaser 8200")
+        page.amount("18 000,00")
+        page.checker.check_text("accountableAmount", "18 000,00")
         page.amortization("3 150.00")
         page.comment("Начальные остатки")
         page.scroll_modal_to_bottom()
@@ -233,12 +231,12 @@ class TestSuite:
         # СОЗДАТЬ СТРОКУ "ОС,НМА" - Автомобиль
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
-        page = ReceiptOfNonFinancialAssetsRowPage(self.driver, 5)
+        page = ReceiptOfNonFinancialAssetsRowPage(self.driver)
         page.operation("Начальные остатки Машины и оборудование")
         page.tag_no("1013400002")
-        page.checker.check_text_input("tagNo", "Автомобиль Volswagen passat 2.0 TFSI")
-        page.amount("1 256 000.00")
-        page.checker.check_text("accountableAmount", "1 256 000.00")
+        page.checker.check_text_input("item", "Автомобиль Volswagen passat 2.0 TFSI")
+        page.amount("1 256 000,00")
+        page.checker.check_text("accountableAmount", "1 256 000,00")
         page.amortization("62 800.00")
         page.comment("Начальные остатки")
         page.scroll_modal_to_bottom()
@@ -252,22 +250,30 @@ class TestSuite:
     def test_carrying_out_document_admission_nfa(self):
         # Проведение документа Поступление НФА с 4-мя записями ОС, стр. 16
 
-        page = Browser(self.driver, 5)
-        page.table_select_row('ООО "КВАРТА ВК"')
-        page.click_by_text('Действия')
-        page.click_by_text('Провести')
-        page.checker.check_message("Проведено документов: 1 Не проведено: 0")
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.click_by_text('Поступление НФА')
+        page.select_month("Февраль", "2018")
+        # page.table_select_row('ООО "КВАРТА ВК"')
+        page.table_select_row('01.02.2018')
+        page.click_by_text("Действия")
+        sleep(5)
+        page.click_by_text("Провести", order=2)
+        sleep(5)
         page.set_date_wl("lddate_prov", "01.02.2018", "Дата проводки")
-        page.click((By.XPATH, "//button[.='Провести']"), "Провести")
+        page.click_by_text("Провести", order=3)
+        page.checker.check_message("Проведено документов: 1 Не проведено: 0")
+        # page.click((By.XPATH, "//button[.='Провести']"), "Провести")
         page.click_by_text('Закрыть')
 
     def test_viewing_of_document_admission_nfa(self):
         # Просмотр проводок по документу Поступление НФА с 4-мя записями ОС, стр. 16.
         
-        page = Browser(self.driver, 5)
+        page = Browser(self.driver)
         page.table_select_row('ООО "КВАРТА ВК"')
         page.click_by_text('Действия')
         page.click_by_text('Просмотр проводок')
+        sleep(3)
 
     def test_add_another_entry_to_the_asset_catalog(self):
         # Добавление в справочник ОС еще одной записи и помещение ее в папку, стр. 16-19
@@ -275,83 +281,103 @@ class TestSuite:
         # ошибка в TFS №2364
 
         page = MenuPage(self.driver)
-        page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Объекты ОС, НМА, НПА')
         page.click_by_text('Добавить')
-        page.set_text_wl("tagNoFirstPart", "10134", "Первая часть инвентарного номера")
-        page.set_text_wl("tagNoSecondPart", "3", "Вторая часть инвентарного номера")
-        page.set_text_wl("tagNo", "1013400003", ">>>")
-        page.set_text_wl("fullName", "Систмный блок", "Полное наименование")
-        page.set_text_wl("propertyDesignation", "ООО 'ОЛДИ'", "Поставщик")
-        page.set_date_wl("issueDate", "01.02.2018", "Дата выпуска")
-        page.set_date_wl("startUpDate", "01.02.2018", "Дата ввода в эксплуатацию")
-        page.set_text_wl("serialNumber", "JO4445566", "Серийный №")
-        page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
-        sleep(1)
-
-        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется
-        page.set_select2_wl("group", "С/блоки", "Группа ОС, НМА, НПА")
+        page = CardIndexOSNMANPAPage(self.driver)
+        page.tag_no_first_part("10134")
+        page.tag_no_second_part("3")
+        page.checker.check_text("tagNo", "1013400003")
+        # page.tag_no("1013400001") - если не работает автозаполнение
+        page.full_name("Системный блок")
+        page.unit_of_measure("Штука")
+        page.supplier('ООО "ОЛДИ 3"')
+        page.issue_date("12.02.2018")
+        page.start_up_date("12.02.2018")
+        page.serial_number("JO4445566")
+        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
+        page.group('С/блоки')
         page.scroll_to_bottom()
-        page.set_text_wl("cost", "25300.00", "Первоначальная стоимость")
-        # Чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока" нет на портале, в сценарии он есть
-        page.set_text_wl("valueAddedUsed", "60", "Срок полезного использования (месяцев)")
-        page.set_select2_wl("okof", "Машины вычислительные электронные цифровые", "ОКОФ")
-        page.set_select2_wl("amortizationGroup", " 3 ГРУППА", "Амортизационная группа")
+        page.cost("25 300.00")
+        # Нет чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока". Дописать после исправления.
+        page.value_added_used("60")
+        page.amortization_group(" 3 ГРУППА")
+        page.okof("Машины вычислительные электронные цифровые")
         page.click_by_text("Сохранить")
+        sleep(2)
         page.click_by_text("Закрыть")
-        # Нет суб-кнопки "Действие - Создать папку" по сценарию ее надо добавить
+        # page.click_by_text("Да")
+        # page.click_by_text("Добавить - Папку - ХОЗ Инвентарь") - на портале нет суб-кнопки "Добавить папку",
+        #  дописать после после исправлния.
 
-    def test_create_a_new_asset_record_using_the_card_template(self):
+    def test_create_a_template_for_the_card_os_nma_npa(self):
         # Создание Шаблона карточки ОС, НМА, НПА, стр. 21-23
 
         page = MenuPage(self.driver)
         page.references()
         page.click_by_text('Шаблоны карточки ОС, НМА, НПА')
-        page.click_by_text('Добавить')
-        page.set_text_wl("name", "Шкаф для документации", "Наименование объекта")
-        page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
-
+        page.click_by_text("Добавить")
+        page = CreateATemplateForTheCardOSNMANPA(self.driver)
+        page.name("Шкаф для документации")
+        page.unit_of_measure("Штука")
         # По сценарию нужно заполнить поле "Папка" значением - "ХОЗ. ИНВЕНТАРЬ",
         # но на портале в справочнике "Картотека ОС, НМА, НПА" нет функционала - добавить папку
-
-        page.set_select2_wl("group", "Мебель", "Группа ОС, НМА, НПА")
-        page.set_select2_wl("okof", "Шкафы для документации", "ОКОФ")
-        page.set_select2_wl("amortizationGroup", " 4 ГРУППА", "Амортизационная группа")
+        page.group("Мебель")
+        page.okof("Шкафы для документации")
+        page.amortization_group(" 4 ГРУППА")
         page.click_by_text("Сохранить", order=2)
+        sleep(3)
         page.click_by_text("Закрыть", order=2)
-        
-    # def test_creation_of_the_basic_means_using_the_created_template_of_the_card_OSNMANPA(self):
-    #     # Cоздание основного средства используя созданный шаблон карточки ОС,НМА,НПА, 23-24
-    #     # На портале не работает автозополнение полей при выборе шаблона карточки, TFS - product backlog item №589
-    #
-    #     page = MenuPage(self.driver)
-    #     page.references()
-    #     page.click_by_text('Объекты ОС, НМА, НПА')
-    #     page.click_by_text("Добавить")
-    #     page.set_text_wl("tagNoFirstPart", "10106", "Первая часть инвентарного номера")
-    #     page.set_select2_wl("template", "Шкаф для документации", "Шаблон карточки")
-    #
-    #     # Должны автоматически заполняться поля из шаблона карточки ОС,НМА,НПА
-    #
-    #     page.set_text_wl("propertyDesignation", "ООО Россети", "Поставщик")
-    #     page.set_date_wl("issueDate", "16.02.2018", "Дата выпуска")
-    #     page.set_date_wl("startUpDate", "16.02.2018", "Дата ввода в эксплуатацию")
-    #     page.scroll_to_bottom()
-    #     page.set_text_wl("cost", "70000.00", "Первоначальная стоимость")
-    #     page.click_by_text("Сохранить")
-    #     page.click_by_text("Закрыть")
+
+    def test_creation_of_the_basic_means_using_the_created_template_of_the_card_osnmanpa(self):
+        # Cоздание основного средства используя созданный шаблон карточки ОС,НМА,НПА, 23-24
+        # На портале не работает автозополнение полей в ОС при выборе шаблона карточки, TFS - product backlog item №589
+
+        page = MenuPage(self.driver)
+        page.references()
+        page.click_by_text('Объекты ОС, НМА, НПА')
+        page.click_by_text("Добавить")
+        page = CardIndexOSNMANPAPage(self.driver)
+        page.tag_no_first_part("10136")
+        page.tag_no_second_part("1")
+        page.checker.check_text("tagNo", "1013600001")
+        page.template("Шкаф для документации")
+        # После выбора значения из поля "Шаблон карточки" автоматич. заполн-ся следующие поля:
+        page.checker.check_text("fullName", "Шкаф для документации")
+        page.checker.check_text_input("unitOfMeasure", "Штука")
+        page.checker.check_text_input("group", "Мебель")
+        page.scroll_to_bottom()
+        page.checker.check_text_input("amortizationGroup", " 4 ГРУППА")
+        page.checker.check_text_input("okof", "Шкафы для документации")
+        # Т.к. автозаполнение не работет, эти поля заполняем вручную т.к. некоторые из них обязательные
+        page.full_name("Шкаф для документации")
+        page.unit_of_measure("Штука")
+        page.unit_of_measure("Штука")
+        page.supplier('АБ "АСПЕКТ"')
+        page.issue_date("15.02.2018")
+        page.start_up_date("15.02.2018")
+        # Выпадающего поля "Папка" нет на портале, в сценарии оно заполняется. Дописать после исправления.
+        page.group('Мебель')
+        page.scroll_to_bottom()
+        page.cost("25 300.00")
+        # Нет чек-бокса "Начислять бухгалтерскую амотризацию исходя из срока". Дописать после исправления.
+        page.value_added_used("84")
+        page.amortization_group(" 3 ГРУППА")
+        page.okof("Шкафы для документации")
+        page.click_by_text("Сохранить")
+        sleep(3)
+        page.click_by_text("Закрыть")
 
     # def test_copy_entries_to_the_directory_of_fixed_assets(self):
     #     # Копирование записи ОС, стр. 25
     #     # По сценарию нужно сделать копию строки, но суб-кнопки "Добавить - Копию строки" на портале нет,
-    #     # ошибка в TFS №2364
-    
+    #     # ошибка в TFS №2364, дописасть тест после исправления
+    #     page.Browser(self.driver)
     #     page.references()
     #     page.click_by_text('Объекты ОС, НМА, НПА')
     #     page.click_by_text('Добавить')
     #     page.click_by_text('Копию строки')
-    
+        
     def test_editing_copy_entries_to_the_directory_of_fixed_assets(self):
         # Редактирование записи ОС, стр. 25-27
 
@@ -360,8 +386,9 @@ class TestSuite:
         page.click_by_text('Объекты ОС, НМА, НПА')
         page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
         page.click_by_text('Открыть')
-        page.set_text_wl("tagNoSecondPart", "2", "Вторая часть инвентарного номера")
-        page.set_text_wl("serialNumber", "JO4445567", "Серийный №")
+        page = CardIndexOSNMANPAPage(self.driver)
+        page.tag_no_second_part("2")
+        page.serial_number("JO4445567")
         sleep(3)
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
@@ -374,7 +401,7 @@ class TestSuite:
         page.click_by_text('Удалить')
         page.click_by_text('Да')
         page.click_by_text('Закрыть')
-        
+
     def test_print_inventory_card_okud_0504031(self):
         # Печать инвентарной карточки учета ОКУД 504031, стр. 30
 

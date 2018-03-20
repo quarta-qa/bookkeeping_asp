@@ -983,14 +983,17 @@ class CardIndexOSNMANPAPage(Browser):
     def tag_no(self, value):
         self.set_text(CardIndexOSNMANPALocators.tag_no, value, ">>>")
 
+    def template(self, value):
+        self.set_select2(CardIndexOSNMANPALocators.template, value, "Шаблон карточки")
+
     def full_name(self, value):
         self.set_text(CardIndexOSNMANPALocators.full_name, value, "Полное наименование")
 
-    def supplier(self, value):
-        self.set_text(CardIndexOSNMANPALocators.supplier, value, "Поставщик")
-
     def property_designation(self, value):
         self.set_text(CardIndexOSNMANPALocators.property_designation, value, "Назначение объекта")
+
+    def supplier(self, value):
+        self.set_select2(CardIndexOSNMANPALocators.supplier, value, "Поставщик")
 
     def issue_date(self, value):
         self.set_date(CardIndexOSNMANPALocators.issue_date, value, "Дата выпуска")
@@ -1090,6 +1093,25 @@ class ReceiptOfNonFinancialAssetsRowPage(Browser):
 
     def kosgu(self, value):
         self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.kosgu, value, "КОСГУ", exactly=False)
+
+
+# Создание Шаблона карточки ОС, НМА, НПА
+class CreateATemplateForTheCardOSNMANPA(Browser):
+
+    def name(self, value):
+        self.set_text(CreateATemplateForTheCardOSNMANPALocators.name, value, "name")
+
+    def unit_of_measure(self, value):
+        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.unit_of_measure, value, "unitOfMeasure")
+
+    def group(self, value):
+        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.group, value, "group")
+
+    def okof(self, value):
+        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.okof, value, "okof")
+
+    def amortization_group(self, value):
+        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.amortization_group, value, "amortizationGroup")
 
 
 # Cчет от Поставщика
