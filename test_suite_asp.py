@@ -979,7 +979,7 @@ class TestSuite:
         page.checker.check_message('Аннулировано документов: 1 Не аннулировано: 0')
         page.click_by_text("Закрыть")
 
-    def test_application_for_cash_withdrawal(self):
+    def te1st_application_for_cash_withdrawal(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Апрель", "2018")
@@ -1028,23 +1028,50 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
         page.table_select_row('01.04.2018')
-        page.click_by_text("Печать")
+        # page.click_by_text("Печать")
         sleep(8)
         File.compare_files('Заявка на получение наличных денег.xls')
+        page.click_by_text("Действия")
+        page.click_by_text("Провести помеченные")
+        page = CarryingOutOfDocumentsPage(self.driver)
+        page.lddate_prov("05.04.2018")
+        page.operation_master("Поступление денежных средств по 211 статье")
+        page.click_by_text("Провести", order=3)
+        page.wait.text_appear('Результат проведения документов')
+        page.checker.check_message("Проведено")
+        page.click_by_text("Закрыть")
+        page.click_by_text("Действия")
+        page.click_by_text("Экспорт в УФК")
+        page.wait.text_appear('Экспорт данных в СУФД ФК')
+        page = ExportUFKPage(self.driver)
+        page.account_details("ПАО Банк ВТБ")
+        page.file_number("1")
+        page.click_by_text("Сохранить")
+        sleep(5)
+        File.checking_file_export_ufk()
+        page.click_by_text("Действия")
+        page.click_by_text("Создать ПКО на получение наличных")
+        sleep(10)
+        page = IncomingOrderPage(self.driver)
+        page.document_kind("Приходный кассовый ордер (получение наличных из банка в кассу по чеку)")
+        page.checker.check_text_input('documentNumber', '3')
+        page.checker.check_text_input('documentDate', '01.04.2018')
+        page.checker.check_text_input('receivedFrom', 'Канакова Елизавета Дмитриевна')
+        page.checker.check_text_input('amount', '2 800 000,00')
+        page.checker.check_text_select("employee", "Канакова Елизавета Дмитриевна")
+        page.table_select_row_click('211')
+        page.click_by_text("Сохранить")
+        page.click_by_text('Закрыть')
+        sleep(5)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def test_incoming_order_two(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        # Должен быть апрель
+        page.select_month("Март", "2018")
+        page.click_by_text("Приходный кассовый ордер")
+        page.table_select_row("Канакова Елизавета Дмитриевна")
+        page.click_by_text("Печать")
+        sleep(10)
+        File.compare_files('Приходный кассовый ордер (2).xls')
 
