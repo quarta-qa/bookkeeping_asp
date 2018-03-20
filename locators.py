@@ -268,6 +268,7 @@ class ContractWithSupplierDetailKBKPageLocators(object):
     cost_Element = (By.XPATH, "//*[@name='costElement']")
 
 
+# Локаторы для Справочника «ОС,НМА,НПА»
 class CardIndexOSNMANPALocators(object):
     tag_no_first_part = (By.XPATH, "//*[@name='tagNoFirstPart']//input")
     tag_no_second_part = (By.XPATH, "//*[@name='tagNoSecondPart']//input")
@@ -289,6 +290,7 @@ class CardIndexOSNMANPALocators(object):
     okof = (By.XPATH, "//*[@name='okof']")
 
 
+# Локаторы для Справочника «Материально ответственные лица»
 class MateriallyResponsiblePersonLocators(object):
     employee = (By.XPATH, "//*[@name='employee']")
     name = (By.XPATH, "//*[@name='name']//input")
@@ -296,6 +298,7 @@ class MateriallyResponsiblePersonLocators(object):
     valid_till = (By.XPATH, "//*[@name='validTill']//input")
 
 
+# Локаторы для Справочника «Поступление НФА - шапка»
 class ReceiptOfNonFinancialAssetsCapLocators(object):
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
     document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
@@ -308,6 +311,7 @@ class ReceiptOfNonFinancialAssetsCapLocators(object):
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
 
 
+# Локаторы для Справочника «Поступление НФА - строки»
 class ReceiptOfNonFinancialAssetsRowLocators(object):
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
     tag_no = (By.XPATH, "//number-input[@name='tagNo']//input")
@@ -318,12 +322,44 @@ class ReceiptOfNonFinancialAssetsRowLocators(object):
     kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
 
 
+# Локаторы для Справочника «Шаблоны карточки ОС, НМА, НПА»
 class CreateATemplateForTheCardOSNMANPALocators(object):
     name = (By.XPATH, "//text-input[@name='name']//input")
     unit_of_measure = (By.XPATH, "//okei-classifier[@name='unitOfMeasure']")
     group = (By.XPATH, "//basic-facilities-group-classifier[@name='group']")
     okof = (By.XPATH, "//okof-hierarchy-classifier[@name='okof']")
     amortization_group = (By.XPATH, "//amortization-group-classifier[@name='amortizationGroup']")
+
+
+# Локаторы для Массового заполнения параметров объектов
+class MassFillingOfOsParametersLocators(object):
+    unit_of_measure = (By.XPATH, "//okei-classifier[@name='unitOfMeasure']")
+    property_designation = (By.XPATH, "//text-input[@name='propertyDesignation']//input")
+    start_up_date = (By.XPATH, "//date-input[@name='startUpDate']//input")
+    issue_date = (By.XPATH, "//date-input[@name='issueDate']//input")
+
+
+# Локаторы для Справочника «Группы МЗ»
+class CreationOfANewEntryInTheDirectoryGroupMzLocators(object):
+    order_number = (By.XPATH, "//number-input[@name='orderNumber']//input")
+    full_name = (By.XPATH, "//text-input[@name='fullName']//input")
+    name = (By.XPATH, "//text-input[@name='name']//input")
+
+
+# Локаторы для Справочника «Объекты МЗ» - шапка
+class CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators(object):
+    tag_no = (By.XPATH, "//number-input[@name='tagNo']//input")
+    name = (By.XPATH, "//text-input[@name='name']//input")
+    unit_of_measure = (By.XPATH, "//okei-classifier[@name='unitOfMeasure']")
+    group = (By.XPATH, "//material-inventory-group-classifier[@name='group']")
+    valid_till = (By.XPATH, "//date-input[@name='validTill']//input")
+
+
+# Локаторы для Справочника «Объекты МЗ» - строки
+class CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators(object):
+    name = (By.XPATH, "(//text-input[@name='name']//input)[2]")
+    price = (By.XPATH, "//currency-input[@name='price']//input")
+    acquisition_date = (By.XPATH, "//date-input[@name='acquisitionDate']//input")
 
 
 class ApplicationCashFlowLocators(object):

@@ -1114,6 +1114,66 @@ class CreateATemplateForTheCardOSNMANPA(Browser):
         self.set_select2(CreateATemplateForTheCardOSNMANPALocators.amortization_group, value, "amortizationGroup")
 
 
+# Массовое заполнение параметров ОС
+class MassFillingOfOsParametersPage(Browser):
+    def unit_of_measure(self, value):
+        self.set_select2(MassFillingOfOsParametersLocators.unit_of_measure, value, "Еденица измерения")
+
+    def property_designation(self, value):
+        self.set_text(MassFillingOfOsParametersLocators.property_designation, value, "Назначение объекта")
+
+    def start_up_date(self, value):
+        self.set_date(MassFillingOfOsParametersLocators.start_up_date, value, "Дата ввода в эксплуатацию")
+
+    def issue_date(self, value):
+        self.set_date(MassFillingOfOsParametersLocators.issue_date, value, "Дата выпуска")
+
+
+# Создание записи в справочнике «Группы МЗ»
+class CreationOfANewEntryInTheDirectoryGroupMzPage(Browser):
+    def order_number(self, value):
+        self.set_text(CreationOfANewEntryInTheDirectoryGroupMzLocators.order_number, value, "N п/п")
+
+    def full_name(self, value):
+        self.set_text(CreationOfANewEntryInTheDirectoryGroupMzLocators.full_name, value, "Полное наименование")
+
+    def name(self, value):
+        self.set_text(CreationOfANewEntryInTheDirectoryGroupMzLocators.name, value, "Краткое наименование")
+
+
+# Создание записи в справочнике «Объекты МЗ» - шапка
+class CreationOfAnEntryInTheDirectoryObjectsOfOzCapPage(Browser):
+    def tag_no(self, value):
+        self.set_text(CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators.tag_no, value, "Шифр")
+
+    def name(self, value):
+        self.set_text(CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators.name, value, "Наименование")
+
+    def unit_of_measure(self, value):
+        self.set_select2(CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators.unit_of_measure, value,
+                         "Единица измерения")
+
+    def group(self, value):
+        self.set_select2(CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators.group, value,
+                         "Группа материальных запасов")
+
+    def valid_till(self, value):
+        self.set_date(CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators.valid_till, value, "Дата актуальности")
+
+
+# Создание записи в справочнике «Объекты МЗ» - строки
+class CreationOfAnEntryInTheDirectoryObjectsOfOzRowPage(Browser):
+    def name(self, value):
+        self.set_text(CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators.name, value, "Характеристика объекта")
+
+    def price(self, value):
+        self.set_text(CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators.price, value, "Сумма")
+
+    def acquisition_date(self, value):
+        self.set_date(CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators.acquisition_date, value,
+                      "Дата поступления")
+
+
 # Cчет от Поставщика
 class InvoiceFromTheSupplierPage(Browser):
 

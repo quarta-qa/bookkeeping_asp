@@ -140,7 +140,7 @@ class TestSuite:
         page.click_by_text("Закрыть")
         # page.click_by_text("Да")
 
-    def test_creation_of_a_materially_responsible_person(self):
+    def telst_creation_of_a_materially_responsible_person1(self):
         # Создание материально-ответственного лица, стр. 11-12
         page = MenuPage(self.driver)
         page.references()
@@ -158,7 +158,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def test_creation_of_document_admission_nfa_and_attachment_4oc(self):
+    def telst_creation_of_document_admission_nfa_and_attachment_4oc(self):
         # Создание поступление НФА и прикрепление созданных 4-ех ОС, 12-16 стр.
         # При заполнении поля "Инвентарный №" ссылочное поле "Наименование" автоматически не заполняется
         #  Ошибка №234 в TFS.
@@ -247,7 +247,7 @@ class TestSuite:
         sleep(5)
         page.click_by_text("Закрыть")
 
-    def test_carrying_out_document_admission_nfa(self):
+    def telst_carrying_out_document_admission_nfa(self):
         # Проведение документа Поступление НФА с 4-мя записями ОС, стр. 16
 
         page = MenuPage(self.driver)
@@ -266,7 +266,7 @@ class TestSuite:
         # page.click((By.XPATH, "//button[.='Провести']"), "Провести")
         page.click_by_text('Закрыть')
 
-    def test_viewing_of_document_admission_nfa(self):
+    def telst_viewing_of_document_admission_nfa(self):
         # Просмотр проводок по документу Поступление НФА с 4-мя записями ОС, стр. 16.
         
         page = Browser(self.driver)
@@ -275,7 +275,7 @@ class TestSuite:
         page.click_by_text('Просмотр проводок')
         sleep(3)
 
-    def test_add_another_entry_to_the_asset_catalog(self):
+    def telst_add_another_entry_to_the_asset_catalog(self):
         # Добавление в справочник ОС еще одной записи и помещение ее в папку, стр. 16-19
         # По сценарию созданную запись нужно поместить в папку, но суб-кнопки "Добавить-Новую папку" на портале нет,
         # ошибка в TFS №2364
@@ -310,7 +310,7 @@ class TestSuite:
         # page.click_by_text("Добавить - Папку - ХОЗ Инвентарь") - на портале нет суб-кнопки "Добавить папку",
         #  дописать после после исправлния.
 
-    def test_create_a_template_for_the_card_os_nma_npa(self):
+    def telst_create_a_template_for_the_card_os_nma_npa(self):
         # Создание Шаблона карточки ОС, НМА, НПА, стр. 21-23
 
         page = MenuPage(self.driver)
@@ -329,7 +329,7 @@ class TestSuite:
         sleep(3)
         page.click_by_text("Закрыть", order=2)
 
-    def test_creation_of_the_basic_means_using_the_created_template_of_the_card_osnmanpa(self):
+    def telst_creation_of_the_basic_means_using_the_created_template_of_the_card_osnmanpa(self):
         # Cоздание основного средства используя созданный шаблон карточки ОС,НМА,НПА, 23-24
         # На портале не работает автозополнение полей в ОС при выборе шаблона карточки, TFS - product backlog item №589
 
@@ -378,7 +378,7 @@ class TestSuite:
     #     page.click_by_text('Добавить')
     #     page.click_by_text('Копию строки')
         
-    def test_editing_copy_entries_to_the_directory_of_fixed_assets(self):
+    def telst_editing_copy_entries_to_the_directory_of_fixed_assets(self):
         # Редактирование записи ОС, стр. 25-27
 
         page = MenuPage(self.driver)
@@ -393,7 +393,7 @@ class TestSuite:
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
 
-    def test_deletion_of_a_record_in_the_fixed_assets_directory(self):
+    def telst_deletion_of_a_record_in_the_fixed_assets_directory(self):
         # Удаление записи ОС, стр. 27-28
 
         page = Browser(self.driver)
@@ -402,20 +402,22 @@ class TestSuite:
         page.click_by_text('Да')
         page.click_by_text('Закрыть')
 
-    def test_print_inventory_card_okud_0504031(self):
-        # Печать инвентарной карточки учета ОКУД 504031, стр. 30
+    def telst_print_inventory_card_okud_0504031(self):
+        # Печать инвентарной карточки учета ОКУД 0504031, стр. 30
 
-        page = Browser(self.driver)
+        page = MenuPage(self.driver)
+        page.select_month("Февраль", "2018")
+        page.references()
+        page.click_by_text('Объекты ОС, НМА, НПА')
         page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)", order=1)
         page.click_by_text('Печать')
         page.click_by_text('Инвентарная карточка учета (форма по ОКУД 0504031)')
-        sleep(2)
-        File.compare_files('Инвентарная карточка НФА.xls')
+        sleep(10)
+        File.compare_files('Инвентарная карточка НФА (2).xls')
 
     # def test_printing_of_a_group_inventory_cardOKUD0504032(self):
-        # Печать инвентарной карточки учета ОКУД 504032, стр. 31
-        # Строка 314-319 актуальна после исправления ошибки -
-        # На портале не формируется файл, нельзя проверить печатную форму
+        # Печать инвентарной карточки учета ОКУД 0504032, стр. 31
+        # На портале не формируется файл, нельзя проверить печатную форму. Дописать после исправления.
 
         # page = Browser(self.driver)
         # page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)", order=1)
@@ -424,7 +426,7 @@ class TestSuite:
         # sleep(2)
         # File.compare_files('Групповая инвентарная карточка НФА.xls')
 
-    def test_checking_the_mode_mass_filling_of_os_parameters(self):
+    def telst_checking_the_mode_mass_filling_of_os_parameters(self):
         # Проверка режима «Массовое заполнение параметров ОС», стр. 31-32
         
         page = MenuPage(self.driver)
@@ -433,105 +435,118 @@ class TestSuite:
         page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
         page.table_select_row("Копировальный аппарат Xerox Phaser 8200")
         page.table_select_row("Автомобиль Volswagen passat 2.0 TFSI")
-        page.table_select_row("Систмный блок")
+        page.table_select_row("Системный блок")
         page.click_by_text("Действия")
         page.click_by_text('Массовое заполнение параметров объектов')
-        page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
-        page.set_text_wl("propertyDesignation", "Массовое заполнение 3-х полей", "Назначение объекта")
-        page.set_date_wl("startUpDate", "25.02.2018", "Дата ввода в эксплуатацию")
-        page.set_date_wl("issueDate", "02.02.2018", "Дата выпуска")
+        page = MassFillingOfOsParametersPage(self.driver)
+        page.unit_of_measure("Штука")
+        page.property_designation("Массовое заполнение 4-х ОС")
+        page.start_up_date("15.02.2018")
+        page.issue_date("16.02.2018")
         page.click_by_text('Выполнить')
         page.click_by_text('Закрыть')
 
-    def test_creating_a_new_entry_in_the_directory_objects_oz(self):
-        # Создание новой записи в справочнике «Объекты ОЗ», стр. 31-33
+    # def test_creating_of_a_new_entry_in_the_directory_group_mz(self):
+    #     # Создание новой записи в справочнике «Группы МЗ»
+    #     # Создание первой записи
+    #     page = MenuPage(self.driver)
+    #     page.references()
+    #     page.click_by_text('Группы МЗ')
+    #     page.click_by_text('Добавить')
+    #     page = CreationOfANewEntryInTheDirectoryGroupMzPage(self.driver)
+    #     page.order_number("777")
+    #     page.full_name("Шифр 99925 папки")
+    #     page.name("Шифр 99925 папки")
+    #     page.click_by_text('Сохранить')
+    #     page.click_by_text('Закрыть')
+    #     # Создание второй записи
+    #     page.click_by_text('Добавить')
+    #     page.order_number("778")
+    #     page.full_name("Ламинаторы")
+    #     page.name("Ламинаторы")
+    #     page.click_by_text('Сохранить')
+    #     page.click_by_text('Закрыть')
 
-        # Создание первой записи
+    def telst_creating_a_new_entry_in_the_directory_objects_oz(self):
+        # Создание новой записи в справочнике «Объекты ОЗ», стр. 31-33
+        # Создание первой записи - шапка
         page = MenuPage(self.driver)
-        page.select_month("Февраль", "2018")
         page.references()
         page.click_by_text('Объекты МЗ')
         page.click_by_text("Добавить")
         page.click_by_text("Новую строку")
-        page.set_text_wl("tagNo", "555", "Шифр")
-        page.set_date_wl("name", "Бумага формата А4", "Наименование")
-        page.set_select2_wl("unitOfMeasure", "Упаковка", "Единица измерения")
-        page.set_select2_wl("group", "Канцтовары", "Группа материальных запасов")
-        page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
+
+        page = CreationOfAnEntryInTheDirectoryObjectsOfOzCapPage(self.driver)
+        page.tag_no("1")
+        page.name("Папка на кольцах")
+        page.unit_of_measure("Рулон")
+        page.group("Шифр 99925 папки")
+        page.valid_till("01.01.2050")
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
-        sleep(2)
 
-        # Создание второй записи
+        # Создание второй записи - шапка
         page.click_by_text("Добавить")
         page.click_by_text("Новую строку")
-        page.set_text_wl("tagNo", "555", "Шифр")
-        page.set_date_wl("name", "Степлер", "Наименование")
-        page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
-        page.set_select2_wl("group", "Канцтовары", "Группа материальных запасов")
-        page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
+        page.tag_no("35187")
+        page.name("Ламинатор")
+        page.unit_of_measure("Рулон")
+        page.group("Ламинаторы")
+        page.valid_till("01.01.2050")
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
-        sleep(2)
 
     # def test_copy_entry_in_the_directory_Objects_OZ(self):
-
     #     # Копирование записи в справочнике «Объекты ОЗ», стр.33
     #     # По сценарию нужно сделать копию строки, но суб-кнопки "Добавить - Копию строки" на портале нет,
-    #     # ошибка в TFS №2364
+    #     # ошибка в TFS №2364. Дописать тест после исправления.
+    
     #     page = MenuPage(self.driver)
     #     page.table_select_row("Бумага формата А4")
     #     page.click_by_text("Добавить")
     #     page.click_by_text("Копию карточки")
 
-    def test_editing_created_entry_in_the_directory_objects_oz(self):
+    def telst_editing_created_entry_in_the_directory_objects_oz(self):
         # Редактирование созданной записи в справочнике «Объекты ОЗ», стр.34
 
         page = Browser(self.driver)
-        page.search_string("Степлер")
-        page.table_select_row("Степлер", order=1)
+        page.search_string("Ламинатор")
+        page.table_select_row("Ламинатор")
         page.click_by_text("Открыть")
-        page.set_text_wl("tagNo", "666", "Шифр")
-        page.set_date_wl("name", "Степлер2", "Наименование")
-        page.set_select2_wl("unitOfMeasure", "Штука", "Единица измерения")
-        page.set_select2_wl("group", "Канцтовары", "Группа материальных запасов")
-        page.set_select2_wl("parentHierarchy", "Канцелярские товары", "Входит в папку")
-        page.set_date_wl("validTill", "01.01.2030", "Дата актуальности")
+        page = CreationOfAnEntryInTheDirectoryObjectsOfOzCapPage(self.driver)
+        page.tag_no("35188")
+        page.name("Ламинатор 2")
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
-        sleep(2)
 
-    def test_delete_created_entry_in_the_directory_objects_oz(self):
+    def telst_delete_created_entry_in_the_directory_objects_oz(self):
         # Удаление созданной записи в справочнике «Объекты ОЗ», стр. 35
 
         page = Browser(self.driver)
-        sleep(2)
-        page.search_string("Степлер2")
-        page.table_select_row("Степлер2", order=1)
+        page.search_string("Ламинатор 2")
+        page.table_select_row("Ламинатор 2", order=1)
         page.click_by_text("Удалить")
         page.click_by_text("Да")
-        sleep(2)
         page.click_by_text("Закрыть")
-        sleep(2)
 
-    def test_creating_an_entry_in_the_additional_characteristics_of_mz(self):
-        # Cоздание записи во вкладке «Дополнительные характеристики МЗ», стр. 35-36
+    def telst_creating_an_entry_in_the_additional_characteristics_of_mz(self):
+        # Cоздание записи во вкладке «Дополнительные характеристики МЗ»(строка), стр. 35-36
 
         page = Browser(self.driver)
-        page.search_string("Бумага формата А4")
-        page.table_select_row("Бумага формата А4", order=1)
+        page.search_string("Папка на кольцах")
+        page.table_select_row("Папка на кольцах", order=1)
         page.click_by_text("Открыть")
         page.scroll_to_bottom()
         page.click_by_text("Добавить", order=2)
-        page.set_text_wl("name", "Бумага_Снегурочка", "Характеристика объекта", order=2)
-        page.set_text_wl("price", "150.00", "Цена")
-        page.set_date_wl("acquisitionDate", "15.02.2018", "Дата поступления")
-        page.click_by_text("Сохранить", order=2)
+        page = CreationOfAnEntryInTheDirectoryObjectsOfOzRowPage(self.driver)
+        page.name("Папка на кольцах A4")
+        page.price("500,00")
+        page.acquisition_date("20.02.2018")
+        page.click_by_text("Сохранить", 2)
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        sleep(2)
 
-    def test_creation_of_a_new__materially_responsible_person(self):
+    def test_creation_of_a_materially_responsible_person2(self):
         # Создание записи в справочнике «МОЛ», стр. 36-37
 
         page = MenuPage(self.driver)
@@ -539,16 +554,12 @@ class TestSuite:
         page.references()
         page.click_by_text('Материально ответственные лица')
         page.click_by_text("Добавить")
-        page.set_text_wl("name", "Иванов И.И.", "Краткое наименование")
-        page.set_text_wl("fullName", "Иванов Иван Иванович", "Полное наименование")
-        page.set_select2_wl("position", "Начальник отдела", "Должность")
-        page.set_select2_wl("department", "Департамент внешних коммуникаций", "Подразделение")
-        page.set_checkbox_wl("isWarehouseWorker")
-        page.set_date_wl("validTill", "01.01.2050", "Дата актуальности")
+        page = MateriallyResponsiblePersonPage(self.driver)
+        # Выпадающего поля  "Категория МОЛ" нет на портале. Дописать после исправления.
+        page.valid_till("01.01.2050")
         page.click_by_text("Сохранить")
-        sleep(1)
         page.click_by_text("Закрыть")
-
+        """
     def test_creation_document_admission_nfa(self):
         # Создание документа «Поступление НФА», стр.38-40
         # По сценарию по нажатию на кнопку "Нов." должно открываться модальное окно ОС
@@ -816,3 +827,4 @@ class TestSuite:
         page.click_by_text('Выполнить')
         sleep(2)
         page.click_by_text('Нет')
+        """
