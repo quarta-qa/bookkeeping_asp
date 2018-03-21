@@ -355,10 +355,10 @@ class Browser(object):
         self.click(locator, label)
 
     # Функция выбора строки в таблице  и проставление чек-бокса
-    def table_select_row(self, text, order=1, label=None):
+    def table_select_row(self, text, flag=True,  order=1, label=None):
         self.wait.loading()
         locator = (By.XPATH, "(//tr[contains(., '%s')]//input[@type='checkbox'])[%s]" % (text, order))
-        self.set_checkbox(locator, True, label)
+        self.set_checkbox(locator, flag, label)
 
     # Функция проставления всех чек-боксов в таблице
     def table_choose_all_checkbox(self, label=None):
@@ -591,7 +591,6 @@ class Checker(object):
         element = self.wait.element_appear(
             (By.XPATH, "//document-execution-result/div"))
         actual_value = ' '.join(element.text.split('\n'))
-        print(actual_value)
         print('[%s]Проверка...' % strftime("%H:%M:%S", localtime()))
         print("Ф:{%s}" % actual_value)
         print("О:{%s}" % str(value))
