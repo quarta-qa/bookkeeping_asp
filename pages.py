@@ -905,8 +905,8 @@ class ContractWithSupplierPage(Browser):
     def date(self, value):
         self.set_date(ContractWithSupplierLocators.date, value, "Дата создания документа")
 
-    def сounterparty(self, value):
-        self.set_select2(ContractWithSupplierLocators.сounterparty, value, "Контрагент")
+    def counterparty(self, value):
+        self.set_select2(ContractWithSupplierLocators.counterparty, value, "Контрагент")
 
     def bank_account_number(self, value):
         self.set_select2(

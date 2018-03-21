@@ -243,7 +243,7 @@ class ContractWithSupplierLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']")
     number = (By.XPATH, "//*[@name='documentNumber']//input")
     date = (By.XPATH, "//*[@name='documentDate']//input")
-    сounterparty = (By.XPATH, "//*[@name='counterparty']")
+    counterparty = (By.XPATH, "//*[@name='counterparty']")
     bank_account_number = (By.XPATH, "//*[@name='transactionAccount']")
     uin = (By.XPATH, "//*[@name='chargeUniqueIdentifier']//input")
     currency = (By.XPATH, "//*[@name='currency']")
