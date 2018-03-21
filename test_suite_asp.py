@@ -34,7 +34,7 @@ class TestSuite:
         page.document_type("Договор")
         page.number("1")
         page.date("10.01.2018")
-        page.сounterparty("ПАО \"МегаФон\"")
+        page.counter_party("ПАО \"МегаФон\"")
         page.bank_account_number('40702810838180130496')
         page.uin("123123123")
         page.currency("Российский рубль")
@@ -75,7 +75,7 @@ class TestSuite:
         sleep(1)
         page.number("2")
         page.date("10.01.2018")
-        page.сounterparty("ФГУ Автобаза №2")
+        page.counter_party("ФГУ Автобаза №2")
         # page.bank_account_number(r'40702810838180130496 | ПАО "МегаФон"')
         page.bank_account_number('40503810800001009002')
         page.uin("12345678901234567890")
@@ -262,7 +262,7 @@ class TestSuite:
         page.number("3")
         page.date("24.01.2018")
         sleep(4)
-        page.сounterparty(' Акционерное общество "Ай-Теко"')
+        page.counter_party(' Акционерное общество "Ай-Теко"')
         page.bank_account_number('40702810300000114301')
         page.uin("123123123")
         page.currency("Российский рубль")
@@ -1074,5 +1074,9 @@ class TestSuite:
         page.click_by_text("Печать")
         sleep(10)
         File.compare_files('Приходный кассовый ордер (2).xls')
+
+
+
+
 
 
