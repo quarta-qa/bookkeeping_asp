@@ -1075,3 +1075,4 @@ class TestSuite:
         sleep(10)
         File.compare_files('Приходный кассовый ордер (2).xls')
 
+
