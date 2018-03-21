@@ -1227,6 +1227,53 @@ class InvoiceFromTheSupplierAddLinePage(Browser):
         self.set_text(InvoiceFromTheSupplierAddLineLocators.vat_percent, value, "Ставка НДС")
 
 
+# рко
+class AccountCashWarrantPage(Browser):
+    def document_kind(self, value):
+        self.set_text(AccountCashWarrantLocators.document_kind, value, "Вид документа")
+
+    def document_number(self, value):
+        self.set_text(AccountCashWarrantLocators.document_number, value, "Номер")
+
+    def entry_date(self, value):
+        self.set_date(AccountCashWarrantLocators.entry_date, value, "Дата проводки")
+
+    def document_date(self, value):
+        self.set_date(AccountCashWarrantLocators.document_date, value, "Дата")
+
+    def employee(self, value):
+        self.set_select(AccountCashWarrantLocators.employee, value, "Сотрудник")
+
+    def issue(self, value):
+        self.set_text(AccountCashWarrantLocators.issue, value, "Выдать")
+
+    def foundation(self, value):
+        self.set_text(AccountCashWarrantLocators.foundation, value, "Основание")
+
+    def cash_report_number(self, value):
+        self.set_text(AccountCashWarrantLocators.cash_report_number, value, "Номер кассового отчета")
+
+
+# рко добавление строки
+class AccountCashWarrantPageAddLine(Browser):
+    def operation(self, value):
+        self.set_select2(AccountCashWarrantLocatorsAddLine.operation, value, "Типовая операция", exactly=False)
+
+    def kbk(self, value):
+        self.set_select2(AccountCashWarrantLocatorsAddLine.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(AccountCashWarrantLocatorsAddLine.kosgu, value, "КОСГУ", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(AccountCashWarrantLocatorsAddLine.cost_element, value, "Вид затрат")
+
+    def amount(self, value):
+        self.set_text(AccountCashWarrantLocatorsAddLine.amount, value, "Сумма")
+
+    def comment(self, value):
+        self.set_text(AccountCashWarrantLocatorsAddLine.comment, value, "Комментарий")
+
 # # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
 # class TemplatesofthecardOSNMANPA(Browser):
 #         print("Templates_of_the_card_OSNMANPA")

@@ -462,3 +462,25 @@ class ApplicationForCashWithdrawalAddLineLocators(object):
     amount = (By.XPATH, "//div[@class='modal-content']//*[@name='amount']//input")
     payment_purpose = (By.XPATH, "//text-area-input[@name='paymentPurpose']//textarea")
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+
+
+# рко
+class AccountCashWarrantLocators(object):
+    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']//input")
+    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    document_date = (By.XPATH, "//*[@name='documentDate']//input")
+    employee = (By.XPATH, "//employee-classifier[@name='employee']//select")
+    issue = (By.XPATH, "//text-input[@name='issue']//input")
+    foundation = (By.XPATH, "//text-area-input[@name='foundation']//textarea")
+    cash_report_number = (By.XPATH, "//text-input[@name='cashReportNumber']//input")
+
+
+# рко+заполнение строк
+class AccountCashWarrantLocatorsAddLine(object):
+    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
+    amount = (By.XPATH, "//amount-input[@name='amount']//input")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")

@@ -1075,6 +1075,61 @@ class TestSuite:
         sleep(10)
         File.compare_files('Приходный кассовый ордер (2).xls')
 
+    def test_account_cash_warrant(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Заявка на получение наличных денег")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page = AccountCashWarrantPage(self.driver)
+        page.document_kind("РКО на аванс")
+        page.document_number("1")
+        page.document_date("26.01.2018")
+        page.entry_date("26.01.2018")
+        page.employee("Трубникова Татьяна Николаевна")
+        page.checker.check_text_input("issue","Трубникова Т.Н.")
+        page.checker.check_text_input(
+            "byDocument", "Паспорт гражданина РФ серия 46  №634469, выдан 20 июля 2007 года,"
+                          " ТП № 4 в г. Мытищи ОУФМС России по Моск. обл. в Мытищинском р-не")
+        page.foundation("Выдано на оплату услуг")
+        page.cash_report_number("777")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новую строку")
+        # Добавили 1 строку
+        page = AccountCashWarrantPageAddLine(self.driver)
+        page.operation("Выдача из кассы под отчет (основные средства)")
+        page.kbk("0411 0000000000 000")
+        page.kosgu("221")
+        page.cost_element("Услуги связи")
+        page.amount("10 000,00")
+        page.comment("На оплату услуг связи")
+        page.click_by_text("Сохранить", 2)
+        page.click_by_text("Сохранить")
+        # Добавили 2 строку
+        page.table_select_row_click("221")
+        page.click_by_text("Добавить")
+        page.click_by_text("Копию строки")
+        page.table_select_row_click("0,00")
+        page.click_by_text("Открыть")
+        page.operation("(222) Оплата за транспортные услуги")
+        page.kbk("0411 0000000000 000")
+        page.kosgu("222")
+        page.cost_element("Транспортные услуги")
+        page.amount("1 000,00")
+        page.comment("На оплату услуг такси")
+        page.click_by_text("Сохранить", 2)
+        page.click_by_text("Сохранить")
+
+
+
+
+
+
+
+
+
+
 
 
 
