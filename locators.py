@@ -466,11 +466,11 @@ class ApplicationForCashWithdrawalAddLineLocators(object):
 
 # рко
 class AccountCashWarrantLocators(object):
-    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']//input")
+    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
     entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
     document_date = (By.XPATH, "//*[@name='documentDate']//input")
-    employee = (By.XPATH, "//employee-classifier[@name='employee']//select")
+    employee = (By.XPATH, "//*[@name='employee']")
     issue = (By.XPATH, "//text-input[@name='issue']//input")
     foundation = (By.XPATH, "//text-area-input[@name='foundation']//textarea")
     cash_report_number = (By.XPATH, "//text-input[@name='cashReportNumber']//input")

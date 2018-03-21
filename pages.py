@@ -1230,7 +1230,7 @@ class InvoiceFromTheSupplierAddLinePage(Browser):
 # рко
 class AccountCashWarrantPage(Browser):
     def document_kind(self, value):
-        self.set_text(AccountCashWarrantLocators.document_kind, value, "Вид документа")
+        self.set_select2(AccountCashWarrantLocators.document_kind, value, "Вид документа")
 
     def document_number(self, value):
         self.set_text(AccountCashWarrantLocators.document_number, value, "Номер")
@@ -1242,7 +1242,7 @@ class AccountCashWarrantPage(Browser):
         self.set_date(AccountCashWarrantLocators.document_date, value, "Дата")
 
     def employee(self, value):
-        self.set_select(AccountCashWarrantLocators.employee, value, "Сотрудник")
+        self.set_select2(AccountCashWarrantLocators.employee, value, "Сотрудник")
 
     def issue(self, value):
         self.set_text(AccountCashWarrantLocators.issue, value, "Выдать")
