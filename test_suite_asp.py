@@ -1287,6 +1287,24 @@ class TestSuite:
         page.comment("На хознужды")
         page.click_by_text("Сохранить", 2)
         page.table_select_row_click('5 000,00')
+        page.click_by_text("Добавить")
+        page.click_by_text("Копию строки")
+        sleep(3)
+        page.table_select_row_click('На хознужды', order=2)
+        page.click_by_text("Открыть")
+        page = BasisForReportingAmountsAddLinePage(self.driver)
+        page.kbk("0411 0000000000 000")
+        page.kosgu("290")
+        page.cost_element("представительские расходы")
+        page.employee("Трошин Ю.Н.")
+        page.amount("3 500,00")
+        page.comment("На представительские расходы")
+        page.click_by_text("Сохранить", 2)
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
+
+
+
 
 
 
