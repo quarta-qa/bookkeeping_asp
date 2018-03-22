@@ -1231,7 +1231,7 @@ class TestSuite:
         sleep(10)
         File.compare_files('Приходный кассовый ордер (3).xls')
 
-    def test_posting_journal(self):
+    def te1st_posting_journal(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1242,7 +1242,7 @@ class TestSuite:
         page.balance_sheet_account("1 201 34")
         page.click_by_text("Сформировать")
 
-    def test_turnover_statement_two(self):
+    def te1st_turnover_statement_two(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1255,6 +1255,16 @@ class TestSuite:
         page.click_by_text('Печать "Оборотная ведомость"')
         sleep(10)
         File.compare_files('Оборотная ведомость (1).xls')
+
+    def test_basis_for_reporting_amounts(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Приходный кассовый ордер")
+        page.search_by_two_attributes("889 000,00","Оприходавано в кассу")
+        sleep(15)
+
+
 
 
 

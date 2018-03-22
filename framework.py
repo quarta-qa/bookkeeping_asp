@@ -348,6 +348,15 @@ class Browser(object):
             print(
                 "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
+    # Функция поиска строки в таблице по 2 атрибутам
+    def search_by_two_attributes(self, value, value2, flag=True,  order=1):
+        self.wait.loading()
+        locator = (By.XPATH, "(//tr[contains(., '%s')][contains(., '%s')]"
+                             "//input[@type='checkbox'])[%s]" % (value, value2, order))
+        self.set_checkbox(locator, flag)
+        print(
+            "[%s] Выбор строки с аттрибутами \"%s\" и \"%s\"" % (strftime("%H:%M:%S", localtime()), value, value2))
+
     # Функция выбора строки в таблице и нажатие на неё
     def table_select_row_click(self, text, order=1, label=None):
         self.wait.loading()
