@@ -348,7 +348,7 @@ class Browser(object):
             print(
                 "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
 
-    # Функция поиска строки в таблице по 2 атрибутам
+    # Функция поиска строки в таблице по 2 аттрибутам
     def search_by_two_attributes(self, value, value2, flag=True,  order=1):
         self.wait.loading()
         locator = (By.XPATH, "(//tr[contains(., '%s')][contains(., '%s')]"
