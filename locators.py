@@ -492,3 +492,30 @@ class PostingJournalLocators(object):
     date_by = (By.XPATH, "//input[@id='date2']")
     balance_sheet_account = (By.XPATH, "//*[@name='balanceSheetAccount']")
     balance_sheet_account_group = (By.XPATH, "//*[@name='balanceSheetAccountGroup']")
+
+
+#  Основание для выдачи подотчетных сумм
+class BasisForReportingAmountsLocators(object):
+    number  = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
+    employee = (By.XPATH, "//employee-classifier[@name='employee']")
+    position = (By.XPATH, "//position-classifier[@name='position']")
+    department = (By.XPATH, "//department-classifier[@name='department']")
+    trip_start_date = (By.XPATH, "//date-input[@name='tripStartDate']//input")
+    trip_end_date = (By.XPATH, "//date-input[@name='tripEndDate']//input")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    trip_route = (By.XPATH, "//text-area-input[@name='tripRoute']//textarea")
+
+
+#  Основание для выдачи подотчетных сумм добавление строки
+class BasisForReportingAmountsAddLineLocators(object):
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
+    employee = (By.XPATH, "//div[@class='modal-content']//*[@name='employee']")
+    amount = (By.XPATH, "//currency-input[@name='amount']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
+
+
+

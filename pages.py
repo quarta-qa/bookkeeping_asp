@@ -616,6 +616,60 @@ class TurnoverStatementPage(Browser):
         self.set_checkbox(TurnoverStatementLocators.is_only_out_balance, value, "По забалансовым счетам")
 
 
+#  Основание для выдачи подотчетных сумм
+class BasisForReportingAmountsPage(Browser):
+    def number (self, value):
+        self.set_text(BasisForReportingAmountsLocators.number , value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(BasisForReportingAmountsLocators.document_date, value, "Дата")
+
+    def document_kind(self, value):
+        self.set_select2(BasisForReportingAmountsLocators.document_kind, value, "Вид документа")
+
+    def employee(self, value):
+        self.set_select2(BasisForReportingAmountsLocators.employee, value, "Сотрудник")
+
+    def position(self, value):
+        self.set_select2(BasisForReportingAmountsLocators.position, value, "Должность")
+
+    def department(self, value):
+        self.set_select2(BasisForReportingAmountsLocators.department, value, "Подразделение")
+
+    def trip_start_date(self, value):
+        self.set_date(BasisForReportingAmountsLocators.trip_start_date, value, "Дата начала")
+
+    def trip_end_date(self, value):
+        self.set_date(BasisForReportingAmountsLocators.trip_end_date, value, "Дата окончания")
+
+    def comment(self, value):
+        self.set_text(BasisForReportingAmountsLocators.comment, value, "Комментарий")
+
+    def trip_route(self, value):
+        self.set_text(BasisForReportingAmountsLocators.trip_route, value, "Маршрут")
+
+
+#  Основание для выдачи подотчетных сумм добавление строк
+class BasisForReportingAmountsAddLinePage(Browser):
+    def kbk(self, value):
+        self.set_select2(BasisForReportingAmountsAddLineLocators.kbk, value, "kbk", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(BasisForReportingAmountsAddLineLocators.kosgu, value, "kosgu", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(BasisForReportingAmountsAddLineLocators.cost_element, value, "costElement")
+
+    def employee(self, value):
+        self.set_select2(BasisForReportingAmountsAddLineLocators.employee, value, "employee")
+
+    def amount(self, value):
+        self.set_text(BasisForReportingAmountsAddLineLocators.amount, value, "amount")
+
+    def comment(self, value):
+        self.set_text(BasisForReportingAmountsAddLineLocators.comment, value, "comment")
+
+
 # Приходно кассовый ордер
 class IncomingOrderPage(Browser):
     def document_kind(self, value):

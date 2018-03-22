@@ -1260,9 +1260,37 @@ class TestSuite:
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
-        page.click_by_text("Приходный кассовый ордер")
-        page.search_by_two_attributes("889 000,00","Оприходавано в кассу")
-        sleep(15)
+        page.click_by_text("Основание для выдачи подотчетных сумм")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page = BasisForReportingAmountsPage(self.driver)
+        page.number("1")
+        page.document_date("26.01.2018")
+        page.document_kind("Хозрасходы")
+        page.employee("Трошин Ю.Н.")
+        page.position("Ведущий специалист-эксперт")
+        page.department("Аппарат Министра")
+        page.trip_start_date("26.01.2018")
+        page.trip_end_date("27.01.2018")
+        page.checker.check_text_input('tripDays', '2')
+        page.comment("На хознужды")
+        page.trip_route("В рамках субьекта РФ")
+        page.click_by_text("Строки документа")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новую строку")
+        page = BasisForReportingAmountsAddLinePage(self.driver)
+        page.kbk("0411 0000000000 000")
+        page.kosgu("226")
+        page.cost_element("Хозяйственные расходы")
+        page.employee("Трошин Ю.Н.")
+        page.amount("5 000,00")
+        page.comment("На хознужды")
+        page.click_by_text("Сохранить", 2)
+        page.table_select_row_click('5 000,00')
+
+
+
+
 
 
 

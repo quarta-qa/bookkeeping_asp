@@ -514,6 +514,7 @@ class Wait(object):
         WebDriverWait(self.driver, self.timeout).until_not(
             ec.visibility_of_element_located((By.XPATH, "//*[contains(., 'Успешно сохранено')]")))
 
+
 # Проверка текста
 class Checker(object):
     def __init__(self, driver, timeout):
@@ -671,6 +672,8 @@ class File(object):
         # Копируем полученную печатную форму в отдельный каталог C:\TestBuch
         shutil.copy2(test_default + filename, test_buch + path)
         test_buch_date = test_buch + path+("\\")
+        if os.access(test_buch_date+path+filename, os.F_OK):
+            os.remove(test_buch_date+path+filename)
         os.rename(test_buch_date+filename, test_buch_date+path+filename)
         if os.access(test_default + "example.xls", os.F_OK):
             pass
