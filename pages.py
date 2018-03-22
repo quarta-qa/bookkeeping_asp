@@ -1106,6 +1106,9 @@ class MateriallyResponsiblePersonPage(Browser):
     def full_name(self, value):
         self.set_text(MateriallyResponsiblePersonLocators.full_name, value, "Полное наименование")
 
+    def position(self, value):
+        self.set_select2(MateriallyResponsiblePersonLocators.position, value, "Должность")
+
     def valid_till(self, value):
         self.set_date(MateriallyResponsiblePersonLocators.valid_till, value, "Дата актуальности")
 
@@ -1164,7 +1167,7 @@ class ReceiptOfNonFinancialAssetsRowPage(Browser):
         self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.kosgu, value, "КОСГУ", exactly=False)
 
 
-# Создание Шаблона карточки ОС, НМА, НПА
+# Шаблона карточки ОС, НМА, НПА
 class CreateATemplateForTheCardOSNMANPA(Browser):
 
     def name(self, value):
@@ -1198,7 +1201,7 @@ class MassFillingOfOsParametersPage(Browser):
         self.set_date(MassFillingOfOsParametersLocators.issue_date, value, "Дата выпуска")
 
 
-# Создание записи в справочнике «Группы МЗ»
+# Справочник - «Группы МЗ»
 class CreationOfANewEntryInTheDirectoryGroupMzPage(Browser):
     def order_number(self, value):
         self.set_text(CreationOfANewEntryInTheDirectoryGroupMzLocators.order_number, value, "N п/п")
@@ -1210,7 +1213,7 @@ class CreationOfANewEntryInTheDirectoryGroupMzPage(Browser):
         self.set_text(CreationOfANewEntryInTheDirectoryGroupMzLocators.name, value, "Краткое наименование")
 
 
-# Создание записи в справочнике «Объекты МЗ» - шапка
+# Справочник «Объекты МЗ» - шапка
 class CreationOfAnEntryInTheDirectoryObjectsOfOzCapPage(Browser):
     def tag_no(self, value):
         self.set_text(CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators.tag_no, value, "Шифр")
@@ -1230,7 +1233,7 @@ class CreationOfAnEntryInTheDirectoryObjectsOfOzCapPage(Browser):
         self.set_date(CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators.valid_till, value, "Дата актуальности")
 
 
-# Создание записи в справочнике «Объекты МЗ» - строки
+# Справочник «Объекты МЗ» - строки
 class CreationOfAnEntryInTheDirectoryObjectsOfOzRowPage(Browser):
     def name(self, value):
         self.set_text(CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators.name, value, "Характеристика объекта")
@@ -1241,6 +1244,137 @@ class CreationOfAnEntryInTheDirectoryObjectsOfOzRowPage(Browser):
     def acquisition_date(self, value):
         self.set_date(CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators.acquisition_date, value,
                       "Дата поступления")
+
+
+# Справочник - «Приказы о назначении комиссии» - шапка
+class CreationOfACommissionOrderCapPage(Browser):
+    def order_number(self, value):
+        self.set_text(CreationOfACommissionOrderCapLocators.order_number, value, "№")
+
+    def order_date(self, value):
+        self.set_date(CreationOfACommissionOrderCapLocators.order_date, value, "Дата приказа")
+
+    def comment(self, value):
+        self.set_text(CreationOfACommissionOrderCapLocators.comment, value, "Комментарий")
+
+    def valid_till(self, value):
+        self.set_date(CreationOfACommissionOrderCapLocators.valid_till, value, "Дата актуальности")
+
+
+# Справочник - «Приказы о назначении комиссии» - строки
+class CreationOfACommissionOrderRowPage(Browser):
+
+    def order(self, value):
+        self.set_text(CreationOfACommissionOrderRowLocators.order, value, "№ п/п")
+
+    def employee(self, value):
+        self.set_select2(CreationOfACommissionOrderRowLocators.employee, value, "Расшифровка подписи")
+
+    def position(self, value):
+        self.set_select2(CreationOfACommissionOrderRowLocators.position, value, "Должность")
+
+
+# Модальное окно - Печать - «Акт о приеме-передаче объектов нефинансовых активов»
+class ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsPage(Browser):
+    def committee(self, value):
+        self.set_select2(ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.committee,
+                         value, "committee")
+
+    def foundation_document(self, value):
+        self.set_text(
+            ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.foundation_document, value,
+            "foundationDocument")
+
+    def foundation_number(self, value):
+        self.set_text(ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.foundation_number,
+                      value, "foundationNumber")
+
+    def foundation_date(self, value):
+        self.set_date(ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.foundation_date,
+                      value, "foundationDate")
+
+    def sender_chief_position(self, value):
+        self.set_text(
+            ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.sender_chief_position, value,
+            "senderChiefPosition")
+
+    def sender_chief_name(self, value):
+        self.set_text(ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.sender_chief_name,
+                      value, "senderChiefName")
+
+    def recipient_chief_position(self, value):
+        self.set_text(
+            ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.recipient_chief_position,
+            value, "recipientChiefPosition")
+
+    def recipient_chief_name(self, value):
+        self.set_text(
+            ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.recipient_chief_name, value,
+            "recipientChiefName")
+
+
+# Модальное окно - Печать - «Акт о приеме-сдаче отремонтированных,
+# реконструированных и модернизированных объектов основных средств»
+class ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsPage(Browser):
+    def committee(self, value):
+        self.set_select2(ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsLocators.committee,
+                         value, "committee")
+
+    def inventory_date_from(self, value):
+        self.set_date(
+            ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsLocators.inventory_date_from,
+            value, "inventoryDateFrom")
+
+    def inventory_date_to(self, value):
+        self.set_date(
+            ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsLocators.inventory_date_to,
+            value, "inventoryDateTo")
+
+
+# Модальное окно - Изменение параметоров в отмеченных записях
+class ModalWindowChangingParametersInMarkedRecordsPage(Browser):
+    def operation(self, value):
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.operation, value, "operation")
+
+    def kosgu(self, value):
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.kosgu, value, "kosgu", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.cost_element, value, "costElement")
+
+    def department_unit(self, value):
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.department_unit, value, "departmentUnit")
+
+    def kbk(self, value):
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.kbk, value, "kbk", exactly=False)
+
+    def storage(self, value):
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.storage, value, "storage")
+
+    def counterparty(self, value):
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.counterparty, value, "counterparty")
+
+    def foundation(self, value):
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.foundation, value, "foundation")
+
+    def comment(self, value):
+        self.set_text(ModalWindowChangingParametersInMarkedRecordsLocators.comment, value, "comment")
+
+
+# Модальное окно - Расчет по бухгалтерским данным
+class AccountingCalculationPage(Browser):
+    def balances_collection_date(self, value):
+        self.set_date(AccountingCalculationLocators.balances_collection_date, value, "balancesCollectionDate")
+
+    def operation_date(self, value):
+        self.set_date(AccountingCalculationLocators.operation_date, value, "operationDate")
+
+    def balance_sheet_account(self, value):
+        self.set_select2(AccountingCalculationLocators.balance_sheet_account, value, "balanceSheetAccount")
+
+    def balance_sheet_account_group(self, value):
+        self.set_select2(AccountingCalculationLocators.balance_sheet_account_group, value,
+                         "balanceSheetAccountGroup")
 
 
 # Cчет от Поставщика
@@ -1272,7 +1406,7 @@ class InvoiceFromTheSupplierPage(Browser):
 # Cчет от поставщика - добавление строки
 class InvoiceFromTheSupplierAddLinePage(Browser):
     def add(self):
-        self.click(InvoiceFromTheSupplierAddLineLocators.add,  "add")
+        self.click(InvoiceFromTheSupplierAddLineLocators.add, "add")
 
     def add_new(self):
         self.click(InvoiceFromTheSupplierAddLineLocators.add_new, "addNew")
