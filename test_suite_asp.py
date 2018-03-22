@@ -1188,7 +1188,7 @@ class TestSuite:
         sleep(10)
         File.compare_files("Расходный кассовый ордер (1).xls")
 
-    def test_incoming_order_three(self):
+    def te1st_incoming_order_three(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1200,7 +1200,7 @@ class TestSuite:
         page.document_number("3")
         page.document_date("30.01.2018")
         page.employee("Трубникова Т.Н.")
-        page.checker.check_text_input("receivedFrom","Трубникова Т.Н.")
+        page.checker.check_text_input("receivedFrom", "Трубникова Т.Н.")
         page.cash_report_number("1234567890")
         page.foundation("Возврат не использованных средств")
         page.operation('Внесение наличных по оплате услуг связи (221)')
@@ -1230,6 +1230,39 @@ class TestSuite:
         page.click_by_text("Печать")
         sleep(10)
         File.compare_files('Приходный кассовый ордер (3).xls')
+
+    def test_posting_journal(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Журнал проводок")
+        page = PostingJournalPage(self.driver)
+        page.date_from("01.01.2018")
+        page.date_by("31.01.2018")
+        page.balance_sheet_account("1 201 34")
+        page.click_by_text("Сформировать")
+
+    def test_turnover_statement_two(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page = TurnoverStatementPage(self.driver)
+        page.click_by_text("Оборотная ведомость", order=2)
+        page.date_from("01.01.2018")
+        page.date_to("31.01.2018")
+        page.click_by_text("Показать")
+        page.wait.text_appear('Печать "Оборотная ведомость"')
+        page.click_by_text('Печать "Оборотная ведомость"')
+        sleep(10)
+        File.compare_files('Оборотная ведомость (1).xls')
+
+
+
+
+
+
+
+
 
 
 

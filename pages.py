@@ -580,6 +580,21 @@ class ExportUFKPage(Browser):
         self.set_text(ExportUFKLocators.file_number, value, "Порядковый № файла")
 
 
+# Журнал проводок
+class PostingJournalPage(Browser):
+    def date_from(self, value):
+        self.set_date(PostingJournalLocators.date_from, value, "Дата проводки с")
+
+    def date_by(self, value):
+        self.set_date(PostingJournalLocators.date_by, value, "Дата проводки по")
+
+    def balance_sheet_account(self, value):
+        self.set_select2(PostingJournalLocators.balance_sheet_account, value, "Счет")
+
+    def balance_sheet_account_group(self, value):
+        self.set_select2(PostingJournalLocators.balance_sheet_account_group, value, "Группа счетов")
+
+
 # оборотная ведомость
 class TurnoverStatementPage(Browser):
     def date_from(self, value):
@@ -1282,6 +1297,8 @@ class AccountCashWarrantPageAddLine(Browser):
 # class Mass_filling_of_OS_parameters(Browser):
 #     print("Mass_filling_of_OS_parameters")
 # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
+
+
 class TemplatesofthecardOSNMANPA(Browser):
         print("Templates_of_the_card_OSNMANPA")
 

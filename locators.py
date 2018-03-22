@@ -484,3 +484,11 @@ class AccountCashWarrantLocatorsAddLine(object):
     cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
     amount = (By.XPATH, "//amount-input[@name='amount']//input")
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+
+
+# Журнал проводок
+class PostingJournalLocators(object):
+    date_from = (By.XPATH, "//input[@id='date1']")
+    date_by = (By.XPATH, "//input[@id='date2']")
+    balance_sheet_account = (By.XPATH, "//*[@name='balanceSheetAccount']")
+    balance_sheet_account_group = (By.XPATH, "//*[@name='balanceSheetAccountGroup']")

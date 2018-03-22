@@ -454,7 +454,7 @@ class Date(object):
 
     @staticmethod
     def get_today_file():
-        return datetime.date.today().strftime("%Y%d%m")
+        return datetime.date.today().strftime("%Y%m%d")
 
 
 class Wait(object):
@@ -660,8 +660,9 @@ class File(object):
             os.mkdir(test_buch+path)
         # os.chdir(test_default)
         # Копируем полученную печатную форму в отдельный каталог C:\TestBuch
-        shutil.copy2(test_default + filename, test_buch+path)
-        # os.remove(filename) удаление  файла из Downloads
+        shutil.copy2(test_default + filename, test_buch + path)
+        test_buch_date = test_buch + path+("\\")
+        os.rename(test_buch_date+filename, test_buch_date+path+filename)
         if os.access(test_default + "example.xls", os.F_OK):
             pass
         else:
