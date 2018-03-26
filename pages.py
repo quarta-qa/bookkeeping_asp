@@ -20,16 +20,6 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.menu)
 
-    # Расчеты
-    def calculation(self):
-        self.open()
-        sleep(1)
-        self.click(MenuLocators.calculation)
-        sleep(1)
-        self.click(MenuLocators.inner_calculation)
-        print("Меню расчеты")
-        self.open()
-
     # Обработка выписки из л/с
     def statement_processing(self):
         self.open()
@@ -60,6 +50,32 @@ class MenuPage(Browser):
         print("Выгрузка Сведений о денежном обязательстве в Электронный бюджет")
         self.open()
 
+    # Расчеты
+    def calculation(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.calculation)
+        sleep(1)
+        self.click(MenuLocators.inner_calculation)
+        print("Меню расчеты")
+        self.open()
+
+    # Журнал документов
+    def document_journal(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.document_journal)
+        print("Журнал документов")
+        self.open()
+
+    # Корзина документов
+    def recycle_bin(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.recycle_bin)
+        print("Корзина документов")
+        self.open()
+
     # Справочники
     def references(self):
         self.open()
@@ -77,7 +93,6 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.turnover_statement)
         print("Отчет - Оборотная ведомость")
-        self.open()
 
     # Отчет - Сводная отчетность
     def summary_reporting(self):
@@ -114,23 +129,6 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.salary)
         print("Меню - АИС «Зарплата.NET»")
-        self.open()
-
-    # Журнал документов
-    def document_journal(self):
-        self.open()
-        sleep(1)
-        self.click(MenuLocators.document_journal)
-        print("Журнал документов")
-        self.open()
-
-    # Корзина документов
-    def recycle_bin(self):
-        self.open()
-        sleep(1)
-        self.click(MenuLocators.recycle_bin)
-        print("Корзина документов")
-        self.open()
 
     # Нажать на орла
     def click_to_eagle(self):

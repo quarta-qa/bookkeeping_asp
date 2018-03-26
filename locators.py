@@ -29,9 +29,9 @@ class MenuLocators(object):
     summary_reporting = (By.XPATH, "//a[contains(.,'Сводная отчетность')]")
     printed_forms = (By.XPATH, "//a[contains(.,'Печатные формы')]")
     remains_NFA = (By.XPATH, "//*[@href='#/report/non-financial-assets/balances-gathering']")
-    salary = (By.XPATH, "(//a[contains(.,'АИС «Зарплата.NET»')]")
+    salary = (By.XPATH, "//*[@href='http://qtestzrpasp5.office.quarta-vk.ru:1100']")
     document_journal = (By.XPATH, "//a[contains(.,'Журнал документов')]")
-    recycle_bin = (By.XPATH, "//a[contains(.,'Корзина документов ')]")
+    recycle_bin = (By.XPATH, "//*[@href='#/common/documents/deleted-document']")
 
 
 # оборотная ведомость
