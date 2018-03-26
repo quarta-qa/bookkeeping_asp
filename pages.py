@@ -40,7 +40,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.statement_processing)
         print("Обработка выписки из л/с")
-
+        self.open()
 
     # Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)
     def unloading_information_sufd(self):

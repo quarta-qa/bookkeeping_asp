@@ -879,10 +879,10 @@ class TestSuite:
     """
     def test_viewing_of_account_balances(self):
         # Просмотр остатков по ОС (по счету)
-        page = MenuPage(self.driver, 5)
+        page = MenuPage(self.driver)
         page.remains_nfa()
         page = ViewingOfAccountBalancesPage(self.driver)
         page.date("01.03.2018")
         page.balance_sheet_account("1 101 34")
         page.click_by_text("Выполнить")
-        sleep(5)
+        sleep(2)

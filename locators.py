@@ -54,9 +54,6 @@ class MenuLocators(object):
     recycle_bin = (By.XPATH, "//*[@href='#/common/documents/deleted-document']")
 
 
-
-
-
 # оборотная ведомость
 class TurnoverStatementLocators(object):
     date_from = (By.XPATH, "//date-input[@name='dateFrom']//input")
