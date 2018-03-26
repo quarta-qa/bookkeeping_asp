@@ -295,6 +295,7 @@ class MateriallyResponsiblePersonLocators(object):
     employee = (By.XPATH, "//*[@name='employee']")
     name = (By.XPATH, "//*[@name='name']//input")
     full_name = (By.XPATH, "//*[@name='fullName']//input")
+    position = (By.XPATH, "//*[@name='position']")
     valid_till = (By.XPATH, "//*[@name='validTill']//input")
 
 
@@ -360,6 +361,63 @@ class CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators(object):
     name = (By.XPATH, "(//text-input[@name='name']//input)[2]")
     price = (By.XPATH, "//currency-input[@name='price']//input")
     acquisition_date = (By.XPATH, "//date-input[@name='acquisitionDate']//input")
+
+
+# Локаторы для справочника «Приказы о назначении комиссии» - шапка
+class CreationOfACommissionOrderCapLocators(object):
+    order_number = (By.XPATH, "//text-input[@name='orderNumber']//input")
+    order_date = (By.XPATH, "//date-input[@name='orderDate']//input")
+    comment = (By.XPATH, "//text-input[@name='comment']//input")
+    valid_till = (By.XPATH, "//date-input[@name='validTill']//input")
+
+
+# Локаторы для справочника «Приказы о назначении комиссии» - строки
+class CreationOfACommissionOrderRowLocators(object):
+    order = (By.XPATH, "//text-input[@name='order']//input")
+    employee = (By.XPATH, "//employee-classifier[@name='employee']")
+    position = (By.XPATH, "//position-classifier[@name='position']")
+
+
+# Локаторы для модального окна - Печать - «Акт о приеме-передаче объектов нефинансовых активов»
+class ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators(object):
+    committee = (By.XPATH, "//committee-classifier[@name='committee']")
+    foundation_document = (By.XPATH, "//text-input[@name='foundationDocument']//input")
+    foundation_number = (By.XPATH, "//text-input[@name='foundationNumber']//input")
+    foundation_date = (By.XPATH, "//date-input[@name='foundationDate']//input")
+    sender_chief_position = (By.XPATH, "//text-input[@name='senderChiefPosition']//input")
+    sender_chief_name = (By.XPATH, "//text-input[@name='senderChiefName']//input")
+    recipient_chief_position = (By.XPATH, "//text-input[@name='recipientChiefPosition']//input")
+    recipient_chief_name = (By.XPATH, "//text-input[@name='recipientChiefName']//input")
+
+
+# Локаторы для модального окна - Печать - «Акт о приеме-сдаче отремонтированных,
+# реконструированных и модернизированных объектов основных средств»
+class ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsLocators(object):
+    committee = (By.XPATH, "//committee-classifier[@name='committee']")
+    inventory_date_from = (By.XPATH, "//date-input[@name='inventoryDateFrom']//input")
+    inventory_date_to = (By.XPATH, "//date-input[@name='inventoryDateTo']//input")
+
+
+# Локаторы для модального окна - «Изменение параметров в отмеченных записях»
+class ModalWindowChangingParametersInMarkedRecordsLocators(object):
+    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
+    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
+    department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    storage = (By.XPATH, "//storage-classifier[@name='storage']")
+    counterparty = (By.XPATH, "//counterparty-classifier[@name='counterparty']")
+    foundation = (By.XPATH, "//income-from-organization-document-foundation-classifier[@name='foundation']")
+    comment = (By.XPATH, "//text-input[@name='comment']")
+
+
+# Локаторы для модального окна - «Расчет по бухгалтерским данным»
+class AccountingCalculationLocators(object):
+    balances_collection_date = (By.XPATH, "//date-input[@name='balancesCollectionDate']//input")
+    operation_date = (By.XPATH, "//date-input[@name='operationDate']//input")
+    balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
+    balance_sheet_account_group = (By.XPATH,
+                                   "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
 
 
 class ApplicationCashFlowLocators(object):

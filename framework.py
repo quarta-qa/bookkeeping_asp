@@ -566,7 +566,7 @@ class Checker(object):
             print("[%s] НЕ СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return False
 
-            # Проверка текста c локатором в input
+    # Проверка текста c локатором в input
 
     def check_text_locator(self, locator, value):
         element = self.wait.element_appear(locator)
@@ -596,6 +596,8 @@ class Checker(object):
         else:
             print("[%s] НЕ СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return False
+
+    # Проверка сообщения
 
     def check_message(self, value):
         element = self.wait.element_appear(
