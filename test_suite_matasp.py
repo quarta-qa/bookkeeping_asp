@@ -877,12 +877,66 @@ class TestSuite:
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
     """
-    def test_viewing_of_account_balances(self):
-        # Просмотр остатков по ОС (по счету)
+    def test_balances_of_nonfinancial_assets(self):
+        # Меню - Остатки НФА
         page = MenuPage(self.driver)
         page.remains_nfa()
+
+        # ПРОСМОТР ОСТАТКОВ НФА ПО ОС (по счету)
         page = ViewingOfAccountBalancesPage(self.driver)
         page.date("01.03.2018")
         page.balance_sheet_account("1 101 34")
+        sleep(1)
+        page.materially_responsible_person("Ротко С.В.")
         page.click_by_text("Выполнить")
-        sleep(2)
+        page.table_select_row("36 500,00")
+        page.table_select_row("40 000,00")
+        page.table_select_row("15 000,00")
+        page.click_by_text("Печать")
+        page.click_by_text("Остатки НФА")
+        # Нельзя проверить правильность сформированных остатков, т.к. не формируются файлы. Дописать тест после испр-ия
+        # File.compare_files('Остатки НФА.xls')
+
+        # ПРОСМОТР ОСТАТКОВ НФА ПО ОС (ПО ГРУППЕ СЧЕТА)
+        page.click_by_text("Фильтр")
+        page.click((By.XPATH, "//button[@class='btn btn-clear']"))
+        page.balance_sheet_account_group("Счета учета ОС и НМА")
+        sleep(1)
+        page.materially_responsible_person("Ротко С.В.")
+        page.click_by_text("Выполнить")
+        page.scroll_to_bottom()
+        page.table_select_row("1 430 000,00")
+        page.table_select_row("36 500,00")
+        page.table_select_row("40 000,00")
+        page.table_select_row("15 000,00")
+        page.table_select_row("1 256 000,00")
+        page.click_by_text("Печать")
+        page.click_by_text("Остатки НФА")
+        # Нельзя проверить правильность сформированных остатков, т.к. не формируются файлы. Дописать тест после испр-ия
+        # File.compare_files('Остатки НФА.xls')
+
+        # ПРОСМОТР ОСТАТКОВ НФА ПО ЗАДАННЫМ ПАРАМЕТРАМ
+        page.click_by_text("Фильтр")
+        page.price_from("7 000,00")
+        page.price_to("20 000,00")
+        page.name_query("Принтер")
+        page.click_by_text("Выполнить")
+        page.table_select_row("15 000,00")
+        page.click_by_text("Печать")
+        page.click_by_text("Остатки НФА")
+        # Нельзя проверить правильность сформированных остатков, т.к. не формируются файлы. Дописать тест после испр-ия
+        # File.compare_files('Остатки НФА.xls')
+
+        # ПРОСМОТР ИСТОРИИ ДВИЖЕНИЯ ОС
+        # page.click_by_text("Действия")
+        # На портале нет суб-кнопки "Движение" и "Первичный документ". Дописать после исправления
+        # page.click_by_text("Движение")
+        # page.click_by_text("Первичный документ")
+        # page.click_by_text("Закрыть")
+
+        # ПЕЧАТЬ ОСТАТКОВ ТМЦ С ИЗНОСОМ
+        # page.click_by_text("Печать")
+        # page.click_by_text("Остатки ТМЦ,ОС с износом")
+        # Нельзя проверить правильность сформированных остатков, т.к. нет сую-кнопки "Остатки ТМЦ,ОС с износом"
+        # Дописать после исправления
+        # File.compare_files('Остатки ТМЦ,ОС с износом.xls')

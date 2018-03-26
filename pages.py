@@ -142,7 +142,6 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.eagle, "Значок орла")
 
-
 class CashExpenseRequestPage(Browser):
     # Шапка документа
     @property
@@ -1282,39 +1281,39 @@ class CreationOfACommissionOrderRowPage(Browser):
 class ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsPage(Browser):
     def committee(self, value):
         self.set_select2(ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.committee,
-                         value, "committee")
+                         value, "Приказ о назначении комиссии")
 
     def foundation_document(self, value):
         self.set_text(
             ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.foundation_document, value,
-            "foundationDocument")
+            "Основание")
 
     def foundation_number(self, value):
         self.set_text(ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.foundation_number,
-                      value, "foundationNumber")
+                      value, "Номер")
 
     def foundation_date(self, value):
         self.set_date(ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.foundation_date,
-                      value, "foundationDate")
+                      value, "Дата")
 
     def sender_chief_position(self, value):
         self.set_text(
             ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.sender_chief_position, value,
-            "senderChiefPosition")
+            "Руководитель сдатчика - должность")
 
     def sender_chief_name(self, value):
         self.set_text(ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.sender_chief_name,
-                      value, "senderChiefName")
+                      value, "Руководитель сдатчика - ФИО")
 
     def recipient_chief_position(self, value):
         self.set_text(
             ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.recipient_chief_position,
-            value, "recipientChiefPosition")
+            value, "Руководитель получателя - должность")
 
     def recipient_chief_name(self, value):
         self.set_text(
             ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators.recipient_chief_name, value,
-            "recipientChiefName")
+            "Руководитель получателя - ФИО")
 
 
 # Модальное окно - Печать - «Акт о приеме-сдаче отремонтированных,
@@ -1322,119 +1321,99 @@ class ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsPage(Bro
 class ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsPage(Browser):
     def committee(self, value):
         self.set_select2(ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsLocators.committee,
-                         value, "committee")
+                         value, "Приказ о назначении комиссии")
 
     def inventory_date_from(self, value):
         self.set_date(
             ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsLocators.inventory_date_from,
-            value, "inventoryDateFrom")
+            value, "Срок инвентаризации с")
 
     def inventory_date_to(self, value):
         self.set_date(
             ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsLocators.inventory_date_to,
-            value, "inventoryDateTo")
+            value, "по")
 
 
 # Модальное окно - Изменение параметоров в отмеченных записях
 class ModalWindowChangingParametersInMarkedRecordsPage(Browser):
     def operation(self, value):
-        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.operation, value, "operation")
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.operation, value, "Типовая операция")
 
     def kosgu(self, value):
-        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.kosgu, value, "kosgu", exactly=False)
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_element(self, value):
-        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.cost_element, value, "costElement")
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.cost_element, value, "Вид затрат")
 
     def department_unit(self, value):
-        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.department_unit, value, "departmentUnit")
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.department_unit, value, "Группа учета")
 
     def kbk(self, value):
-        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.kbk, value, "kbk", exactly=False)
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.kbk, value, "КБК", exactly=False)
 
     def storage(self, value):
-        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.storage, value, "storage")
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.storage, value, "Место хранения")
 
     def counterparty(self, value):
-        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.counterparty, value, "counterparty")
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.counterparty, value,
+                         "Организация-контрагент")
 
     def foundation(self, value):
-        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.foundation, value, "foundation")
+        self.set_select2(ModalWindowChangingParametersInMarkedRecordsLocators.foundation, value, "Документ-основание")
 
     def comment(self, value):
-        self.set_text(ModalWindowChangingParametersInMarkedRecordsLocators.comment, value, "comment")
+        self.set_text(ModalWindowChangingParametersInMarkedRecordsLocators.comment, value, "Комментарий")
 
 
 # Модальное окно - Расчет по бухгалтерским данным
 class AccountingCalculationPage(Browser):
     def balances_collection_date(self, value):
-        self.set_date(AccountingCalculationLocators.balances_collection_date, value, "balancesCollectionDate")
+        self.set_date(AccountingCalculationLocators.balances_collection_date, value, "Дата сбора остатков")
 
     def operation_date(self, value):
-        self.set_date(AccountingCalculationLocators.operation_date, value, "operationDate")
+        self.set_date(AccountingCalculationLocators.operation_date, value, "Дата формирования операции")
 
     def balance_sheet_account(self, value):
-        self.set_select2(AccountingCalculationLocators.balance_sheet_account, value, "balanceSheetAccount")
+        self.set_select2(AccountingCalculationLocators.balance_sheet_account, value, "Счет учета ОС, НМА")
 
     def balance_sheet_account_group(self, value):
         self.set_select2(AccountingCalculationLocators.balance_sheet_account_group, value,
-                         "balanceSheetAccountGroup")
+                         "Группа счетов учета ОС, НМА")
 
 
-# Модальное окно - Просмотр остатков по счету
+# Модальное окно - Параметры вывода остатков НФА
 class ViewingOfAccountBalancesPage(Browser):
     def date(self, value):
-        self.set_date(ViewingOfAccountBalancesLocators.date, value, "date")
+        self.set_date(ViewingOfAccountBalancesLocators.date, value,
+                      "Дата, на которую формируются остатки")
 
     def balance_sheet_account(self, value):
-        self.set_select2(ViewingOfAccountBalancesLocators.balance_sheet_account, value, "balanceSheetAccount")
+        self.set_select2(ViewingOfAccountBalancesLocators.balance_sheet_account, value,
+                         "Счет")
 
     def balance_sheet_account_group(self, value):
         self.set_select2(ViewingOfAccountBalancesLocators.balance_sheet_account_group, value,
-                         "balanceSheetAccountGroup")
+                         "Группа счетов")
+
+    def materially_responsible_person(self, value):
+        self.set_select2(ViewingOfAccountBalancesLocators.materially_responsible_person, value,
+                         "Материально-ответственные лица")
+
+    def kbk(self, value):
+        self.set_select2(ViewingOfAccountBalancesLocators.kbk, value, "КБК")
+
+    def basic_facilities(self, value):
+        self.set_select2(ViewingOfAccountBalancesLocators.basic_facilities, value,
+                         "Картотека ОС, НМА, НПА")
 
     def price_from(self, value):
-        self.set_text(ViewingOfAccountBalancesLocators.price_from, value, "priceFrom")
+        self.set_text(ViewingOfAccountBalancesLocators.price_from, value, "Цена от")
 
     def price_to(self, value):
-        self.set_text(ViewingOfAccountBalancesLocators.price_to, value, "priceTo")
+        self.set_text(ViewingOfAccountBalancesLocators.price_to, value, "Цена до")
 
     def name_query(self, value):
-        self.set_text(ViewingOfAccountBalancesLocators.name_query, value, "nameQuery")
-
-
-# Модальное окно - Массовое заполнение параметров объектов - остатки НФА
-class BulkFillingOfObjectParametersOfRemnantsNfaPage(Browser):
-        def date(self, value):
-            self.set_date(BulkFillingOfObjectParametersOfRemnantsNfaLocators.date, value, "date")
-
-        def balance_sheet_account(self, value):
-            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.balance_sheet_account, value,
-                             "balanceSheetAccount")
-
-        def balance_sheet_account_group(self, value):
-            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.balance_sheet_account_group, value,
-                             "balanceSheetAccountGroup")
-
-        def materially_responsible_person(self, value):
-            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.materially_responsible_person, value,
-                             "materiallyResponsiblePerson")
-
-        def kbk(self, value):
-            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.kbk, value, "kbk")
-
-        def basic_facilities(self, value):
-            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.basic_facilities, value,
-                             "basicFacilities")
-
-        def price_from(self, value):
-            self.set_text(BulkFillingOfObjectParametersOfRemnantsNfaLocators.price_from, value, "priceFrom")
-
-        def price_to(self, value):
-            self.set_text(BulkFillingOfObjectParametersOfRemnantsNfaLocators.price_to, value, "priceTo")
-
-        def name_query(self, value):
-            self.set_text(BulkFillingOfObjectParametersOfRemnantsNfaLocators.name_query, value, "nameQuery")
+        self.set_text(ViewingOfAccountBalancesLocators.name_query, value, "Контекст наименования")
 
 
 # Cчет от Поставщика

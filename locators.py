@@ -444,8 +444,12 @@ class AccountingCalculationLocators(object):
 class ViewingOfAccountBalancesLocators(object):
     date = (By.XPATH, "//date-input[@name='date']//input")
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
-    balance_sheet_account_group = (
-        By.XPATH, "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
+    balance_sheet_account_group = (By.XPATH,
+                                   "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
+    materially_responsible_person = (By.XPATH,
+                                     "//materially-responsible-person-classifier[@name='materiallyResponsiblePerson']")
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    basic_facilities = (By.XPATH, "//basic-facilities-classifier[@name='basicFacilities']")
     price_from = (By.XPATH, "//currency-input[@name='priceFrom']//input")
     price_to = (By.XPATH, "//currency-input[@name='priceTo']//input")
     name_query = (By.XPATH, "//text-input[@name='nameQuery']//input")
