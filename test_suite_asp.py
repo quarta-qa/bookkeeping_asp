@@ -1256,7 +1256,7 @@ class TestSuite:
         sleep(10)
         File.compare_files('Оборотная ведомость (1).xls')
 
-    def test_basis_for_reporting_amounts(self):
+    def te1st_basis_for_reporting_amounts(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1302,6 +1302,62 @@ class TestSuite:
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
+
+    def test_basis_for_reporting_amounts_plus_rko_advance_payment(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Основание для выдачи подотчетных сумм")
+        page.table_select_row('26.01.2018')
+        page.click_by_text("Действия")
+        element = self.driver.find_element(By.XPATH, "//li[a='Создать на основании текущего документа']")
+        page.move_to_element(element)
+        page.click_by_text("Расходный кассовый ордер на аванс")
+        page = AccountCashWarrantPage(self.driver)
+        page.checker.check_text_select('documentKind',"РКО на аванс")
+        page.document_number("3")
+        page.document_date("27.01.2018")
+        page.entry_date("27.01.2018")
+        page.checker.check_text_select("employee",'Трубникова Т.Н.')
+        page.checker.check_text_input("issue", "Трубникова Т.Н.")
+        page.checker.check_text_input(
+            "byDocument", "Паспорт гражданина РФ серия 46  №634469, выдан 20 июля 2007 года,"
+                          " ТП № 4 в г. Мытищи ОУФМС России по Моск. обл. в Мытищинском р-не")
+        page.checker.check_text_input("foundation","На хознужды")
+        page.cash_report_number("777")
+        page.checker.check_text_input("amount", "8 500,00")
+        page.click_by_text("Приложение")
+        page.checker.check_text_select("documentFoundation", '№1 от 26.01.2018')
+        page.click_by_text("Строки документа")
+        page.table_select_row_click('226')
+        page.click_by_text("Открыть")
+        page = AccountCashWarrantPageAddLine(self.driver)
+        page.operation("Выдача из кассы в подотчет (прочие расходы)")
+        page.checker.check_text_select("kbk","0411 0000000000 000")
+        page.checker.check_text_select("kosgu", "226")
+        page.checker.check_text_select("costElement", "Хозяйственные расходы")
+        page.checker.check_text_input("amount", "5 000,00", 2)
+        page.checker.check_text_input("comment", "На хознужды")
+        page.click_by_text("Сохранить", 2)
+        page.table_select_row_click('290')
+        page.click_by_text("Открыть")
+        page = AccountCashWarrantPageAddLine(self.driver)
+        page.operation("4 Выдача из кассы в подотчет (представительские расходы)")
+        page.checker.check_text_select("kbk", "0411 0000000000 000")
+        page.checker.check_text_select("kosgu", "290")
+        page.checker.check_text_select("costElement", "представительские расходы")
+        page.checker.check_text_input("amount", "3 500,00", 2)
+        page.checker.check_text_input("comment", "На представительские расходы")
+        page.click_by_text("Сохранить", 2)
+        page.click_by_text("Сохранить")
+
+
+
+
+
+
+
+
 
 
 
