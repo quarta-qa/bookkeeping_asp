@@ -28,8 +28,8 @@ class MenuLocators(object):
     turnover_statement = (By.XPATH, "//a[contains(.,'Оборотная ведомость')]")
     summary_reporting = (By.XPATH, "//a[contains(.,'Сводная отчетность')]")
     printed_forms = (By.XPATH, "//a[contains(.,'Печатные формы')]")
-    remainsNFA = (By.XPATH, "//a[contains(.,'Остатки НФА')]")
-    salary = (By.XPATH, "//a[contains(.,'АИС «Зарплата.NET»')]")
+    remains_NFA = (By.XPATH, "//*[@href='#/report/non-financial-assets/balances-gathering']")
+    salary = (By.XPATH, "(//a[contains(.,'АИС «Зарплата.NET»')]")
     document_journal = (By.XPATH, "//a[contains(.,'Журнал документов')]")
     recycle_bin = (By.XPATH, "//a[contains(.,'Корзина документов ')]")
 
@@ -418,6 +418,31 @@ class AccountingCalculationLocators(object):
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
     balance_sheet_account_group = (By.XPATH,
                                    "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
+
+
+# Локаторы для модальное окна - Просмотр остатков по счету
+class ViewingOfAccountBalancesLocators(object):
+    date = (By.XPATH, "//date-input[@name='date']//input")
+    balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
+    balance_sheet_account_group = (By.XPATH, "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
+    price_from = (By.XPATH, "//currency-input[@name='priceFrom']//input")
+    price_to = (By.XPATH, "//currency-input[@name='priceTo']//input")
+    name_query = (By.XPATH, "//text-input[@name='nameQuery']//input")
+
+
+# Локаторы для модального окна - Массовое заполнение параметров объектов - остатки НФА
+class BulkFillingOfObjectParametersOfRemnantsNfaLocators(object):
+    date = (By.XPATH, "//date-input[@name='date']//input")
+    balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
+    balance_sheet_account_group = (By.XPATH,
+                                   "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
+    materially_responsible_person = (By.XPATH,
+                                     "//materially-responsible-person-classifier[@name='materiallyResponsiblePerson']")
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    basic_facilities = (By.XPATH, "//basic-facilities-classifier[@name='basicFacilities']")
+    price_from = (By.XPATH, "//currency-input[@name='priceFrom']//input")
+    price_to = (By.XPATH, "//currency-input[@name='priceTo']//input")
+    name_query = (By.XPATH, "//text-input[@name='nameQuery']//input")
 
 
 class ApplicationCashFlowLocators(object):

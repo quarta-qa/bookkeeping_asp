@@ -2,6 +2,9 @@ from pages import *
 from links import Links
 
 
+# class ViewingOfAccountBalancesPage(object):
+#     pass
+
 class TestSuite:
 
     driver = webdriver.Chrome("driver\\chromedriver.exe")
@@ -24,7 +27,7 @@ class TestSuite:
         page.password("warrior1358")
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учет")
-
+    """
     def test_adding_entries_to_the_directory_of_fixed_assets(self):
         # Добавление в справочник «Объекты ОС,НМА,НПА» 4 основных средства, стр. 8-10
 
@@ -619,7 +622,8 @@ class TestSuite:
         page.click_by_text("Добавить")
         page.click_by_text("Новая строка ОС, НМА")
         page = ReceiptOfNonFinancialAssetsRowPage(self.driver)
-        page.operation("Приход машин и оборудования через подотчет")
+        page.operation("Начальные остатки Машины и оборудование")
+        page.amortization("1 500,00")
         page.tag_no("1013400004")
         page.checker.check_text_input("item", "Принтер Epson 35C")
         page.amount("7 500,00")
@@ -846,10 +850,7 @@ class TestSuite:
 
     def test_deletion_of_the_calculation_of_depreciation(self):
         # Удаление записи «Начисление Амортизации», стр. 54
-        # page = MenuPage(self.driver)
-        # page.click_to_eagle()
-        # page.select_month("Март", "2018")
-        # page.click_by_text("Начисление амортизации")
+
         page = Browser(self.driver)
         page.table_select_row("75 152,78", 1)
         page.click_by_text("Удалить")
@@ -858,21 +859,30 @@ class TestSuite:
         page.wait.text_appear('Удалено документов: 1')
         page.checker.check_message('Удалено документов: 1 Не удалено: 0')
         page.click_by_text("Закрыть")
-    """
+        
     def test_accrual_of_depreciation_on_a_group_of_accounts(self):
         # Начисление амотризации на ОС по группе счетов, стр. 55-56
         # Начисление производится только по балансовому счету № 110112, который находится в группе счетов "ОС",
-        # ошибка в TFS № 2372
-
-        page = MenuPage(self.driver, 5)
-        page.select_month("Март", "2018")
-        page.click_by_text('Начисление амортизации')
+        # ошибка в TFS № 2372.
+        page = Browser(self.driver)
         page.click_by_text('Добавить')
         page.click_by_text('Расчет по бухгалтерским данным')
-        page.set_date_wl('balancesCollectionDate', "01.03.2018", "Дата сбора остатков")
-        page.set_date_wl('operationDate', "01.03.2018", "Дата формирования операции")
-        page.set_select2_wl("balanceSheetAccountGroup", "ОС", "Группа счетов учета ОС, НМА")
+        page = AccountingCalculationPage(self.driver)
+        page.balances_collection_date("01.03.2018")
+        page.operation_date("01.03.2018")
+        page.balance_sheet_account_group("Счета учета ОС и НМА")
         page.click_by_text('Выполнить')
-        sleep(2)
-        page.click_by_text('Нет')
+        sleep(5)
+        page.click_by_text('Да')
+        page.click_by_text('Сохранить')
+        page.click_by_text('Закрыть')
     """
+    def test_viewing_of_account_balances(self):
+        # Просмотр остатков по ОС (по счету)
+        page = MenuPage(self.driver, 5)
+        page.remains_nfa()
+        page = ViewingOfAccountBalancesPage(self.driver)
+        page.date("01.03.2018")
+        page.balance_sheet_account("1 101 34")
+        page.click_by_text("Выполнить")
+        sleep(5)
