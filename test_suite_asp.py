@@ -1303,7 +1303,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def test_basis_for_reporting_amounts_plus_rko_advance_payment(self):
+    def te1st_basis_for_reporting_amounts_plus_rko_advance_payment(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1350,6 +1350,9 @@ class TestSuite:
         page.checker.check_text_input("comment", "На представительские расходы")
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Сохранить")
+
+
+
 
 
 

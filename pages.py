@@ -28,9 +28,11 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.inner_calculation)
         print("Меню расчеты")
+        sleep(1)
+        self.click(MenuLocators.calculation)
         self.open()
 
-    # Обработка выписки из л/с
+    # Обработка выписки из л/с (НЕ РЕАЛИЗОВАН ФУНКЦИОНАЛ)
     def statement_processing(self):
         self.open()
         sleep(1)
@@ -38,7 +40,7 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.statement_processing)
         print("Обработка выписки из л/с")
-        self.open()
+
 
     # Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)
     def unloading_information_sufd(self):
@@ -48,9 +50,11 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.unloading_informationSUFD)
         print("Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)")
+        sleep(1)
+        self.click(MenuLocators.calculation)
         self.open()
 
-    # Выгрузка Сведений о денежном обязательстве в Электронный бюджет
+    # Выгрузка Сведений о денежном обязательстве в Электронный бюджет (НЕ РЕАЛИЗОВАН ФУНКЦИОНАЛ)
     def unloading_information(self):
         self.open()
         sleep(1)
@@ -58,6 +62,8 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.unloading_information)
         print("Выгрузка Сведений о денежном обязательстве в Электронный бюджет")
+        sleep(1)
+        self.click(MenuLocators.calculation)
         self.open()
 
     # Справочники
@@ -77,9 +83,8 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.turnover_statement)
         print("Отчет - Оборотная ведомость")
-        self.open()
 
-    # Отчет - Сводная отчетность
+    # Отчет - Сводная отчетность (НЕ РЕАЛИЗОВАН ФУНКЦИОНАЛ)
     def summary_reporting(self):
         self.open()
         sleep(1)
@@ -87,7 +92,6 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.summary_reporting)
         print("Отчет - Сводная отчетность")
-        self.open()
 
     # Отчет - Печатные формы
     def printed_forms(self):
@@ -97,6 +101,8 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.printed_forms)
         print("Отчет - Печатные формы")
+        sleep(1)
+        self.click(MenuLocators.report)
         self.open()
 
     # Отчет - Остатки НФА
@@ -108,13 +114,12 @@ class MenuPage(Browser):
         self.click(MenuLocators.remains_NFA)
         print("Отчет - Остатки НФА")
 
-    # АИС «Зарплата.NET»
+    # АИС «Зарплата.NET» (НЕ РЕАЛИЗОВАН ФУНКЦИОНАЛ)
     def salary(self):
         self.open()
         sleep(1)
         self.click(MenuLocators.salary)
         print("Меню - АИС «Зарплата.NET»")
-        self.open()
 
     # Журнал документов
     def document_journal(self):
@@ -617,8 +622,8 @@ class TurnoverStatementPage(Browser):
 
 #  Основание для выдачи подотчетных сумм
 class BasisForReportingAmountsPage(Browser):
-    def number (self, value):
-        self.set_text(BasisForReportingAmountsLocators.number , value, "Номер")
+    def number(self, value):
+        self.set_text(BasisForReportingAmountsLocators.number, value, "Номер")
 
     def document_date(self, value):
         self.set_date(BasisForReportingAmountsLocators.document_date, value, "Дата")

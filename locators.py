@@ -11,6 +11,26 @@ class MainLocators(object):
     menu = (By.XPATH, "//button[contains(@class,'left-menu-toggle')]")
     # menu_close = (By.XPATH, "//button[@class='left-menu-toggle active']")
 
+"""
+class MenuLocators(object):
+    menu = (By.XPATH, "//button[contains(@class,'left-menu-toggle')]")
+    eagle = (By.XPATH, "//*[@class='qa-header-icon-logo']")
+    calculation = (By.XPATH, "//a[contains(.,'Расчеты')]")
+    inner_calculation = (By.XPATH, "//*[@href='#/common/calculation']")
+    statement_processing = (By.XPATH, "//a[contains(.,'Обработка выписки из л/с')]")
+    unloading_informationSUFD = (By.XPATH, "//div[@id='collapseMenu1']//*[@href='#/reports']")
+    unloading_information = (By.XPATH, "(//*[@href='#'])[3]")
+    references = (By.XPATH, "//a[contains(.,'Справочники')]")
+    report = (By.XPATH, "//a[contains(.,'Отчет')]")
+    turnover_statement = (By.XPATH, "//*[@href='#/reports/turnover-balance-sheet']")
+    summary_reporting = (By.XPATH, "//a[contains(.,'Сводная отчетность')]")
+    printed_forms = (By.XPATH, "//div[@id='collapseMenu2']//*[@href='#/reports']")
+    remains_NFA = (By.XPATH, "//*[@href='#/report/non-financial-assets/balances-gathering']")
+    salary = (By.XPATH, "(//a[contains(.,'АИС «Зарплата.NET»')]")
+    document_journal = (By.XPATH, "//a[contains(.,'Журнал документов')]")
+    recycle_bin = (By.XPATH, "//*[@href='#/common/documents/deleted-document']")
+
+"""
 
 class MenuLocators(object):
     menu = (By.XPATH, "//button[contains(@class,'left-menu-toggle')]")
@@ -29,9 +49,12 @@ class MenuLocators(object):
     summary_reporting = (By.XPATH, "//a[contains(.,'Сводная отчетность')]")
     printed_forms = (By.XPATH, "//a[contains(.,'Печатные формы')]")
     remains_NFA = (By.XPATH, "//*[@href='#/report/non-financial-assets/balances-gathering']")
-    salary = (By.XPATH, "(//a[contains(.,'АИС «Зарплата.NET»')]")
+    salary = (By.XPATH, "//*[@href='http://qtestzrpasp5.office.quarta-vk.ru:1100']")
     document_journal = (By.XPATH, "//a[contains(.,'Журнал документов')]")
-    recycle_bin = (By.XPATH, "//a[contains(.,'Корзина документов ')]")
+    recycle_bin = (By.XPATH, "//*[@href='#/common/documents/deleted-document']")
+
+
+
 
 
 # оборотная ведомость
@@ -424,7 +447,8 @@ class AccountingCalculationLocators(object):
 class ViewingOfAccountBalancesLocators(object):
     date = (By.XPATH, "//date-input[@name='date']//input")
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
-    balance_sheet_account_group = (By.XPATH, "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
+    balance_sheet_account_group = (
+        By.XPATH, "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
     price_from = (By.XPATH, "//currency-input[@name='priceFrom']//input")
     price_to = (By.XPATH, "//currency-input[@name='priceTo']//input")
     name_query = (By.XPATH, "//text-input[@name='nameQuery']//input")
@@ -579,7 +603,7 @@ class PostingJournalLocators(object):
 
 #  Основание для выдачи подотчетных сумм
 class BasisForReportingAmountsLocators(object):
-    number  = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    number = (By.XPATH, "//number-input[@name='documentNumber']//input")
     document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
     document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
     employee = (By.XPATH, "//employee-classifier[@name='employee']")
