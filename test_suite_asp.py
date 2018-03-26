@@ -1339,7 +1339,6 @@ class TestSuite:
         page.checker.check_text_input("amount", "5 000,00", 2)
         page.checker.check_text_input("comment", "На хознужды")
         page.click_by_text("Сохранить", 2)
-        sleep(15)
         page.table_select_row_click('290')
         page.click_by_text("Открыть")
         page = AccountCashWarrantPageAddLine(self.driver)
