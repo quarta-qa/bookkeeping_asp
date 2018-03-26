@@ -105,9 +105,8 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.report)
         sleep(1)
-        self.click(MenuLocators.remainsNFA)
+        self.click(MenuLocators.remains_NFA)
         print("Отчет - Остатки НФА")
-        self.open()
 
     # АИС «Зарплата.NET»
     def salary(self):
@@ -1375,6 +1374,62 @@ class AccountingCalculationPage(Browser):
     def balance_sheet_account_group(self, value):
         self.set_select2(AccountingCalculationLocators.balance_sheet_account_group, value,
                          "balanceSheetAccountGroup")
+
+
+# Модальное окно - Просмотр остатков по счету
+class ViewingOfAccountBalancesPage(Browser):
+    def date(self, value):
+        self.set_date(ViewingOfAccountBalancesLocators.date, value, "date")
+
+    def balance_sheet_account(self, value):
+        self.set_select2(ViewingOfAccountBalancesLocators.balance_sheet_account, value, "balanceSheetAccount")
+
+    def balance_sheet_account_group(self, value):
+        self.set_select2(ViewingOfAccountBalancesLocators.balance_sheet_account_group, value,
+                         "balanceSheetAccountGroup")
+
+    def price_from(self, value):
+        self.set_text(ViewingOfAccountBalancesLocators.price_from, value, "priceFrom")
+
+    def price_to(self, value):
+        self.set_text(ViewingOfAccountBalancesLocators.price_to, value, "priceTo")
+
+    def name_query(self, value):
+        self.set_text(ViewingOfAccountBalancesLocators.name_query, value, "nameQuery")
+
+
+# Модальное окно - Массовое заполнение параметров объектов - остатки НФА
+class BulkFillingOfObjectParametersOfRemnantsNfaPage(Browser):
+        def date(self, value):
+            self.set_date(BulkFillingOfObjectParametersOfRemnantsNfaLocators.date, value, "date")
+
+        def balance_sheet_account(self, value):
+            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.balance_sheet_account, value,
+                             "balanceSheetAccount")
+
+        def balance_sheet_account_group(self, value):
+            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.balance_sheet_account_group, value,
+                             "balanceSheetAccountGroup")
+
+        def materially_responsible_person(self, value):
+            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.materially_responsible_person, value,
+                             "materiallyResponsiblePerson")
+
+        def kbk(self, value):
+            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.kbk, value, "kbk")
+
+        def basic_facilities(self, value):
+            self.set_select2(BulkFillingOfObjectParametersOfRemnantsNfaLocators.basic_facilities, value,
+                             "basicFacilities")
+
+        def price_from(self, value):
+            self.set_text(BulkFillingOfObjectParametersOfRemnantsNfaLocators.price_from, value, "priceFrom")
+
+        def price_to(self, value):
+            self.set_text(BulkFillingOfObjectParametersOfRemnantsNfaLocators.price_to, value, "priceTo")
+
+        def name_query(self, value):
+            self.set_text(BulkFillingOfObjectParametersOfRemnantsNfaLocators.name_query, value, "nameQuery")
 
 
 # Cчет от Поставщика
