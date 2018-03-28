@@ -62,7 +62,7 @@ class TestSuite:
         page.okof("Здания производственные административные")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        # page.click_by_text("Да")
+        page.click_by_text("Да")
         sleep(1)
 
         # Создание ОС "Ноутбук Toshiba"
@@ -86,7 +86,7 @@ class TestSuite:
         page.okof("ЭВМ общего назначения")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        # page.click_by_text("Да")
+        page.click_by_text("Да")
         sleep(1)
 
         # Создание ОС "Копировальный аппарат"
@@ -111,7 +111,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         sleep(1)
         page.click_by_text("Закрыть")
-        # page.click_by_text("Да")
+        page.click_by_text("Да")
 
         # Создание ОС "Автомобиль"
 
@@ -136,7 +136,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         sleep(1)
         page.click_by_text("Закрыть")
-        # page.click_by_text("Да")
+        page.click_by_text("Да")
 
     def test_creation_of_a_materially_responsible_person1(self):
         # Создание материально-ответственного лица, стр. 11-12
