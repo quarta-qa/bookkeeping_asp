@@ -43,7 +43,7 @@ class MenuLocators(object):
                   " в формате СУФД ФК (или Электронного бюджета)')]")
     unloading_information = (
         By.XPATH, "//a[contains(.,'Выгрузка Сведений о денежном обязательстве в Электронный бюджет')]")
-    references = (By.XPATH, "//a[contains(.,'Справочники')]")
+    references = (By.XPATH, "//*[@href='#/classifiers']")
     report = (By.XPATH, "//a[contains(.,'Отчет')]")
     turnover_statement = (By.XPATH, "//a[contains(.,'Оборотная ведомость')]")
     summary_reporting = (By.XPATH, "//a[contains(.,'Сводная отчетность')]")
@@ -52,6 +52,24 @@ class MenuLocators(object):
     salary = (By.XPATH, "//*[@href='http://qtestzrpasp5.office.quarta-vk.ru:1100']")
     document_journal = (By.XPATH, "//a[contains(.,'Журнал документов')]")
     recycle_bin = (By.XPATH, "//*[@href='#/common/documents/deleted-document']")
+
+
+# Нажать на раздел из справочника
+class ClickOnTheSectionFromTheDirectoryLocators(object):
+    # Учет нефинансовых активов
+    objects_os_nma_npa = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/basic-facilities']")
+    group_os_nma_npa = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/material-inventory-group")
+    objects_mz = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/material-inventory")
+    group_mz = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/material-inventory-group")
+    materially_responsible_person = (By.XPATH,
+                                     "//*[@href='#/non-financial-assets/classifiers/materially-responsible-person")
+    storage = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/storage")
+    okof = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/okof")
+    ofof_2017 = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/okof2017")
+    templates_of_the_card_os_nma_npa = (By.XPATH,
+                                        "//*[@href='#/non-financial-assets/classifiers/basic-facilities-template")
+    ifns = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/ifns")
+    commission_orders = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/committee")
 
 
 # оборотная ведомость

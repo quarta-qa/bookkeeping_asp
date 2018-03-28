@@ -20,18 +20,6 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.menu)
 
-    # Расчеты
-    def calculation(self):
-        self.open()
-        sleep(1)
-        self.click(MenuLocators.calculation)
-        sleep(1)
-        self.click(MenuLocators.inner_calculation)
-        print("Меню расчеты")
-        sleep(1)
-        self.click(MenuLocators.calculation)
-        self.open()
-
     # Обработка выписки из л/с (НЕ РЕАЛИЗОВАН ФУНКЦИОНАЛ)
     def statement_processing(self):
         self.open()
@@ -40,7 +28,6 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.statement_processing)
         print("Обработка выписки из л/с")
-        self.open()
 
     # Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)
     def unloading_information_sufd(self):
@@ -50,9 +37,9 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.unloading_informationSUFD)
         print("Выгрузка Сведений о бюджетном обязательстве (загрузка) в формате СУФД ФК (или Электронного бюджета)")
-        sleep(1)
-        self.click(MenuLocators.calculation)
-        self.open()
+        # sleep(1)
+        # self.click(MenuLocators.calculation)
+        # self.open()
 
     # Выгрузка Сведений о денежном обязательстве в Электронный бюджет (НЕ РЕАЛИЗОВАН ФУНКЦИОНАЛ)
     def unloading_information(self):
@@ -62,8 +49,36 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.unloading_information)
         print("Выгрузка Сведений о денежном обязательстве в Электронный бюджет")
+        # sleep(1)
+        # self.click(MenuLocators.calculation)
+        # self.open()
+
+    # Расчеты
+    def calculation(self):
+        self.open()
         sleep(1)
         self.click(MenuLocators.calculation)
+        sleep(1)
+        self.click(MenuLocators.inner_calculation)
+        print("Меню расчеты")
+        # sleep(1)
+        # self.click(MenuLocators.calculation)
+        # self.open()
+
+    # Журнал документов
+    def document_journal(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.document_journal)
+        print("Журнал документов")
+        # self.open()
+
+    # Корзина документов
+    def recycle_bin(self):
+        self.open()
+        sleep(1)
+        self.click(MenuLocators.recycle_bin)
+        print("Корзина документов")
         self.open()
 
     # Справочники
@@ -72,8 +87,8 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.references)
         print("Меню - Справочники")
-        sleep(1)
-        self.open()
+        # sleep(1)
+        # self.open()
 
     # Отчет - Оборотная ведомость
     def turnover_statement(self):
@@ -101,9 +116,9 @@ class MenuPage(Browser):
         sleep(1)
         self.click(MenuLocators.printed_forms)
         print("Отчет - Печатные формы")
-        sleep(1)
-        self.click(MenuLocators.report)
-        self.open()
+        # sleep(1)
+        # self.click(MenuLocators.report)
+        # self.open()
 
     # Отчет - Остатки НФА
     def remains_nfa(self):
@@ -121,26 +136,51 @@ class MenuPage(Browser):
         self.click(MenuLocators.salary)
         print("Меню - АИС «Зарплата.NET»")
 
-    # Журнал документов
-    def document_journal(self):
-        self.open()
-        sleep(1)
-        self.click(MenuLocators.document_journal)
-        print("Журнал документов")
-        self.open()
-
-    # Корзина документов
-    def recycle_bin(self):
-        self.open()
-        sleep(1)
-        self.click(MenuLocators.recycle_bin)
-        print("Корзина документов")
-        self.open()
-
     # Нажать на орла
     def click_to_eagle(self):
         sleep(1)
         self.click(MenuLocators.eagle, "Значок орла")
+
+
+# Нажать на раздел из справочника
+class ClickOnTheSectionFromTheDirectory(Browser):
+    # Учет нефинансовых активов
+    def objects_os_nma_npa(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.objects_os_nma_npa, "Нажать на Оъекты ОС,НМА,НПА")
+
+    def group_os_nma_npa(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.group_os_nma_npa, "Нажать на Группы ОС, НМА, НПА")
+
+    def objects_mz(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.objects_mz, "Нажать на Объекты МЗ")
+
+    def group_mz(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.group_mz, "Нажать на Группы МЗ")
+
+    def materially_responsible_person(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.materially_responsible_person,
+                   "Нажать на Материально ответственные лица")
+
+    def storage(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.storage, "Нажать на Места хранения")
+
+    def okof(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.okof, "Нажать на ОКОФ")
+
+    def ofof_2017(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.okof, "Нажать на ОКОФ (2017)")
+
+    def templates_of_the_card_os_nma_npa(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.templates_of_the_card_os_nma_npa,
+                   "Нажать на Шаблоны карточки ОС, НМА, НПА")
+
+    def ifns(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.ifns, "Нажать на ИФНС")
+
+    def commission_orders(self):
+        self.click(ClickOnTheSectionFromTheDirectoryLocators.commission_orders,
+                   "Нажать на Приказы о назначении комиссии")
+
 
 class CashExpenseRequestPage(Browser):
     # Шапка документа
@@ -1515,6 +1555,7 @@ class AccountCashWarrantPageAddLine(Browser):
 
     def comment(self, value):
         self.set_text(AccountCashWarrantLocatorsAddLine.comment, value, "Комментарий")
+
 
 # # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
 # class TemplatesofthecardOSNMANPA(Browser):

@@ -27,14 +27,14 @@ class TestSuite:
         page.password("warrior1358")
         page.submit()
         page.wait.text_appear("Документы — Бухгалтерский учет")
-    """
+
     def test_adding_entries_to_the_directory_of_fixed_assets(self):
         # Добавление в справочник «Объекты ОС,НМА,НПА» 4 основных средства, стр. 8-10
-
         page = MenuPage(self.driver)
         page.select_month("Февраль", "2018")
         page.references()
-        page.click_by_text('Объекты ОС, НМА, НПА')
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.objects_os_nma_npa()
         # page.click_by_text("Добавить - Папку - Транспорт") - на портале нет суб-кнопки, в сценарии есть
         # page.click_by_text("Добавить - Папку - Машины и оборудование") - на портале нет суб-кнопки, в сценарии есть
         # page.click_by_text("Добавить - Папку - Здания") - на портале нет суб-кнопки, в сценарии есть
@@ -142,7 +142,8 @@ class TestSuite:
         # Создание материально-ответственного лица, стр. 11-12
         page = MenuPage(self.driver)
         page.references()
-        page.click_by_text("Материально ответственные лица")
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.materially_responsible_person()
         page.click_by_text("Добавить")
         page = MateriallyResponsiblePersonPage(self.driver)
         page.employee("Ротко С.В.")
@@ -281,7 +282,8 @@ class TestSuite:
 
         page = MenuPage(self.driver)
         page.references()
-        page.click_by_text('Объекты ОС, НМА, НПА')
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.objects_os_nma_npa()
         page.click_by_text('Добавить')
         page = CardIndexOSNMANPAPage(self.driver)
         page.tag_no_first_part("10134")
@@ -312,7 +314,8 @@ class TestSuite:
 
         page = MenuPage(self.driver)
         page.references()
-        page.click_by_text('Шаблоны карточки ОС, НМА, НПА')
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.templates_of_the_card_os_nma_npa()
         page.click_by_text("Добавить")
         page = CreateATemplateForTheCardOSNMANPA(self.driver)
         page.name("Шкаф для документации")
@@ -331,7 +334,8 @@ class TestSuite:
 
         page = MenuPage(self.driver)
         page.references()
-        page.click_by_text('Объекты ОС, НМА, НПА')
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.objects_os_nma_npa()
         page.click_by_text("Добавить")
         page = CardIndexOSNMANPAPage(self.driver)
         page.tag_no_first_part("10136")
@@ -368,7 +372,8 @@ class TestSuite:
     #     # ошибка в TFS №2364, дописасть тест после исправления
     #     page.Browser(self.driver)
     #     page.references()
-    #     page.click_by_text('Объекты ОС, НМА, НПА')
+    #     page = ClickOnTheSectionFromTheDirectory(self.driver)
+    #     page.objects_os_nma_npa()
     #     page.click_by_text('Добавить')
     #     page.click_by_text('Копию строки')
 
@@ -409,7 +414,8 @@ class TestSuite:
         page = MenuPage(self.driver)
         page.select_month("Февраль", "2018")
         page.references()
-        page.click_by_text('Объекты ОС, НМА, НПА')
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.objects_os_nma_npa()
         page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)", order=1)
         page.click_by_text('Печать')
         page.click_by_text('Инвентарная карточка учета (форма по ОКУД 0504031)')
@@ -432,7 +438,8 @@ class TestSuite:
         
         page = MenuPage(self.driver)
         page.references()
-        page.click_by_text('Объекты ОС, НМА, НПА')
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.objects_os_nma_npa()
         page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
         page.table_select_row("Копировальный аппарат Xerox Phaser 8200")
         page.table_select_row("Автомобиль Volswagen passat 2.0 TFSI")
@@ -452,7 +459,8 @@ class TestSuite:
     #     # Создание первой записи
     #     page = MenuPage(self.driver)
     #     page.references()
-    #     page.click_by_text('Группы МЗ')
+    #     page = ClickOnTheSectionFromTheDirectory(self.driver)
+    #     page.group_mz()
     #     page.click_by_text('Добавить')
     #     page = CreationOfANewEntryInTheDirectoryGroupMzPage(self.driver)
     #     page.order_number("777")
@@ -473,7 +481,8 @@ class TestSuite:
         # Создание первой записи - шапка
         page = MenuPage(self.driver)
         page.references()
-        page.click_by_text('Объекты МЗ')
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.objects_mz()
         page.click_by_text("Добавить")
         page.click_by_text("Новую строку")
 
@@ -502,7 +511,7 @@ class TestSuite:
     #     # По сценарию нужно сделать копию строки, но суб-кнопки "Добавить - Копию строки" на портале нет,
     #     # ошибка в TFS №2364. Дописать тест после исправления.
     
-    #     page = MenuPage(self.driver)
+    #     page = Browser(self.driver)
     #     page.table_select_row("Бумага формата А4")
     #     page.click_by_text("Добавить")
     #     page.click_by_text("Копию карточки")
@@ -556,7 +565,8 @@ class TestSuite:
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.references()
-        page.click_by_text('Материально ответственные лица')
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.materially_responsible_person()
         page.click_by_text("Добавить")
         page = MateriallyResponsiblePersonPage(self.driver)
         page.name("Иванов И.И.")
@@ -579,7 +589,8 @@ class TestSuite:
         page = MenuPage(self.driver)
         page.select_month("Февраль", "2018")
         page.references()
-        page.click_by_text("Объекты ОС, НМА, НПА")
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.objects_os_nma_npa()
         page.click_by_text("Добавить")
         page = CardIndexOSNMANPAPage(self.driver)
         page.tag_no_first_part("10134")
@@ -683,7 +694,8 @@ class TestSuite:
         # ШАПКА ДОКУМЕНТА
         page = MenuPage(self.driver)
         page.references()
-        page.click_by_text("Приказы о назначении комиссии")
+        page = ClickOnTheSectionFromTheDirectory(self.driver)
+        page.commission_orders()
         page.click_by_text("Добавить")
         page = CreationOfACommissionOrderCapPage(self.driver)
         page.order_number("143")
@@ -876,7 +888,7 @@ class TestSuite:
         page.click_by_text('Да')
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
-    """
+
     def test_balances_of_nonfinancial_assets(self):
         # Меню - Остатки НФА
         page = MenuPage(self.driver)
