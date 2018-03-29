@@ -156,13 +156,14 @@ class TestSuite:
         page.valid_till("01.01.2050")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-
+        
     def test_creation_of_document_admission_nfa_and_attachment_4oc(self):
         # Создание поступление НФА и прикрепление созданных 4-ех ОС, 12-16 стр.
         # При заполнении поля "Инвентарный №" ссылочное поле "Наименование" автоматически не заполняется
         #  Ошибка №234 в TFS.
 
         page = MenuPage(self.driver)
+        page.select_month("Февраль", "2018")
         page.click_to_eagle()
         page.click_by_text("Поступление НФА")
         # page.click_by_text("Добавить - Новый документ") на портале нет суб-кнопки. Дописать после исправления.
@@ -250,10 +251,6 @@ class TestSuite:
         # Проведение документа Поступление НФА с 4-мя записями ОС, стр. 16
 
         page = MenuPage(self.driver)
-        page.click_to_eagle()
-        page.click_by_text('Поступление НФА')
-        page.select_month("Февраль", "2018")
-        # page.table_select_row('ООО "КВАРТА ВК"')
         page.table_select_row('01.02.2018')
         page.click_by_text("Действия")
         sleep(2)
@@ -270,10 +267,12 @@ class TestSuite:
     def test_viewing_of_document_admission_nfa(self):
         # Просмотр проводок по документу Поступление НФА с 4-мя записями ОС, стр. 16.
         
-        page = Browser(self.driver)
-        page.table_select_row('ООО "КВАРТА ВК"')
-        page.click_by_text('Действия')
-        page.click_by_text('Просмотр проводок')
+        page = MenuPage(self.driver)
+        page.table_select_row('01.02.2018')
+        page.click_by_text("Действия")
+        sleep(2)
+        page.click_by_text("Просмотр проводок")
+        sleep(1)
 
     def test_add_another_entry_to_the_asset_catalog(self):
         # Добавление в справочник ОС еще одной записи и помещение ее в папку, стр. 16-19
@@ -305,7 +304,7 @@ class TestSuite:
         page.okof("Машины вычислительные электронные цифровые")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
-        # page.click_by_text("Да")
+        page.click_by_text("Да")
         # page.click_by_text("Добавить - Папку - ХОЗ Инвентарь") - на портале нет суб-кнопки "Добавить папку",
         #  дописать после после исправлния.
 
@@ -327,7 +326,7 @@ class TestSuite:
         page.amortization_group(" 4 ГРУППА")
         page.click_by_text("Сохранить", order=2)
         page.click_by_text("Закрыть", order=2)
-
+        
     def test_creation_of_the_basic_means_using_the_created_template_of_the_card_osnmanpa(self):
         # Cоздание основного средства используя созданный шаблон карточки ОС,НМА,НПА, 23-24
         # На портале не работает автозополнение полей в ОС при выборе шаблона карточки, TFS - product backlog item №589
@@ -365,6 +364,7 @@ class TestSuite:
         page.okof("Шкафы для документации")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
+        page.click_by_text("Да")
 
     # def test_copy_entries_to_the_directory_of_fixed_assets(self):
     #     # Копирование записи ОС, стр. 25
@@ -392,6 +392,7 @@ class TestSuite:
         sleep(3)
         page.click_by_text('Сохранить')
         page.click_by_text('Закрыть')
+        page.click_by_text("Да")
 
     def test_deletion_of_a_record_in_the_fixed_assets_directory(self):
         # Удаление записи ОС, стр. 27-28
@@ -411,14 +412,11 @@ class TestSuite:
     def test_print_inventory_card_okud_0504031(self):
         # Печать инвентарной карточки учета ОКУД 0504031, стр. 30
 
-        page = MenuPage(self.driver)
-        page.select_month("Февраль", "2018")
-        page.references()
-        page = ClickOnTheSectionFromTheDirectory(self.driver)
-        page.objects_os_nma_npa()
+        page = Browser(self.driver)
+        page.search_string("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)")
         page.table_select_row("Ноутбук Toshiba (Intel Core Duo 2Ghz,2048Mb,120Gb)", order=1)
         page.click_by_text('Печать')
-        page.click_by_text('Инвентарная карточка учета (форма по ОКУД 0504031)')
+        page.click_by_text('Инвентарная карточка учета нефинансовых активов (код формы по ОКУД 0504031)')
         sleep(15)
         File.compare_files('Инвентарная карточка НФА.xls')
 
@@ -549,9 +547,9 @@ class TestSuite:
         page.search_string("Папка на кольцах")
         page.table_select_row("Папка на кольцах", order=1)
         page.click_by_text("Открыть")
-        page.scroll_to_bottom()
-        page.click_by_text("Добавить", order=2)
+        page.scroll_modal_to_bottom()
         page = CreationOfAnEntryInTheDirectoryObjectsOfOzRowPage(self.driver)
+        page.click_by_text("Добавить", order=3)
         page.name("Папка на кольцах A4")
         page.price("500,00")
         page.acquisition_date("20.02.2018")
@@ -563,7 +561,6 @@ class TestSuite:
         # Создание записи в справочнике «МОЛ», стр. 36-37
 
         page = MenuPage(self.driver)
-        page.click_to_eagle()
         page.references()
         page = ClickOnTheSectionFromTheDirectory(self.driver)
         page.materially_responsible_person()
@@ -611,6 +608,7 @@ class TestSuite:
         page.okof("Устройства ввода и вывода информации")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
+        page.click_by_text("Да")
 
         # Создаем Поступление НФА и выбираем созданное ОС
         page = MenuPage(self.driver)
@@ -667,8 +665,9 @@ class TestSuite:
         # Проведение документа «Поступление НФА», стр. 42
 
         page = Browser(self.driver)
-        page.table_select_row('ООО "ОЛДИ 3"', order=1)
-        page.click_by_text('Действия')
+        page.table_select_row("7 500,00", order=1)
+        page.click_by_text("Действия")
+        sleep(2)
         page.click_by_text('Провести', order=2)
         page.set_date_wl("lddate_prov", "01.02.2018", "Дата проводки")
         page.set_select2_wl("OperationMaster", "Начальные остатки Машины и оборудование", "Типовая операция")
@@ -683,10 +682,11 @@ class TestSuite:
         # Просмотр проведения документа c групповым приходом «Поступление НФА», стр. 42-43
 
         page = Browser(self.driver)
-        page.table_select_row('ООО "ОЛДИ 3"', order=1)
-        page.click_by_text('Действия')
-        page.click_by_text('Просмотр проводок')
-        sleep(3)
+        page.table_select_row("7 500,00", order=1)
+        page.click_by_text("Действия")
+        sleep(2)
+        page.click_by_text("Просмотр проводок")
+        sleep(1)
 
     def test_creation_of_a_commission_order_cap(self):
         # Создание Приказа о назначении комиссии
@@ -724,33 +724,33 @@ class TestSuite:
         page.click_by_text("Закрыть")
         
     def test_checking_the_print_receipt_of_materials(self):
-        # Проверка печати «Акта о приеме-передаче объектов нефинансовых активов», стр. 43-48
+        # Проверка печати «Акт приемки материалов», стр. 43-48
 
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Февраль", "2018")
         page.click_by_text('Поступление НФА')
-        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.table_select_row("7 500,00", order=1)
         page.click_by_text('Печать')
         page.click_by_text('Акт приемки материалов')
         sleep(5)
         File.compare_files('Акт приемки материалов.xls')
 
     def test_checking_the_printing_of_a_receipt_receipt_for_valuables(self):
-        # Проверка печати «Акта о приеме-передаче объектов нефинансовых активов», стр. 43-48
+        # Проверка печати «Приходный ордер на приемку материальных ценностей», стр. 43-48
 
         page = Browser(self.driver)
-        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.table_select_row("7 500,00", order=1)
         page.click_by_text('Печать')
         page.click_by_text('Приходный ордер на приемку материальных ценностей')
         sleep(5)
         File.compare_files('Приходный ордер на приемку материальных ценностей (НФА).xls')
 
     def test_checking_the_printing_of_act_acceptance_transfer_of_objects_of_non_financial_assets(self):
-        # Проверка печати «Акта о приеме-передаче объектов нефинансовых активов», стр. 43-48
+        # Проверка печати «Акт о приеме-передаче объектов нефинансовых активов», стр. 43-48
 
         page = Browser(self.driver)
-        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.table_select_row("7 500,00", order=1)
         page.click_by_text('Печать')
         page.click_by_text('Акт о приеме-передаче объектов нефинансовых активов')
         page = ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsPage(self.driver)
@@ -775,7 +775,7 @@ class TestSuite:
         # реконструированных и модернизированных объектов основных средств», стр. 43-48
 
         page = Browser(self.driver)
-        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.table_select_row("7 500,00", order=1)
         page.click_by_text('Печать')
         page.click_by_text('Акт о приеме-сдаче отремонтированных,'
                            ' реконструированных и модернизированных объектов основных средств')
@@ -785,8 +785,8 @@ class TestSuite:
         page.checker.check_text_input("employeePrintedName", "Ротко С.В.", order=1)
         page.checker.check_text_input("positionPrintedName", "Старший специалист 1 разряда", order=2)
         page.checker.check_text_input("employeePrintedName", "Абрамов М.В.", order=2)
-        page.inventory_date_from("01.02.2018")
-        page.inventory_date_to("28.02.2018")
+        # page.inventory_date_from("01.02.2018")
+        # page.inventory_date_to("28.02.2018")
         page.click_by_text("Сформировать")
         sleep(5)
         File.compare_files('Акт о приеме-сдаче отремонтированных, реконструированных'
@@ -797,7 +797,7 @@ class TestSuite:
         # Редактирование созданной записи в документе «Поступление НФА», 48-49
 
         page = Browser(self.driver)
-        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.table_select_row("7 500,00", order=1)
         page.click_by_text('Открыть')
         page.table_select_row("7 500,00", order=1)
         page.click_by_text("Открыть")
@@ -816,7 +816,7 @@ class TestSuite:
         # Массовая замена параметров в строках документа «Поступление НФА», стр. 50-52
 
         page = Browser(self.driver)
-        page.table_select_row('ООО "ОЛДИ 3"', order=1)
+        page.table_select_row("15 000,00", order=1)
         page.click_by_text('Открыть')
         page.scroll_to_bottom()
         page.table_choose_all_checkbox('Выбрать все строки')

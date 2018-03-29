@@ -396,6 +396,9 @@ class CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators(object):
 
 # Локаторы для Справочника «Объекты МЗ» - строки
 class CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators(object):
+    open = (By.XPATH, "(//button[contains(.,'Открыть')])")
+    add = (By.XPATH, "(//button[contains(.,'Добавить')])")
+    delete = (By.XPATH, "(//button[contains(.,'Добавить')])")
     name = (By.XPATH, "(//text-input[@name='name']//input)[2]")
     price = (By.XPATH, "//currency-input[@name='price']//input")
     acquisition_date = (By.XPATH, "//date-input[@name='acquisitionDate']//input")
