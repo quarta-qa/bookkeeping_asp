@@ -118,6 +118,7 @@ class Browser(object):
         :param order: order in case of few modal windows. order starts from 0. that's why there is decreasing by 1
         :return:
         """
+        self.wait.element_appear((By.XPATH, "//*[@class='{0}']".format(class_name)))
         self.driver.execute_script("""
                var modal = document.getElementsByClassName('%s')[%s];
                modal.scrollTo(0, 0);
@@ -131,6 +132,7 @@ class Browser(object):
         :param order: order in case of few modal windows. order starts from 0. that's why there is decreasing by 1
         :return:
         """
+        self.wait.element_appear((By.XPATH, "//*[@class='{0}']".format(class_name)))
         self.driver.execute_script("""
                var modal = document.getElementsByClassName('%s')[%s];
                modal.scrollTo(0, modal.scrollHeight);

@@ -58,18 +58,18 @@ class MenuLocators(object):
 class ClickOnTheSectionFromTheDirectoryLocators(object):
     # Учет нефинансовых активов
     objects_os_nma_npa = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/basic-facilities']")
-    group_os_nma_npa = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/material-inventory-group")
-    objects_mz = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/material-inventory")
-    group_mz = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/material-inventory-group")
+    group_os_nma_npa = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/material-inventory-group']")
+    objects_mz = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/material-inventory']")
+    group_mz = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/material-inventory-group']")
     materially_responsible_person = (By.XPATH,
-                                     "//*[@href='#/non-financial-assets/classifiers/materially-responsible-person")
-    storage = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/storage")
-    okof = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/okof")
-    ofof_2017 = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/okof2017")
+                                     "//*[@href='#/non-financial-assets/classifiers/materially-responsible-person']")
+    storage = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/storage']")
+    okof = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/okof']")
+    ofof_2017 = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/okof2017']")
     templates_of_the_card_os_nma_npa = (By.XPATH,
-                                        "//*[@href='#/non-financial-assets/classifiers/basic-facilities-template")
-    ifns = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/ifns")
-    commission_orders = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/committee")
+                                        "//*[@href='#/non-financial-assets/classifiers/basic-facilities-template']")
+    ifns = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/ifns']")
+    commission_orders = (By.XPATH, "//*[@href='#/non-financial-assets/classifiers/committee']")
 
 
 # оборотная ведомость
@@ -396,6 +396,9 @@ class CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators(object):
 
 # Локаторы для Справочника «Объекты МЗ» - строки
 class CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators(object):
+    open = (By.XPATH, "(//button[contains(.,'Открыть')])")
+    add = (By.XPATH, "(//button[contains(.,'Добавить')])")
+    delete = (By.XPATH, "(//button[contains(.,'Добавить')])")
     name = (By.XPATH, "(//text-input[@name='name']//input)[2]")
     price = (By.XPATH, "//currency-input[@name='price']//input")
     acquisition_date = (By.XPATH, "//date-input[@name='acquisitionDate']//input")

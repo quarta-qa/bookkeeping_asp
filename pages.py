@@ -1278,6 +1278,15 @@ class CreationOfAnEntryInTheDirectoryObjectsOfOzCapPage(Browser):
 
 # Справочник «Объекты МЗ» - строки
 class CreationOfAnEntryInTheDirectoryObjectsOfOzRowPage(Browser):
+    def open(self):
+        self.click(CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators.open, "Открыть")
+
+    def add(self):
+        self.click(CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators.add, "Добавить")
+
+    def delete(self):
+        self.click(CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators.delete, "Удалить")
+
     def name(self, value):
         self.set_text(CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators.name, value, "Характеристика объекта")
 
