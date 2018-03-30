@@ -234,15 +234,15 @@ class ZNVLocators(object):
 
 #   ПКО
 class IncomingOrderLocators(object):
-    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
-    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    employee = (By.XPATH, "//employee-classifier[@name='employee']")
-    organization = (By.XPATH, "//counterparty-classifier[@name='organization']")
-    received_from = (By.XPATH, "//text-input[@name='receivedFrom']//input")
-    department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
-    cash_report_number = (By.XPATH, "//text-input[@name='cashReportNumber']//input")
-    foundation = (By.XPATH, "//text-area-input[@name='foundation']//textarea")
+    document_kind = (By.XPATH, "//*[@name='documentKind']")
+    document_number = (By.XPATH, "//*[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//*[@name='documentDate']//input")
+    employee = (By.XPATH, "//*[@name='employee']")
+    organization = (By.XPATH, "//*[@name='organization']")
+    received_from = (By.XPATH, "//*[@name='receivedFrom']//input")
+    department_unit = (By.XPATH, "//*[@name='departmentUnit']")
+    cash_report_number = (By.XPATH, "//*[@name='cashReportNumber']//input")
+    foundation = (By.XPATH, "//*[@name='foundation']//textarea")
     operation = (By.XPATH, "//*[@name='operation']")
 
 
@@ -515,7 +515,7 @@ class DecodingOfTheApplicationLocators(object):
     document_foundation_counterparty = (By.XPATH, "//*[@name='documentFoundationCounterparty']")
     foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='foundation']")
     comment = (By.XPATH, "//*[@name='comment']//textarea")
-    draweeKbkType = (By.XPATH, "//*[@name='drawee_kbk_type']//select")
+    draweeKbkType = (By.XPATH, "//*[@name='draweeKbkType']//select")
 
 
 class InvoiceFromTheSupplierLocators(object):
@@ -596,24 +596,24 @@ class ApplicationForCashWithdrawalAddLineLocators(object):
 
 # рко
 class AccountCashWarrantLocators(object):
-    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
-    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    document_kind = (By.XPATH, "//*[@name='documentKind']")
+    document_number = (By.XPATH, "//*[@name='documentNumber']//input")
     entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
     document_date = (By.XPATH, "//*[@name='documentDate']//input")
     employee = (By.XPATH, "//*[@name='employee']")
-    issue = (By.XPATH, "//text-input[@name='issue']//input")
-    foundation = (By.XPATH, "//text-area-input[@name='foundation']//textarea")
-    cash_report_number = (By.XPATH, "//text-input[@name='cashReportNumber']//input")
+    issue = (By.XPATH, "//*[@name='issue']//input")
+    foundation = (By.XPATH, "//*[@name='foundation']//textarea")
+    cash_report_number = (By.XPATH, "//*[@name='cashReportNumber']//input")
 
 
 # рко+заполнение строк
 class AccountCashWarrantLocatorsAddLine(object):
-    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
-    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
-    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
-    cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
-    amount = (By.XPATH, "//amount-input[@name='amount']//input")
-    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    operation = (By.XPATH, "//*[@name='operation']")
+    kbk = (By.XPATH, "//*[@name='kbk']")
+    kosgu = (By.XPATH, "//*[@name='kosgu']")
+    cost_element = (By.XPATH, "//*[@name='costElement']")
+    amount = (By.XPATH, "//div[@class='modal-content']//*[@name='amount']//input")
+    comment = (By.XPATH, "//*[@name='comment']//textarea")
 
 
 # Журнал проводок
@@ -626,16 +626,16 @@ class PostingJournalLocators(object):
 
 #  Основание для выдачи подотчетных сумм
 class BasisForReportingAmountsLocators(object):
-    number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
-    employee = (By.XPATH, "//employee-classifier[@name='employee']")
-    position = (By.XPATH, "//position-classifier[@name='position']")
-    department = (By.XPATH, "//department-classifier[@name='department']")
-    trip_start_date = (By.XPATH, "//date-input[@name='tripStartDate']//input")
-    trip_end_date = (By.XPATH, "//date-input[@name='tripEndDate']//input")
-    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
-    trip_route = (By.XPATH, "//text-area-input[@name='tripRoute']//textarea")
+    number = (By.XPATH, "//*[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//*[@name='documentDate']//input")
+    document_kind = (By.XPATH, "//*[@name='documentKind']")
+    employee = (By.XPATH, "//*[@name='employee']")
+    position = (By.XPATH, "//*[@name='position']")
+    department = (By.XPATH, "//*[@name='department']")
+    trip_start_date = (By.XPATH, "//*[@name='tripStartDate']//input")
+    trip_end_date = (By.XPATH, "//*[@name='tripEndDate']//input")
+    comment = (By.XPATH, "//*[@name='comment']//textarea")
+    trip_route = (By.XPATH, "//*[@name='tripRoute']//textarea")
 
 
 #  Основание для выдачи подотчетных сумм добавление строки
