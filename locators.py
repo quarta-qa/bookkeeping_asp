@@ -463,6 +463,7 @@ class AccountingCalculationLocators(object):
 
 # Локаторы для модальное окна - Просмотр остатков по счету
 class ViewingOfAccountBalancesLocators(object):
+    clear_field_account = (By.XPATH, "//button[@class='btn btn-clear']")
     date = (By.XPATH, "//date-input[@name='date']//input")
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
     balance_sheet_account_group = (By.XPATH,
