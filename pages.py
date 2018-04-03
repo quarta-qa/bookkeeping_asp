@@ -724,6 +724,9 @@ class IncomingOrderPage(Browser):
     def document_date(self, value):
         self.set_date(IncomingOrderLocators.document_date, value, "Дата")
 
+    def entry_date(self, value):
+        self.set_date(IncomingOrderLocators.entry_date, value, "entryDate")
+
     def employee(self, value):
         self.set_select2(IncomingOrderLocators.employee, value, "Сотрудник")
 
@@ -792,6 +795,54 @@ class IncomingOrderAddLinePage(Browser):
 
     def cash_transaction_code(self, value):
         self.set_select(IncomingOrderAddLineLocators.cash_transaction_code, value, "Кассовый символ")
+
+
+# Авансовый отчет
+class AvansReportPage(Browser):
+    def document_kind(self, value):
+        self.set_select2(AvansReportLocators.document_kind, value, "documentKind")
+
+    def document_number(self, value):
+        self.set_text(AvansReportLocators.document_number, value, "documentNumber")
+
+    def document_date(self, value):
+        self.set_date(AvansReportLocators.document_date, value, "documentDate")
+
+    def entry_date(self, value):
+        self.set_date(AvansReportLocators.entry_date, value, "entryDate")
+
+    def purpose(self, value):
+        self.set_text(AvansReportLocators.purpose, value, "purpose")
+
+    def comment(self, value):
+        self.set_text(AvansReportLocators.comment, value, "comment")
+
+
+# Авансовый отчет добавление строки
+class AvansReportAddLinePage(Browser):
+    def operation_master(self, value):
+        self.set_select2(AvansReportAddLineLocators.operation_master, value, "Типовая операция")
+
+    def kbk(self, value):
+        self.set_select2(AvansReportAddLineLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(AvansReportAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(AvansReportAddLineLocators.cost_element, value, "Вид затрат")
+
+    def document_date(self, value):
+        self.set_date(AvansReportAddLineLocators.document_date, value, "Дата")
+
+    def document_number(self, value):
+        self.set_text(AvansReportAddLineLocators.document_number, value, "Номер")
+
+    def amount(self, value):
+        self.set_text(AvansReportAddLineLocators.amount, value, "Сумма")
+
+    def comment(self, value):
+        self.set_text(AvansReportAddLineLocators.comment, value, "Комментарий")
 
 
 # Заявка на кассовый расход

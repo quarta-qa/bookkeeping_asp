@@ -1077,7 +1077,7 @@ class TestSuite:
         sleep(10)
         File.compare_files('Приходный кассовый ордер (2).xls')
 
-    def test_account_cash_warrant(self):
+    def te1st_account_cash_warrant(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1189,7 +1189,7 @@ class TestSuite:
         sleep(10)
         File.compare_files("Расходный кассовый ордер (1).xls")
 
-    def test_incoming_order_three(self):
+    def te1st_incoming_order_three(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1232,7 +1232,7 @@ class TestSuite:
         sleep(10)
         File.compare_files('Приходный кассовый ордер (3).xls')
 
-    def test_posting_journal(self):
+    def te1st_posting_journal(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1243,7 +1243,7 @@ class TestSuite:
         page.balance_sheet_account("1 201 34")
         page.click_by_text("Сформировать")
 
-    def test_turnover_statement_two(self):
+    def te1st_turnover_statement_two(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1257,7 +1257,7 @@ class TestSuite:
         sleep(10)
         File.compare_files('Оборотная ведомость (1).xls')
 
-    def test_basis_for_reporting_amounts(self):
+    def te1st_basis_for_reporting_amounts(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1305,7 +1305,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def test_basis_for_reporting_amounts_plus_rko_advance_payment(self):
+    def te1st_basis_for_reporting_amounts_plus_rko_advance_payment(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1333,7 +1333,7 @@ class TestSuite:
         page.click_by_text("Строки документа")
         page.table_select_row_click('226')
         page.click_by_text("Открыть")
-        page = AccountCashWarrantPageAddLine(self.driver, 5)
+        page = AccountCashWarrantPageAddLine(self.driver)
         page.operation("Выдача из кассы в подотчет (прочие)")
         page.checker.check_text_select("kbk", "0411 0000000000 000")
         page.checker.check_text_select("kosgu", "226")
@@ -1356,37 +1356,116 @@ class TestSuite:
         sleep(10)
         page.table_select_row('26.01.2018')
         page.click_by_text("Открыть")
-        page.click_by_text("Связанны")
+        page.click_by_text("Связанные документы")
+        page.table_select_row('27.01.2018')
+        page.click_by_text("Печать")
+        sleep(10)
+        File.compare_files("Расходный кассовый ордер (2).xls")
+        page.click_by_text("Закрыть")
 
+    def te1st_basis_for_reporting_amounts_plus_avans_report(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Основание для выдачи подотчетных сумм")
+        page.table_select_row('26.01.2018')
+        page.click_by_text("Действия")
+        element = self.driver.find_element(By.XPATH, "//li[a='Создать на основании текущего документа']")
+        page.move_to_element(element)
+        page.click_by_text("Авансовый отчет")
+        page = AvansReportPage(self.driver)
+        page.document_kind('Приход ТМЦ')
+        page.document_number('2')
+        page.document_date('30.01.2018')
+        page.entry_date('30.01.2018')
+        page.checker.check_text_input('employeeFullName', 'Трошин Юрий Николаевич')
+        page.checker.check_text_select('employee', 'Трошин Ю.Н.')
+        page.checker.check_text_select('position', 'Вед.спец.-эксперт')
+        page.checker.check_text_select('documentFoundation', '1 от 26.01.2018')
+        page.checker.check_text_input('purpose', 'На хознужды')
+        page.table_select_row_click('226')
+        page.click_by_text("Открыть")
+        page = AvansReportAddLinePage(self.driver)
+        page.operation_master('221. Авансовый отчет (оплата за услуги связи)')
+        page.kbk('0411 0000000000 000')
+        page.kosgu('221')
+        page.cost_element('Услуги связи')
+        page.document_date('30.01.2018')
+        page.document_number('2')
+        page.amount('4 560,00')
+        page.comment('На прочие услуги. Списание расходов по слугам связи')
+        page.click_by_text("Сохранить", 2)
+        page.table_select_row_click('290')
+        page.click_by_text("Открыть")
+        page.operation_master('225. Авансовый отчет (услуги по содержанию имущ-ва)  мойка автомобиля')
+        page.kbk('0411 0000000000 000')
+        page.kosgu('225')
+        page.cost_element('Услуги по содержанию имущества')
+        page.document_date('30.01.2018')
+        page.document_number('1')
+        page.amount('4 200,00')
+        page.comment('На представительские расходы. Списание расходов по содержанию имущества')
+        page.click_by_text("Сохранить", 2)
+        page.checker.check_text_input('amount', '8 760,00')
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
+        page.search_by_two_attributes('-260,00', '8 760,00')
+        page.click_by_text("Открыть")
+        page.click_by_text("Связанные документы")
+        page.table_select_row('30.01.2018')
+        page.click_by_text("Печать")
+        sleep(10)
+        File.compare_files("Авансовый отчет.xls")
+        page.click_by_text("Закрыть")
 
+    def te1st_basis_for_reporting_amounts_plus_income_order_for_the_balance(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Основание для выдачи подотчетных сумм")
+        page.table_select_row('26.01.2018')
+        page.click_by_text("Действия")
+        element = self.driver.find_element(By.XPATH, "//li[a='Создать на основании текущего документа']")
+        page.move_to_element(element)
+        page.click_by_text("Расходный/Приходный кассовый ордер на остаток")
+        page.click_by_text("Связанные документы")
+        page.search_by_two_attributes('Приходный кассовый ордер', '8 500,00')
+        page.click_by_text("Открыть", 2)
+        page = IncomingOrderPage(self.driver)
+        sleep(5)
+        page.document_kind("Приходный кассовый ордер")
+        page.document_date("30.01.2018")
+        page.entry_date("30.01.2018")
+        page.checker.check_text_select("employee", "Трошин Юрий Николаевич")
+        page.checker.check_text_input("receivedFrom", "Трошин Ю.Н.")
+        page.checker.check_text_input("foundation", "На хознужды")
+        page.checker.check_text_input('amount', '8 500,00')
+        page.click_by_text("Приложение")
+        page.checker.check_text_select("documentFoundation", "№ 1 от 26.01.2018")
+        page.checker.check_text_select("advanceReport", "2 от 30.01.2018")
+        page.click_by_text("Строки документа")
+        page.table_select_row_click('226')
+        page.click_by_text("Открыть")
+        page = IncomingOrderAddLinePage(self.driver)
+        page.operation("Поступление денежных средств по 226 статье")
+        page.click_by_text("Сохранить", 2)
+        page.table_select_row_click('290')
+        page.click_by_text("Открыть")
+        page.operation("Возврат в кассу аванса (290)")
+        page.click_by_text("Сохранить", 2)
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def test_basis_for_reporting_amounts_plus_expenditure_order_for_the_balance(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Основание для выдачи подотчетных сумм")
+        page.table_select_row('26.01.2018')
+        page.click_by_text("Открыть")
+        page.click_by_text("Связанные документы")
+        page.search_by_two_attributes('Расходный кассовый ордер', '8 760,00')
+        page.click_by_text("Открыть", 2)
 
 
 

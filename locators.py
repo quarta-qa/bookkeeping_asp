@@ -237,6 +237,7 @@ class IncomingOrderLocators(object):
     document_kind = (By.XPATH, "//*[@name='documentKind']")
     document_number = (By.XPATH, "//*[@name='documentNumber']//input")
     document_date = (By.XPATH, "//*[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//*[@name='entryDate']//input")
     employee = (By.XPATH, "//*[@name='employee']")
     organization = (By.XPATH, "//*[@name='organization']")
     received_from = (By.XPATH, "//*[@name='receivedFrom']//input")
@@ -647,4 +648,23 @@ class BasisForReportingAmountsAddLineLocators(object):
     comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
 
 
+# авансовый отчет
+class AvansReportLocators(object):
+    document_kind = (By.XPATH, "//div[@class='container-fluid']//document-kind-classifier[@name='documentKind']")
+    document_number = (By.XPATH, "//div[@class='container-fluid']//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//div[@class='container-fluid']//date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//div[@class='container-fluid']//date-input[@name='entryDate']//input")
+    purpose = (By.XPATH, "//div[@class='container-fluid']//text-area-input[@name='purpose']//textarea")
+    comment = (By.XPATH, "//div[@class='container-fluid']//text-area-input[@name='comment']//textarea")
 
+
+# авансовый отчет добавление строки
+class AvansReportAddLineLocators(object):
+    operation_master = (By.XPATH, "//div[@class='modal-content']//operation-master-hierarchy-classifier[@name='OperationMaster']")
+    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//div[@class='modal-content']//cost-elements-classifier[@name='costElement']")
+    document_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='documentDate']//input")
+    document_number = (By.XPATH, "//div[@class='modal-content']//number-input[@name='documentNumber']//input")
+    amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
