@@ -408,7 +408,6 @@ class CashExpenseRequestPage(Browser):
 
 
 class CashPullRequestPage(Browser):
-
     @property
     def new_document(self):
         return self.NewDocument(self.driver)
@@ -1214,7 +1213,7 @@ class ReceiptOfNonFinancialAssetsCapPage(Browser):
         self.set_text(ReceiptOfNonFinancialAssetsCapLocators.document_number, value, "Номер")
 
     def document_kind(self, value):
-        self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.document_kind, value, "Вид документа")
+        self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.document_kind, value, "Вид документа", exactly=False)
 
     def document_date(self, value):
         self.set_date(ReceiptOfNonFinancialAssetsCapLocators.document_date, value, "Дата")
@@ -1265,19 +1264,19 @@ class ReceiptOfNonFinancialAssetsRowPage(Browser):
 class CreateATemplateForTheCardOSNMANPA(Browser):
 
     def name(self, value):
-        self.set_text(CreateATemplateForTheCardOSNMANPALocators.name, value, "name")
+        self.set_text(CreateATemplateForTheCardOSNMANPALocators.name, value, "Наименование объекта")
 
     def unit_of_measure(self, value):
-        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.unit_of_measure, value, "unitOfMeasure")
+        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.unit_of_measure, value, "Единица измерения")
 
     def group(self, value):
-        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.group, value, "group")
+        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.group, value, "Группа ОС, НМА, НПА")
 
     def okof(self, value):
-        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.okof, value, "okof")
+        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.okof, value, "ОКОФ")
 
     def amortization_group(self, value):
-        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.amortization_group, value, "amortizationGroup")
+        self.set_select2(CreateATemplateForTheCardOSNMANPALocators.amortization_group, value, "Амортизационная группа")
 
 
 # Массовое заполнение параметров ОС
@@ -1483,6 +1482,9 @@ class AccountingCalculationPage(Browser):
 
 # Модальное окно - Параметры вывода остатков НФА
 class ViewingOfAccountBalancesPage(Browser):
+    def clear_field_account(self):
+        self.click(ViewingOfAccountBalancesLocators.clear_field_account, "Очистка поля Счет")
+
     def date(self, value):
         self.set_date(ViewingOfAccountBalancesLocators.date, value,
                       "Дата, на которую формируются остатки")
