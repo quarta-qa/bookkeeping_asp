@@ -23,10 +23,10 @@ class TestSuite:
         page.username("Test1")
         page.password("123")
         page.submit()
-        page.wait.text_appear("Документы — Бухгалтерский учет")
+        page.wait.text_appear("Бухгалтерский учет")
 
     def te1st_contract_with_supplier(self):
-        page = ContractWithSupplierPage(self.driver, 5)
+        page = ContractWithSupplierPage(self.driver)
         page.select_month("Январь", "2018")
         page.click_by_text("Договор с поставщиком")
         page.click_by_text("Добавить")
@@ -48,6 +48,7 @@ class TestSuite:
         # Заполнение строки документа
         page.click_by_text("Детализация по КБК")
         page.click_by_text("Добавить")
+        page.click_by_text("Новую строку")
         page = ContractWithSupplierPageDetailKBK(self.driver)
         page.financial_year("2018")
         page.entry_date("10.01.2018")
@@ -108,7 +109,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_application_cash_flow(self):
+    def test_application_cash_flow(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page = ApplicationCashFlowPage(self.driver)
@@ -125,6 +126,10 @@ class TestSuite:
         page.recipient('ПАО "МегаФон"')
         page.bank_account_number("40702810838180130496")
         page.number_ufk("123456789012345")
+        page.click_by_text("Реквизиты документа")
+        page.priority_of_payment("1")
+        page.payment_type("4 – срочно")
+        page.payment_purpose("paymentPurpose- Test")
         # Заполнение вкладки дкоумент основание
         page.click_by_text("Документ-основание")
         page.foundation("1 от 10.01.2018")
@@ -137,6 +142,7 @@ class TestSuite:
         page.click_by_text("Добавить")
         page.click_by_text("Новую строку")
         page = DecodingOfTheApplicationPage(self.driver)
+        page.type_of_funds("1 - Средства бюджета")
         page.kbk("0411 0000000000 000")
         page.operation("(221) Оплата за услуги связи")
         page.kosgu("221")
@@ -199,6 +205,7 @@ class TestSuite:
         page.click_by_text("Расшифровка заявки")
         page.click_by_text("Открыть")
         page = DecodingOfTheApplicationPage(self.driver)
+        page.type_of_funds("1 - Средства бюджета")
         page.kbk("0411 0000000000 000")
         page.operation("(222) Оплата за транспортные услуги")
         page.kosgu("222")
@@ -276,6 +283,7 @@ class TestSuite:
         # Заполнение строки документа
         page.click_by_text("Детализация по КБК")
         page.click_by_text("Добавить")
+        page.click_by_text("Новую строку")
         page = ContractWithSupplierPageDetailKBK(self.driver)
         page.financial_year("2018")
         page.entry_date("20.01.2018")
@@ -303,7 +311,7 @@ class TestSuite:
         page.supplier(' Акционерное общество "Ай-Теко"')
         page.supplier_account_detail("40702810300000114301")
         page.account_details("ПАО Банк ВТБ")
-        page.department("Департамент внешних коммуникаций")
+        # page.department("Департамент внешних коммуникаций")
         page.note('Поставка оборудования , январь 2018')
         sleep(4)
 
@@ -359,9 +367,11 @@ class TestSuite:
         page.checker.check_text_select('counterpartyAccountDetails', "40702810300000114301")
         page.number_ufk("123456789012345")
         page.operation('Оплата за приобретение ОС')
-        # Заполнение вкладки дкоумент основание
-        page.click_by_text("Документ-основание")
+        page.priority_of_payment ('5')
+        page.payment_type('4 – срочно')
 
+        # Заполнение вкладки документ основание
+        page.click_by_text("Документ-основание")
         page.checker.check_text_select("foundation", '3 от 28.01.2018')
         page.checker.check_text_select("documentFoundaiontKind", 'Счет от поставщика')
         page.checker.check_text_input("documentFoundationNumber", '3')
@@ -700,7 +710,7 @@ class TestSuite:
         page.supplier('ООО Аудиторская компания "Аудит Проф Гарант"')
         page.supplier_account_detail("40702810500000002308")
         page.account_details("ПАО Банк ВТБ")
-        page.department("Департамент внешних коммуникаций")
+        # page.department("Департамент внешних коммуникаций")
         page.note('Аудиторские услуги , февраль 2018')
         sleep(4)
 
@@ -869,7 +879,7 @@ class TestSuite:
         page.supplier('ГУП "МТРК')
         page.supplier_account_detail("30302810900000023400")
         page.account_details("ПАО Банк ВТБ")
-        page.department("Департамент внешних коммуникаций")
+        # page.department("Департамент внешних коммуникаций")
         page.note('Услуги по ремонту зданий , март 2018')
         sleep(4)
         # Добавляем документ счет от поставщика строку
@@ -903,6 +913,8 @@ class TestSuite:
         page.checker.check_text_select('counterpartyAccountDetails', "30302810900000023400")
         page.number_ufk("123456789012345")
         page.operation('Оплата за приобретение ОС')
+        page.priority_of_payment ('5')
+        page.payment_type('4 – срочно')
         # Заполнение вкладки дкоумент основание
         page.click_by_text("Документ-основание")
         page.checker.check_text_select("foundation", '10 от 01.03.2018')
@@ -947,6 +959,10 @@ class TestSuite:
         page.click_by_text("Уполномоченные сотрудники")
         page.chief("Е.Ю.Петрова")
         page.chief_accountant("С.В. Васина")
+        page.priority_of_payment('5')
+        page.payment_purpose('Назначение платежа - тест')
+        page.payment_type('4 – срочно')
+        page.type_funds_for_return('1 - Средства бюджета')
         page.click_by_text("Сохранить")
         page.click_by_text("Расшифровка заявки")
         page.click_by_text("Назначение платежа")
@@ -1455,8 +1471,13 @@ class TestSuite:
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
+        page.click_by_text("Связанные документы")
+        page.search_by_two_attributes('Приходный кассовый ордер', '8 500,00')
+        page.click_by_text("Печать")
+        sleep(10)
+        File.compare_files("Приходный кассовый ордер (4).xls")
 
-    def test_basis_for_reporting_amounts_plus_expenditure_order_for_the_balance(self):
+    def te1st_basis_for_reporting_amounts_plus_expenditure_order_for_the_balance(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1466,6 +1487,38 @@ class TestSuite:
         page.click_by_text("Связанные документы")
         page.search_by_two_attributes('Расходный кассовый ордер', '8 760,00')
         page.click_by_text("Открыть", 2)
+        sleep(5)
+        page.checker.check_text_select('documentKind', 'Расходный кассовый ордер')
+        page.checker.check_text_select('employee', 'Трошин Юрий Николаевич')
+        page.checker.check_text_input('issue', 'Трошин Юрий Николаевич')
+        page.checker.check_text_input(
+            "byDocument", "Паспорт серия 04 45 №894269, выдан 27.12.2002  "
+                          "  Паспортным столом № 2 ОВД \"Отрадное\" г. Москвы")
+        page.checker.check_text_input("foundation", "На хознужды")
+        page.checker.check_text_input("amount", "8 760,00")
+        page.click_by_text("Приложение")
+        page.checker.check_text_select("documentFoundation", '№1 от 26.01.2018')
+        page.checker.check_text_select("advanceReport", '2 от 30.01.2018')
+        page.click_by_text("Строки документа")
+        page.table_select_row_click('221')
+        page.click_by_text("Открыть")
+        page = AccountCashWarrantPageAddLine(self.driver)
+        page.operation("Выдача в подотчет по 221 статье")
+        page.click_by_text("Сохранить", 2)
+        page.table_select_row_click('225')
+        page.click_by_text("Открыть")
+        page.operation("Перечисление командировочных 225")
+        page.click_by_text("Сохранить", 2)
+        page.click_by_text("Сохранить")
+        page.click_by_text("Закрыть")
+        page.click_by_text("Связанные документы")
+        page.search_by_two_attributes('Расходный кассовый ордер', '8 760,00')
+        page.click_by_text("Печать")
+        sleep(10)
+        File.compare_files("Расходный кассовый ордер (3).xls")
+
+
+
 
 
 

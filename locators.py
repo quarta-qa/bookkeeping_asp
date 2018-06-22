@@ -2,8 +2,8 @@ from framework import *
 
 
 class LoginLocators(object):
-    username = (By.XPATH, "//input[@id='UserName']")
-    password = (By.XPATH, "//input[@id='Password']")
+    username = (By.XPATH, "//input[@id='username']")
+    password = (By.XPATH, "//input[@id='password']")
     submit = (By.XPATH, "//button[@type='submit']")
 
 
@@ -504,6 +504,10 @@ class ApplicationCashFlowLocators(object):
     limit_date = (By.XPATH, "//*[@name='limitDate']//input")
     foundation = (By.XPATH, "//div[@class='tab-content']//*[@name='foundation']")
     operation = (By.XPATH, "//*[@name='operation']")
+    priority_of_payment = (By.XPATH, "//*[@name='paymentPriority']//input")
+    payment_type = (By.XPATH, "//*[@name='paymentForm']//select")
+    payment_purpose = (By.XPATH, "//text-area-input[@name='paymentPurpose']//textarea")
+
 
 
 class DecodingOfTheApplicationLocators(object):
@@ -517,6 +521,7 @@ class DecodingOfTheApplicationLocators(object):
     foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='foundation']")
     comment = (By.XPATH, "//*[@name='comment']//textarea")
     draweeKbkType = (By.XPATH, "//*[@name='draweeKbkType']//select")
+    typeOfFunds  = (By.XPATH, "//*[@name='activityKind']//select")
 
 
 class InvoiceFromTheSupplierLocators(object):
@@ -554,11 +559,15 @@ class ReturnRequestLocators(object):
     kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
     kbk_type = (By.XPATH, "//kbk-type-dropdown-input[@name='kbkType']")
     cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
-    outstanding_payment_document_amount = (By.XPATH, "//*[@name='outstandingPaymentDocumentAmount']//input")
+    outstanding_payment_document_amount = (By.XPATH, "//*[@name='amount']//input")
     nds_percent = (By.XPATH, "//nds-percent-input[@name='ndsPercent']//input")
     nds_amount = (By.XPATH, "//currency-input[@name='ndsAmount']//input")
     chief = (By.XPATH, "//*[@name='chief']")
     chief_accountant = (By.XPATH, "//*[@name='chiefAccountant']")
+    priority_of_payment = (By.XPATH, "//*[@name='paymentPriority']//input")
+    payment_purpose = (By.XPATH, "//text-area-input[@name='paymentPurpose']//textarea")
+    payment_type = (By.XPATH, "//*[@name='paymentForm']//select")
+    type_funds_for_return = (By.XPATH, "//*[@name='activityKind']//select")
 
 
 # Заявка на получение наличных денег

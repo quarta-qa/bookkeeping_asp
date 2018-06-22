@@ -877,6 +877,14 @@ class ApplicationCashFlowPage(Browser):
     def operation(self, value):
         self.set_select2(ApplicationCashFlowLocators.operation, value, "Типовая операция", exactly=False)
 
+    def priority_of_payment(self, value):
+        self.set_text(ApplicationCashFlowLocators.priority_of_payment, value, "Очередность платежа")
+
+    def payment_type(self, value):
+        self.set_select(ApplicationCashFlowLocators.payment_type, value, "Вид платежа")
+
+    def payment_purpose(self, value):
+        self.set_text(ApplicationCashFlowLocators.payment_purpose, value, "Назначение платежа")
 
 # Заявка на кассовый расход добавление строки
 class DecodingOfTheApplicationPage(Browser):
@@ -910,6 +918,9 @@ class DecodingOfTheApplicationPage(Browser):
 
     def drawee_kbk_type(self, value):
         self.set_select(DecodingOfTheApplicationLocators.draweeKbkType, value, "Тип КБК плательщика")
+
+    def type_of_funds(self, value):
+        self.set_select(DecodingOfTheApplicationLocators.typeOfFunds, value, "Тип КБК плательщика")
 
 
 #  Заявка на возврат
@@ -966,6 +977,18 @@ class ReturnRequestPage(Browser):
     def chief_accountant(self, value):
         self.set_select2(
             ReturnRequestLocators.chief_accountant, value, "Главный бухгалтер (уполномоченное лицо)", exactly=False)
+
+    def priority_of_payment(self, value):
+        self.set_text(ReturnRequestLocators.priority_of_payment, value, "Очередность платежа")
+
+    def payment_purpose(self, value):
+        self.set_text(ReturnRequestLocators.payment_purpose, value, "Назначение платежа")
+
+    def payment_type(self, value):
+        self.set_select(ReturnRequestLocators.payment_type, value, "Вид платежа")
+
+    def type_funds_for_return(self, value):
+        self.set_select(ReturnRequestLocators.type_funds_for_return, value, "Вид средств для возврата")
 
 
 # Заявка на получение наличных денег

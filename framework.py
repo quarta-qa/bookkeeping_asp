@@ -565,7 +565,7 @@ class Checker(object):
             print("[%s] СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
             return True
         else:
-            print("[%s] НЕ СООТВЕТСТВУЕТ" % strftime("%H:%M:%S", localtime()))
+            print("[%s] НЕ СООТВЕТСТВУЕТ _______________ Ошибка" % strftime("%H:%M:%S", localtime()))
             return False
 
     # Проверка текста c локатором в input
@@ -654,7 +654,7 @@ class File(object):
     @staticmethod
     def file_copy(filename):
         test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
-        test_buch = ("C:\\TestBuch\\")
+        test_buch = "C:\\TestBuch\\"
         # Проверка наличия папки C:\TestBuch
         if os.access(test_buch, os.F_OK):
             pass
@@ -675,10 +675,10 @@ class File(object):
         # os.chdir(test_default)
         # Копируем полученную печатную форму в отдельный каталог C:\TestBuch
         shutil.copy2(test_default + filename, test_buch + path)
-        test_buch_date = test_buch + path+("\\")
-        if os.access(test_buch_date+path+filename, os.F_OK):
-            os.remove(test_buch_date+path+filename)
-        os.rename(test_buch_date+filename, test_buch_date+path+filename)
+        test_buch_date = test_buch + path + "\\"
+        if os.access(test_buch_date+path + filename, os.F_OK):
+            os.remove(test_buch_date+path + filename)
+        os.rename(test_buch_date+filename, test_buch_date + path + filename)
         if os.access(test_default + "example.xls", os.F_OK):
             pass
         else:
@@ -709,8 +709,8 @@ class File(object):
     # Сравнение excel файлов 1
     @staticmethod
     def analyze_two_files(filename):
-        test_default = ('C:\\Users\\' + os.getlogin() + '\\Downloads\\')
-        test_compare = ('C:\\Compare\\')
+        test_default = 'C:\\Users\\' + os.getlogin() + '\\Downloads\\'
+        test_compare = 'C:\\Compare\\'
         File.file_copy(filename)
         reference_file = test_default + filename
         output_file = test_compare + filename

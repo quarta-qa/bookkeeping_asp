@@ -1,2 +1,2 @@
 class Links(object):
-    main_page = "http://qtestzrpasp6:63171/"
+    main_page = "http://qhost:63173"
