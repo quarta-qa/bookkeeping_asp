@@ -710,7 +710,7 @@ class File(object):
     @staticmethod
     def analyze_two_files(filename):
         test_default = 'C:\\Users\\' + os.getlogin() + '\\Downloads\\'
-        test_compare = 'C:\\Compare\\'
+        test_compare = 'C:\\Compare_buch\\'
         File.file_copy(filename)
         reference_file = test_default + filename
         output_file = test_compare + filename

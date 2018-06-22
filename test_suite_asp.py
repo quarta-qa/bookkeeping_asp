@@ -109,7 +109,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def test_application_cash_flow(self):
+    def te1st_application_cash_flow(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page = ApplicationCashFlowPage(self.driver)
@@ -254,10 +254,10 @@ class TestSuite:
         page.select_month("Январь", "2018")
         page.table_select_row('ПАО "МегаФон"')
         page.click_by_text("Печать")
-        sleep(10)
+        sleep(15)
         File.compare_files('Заявка на кассовый расход.xls')
 
-    def te1st_payment_order_through_contract_with_the_supplier(self):
+    def test_payment_order_through_contract_with_the_supplier(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page = ContractWithSupplierPage(self.driver, 5)
