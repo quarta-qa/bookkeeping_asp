@@ -721,6 +721,7 @@ class File(object):
         reference = xlrd.open_workbook(reference_file, on_demand=True, formatting_info=True)
         if output.nsheets != reference.nsheets:
             print('Количество книг не совпадает')
+
         else:
             output_max = File.get_max_rows_and_cols(output)
             reference_max = File.get_max_rows_and_cols(reference)

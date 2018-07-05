@@ -257,7 +257,7 @@ class TestSuite:
         sleep(15)
         File.compare_files('Заявка на кассовый расход.xls')
 
-    def test_payment_order_through_contract_with_the_supplier(self):
+    def te1st_payment_order_through_contract_with_the_supplier(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page = ContractWithSupplierPage(self.driver, 5)
@@ -316,7 +316,6 @@ class TestSuite:
         sleep(4)
 
     # Добавляем документ счет от поставщика строку
-    def te1st_invoice_from_the_supplier_add_line(self):
         page = InvoiceFromTheSupplierAddLinePage(self.driver)
         page.click_by_text("Добавить")
         page.click_by_text("Новую строку")
@@ -367,8 +366,9 @@ class TestSuite:
         page.checker.check_text_select('counterpartyAccountDetails', "40702810300000114301")
         page.number_ufk("123456789012345")
         page.operation('Оплата за приобретение ОС')
-        page.priority_of_payment ('5')
+        page.priority_of_payment('5')
         page.payment_type('4 – срочно')
+        page.payment_purpose("TEST")
 
         # Заполнение вкладки документ основание
         page.click_by_text("Документ-основание")
@@ -431,9 +431,7 @@ class TestSuite:
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
-
         page.click_by_text("Оборотная ведомость", 2)
-
         page = TurnoverStatementPage(self.driver)
         page.date_from("01.01.2018")
         page.date_to("31.01.2018")
@@ -460,9 +458,7 @@ class TestSuite:
         page.cash_report_number("1234567890")
         page.foundation("Чек 12125")
         page.operation('Снятие наличных в кассу')
-
     # добавление строк в пко
-    def te1st_incoming_order_add_line(self):
         page = IncomingOrderAddLinePage(self.driver)
         page.click_by_text("Добавить")
         page.click_by_text("Новую строку")
@@ -571,6 +567,7 @@ class TestSuite:
         page.click_by_text("Действия")
         page.click_by_text("Просмотр проводок")
 
+    def te1st_incoming_order_print(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -688,6 +685,7 @@ class TestSuite:
         page.click_by_text("Действия")
         page.click_by_text("Просмотр проводок")
 
+    def te1st_incoming_order_copy_doc_print(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -799,6 +797,12 @@ class TestSuite:
         sleep(10)
         File.compare_files('Заявка на кассовый расход (2).xls')
 
+    def te1st_application_cash_flow_two_copy(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page = ApplicationCashFlowPage(self.driver)
+        page.click_by_text("Заявка на кассовый расход")
+        page.select_month("Февраль", "2018")
         # Создание копии документа
         page.table_select_row('ООО Аудиторская компания "Аудит Проф Гарант"')
         page.click_by_text("Добавить")
@@ -913,7 +917,7 @@ class TestSuite:
         page.checker.check_text_select('counterpartyAccountDetails', "30302810900000023400")
         page.number_ufk("123456789012345")
         page.operation('Оплата за приобретение ОС')
-        page.priority_of_payment ('5')
+        page.priority_of_payment('5')
         page.payment_type('4 – срочно')
         # Заполнение вкладки дкоумент основание
         page.click_by_text("Документ-основание")
@@ -959,6 +963,7 @@ class TestSuite:
         page.click_by_text("Уполномоченные сотрудники")
         page.chief("Е.Ю.Петрова")
         page.chief_accountant("С.В. Васина")
+        page.click_by_text("Расшифровка заявки")
         page.priority_of_payment('5')
         page.payment_purpose('Назначение платежа - тест')
         page.payment_type('4 – срочно')
@@ -1149,10 +1154,24 @@ class TestSuite:
         page.wait.text_appear('Результат проведения документов')
         page.checker.check_message("Проведено документов: 1 Не проведено: 0")
         page.click_by_text("Закрыть")
+
+    def te1st_account_cash_warrant_print(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Расходный кассовый ордер")
+        page.table_select_row("11 000,00")
         page.click_by_text("Печать")
         sleep(10)
         File.compare_files("Расходный кассовый ордер.xls")
+
+    def te1st_account_cash_warrant_two(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Расходный кассовый ордер")
         # Добавляем второй документ
+        page.table_select_row("11 000,00")
         page.click_by_text("Добавить")
         page.click_by_text("Копию документа")
         page = AccountCashWarrantPage(self.driver)
@@ -1201,6 +1220,13 @@ class TestSuite:
         page.wait.text_appear('Результат проведения документов')
         page.checker.check_message("Проведено документов: 1 Не проведено: 0")
         page.click_by_text("Закрыть")
+
+    def te1st_account_cash_warrant_two_print(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Расходный кассовый ордер")
+        page.table_select_row("40 000,00")
         page.click_by_text("Печать")
         sleep(10)
         File.compare_files("Расходный кассовый ордер (1).xls")
@@ -1244,6 +1270,13 @@ class TestSuite:
         page.wait.text_appear('Результат проведения документов')
         page.checker.check_message("Проведено документов: 1 Не проведено: 0")
         page.click_by_text("Закрыть")
+
+    def te1st_incoming_order_three_print(self):
+        page = MenuPage(self.driver)
+        page.click_to_eagle()
+        page.select_month("Январь", "2018")
+        page.click_by_text("Приходный кассовый ордер")
+        page.table_select_row("3 562,00")
         page.click_by_text("Печать")
         sleep(10)
         File.compare_files('Приходный кассовый ордер (3).xls')
@@ -1258,6 +1291,8 @@ class TestSuite:
         page.date_by("31.01.2018")
         page.balance_sheet_account("1 201 34")
         page.click_by_text("Сформировать")
+        sleep(10)
+        page.search_by_two_attributes("1 201 34", "1 210 03")
 
     def te1st_turnover_statement_two(self):
         page = MenuPage(self.driver)
@@ -1467,7 +1502,7 @@ class TestSuite:
         page.click_by_text("Сохранить", 2)
         page.table_select_row_click('290')
         page.click_by_text("Открыть")
-        page.operation("Возврат в кассу аванса (290)")
+        page.operation("Возврат в кассу аванса (проч. расходы )")
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
@@ -1477,7 +1512,7 @@ class TestSuite:
         sleep(10)
         File.compare_files("Приходный кассовый ордер (4).xls")
 
-    def te1st_basis_for_reporting_amounts_plus_expenditure_order_for_the_balance(self):
+    def test_basis_for_reporting_amounts_plus_expenditure_order_for_the_balance(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1507,7 +1542,7 @@ class TestSuite:
         page.click_by_text("Сохранить", 2)
         page.table_select_row_click('225')
         page.click_by_text("Открыть")
-        page.operation("Перечисление командировочных 225")
+        page.operation("Выдача из кассы в подотчет (прочие)")
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
