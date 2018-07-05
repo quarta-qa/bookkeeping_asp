@@ -25,7 +25,7 @@ class TestSuite:
         page.submit()
         page.wait.text_appear("Бухгалтерский учет")
 
-    def te1st_getting_cash_request(self):
+    def test_getting_cash_request(self):
         page = CashPullRequestPage(self.driver)
         page.scroll_to_bottom()
         page.click_by_text("Заявка на получение наличных денег")
