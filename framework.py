@@ -15,17 +15,19 @@ import xlwt
 import hashlib
 import shutil
 
+list_error = []
 
 class Browser(object):
     """
     Methods for working with browser
     """
-    def __init__(self, driver, timeout=60, log=True):
+    def __init__(self, driver, timeout=10, log=True):
         self.driver = driver
         self.timeout = timeout
         self.log = log
         self.wait = Wait(self.driver, self.timeout)
         self.checker = Checker(self.driver, self.timeout)
+
 
     #
     def accept_alert(self):
@@ -178,18 +180,28 @@ class Browser(object):
     # Функция заполнения текстового поля без локатора
     def set_text_wl(self, name, value, label=None, order=1):
         if value:
-            self.wait.loading()
-            element = self.wait.element_appear(
-                (By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
-            element.clear()
-            element.send_keys(value)
-            if label:
-                pass
-            else:
-                label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
-            if label and self.log:
-                print(
-                    "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+            while True:
+                try:
+                    self.wait.loading()
+                    element = self.wait.element_appear(
+                        (By.XPATH, "(//*[@name='%s'])[%s]//*[self::input or self::textarea]" % (name, order)))
+                    element.clear()
+                    element.send_keys(value)
+                    if label:
+                        pass
+                    else:
+                        label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
+                    if label and self.log:
+                        print(
+                            "[%s] [%s] заполнение значением \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+                    break
+                except (ec.StaleElementReferenceException, ec.NoSuchElementException, TimeoutException):
+                    print(
+                        "[%s] [%s] Ошибка при заполнении поля \"%s\"" % (
+                            strftime("%H:%M:%S", localtime()), label, name))
+                    list_error.append(name)
+                    break
+
 
     # Функция заполнения поля Дата
     def set_date(self, locator, value, label=None):
@@ -291,34 +303,53 @@ class Browser(object):
         if value:
             self.wait.loading()
             locator = (By.XPATH, "(//*[@name='%s'])[%s]//select" % (name, order))
-            element = self.wait.element_appear(locator)
-            Select(element).select_by_visible_text(value)
-            if label:
-                pass
-            else:
-                label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
-            if label and self.log:
-                print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+            while True:
+                try:
+                    element = self.wait.element_appear(locator)
+                    Select(element).select_by_visible_text(value)
+                    if label:
+                        pass
+                    else:
+                        label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
+                    if label and self.log:
+                        print("[%s] [%s] выбор из списка значения \"%s\"" % (
+                            strftime("%H:%M:%S", localtime()), label, value))
+                    break
+                except (ec.StaleElementReferenceException, ec.NoSuchElementException, TimeoutException):
+                    print(
+                        "[%s] [%s] Ошибка при заполнении поля \"%s\"" %(strftime("%H:%M:%S", localtime()), label, name))
+                    list_error.append(name)
+                    break
 
-    # Функция выбора значения без локатора
+    # Функция выбора значения без локатора с зеленым логом
     def set_select2_wl(self, name, value, label=None, exactly=True, order=1):
         if value:
             locator = (By.XPATH, "(//*[@name='%s'])[%s]" % (name, order))
-            text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
-            text_box.clear()
-            text_box.send_keys(value)
-            if exactly:
-                self.wait.element_appear((By.XPATH, locator[1] + "//li[@role='treeitem' and .='%s']" % value)).click()
-            else:
-                self.wait.element_appear(
-                    (By.XPATH, locator[1] + "//li[@role='treeitem' and contains(., '%s')]" % value)).click()
-            self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
-            if label:
-                pass
-            else:
-                label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
-            if label and self.log:
-                print("[%s] [%s] выбор из списка значения \"%s\"" % (strftime("%H:%M:%S", localtime()), label, value))
+            while True:
+                try:
+                    text_box = self.wait.element_appear((By.XPATH, locator[1] + "//input"))
+                    text_box.clear()
+                    text_box.send_keys(value)
+                    if exactly:
+                        self.wait.element_appear(
+                            (By.XPATH, locator[1] + "//li[@role='treeitem' and .='%s']" % value)).click()
+                    else:
+                        self.wait.element_appear(
+                            (By.XPATH, locator[1] + "//li[@role='treeitem' and contains(., '%s')]" % value)).click()
+                    self.wait.element_disappear((By.XPATH, "//span[contains(@class, 'select2-dropdown')]"))
+                    if label:
+                        pass
+                    else:
+                        label = self.driver.find_element_by_xpath("(//label[@for='%s'])[%s]" % (name, order)).text
+                    if label and self.log:
+                        print("[%s] [%s] выбор из списка значения \"%s\"" %
+                              (strftime("%H:%M:%S", localtime()), label, value))
+                    break
+                except (ec.StaleElementReferenceException, ec.NoSuchElementException, TimeoutException):
+                    print(
+                        "[%s] [%s] Ошибка при заполнении поля \"%s\"" %(strftime("%H:%M:%S", localtime()), label, name))
+                    list_error.append(name)
+                    break
 
     # Функция выбора значения из Select2
     def set_select2(self, locator, value,  label=None, exactly=True):
@@ -501,7 +532,19 @@ class Wait(object):
     def lamb(self, exe):
         return WebDriverWait(self.driver, self.timeout).until(exe)
 
-    # Функция ожидания окончания закгрузки - пока не пропал лоадер
+    # проверить есть ли элемент на странице
+    def check_exists_by_xpath(self, xpath):
+        return len(self.driver.find_elements_by_xpath(xpath)) > 0
+
+    # создание массива для базы ошибок
+    @staticmethod
+    def array_error():
+        if len(list_error)>0:
+            print("Поля которые остались не заполнеными %s" % list_error)
+            list_error.clear()
+            assert len(list_error) > 0
+
+   # Функция ожидания окончания закгрузки - пока не пропал лоадер
     def loading(self):
         WebDriverWait(self.driver, self.timeout).until_not(
             ec.visibility_of_element_located((By.XPATH, "//div[@class='loading-spinner']")))

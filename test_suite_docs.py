@@ -25,14 +25,14 @@ class TestSuite:
         page.submit()
         page.wait.text_appear("Бухгалтерский учет")
 
-    def test_getting_cash_request(self):
+    def te1st_getting_cash_request(self):
         page = CashPullRequestPage(self.driver)
         page.scroll_to_bottom()
         page.click_by_text("Заявка на получение наличных денег")
         page.click_by_text("Добавить")
         page.click_by_text("Новый документ")
         # Реквизиты документа
-        page.new_document.account_number("Администратор")
+        page.new_document.account_number("ПАО")
         page.new_document.tracking_number("1233")
         page.new_document.operation("Снятие наличных (деньги в пути) (Все КОСГУ)")
         # Информация о документе
@@ -81,6 +81,7 @@ class TestSuite:
         page.holding_request.typical_operation("Снятие наличных (деньги в пути) (Все КОСГУ)")
         page.holding_request.submit()
         page.click_by_text("Закрыть")
+        page.wait.array_error()
 
     def te1st_pko(self):
         # ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ Информация о документе
@@ -97,7 +98,7 @@ class TestSuite:
         page.set_select2_wl("employee", "Петров А.В.", "Сотрудник")
         page.set_select2_wl("organization", "МИФНС России № 46", "Организация", exactly=False)
         assert page.checker.check_text_input("receivedFrom", " УФК по г. Москве (МИФНС России № 46 по г.Москве)")
-        page.set_select2_wl("operation", "Выдача из кассы в подотчет (прочие расходы)", "Типовая операция")
+        page.set_select2_wl("operation", "Получение наличных в кассу", "Типовая операция")
         page.set_select2_wl("departmentUnit", "ФАМИРТ", "Группа учета")
         page.set_text_wl("cashReportNumber", "25", "Номер кассового отчета")
         page.set_text_wl("foundation", "Текст заполнения поля Основание", "Основание")
@@ -108,7 +109,7 @@ class TestSuite:
         page.line.click_by_text("Новую строку")
         sleep(2)
         page.line.set_select2_wl("operation",
-                                 "Выдача из кассы в подотчет (прочие расходы)", "Типовая операция", order=2)
+                                 "Получение наличных в кассу", "Типовая операция", order=2)
         page.line.set_select2_wl("kosgu", "290", "КОСГУ", exactly=False)
         page.line.set_select2_wl("inventory", "TV кабель", "Номенклатура")
         page.line.set_select2_wl("kbk", "(2017) - Больницы", "КБК", exactly=False)
@@ -122,7 +123,7 @@ class TestSuite:
         page.line.set_select2_wl("recepient", "Зотова М.В.", "Получатель (МОЛ)")
         page.line.set_text_wl("comment", "Текст заполнения поля Комментарий", "Комментарий", order=2)
         page.line.set_select2_wl("act", "2008 - Договор", "Мероприятие")
-        page.line.set_select_wl("CashTransactionCode", "53 Прочие выдачи", "Кассовый символ", order=2)
+        page.line.set_select_wl("CashTransactionCode", "53 Прочие выдачи", "Кассовый символ")
         sleep(2)
         page.line.click_by_text("Сохранить", 2)
         # ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР \ блок Приложение
@@ -136,11 +137,38 @@ class TestSuite:
         page.click_by_text("Строки документа")
         # page.accounting.save_screenshot("test1", default_folder="C:\\Test\\")
         sleep(5)
-        page.line.click_by_text("Сохранить", 1)
+        page.line.click_by_text("Сохранить")
+        page.wait.array_error()
         assert page.wait.text_appear("Документ сохранен")
         print("ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР - ДОКУМЕНТ СОХРАНЕН")
+        page.click_by_text("Закрыть")
 
-    def test_zkr(self):
+    def test_rko(self):
+        # Расходный КАССОВЫЙ ОРДЕР \ Информация о документе
+        print("Расходный КАССОВЫЙ ОРДЕР \ Информация о документе")
+        page = PKOPage(self.driver)
+        page.scroll_to_bottom()
+        page.click_by_text("Расходный кассовый ордер")
+        page.click_by_text("Добавить")
+        page.click_by_text("Новый документ")
+        page.set_select2_wl("documentKind", "Расходный кассовый ордер", "поле Вид документа")
+        page.set_text_wl("documentNumber", "2", "Номер")
+        page.set_date_wl("documentDate", "05.02.2018")
+        page.set_date_wl("entryDate", "05.02.2018", "Дата проводки")
+        page.set_select2_wl("OperationMaster", "Выплата заработной платы из кассы", "Типовая операция")
+        page.set_select2_wl("departmentUnit", "ФАМИРТ", "Группа учета")
+        page.set_text_wl("foundation", "Тест", "Основание")
+        page.set_text_wl("cashReportNumber", "25", "Номер кассового отчета")
+        page.set_select2_wl("employee", "Петров А.В.", "Сотрудник")
+        sleep(2)
+        page.set_select2_wl("counterparty", 'ПАО "МегаФон"', "Организация")
+        sleep(5)
+        page.wait.array_error()
+
+
+
+
+    def te1st_zkr(self):
         # ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Информация о документе
         print("ЗАЯВКА НА КАССОВЫЙ РАСХОД \ Информация о документе")
         page = ZKRPage(self.driver)
