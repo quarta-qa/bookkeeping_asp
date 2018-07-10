@@ -874,6 +874,9 @@ class ApplicationCashFlowPage(Browser):
     def date(self, value):
         self.set_date(ApplicationCashFlowLocators.date, value, "Дата")
 
+    def entry_date(self, value):
+        self.set_date(ApplicationCashFlowLocators.entry_date, value, "Дата проводки")
+
     def personal_account(self, value):
         self.set_select2(ApplicationCashFlowLocators.personal_account, value, "Лицевой счет", exactly=False)
 
@@ -889,11 +892,53 @@ class ApplicationCashFlowPage(Browser):
     def limit_date(self, value):
         self.set_date(ApplicationCashFlowLocators.limit_date, value, "Предельная дата исполнения")
 
+    def is_employee(self, value):
+        self.set_checkbox(ApplicationCashFlowLocators.is_employee, value, "Сотрудник чек-бокс")
+
+    def employee(self, value):
+        self.set_select2(ApplicationCashFlowLocators.employee, value, "Сотрудник")
+
+    def imprest_foundation(self, value):
+        self.set_select2(ApplicationCashFlowLocators.imprest_foundation, value, "Основание для выдачи в подотчет")
+
+    def advance_report(self, value):
+        self.set_select2(ApplicationCashFlowLocators.advance_report, value, "Авансовый отчет")
+
     def foundation(self, value):
         self.set_select2(ApplicationCashFlowLocators.foundation, value, "Документ-основание", exactly=False)
 
+    def tracking_number(self, value):
+        self.set_text(ApplicationCashFlowLocators.tracking_number, value, "Учетный номер обязательства")
+
+    def document_foundaiont_kind(self, value):
+        self.set_select2(ApplicationCashFlowLocators.document_foundaiont_kind, value, "Вид документа-основания")
+
+    def document_foundation_number(self, value):
+        self.set_text(ApplicationCashFlowLocators.document_foundation_number, value, "Номер")
+
+    def document_foundation_date(self, value):
+        self.set_date(ApplicationCashFlowLocators.document_foundation_date, value, "Дата")
+
+    def document_foundation_subject(self, value):
+        self.set_text(ApplicationCashFlowLocators.document_foundation_subject, value, "Предмет")
+
     def operation(self, value):
         self.set_select2(ApplicationCashFlowLocators.operation, value, "Типовая операция", exactly=False)
+
+    def currency(self, value):
+        self.set_select2(ApplicationCashFlowLocators.currency, value, "Код валюты по ОКВ")
+
+    def department_unit(self, value):
+        self.set_select2(ApplicationCashFlowLocators.department_unit, value, "Группа учета")
+
+    def investment_program(self, value):
+        self.set_select2(ApplicationCashFlowLocators.investment_program, value, "Код объекта по ФАИП")
+
+    def priority(self, value):
+        self.set_text(ApplicationCashFlowLocators.priority, value, "Приоритет исполнения")
+
+    def is_advance(self, value):
+        self.set_checkbox(ApplicationCashFlowLocators.is_advance, value, "Авансовый платеж")
 
     def priority_of_payment(self, value):
         self.set_text(ApplicationCashFlowLocators.priority_of_payment, value, "Очередность платежа")
@@ -904,9 +949,18 @@ class ApplicationCashFlowPage(Browser):
     def payment_purpose(self, value):
         self.set_text(ApplicationCashFlowLocators.payment_purpose, value, "Назначение платежа")
 
+    def chief(self, value):
+        self.set_select2(ApplicationCashFlowLocators.chief, value, "Руководитель")
+
+    def accountant_general(self, value):
+        self.set_select2(ApplicationCashFlowLocators.accountant_general, value, "Главный бухгалтер")
+
 
 # Заявка на кассовый расход добавление строки
 class DecodingOfTheApplicationPage(Browser):
+    def activity_kind(self, value):
+        self.set_select(DecodingOfTheApplicationLocators.activity_kind, value, "Вид средств")
+
     def operation(self, value):
         self.set_select2(DecodingOfTheApplicationLocators.operation, value, "Типовая операция")
 
@@ -925,12 +979,27 @@ class DecodingOfTheApplicationPage(Browser):
     def nds_percent(self, value):
         self.set_text(DecodingOfTheApplicationLocators.nds_percent, value, "Ставка НДС")
 
+    def recepient_kbk(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.recepient_kbk, value, "КБК получателя")
+
+    def recepient_kbk_type(self, value):
+        self.set_select(DecodingOfTheApplicationLocators.recepient_kbk_type, value, "Тип КБК Получателя")
+
+    def department(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.department, value, "Группа учета")
+
+    def expenditure_goal_act(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.expenditure_goal_act, value, "Мероприятие")
+
     def document_foundation_counterparty(self, value):
         self.set_select2(DecodingOfTheApplicationLocators.document_foundation_counterparty, value,
                          "Организация для документа-основания")
 
     def foundation(self, value):
         self.set_select2(DecodingOfTheApplicationLocators.foundation, value, "Документ-основание", exactly=False)
+
+    def payment_purpose(self, value):
+        self.set_text(DecodingOfTheApplicationLocators.payment_purpose, value, "Назначение платежа")
 
     def comment(self, value):
         self.set_text(DecodingOfTheApplicationLocators.comment, value, "Примечание")
@@ -940,6 +1009,53 @@ class DecodingOfTheApplicationPage(Browser):
 
     def type_of_funds(self, value):
         self.set_select(DecodingOfTheApplicationLocators.typeOfFunds, value, "Тип КБК плательщика")
+
+
+# Заявка на кассовый расход - реквизиты документа основания
+class ApplicationCashFlowRequisitesPage(Browser):
+    def document(self, value):
+        self.set_select2(ApplicationCashFlowRequisitesLocators.document, value, "Документ-основание")
+
+    def document_type(self, value):
+        self.set_select2(ApplicationCashFlowRequisitesLocators.document_type, value, "Вид")
+
+    def document_number(self, value):
+        self.set_text(ApplicationCashFlowRequisitesLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(ApplicationCashFlowRequisitesLocators.document_date, value, "Дата")
+
+    def subject(self, value):
+        self.set_text(ApplicationCashFlowRequisitesLocators.subject, value, "Предмет")
+
+
+# Заявка на кассовый расход - Реквизиты налоговых платежей
+class ApplicationCashFlowRequisitesTaxPaymentsPage(Browser):
+    def taxpayer_status(self, value):
+        self.set_select(
+            ApplicationCashFlowRequisitesTaxPaymentsLocators.taxpayer_status, value, "Статус налогоплательщика")
+
+    def tax_period(self, value):
+        self.set_text(ApplicationCashFlowRequisitesTaxPaymentsLocators.tax_period, value, "Налоговый период")
+
+    def is_tax(self, value):
+        self.set_checkbox(ApplicationCashFlowRequisitesTaxPaymentsLocators.is_tax, value, "Налоговый платеж")
+
+    def kbk(self, value):
+        self.set_select2(ApplicationCashFlowRequisitesTaxPaymentsLocators.kbk, value, "КБК")
+
+    def tax_bill_number(self, value):
+        self.set_text(
+            ApplicationCashFlowRequisitesTaxPaymentsLocators.tax_bill_number, value, "Номер документа-основания")
+
+    def oktmo(self, value):
+        self.set_select2(ApplicationCashFlowRequisitesTaxPaymentsLocators.oktmo, value, "Код по ОКТМО")
+
+    def tax_bill_date(self, value):
+        self.set_date(ApplicationCashFlowRequisitesTaxPaymentsLocators.tax_bill_date, value, "Дата документа-основания")
+
+    def reason_for_payment(self, value):
+        self.set_select(ApplicationCashFlowRequisitesTaxPaymentsLocators.reason_for_payment, value, "Основание платежа")
 
 
 #  Заявка на возврат
@@ -1111,6 +1227,167 @@ class ApplicationForCashWithdrawalAddLinePage(Browser):
 
     def comment(self, value):
         self.set_text(ApplicationForCashWithdrawalAddLineLocators.comment, value, "Примечание")
+
+
+# Заявка на получение денежных средств, перечисляемых на карту
+class ApplyingForCardPage(Browser):
+    def document_number(self, value):
+        self.set_text(ApplyingForCardLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(ApplyingForCardLocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(ApplyingForCardLocators.entry_date, value, "Дата проводки")
+
+    def operation_master(self, value):
+        self.set_select2(ApplyingForCardLocators.operation_master, value, "Типовая операция")
+
+    def account_details(self, value):
+        self.set_select2(ApplyingForCardLocators.account_details, value, "Лицевой счет")
+
+    def tracking_number(self, value):
+        self.set_text(ApplyingForCardLocators.tracking_number, value, "Учетный номер обязательства")
+
+    def activity_kind(self, value):
+        self.set_select(ApplyingForCardLocators.activity_kind, value, "Вид средств")
+
+    def card_number(self, value):
+        self.set_text(ApplyingForCardLocators.card_number, value, "Номер карты")
+
+    def trustee(self, value):
+        self.set_select2(ApplyingForCardLocators.trustee, value, "Сотрудник")
+
+    def employee_position(self, value):
+        self.set_select2(ApplyingForCardLocators.employee_position, value, "Должность")
+
+    def investment_program(self, value):
+        self.set_select2(ApplyingForCardLocators.investment_program, value, "Код объекта ФАИП")
+
+    def employee_name_in_ablative_case(self, value):
+        self.set_text(
+            ApplyingForCardLocators.employee_name_in_ablative_case, value, "ФИО сотрудника в творительном падеже")
+
+    def employee_position_in_ablative_case(self, value):
+        self.set_text(
+            ApplyingForCardLocators.employee_position_in_ablative_case, value, "Должность в творительном падеже")
+
+    def foundation(self, value):
+        self.set_text(ApplyingForCardLocators.foundation, value, "Основание")
+
+    def chief(self, value):
+        self.set_select2(ApplyingForCardLocators.chief, value, "Руководитель")
+
+    def accountant_general(self, value):
+        self.set_select2(ApplyingForCardLocators.accountant_general, value, "Главный бухгалтер")
+
+
+# Заявка на получение денежных средств, перечисляемых на карту добавление строк
+class ApplyingForCardAddLinePage(Browser):
+    def operation_master(self, value):
+        self.set_select2(ApplyingForCardAddLineLocators.operation_master, value, "Типовая операция")
+
+    def kbk(self, value):
+        self.set_select2(ApplyingForCardAddLineLocators.kbk, value, "КБК")
+
+    def kbk_type(self, value):
+        self.set_select(ApplyingForCardAddLineLocators.kbk_type, value, "Тип КБК")
+
+    def kosgu(self, value):
+        self.set_select2(ApplyingForCardAddLineLocators.kosgu, value, "КОСГУ")
+
+    def cost_element(self, value):
+        self.set_select2(ApplyingForCardAddLineLocators.cost_element, value, "Вид затрат")
+
+    def amount(self, value):
+        self.set_text(ApplyingForCardAddLineLocators.amount, value, "Сумма")
+
+    def goal_code(self, value):
+        self.set_text(ApplyingForCardAddLineLocators.goal_code, value, "Код цели")
+
+    def department_unit(self, value):
+        self.set_select2(ApplyingForCardAddLineLocators.department_unit, value, "Группа учета")
+
+    def act(self, value):
+        self.set_select2(ApplyingForCardAddLineLocators.act, value, "Мероприятие")
+
+    def payment_purpose(self, value):
+        self.set_text(ApplyingForCardAddLineLocators.payment_purpose, value, "Назначение платежа")
+
+    def comment(self, value):
+        self.set_text(ApplyingForCardAddLineLocators.comment, value, "Примечание")
+
+
+# Расшифровка сумм неиспользованных средств
+class DecodingAmountsUnusedFundsPage(Browser):
+    def document_number(self, value):
+        self.set_text(DecodingAmountsUnusedFundsLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(DecodingAmountsUnusedFundsLocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(DecodingAmountsUnusedFundsLocators.entry_date, value, "Дата проводки")
+
+    def card_number(self, value):
+        self.set_text(DecodingAmountsUnusedFundsLocators.card_number, value, "Номер карты")
+
+    def operation_type(self, value):
+        self.set_select(DecodingAmountsUnusedFundsLocators.operation_type, value, "Вид операции")
+
+    def personal_account(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsLocators.personal_account, value, "Лицевой счет")
+
+    def operation_master(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsLocators.operation_master, value, "Типовая операция")
+
+    def tracking_number(self, value):
+        self.set_text(DecodingAmountsUnusedFundsLocators.tracking_number, value, "Учетный номер обязательства")
+
+    def investment_program(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsLocators.investment_program, value, "Код объекта ФАИП")
+
+    def chief(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsLocators.chief, value, "Руководитель")
+
+    def accountant_general(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsLocators.accountant_general, value, "Главный бухгалтер")
+
+
+# Расшифровка сумм неиспользованных средств добавление строки
+class DecodingAmountsUnusedFundsAddLinePage(Browser):
+    def operation_master(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.operation_master, value, "Типовая операция")
+
+    def kosgu(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.kosgu, value, "КОСГУ")
+
+    def cost_element(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.cost_element, value, "Вид затрат")
+
+    def kbk(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.kbk, value, "КБК")
+
+    def kbk_type(self, value):
+        self.set_select(DecodingAmountsUnusedFundsAddLineLocators.kbk_type, value, "Тип КБК")
+
+    def activity_kind(self, value):
+        self.set_select(DecodingAmountsUnusedFundsAddLineLocators.activity_kind, value, "Вид средств")
+
+    def amount(self, value):
+        self.set_text(DecodingAmountsUnusedFundsAddLineLocators.amount, value, "Сумма")
+
+    def goal_code(self, value):
+        self.set_text(DecodingAmountsUnusedFundsAddLineLocators.goal_code, value, "Код цели")
+
+    def department_unit(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.department_unit, value, "Группа учета")
+
+    def act(self, value):
+        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.act, value, "Мероприятие")
+
+    def comment(self, value):
+        self.set_text(DecodingAmountsUnusedFundsAddLineLocators.comment, value, "Примечание")
 
 
 # Договор с поставщиком

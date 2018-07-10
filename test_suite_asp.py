@@ -130,7 +130,7 @@ class TestSuite:
         page.priority_of_payment("1")
         page.payment_type("4 – срочно")
         page.payment_purpose("paymentPurpose- Test")
-        # Заполнение вкладки дкоумент основание
+        # Заполнение вкладки документ основание
         page.click_by_text("Документ-основание")
         page.foundation("1 от 10.01.2018")
         page.checker.check_text_select("documentFoundaiontKind", 'Договор с поставщиком')
