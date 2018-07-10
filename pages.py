@@ -712,7 +712,7 @@ class BasisForReportingAmountsAddLinePage(Browser):
         self.set_text(BasisForReportingAmountsAddLineLocators.comment, value, "comment")
 
 
-# Приходно кассовый ордер
+# Приходный кассовый ордер
 class IncomingOrderPage(Browser):
     def document_kind(self, value):
         self.set_select2(IncomingOrderLocators.document_kind, value, "Вид документа")
@@ -748,7 +748,7 @@ class IncomingOrderPage(Browser):
         self.set_select2(IncomingOrderLocators.operation, value, "Типовая операция")
 
 
-# Добавление строки в ПКО
+# Добавление строки в Приходный кассовый ордер
 class IncomingOrderAddLinePage(Browser):
     def operation(self, value):
         self.set_select2(IncomingOrderAddLineLocators.operation, value, "Типовая операция")
@@ -794,6 +794,24 @@ class IncomingOrderAddLinePage(Browser):
 
     def cash_transaction_code(self, value):
         self.set_select(IncomingOrderAddLineLocators.cash_transaction_code, value, "Кассовый символ")
+
+
+# Добавление приложения в Приходный кассовый ордер
+class IncomeCashOrderPlusPage(Browser):
+    def document_foundation(self, value):
+        self.set_select2(IncomeCashOrderPlusLocators.document_foundation, value, "documentFoundation")
+
+    def advance_report(self, value):
+        self.set_select2(IncomeCashOrderPlusLocators.advance_report, value, "advanceReport")
+
+    def comment(self, value):
+        self.set_text(IncomeCashOrderPlusLocators.comment, value, "comment")
+
+    def chief_accountant(self, value):
+        self.set_select2(IncomeCashOrderPlusLocators.chief_accountant, value, "chiefAccountant")
+
+    def cashier(self, value):
+        self.set_select2(IncomeCashOrderPlusLocators.cashier, value, "cashier")
 
 
 # Авансовый отчет
@@ -885,6 +903,7 @@ class ApplicationCashFlowPage(Browser):
 
     def payment_purpose(self, value):
         self.set_text(ApplicationCashFlowLocators.payment_purpose, value, "Назначение платежа")
+
 
 # Заявка на кассовый расход добавление строки
 class DecodingOfTheApplicationPage(Browser):
@@ -1053,6 +1072,12 @@ class ApplicationForCashWithdrawalPage(Browser):
 
 # Заявка на получение наличных денег добавление строки
 class ApplicationForCashWithdrawalAddLinePage(Browser):
+    def operation_master(self, value):
+        self.set_select2(ApplicationForCashWithdrawalAddLineLocators.operation_master, value, "Типовая операция")
+
+    def kbk_type(self, value):
+        self.set_select(ApplicationForCashWithdrawalAddLineLocators.kbk_type, value, "Тип БК")
+
     def kbk(self, value):
         self.set_select2(ApplicationForCashWithdrawalAddLineLocators.kbk, value, "КБК", exactly=False)
 
@@ -1061,6 +1086,15 @@ class ApplicationForCashWithdrawalAddLinePage(Browser):
 
     def cost_element(self, value):
         self.set_select2(ApplicationForCashWithdrawalAddLineLocators.cost_element, value, "Вид затрат")
+
+    def department_unit(self, value):
+        self.set_select2(ApplicationForCashWithdrawalAddLineLocators.department_unit, value, "Группа учета")
+
+    def act(self, value):
+        self.set_select2(ApplicationForCashWithdrawalAddLineLocators.act, value, "Мероприятие")
+
+    def code_goal(self, value):
+        self.set_text(ApplicationForCashWithdrawalAddLineLocators.code_goal, value, "Код цели")
 
     def cash_transaction_code(self, value):
         self.set_select(ApplicationForCashWithdrawalAddLineLocators.cash_transaction_code, value,
@@ -1594,7 +1628,7 @@ class InvoiceFromTheSupplierAddLinePage(Browser):
         self.set_text(InvoiceFromTheSupplierAddLineLocators.vat_percent, value, "Ставка НДС")
 
 
-# рко
+# Расходный кассовый ордер
 class AccountCashWarrantPage(Browser):
     def document_kind(self, value):
         self.set_select2(AccountCashWarrantLocators.document_kind, value, "Вид документа")
@@ -1607,6 +1641,12 @@ class AccountCashWarrantPage(Browser):
 
     def document_date(self, value):
         self.set_date(AccountCashWarrantLocators.document_date, value, "Дата")
+
+    def department_unit(self, value):
+        self.set_select2(AccountCashWarrantLocators.department_unit, value, "Группа учета")
+
+    def operation_master(self, value):
+        self.set_select2(AccountCashWarrantLocators.operation_master, value, "Типовая операция")
 
     def employee(self, value):
         self.set_select2(AccountCashWarrantLocators.employee, value, "Сотрудник")
@@ -1621,7 +1661,7 @@ class AccountCashWarrantPage(Browser):
         self.set_text(AccountCashWarrantLocators.cash_report_number, value, "Номер кассового отчета")
 
 
-# рко добавление строки
+# Расходный кассовый ордер добавление строки
 class AccountCashWarrantPageAddLine(Browser):
     def operation(self, value):
         self.set_select2(AccountCashWarrantLocatorsAddLine.operation, value, "Типовая операция", exactly=False)
@@ -1635,11 +1675,50 @@ class AccountCashWarrantPageAddLine(Browser):
     def cost_element(self, value):
         self.set_select2(AccountCashWarrantLocatorsAddLine.cost_element, value, "Вид затрат")
 
+    def department_unit(self, value):
+        self.set_select2(AccountCashWarrantLocatorsAddLine.department_unit, value, "Группа учета")
+
+    def sender(self, value):
+        self.set_select2(AccountCashWarrantLocatorsAddLine.sender, value, "Отправитель (МОЛ)")
+
+    def material_inventory(self, value):
+        self.set_select2(AccountCashWarrantLocatorsAddLine.material_inventory, value, "Номенклатура")
+
+    def quantity(self, value):
+        self.set_text(AccountCashWarrantPageAddLine.quantity, value, "Количество")
+
     def amount(self, value):
         self.set_text(AccountCashWarrantLocatorsAddLine.amount, value, "Сумма")
 
     def comment(self, value):
         self.set_text(AccountCashWarrantLocatorsAddLine.comment, value, "Комментарий")
+
+    def act(self, value):
+        self.set_select2(AccountCashWarrantLocatorsAddLine.act, value, "Мероприятие")
+
+
+# Расходный кассовый ордер приложение
+class AccountCashWarrantPagePlusPage(Browser):
+    def document_foundation(self, value):
+        self.set_select2(
+            AccountCashWarrantPagePlusLocators.document_foundation, value, "Основание для выдачи в подотчет")
+
+    def advance_report(self, value):
+        self.set_select2(AccountCashWarrantPagePlusLocators.advance_report, value, "Авансовый отчет")
+
+    def supplement(self, value):
+        self.set_text(AccountCashWarrantPagePlusLocators.supplement, value, "Приложение")
+
+    def accountant(self, value):
+        self.set_select2(AccountCashWarrantPagePlusLocators.accountant, value, "Главный бухгалтер")
+
+    def chief(self, value):
+        self.set_select2(AccountCashWarrantPagePlusLocators.chief, value, "Руководитель организации")
+
+    def cashier(self, value):
+        self.set_select2(AccountCashWarrantPagePlusLocators.cashier, value, "Выдал кассир")
+
+
 
 
 # # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа

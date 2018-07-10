@@ -232,7 +232,7 @@ class ZNVLocators(object):
         number = (By.XPATH, "//input[@id='outstandingPaymentDocumentNumber']")
 
 
-#   ПКО
+#   Приходный кассовый ордер
 class IncomingOrderLocators(object):
     document_kind = (By.XPATH, "//*[@name='documentKind']")
     document_number = (By.XPATH, "//*[@name='documentNumber']//input")
@@ -247,7 +247,7 @@ class IncomingOrderLocators(object):
     operation = (By.XPATH, "//*[@name='operation']")
 
 
-# Добавление  строки в ПКО
+# Добавление  строки в Приходный кассовый ордер
 class IncomingOrderAddLineLocators(object):
     operation = (By.XPATH, "//div[@class='modal in']//*[@name='operation']")
     kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
@@ -264,6 +264,15 @@ class IncomingOrderAddLineLocators(object):
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
     act = (By.XPATH, "//expenditure-goal-act-classifier[@name='act']")
     cash_transaction_code = (By.XPATH, "//cash-transaction-code-dropdown-input[@name='CashTransactionCode']//select")
+
+# Добавление приложения в Приходный кассовый ордер
+class IncomeCashOrderPlusLocators(object):
+    document_foundation = (
+    By.XPATH, "//div[@class='tab-content']//imprest-foundation-classifier[@name='documentFoundation']")
+    advance_report = (By.XPATH, "//div[@class='tab-content']//advance-report-classifier[@name='advanceReport']")
+    comment = (By.XPATH, "//div[@class='tab-content']//text-input[@name='comment']//input")
+    chief_accountant = (By.XPATH, "//div[@class='tab-content']//signatory-classifier[@name='chiefAccountant']")
+    cashier = (By.XPATH, "//div[@class='tab-content']//signatory-classifier[@name='cashier']")
 
 
 # Локаторы для экспорта в УФК
@@ -594,9 +603,15 @@ class ApplicationForCashWithdrawalLocators(object):
 
 # Заявка на получение наличных денег добавление строк
 class ApplicationForCashWithdrawalAddLineLocators(object):
+    operation_master = (
+    By.XPATH, "//h4[@class='modal-title']//operation-master-hierarchy-classifier[@name='OperationMaster']")
+    kbk_type = (By.XPATH, "//h4[@class='modal-title']//kbk-type-dropdown-input[@name='kbkType']//select")
     kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
     kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
     cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
+    department_unit = (By.XPATH, "//h4[@class='modal-title']//department-unit-classifier[@name='departmentUnit']")
+    act = (By.XPATH, "//h4[@class='modal-title']//expenditure-goal-act-classifier[@name='act']")
+    code_goal = (By.XPATH, "//h4[@class='modal-title']//text-input[@name='codeGoal']//input")
     cash_transaction_code = (By.XPATH, "//*[@name='CashTransactionCode']//select")
     funds_source = (By.XPATH, "//*[@name='fundsSource']//select")
     amount = (By.XPATH, "//div[@class='modal-content']//*[@name='amount']//input")
@@ -604,26 +619,46 @@ class ApplicationForCashWithdrawalAddLineLocators(object):
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
 
 
-# рко
+#  Расходный кассовый ордер
 class AccountCashWarrantLocators(object):
     document_kind = (By.XPATH, "//*[@name='documentKind']")
     document_number = (By.XPATH, "//*[@name='documentNumber']//input")
     entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
     document_date = (By.XPATH, "//*[@name='documentDate']//input")
+    department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
+    operation_master = (By.XPATH, "//operation-master-hierarchy-classifier[@name='OperationMaster']")
     employee = (By.XPATH, "//*[@name='employee']")
     issue = (By.XPATH, "//*[@name='issue']//input")
     foundation = (By.XPATH, "//*[@name='foundation']//textarea")
     cash_report_number = (By.XPATH, "//*[@name='cashReportNumber']//input")
 
 
-# рко+заполнение строк
+#  Расходный кассовый ордер+заполнение строк
 class AccountCashWarrantLocatorsAddLine(object):
     operation = (By.XPATH, "//*[@name='operation']")
     kbk = (By.XPATH, "//*[@name='kbk']")
     kosgu = (By.XPATH, "//*[@name='kosgu']")
-    cost_element = (By.XPATH, "//*[@name='costElement']")
+    cost_element = (By.XPATH, "//div[@class='modal-content']//*[@name='costElement']")
+    department_unit = (By.XPATH, "//div[@class='modal-content']//department-unit-classifier[@name='departmentUnit']")
+    sender = (By.XPATH, "//div[@class='modal-content']//materially-responsible-person-classifier[@name='sender']")
+    material_inventory = (
+        By.XPATH, "//div[@class='modal-content']//material-inventory-classifier[@name='materialInventory']")
+    quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='quantity']//input")
     amount = (By.XPATH, "//div[@class='modal-content']//*[@name='amount']//input")
-    comment = (By.XPATH, "//*[@name='comment']//textarea")
+    comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
+    act = (By.XPATH, "//div[@class='modal-content']//expenditure-goal-act-classifier[@name='act']")
+
+
+# Расходный кассовый ордер приложение
+class AccountCashWarrantPagePlusLocators(object):
+    document_foundation = (By.XPATH, "//imprest-foundation-classifier[@name='documentFoundation']")
+    advance_report = (By.XPATH, "//advance-report-classifier[@name='advanceReport']")
+    supplement = (By.XPATH, "//text-input[@name='supplement']//input")
+    accountant = (By.XPATH, "//signatory-classifier[@name='accountant']")
+    chief = (By.XPATH, "//signatory-classifier[@name='chief']")
+    cashier = (By.XPATH, "//signatory-classifier[@name='cashier']")
+
+
 
 
 # Журнал проводок
