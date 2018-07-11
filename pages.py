@@ -1420,6 +1420,60 @@ class NotificationTypeAndPaymentTypeNotificationPage(Browser):
         self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.comment, value, "Примечание")
 
 
+# Уведомления об уточнении вида и принадлежности платежа - добавление уведомления + Изменение реквизитов
+class NotificationTypeAndPaymentTypeImagePage(Browser):
+    def amount(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeImageLocators.amount, value, "Сумма")
+
+    def recepient(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.recepient, value, "Получатель")
+
+    def recepient_account_details(self, value):
+        self.set_select2(
+            NotificationTypeAndPaymentTypeImageLocators.recepient_account_details, value, "Расчетный счет получателя")
+
+    def inn(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeImageLocators.inn, value, "ИНН")
+
+    def kpp(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeImageLocators.kpp, value, "КПП")
+
+    def oktmo(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeImageLocators.oktmo, value, "ОКТМО")
+
+    def recepient_personal_account(self, value):
+        self.set_text(
+            NotificationTypeAndPaymentTypeImageLocators.recepient_personal_account, value, "Лицевой счет получателя")
+
+    def is_taxes(self, value):
+        self.set_checkbox(NotificationTypeAndPaymentTypeImageLocators.is_taxes, value, "Налог - чек бокс")
+
+    def kbk(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.kbk, value, "КБК")
+
+    def kosgu(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.kosgu, value, "КОСГУ")
+
+    def cost_element(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.cost_element, value, "Вид затрат")
+
+    def recepient_kbk(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.recepient_kbk, value, "КБК поступлений")
+
+    def activity_kind(self, value):
+        self.set_select(NotificationTypeAndPaymentTypeImageLocators.activity_kind, value, "Вид средств")
+
+    def purpose_code(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeImageLocators.purpose_code, value, "Код цели")
+
+    def statement_analysis_code(self, value):
+        self.set_select2(
+            NotificationTypeAndPaymentTypeImageLocators.statement_analysis_code, value, "Код для отчетности")
+
+    def purpose_payment(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeImageLocators.purpose_payment, value, "Назначение платежа")
+
+
 # Заявка на получение наличных денег
 class ApplicationForCashWithdrawalPage(Browser):
     def document_number(self, value):

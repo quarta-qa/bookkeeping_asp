@@ -746,6 +746,29 @@ class NotificationTypeAndPaymentTypeNotificationLocators(object):
     comment = (By.XPATH, "//h4[@class='modal-title']//text-area-input[@name='comment']//textarea")
 
 
+# Уведомления об уточнении вида и принадлежности платежа - добавление уведомления + Изменение реквизитов
+class NotificationTypeAndPaymentTypeImageLocators(object):
+    amount = (By.XPATH, "//h4[.='Изменить на реквизиты']//currency-input[@name='amount']//input")
+    recepient = (By.XPATH, "//h4[.='Изменить на реквизиты']//counterparty-classifier[@name='recepient']")
+    recepient_account_details = (By.XPATH, "//h4[.='Изменить на реквизиты']//*[@name='recepientAccountDetails']")
+    inn = (By.XPATH, "//h4[.='Изменить на реквизиты']//text-input[@name='inn']//input")
+    kpp = (By.XPATH, "//h4[.='Изменить на реквизиты']//text-input[@name='kpp']//input")
+    oktmo = (By.XPATH, "//h4[.='Изменить на реквизиты']//text-input[@name='oktmo']//input")
+    recepient_personal_account = (
+        By.XPATH, "//h4[.='Изменить на реквизиты']//text-input[@name='recepientPersonalAccount']//input")
+    is_taxes = (By.XPATH, "//h4[.='Изменить на реквизиты']//check-input[@name='isTaxes']//input")
+    kbk = (By.XPATH, "//h4[.='Изменить на реквизиты']//kbk-classifier[@name='Kbk']")
+    kosgu = (By.XPATH, "//h4[.='Изменить на реквизиты']//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//h4[.='Изменить на реквизиты']//cost-elements-classifier[@name='costElement']")
+    recepient_kbk = (By.XPATH, "//h4[.='Изменить на реквизиты']//recepient-kbk-autocomplete[@name='recepientKbk']")
+    activity_kind = (
+        By.XPATH, "//h4[.='Изменить на реквизиты']//activity-kind-dropdown-input[@name='activityKind']//select")
+    purpose_code = (By.XPATH, "//h4[.='Изменить на реквизиты']//text-input[@name='purposeCode']//input")
+    statement_analysis_code = (
+        By.XPATH, "//h4[.='Изменить на реквизиты']//statement-analysis-code-classifier[@name='statementAnalysisCode']")
+    purpose_payment = (By.XPATH, "//h4[.='Изменить на реквизиты']//text-input[@name='purposePayment']//input")
+
+
 # Заявка на получение наличных денег
 class ApplicationForCashWithdrawalLocators(object):
     document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
