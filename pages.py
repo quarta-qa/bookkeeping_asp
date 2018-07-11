@@ -1058,6 +1058,114 @@ class ApplicationCashFlowRequisitesTaxPaymentsPage(Browser):
         self.set_select(ApplicationCashFlowRequisitesTaxPaymentsLocators.reason_for_payment, value, "Основание платежа")
 
 
+# Платежное поручение (приход средств)
+class PaymentOrderArrivalPage(Browser):
+    def document_number(self, value):
+        self.set_text(PaymentOrderArrivalLocators.document_number, value, "Номер")
+
+    def recipient_account_details(self, value):
+        self.set_select2(PaymentOrderArrivalLocators.recipient_account_details, value, "Лицевой счет")
+
+    def operation(self, value):
+        self.set_select2(PaymentOrderArrivalLocators.operation, value, "Типовая операция")
+
+    def entry_date(self, value):
+        self.set_date(PaymentOrderArrivalLocators.entry_date, value, "Дата проводки")
+
+    def drawee(self, value):
+        self.set_select2(PaymentOrderArrivalLocators.drawee, value, "Плательщик")
+
+    def drawee_account_details(self, value):
+        self.set_select2(PaymentOrderArrivalLocators.drawee_account_details, value, "Расчетный счет плательщика")
+
+    def tracking_number(self, value):
+        self.set_text(PaymentOrderArrivalLocators.tracking_number, value, "Бюджетное обязательство")
+
+    def currency(self, value):
+        self.set_select2(PaymentOrderArrivalLocators.currency, value, "Код валюты по ОКВ")
+
+    def document_kind(self, value):
+        self.set_select2(PaymentOrderArrivalLocators.document_kind, value, "Вид документа")
+
+    def act(self, value):
+        self.set_select2(PaymentOrderArrivalLocators.act, value, "Мероприятие по бюджетной росписи")
+
+    def payment_purpose(self, value):
+        self.set_text(PaymentOrderArrivalLocators.payment_purpose, value, "Назначение платежа")
+
+    def is_employee(self, value):
+        self.set_checkbox(PaymentOrderArrivalLocators.is_employee, value, "Сотрудник")
+
+    def department_unit(self, value):
+        self.set_select2(PaymentOrderArrivalLocators.department_unit, value, "Группа учета")
+
+    def purchasing_notice(self, value):
+        self.set_select2(PaymentOrderArrivalLocators.purchasing_notice, value, "Извещения о закупке")
+
+    def notification_number(self, value):
+        self.set_text(PaymentOrderArrivalLocators.notification_number, value, "Номер уведомления")
+
+    def payment_form(self, value):
+        self.set_select(PaymentOrderArrivalLocators.payment_form, value, "Вид платежа")
+
+
+# Платежное поручение (приход средств) бланк
+class PaymentOrderArrivalBlankPage(Browser):
+    def kbk(self, value):
+        self.set_select2(PaymentOrderArrivalBlankLocators.kbk, value, "КБК")
+
+    def operation(self, value):
+        self.set_select2(PaymentOrderArrivalBlankLocators.operation, value, "Типовая операция")
+
+    def kosgu(self, value):
+        self.set_select2(PaymentOrderArrivalBlankLocators.kosgu, value, "КОСГУ")
+
+    def cost_element(self, value):
+        self.set_select2(PaymentOrderArrivalBlankLocators.cost_element, value, "Вид затрат")
+
+    def department_unit(self, value):
+        self.set_select2(PaymentOrderArrivalBlankLocators.department_unit, value, "Группа учета")
+
+    def act(self, value):
+        self.set_select2(PaymentOrderArrivalBlankLocators.act, value, "Мероприятие")
+
+    def imprest_foundation(self, value):
+        self.set_select2(PaymentOrderArrivalBlankLocators.imprest_foundation, value, "Документ - основание")
+
+    def vat_percent(self, value):
+        self.set_text(PaymentOrderArrivalBlankLocators.vat_percent, value, "Ставка НДС")
+
+    def amount(self, value):
+        self.set_text(PaymentOrderArrivalBlankLocators.amount, value, "Сумма в рублях")
+
+    def comment(self, value):
+        self.set_text(PaymentOrderArrivalBlankLocators.comment, value, "Комментарий")
+
+
+# Платежное поручение (приход средств) реквизиты
+class PaymentOrderArrivalRequisitesPage(Browser):
+    def taxpayer_status(self, value):
+        self.set_select(PaymentOrderArrivalRequisitesLocators.taxpayer_status, value, "Статус налогоплательщика")
+
+    def kbk(self, value):
+        self.set_select2(PaymentOrderArrivalRequisitesLocators.kbk, value, "КБК")
+
+    def oktmo(self, value):
+        self.set_select2(PaymentOrderArrivalRequisitesLocators.oktmo, value, "Код по ОКТМО")
+
+    def tax_period(self, value):
+        self.set_text(PaymentOrderArrivalRequisitesLocators.tax_period, value, "Налоговый период")
+
+    def tax_bill_number(self, value):
+        self.set_text(PaymentOrderArrivalRequisitesLocators.tax_bill_number, value, "Номер документа-основания")
+
+    def tax_bill_date(self, value):
+        self.set_date(PaymentOrderArrivalRequisitesLocators.tax_bill_date, value, "Дата документа-основания")
+
+    def reason_for_payment(self, value):
+        self.set_select(PaymentOrderArrivalRequisitesLocators.reason_for_payment, value, "Основание платежа")
+
+
 #  Заявка на возврат
 class ReturnRequestPage(Browser):
     def document_number(self, value):
@@ -1084,6 +1192,9 @@ class ReturnRequestPage(Browser):
     def recepient_account_details(self, value):
         self.set_select2(ReturnRequestLocators.recepient_account_details, value, "Банковский счет", exactly=False)
 
+    def document_kind(self, value):
+        self.set_select2(ReturnRequestLocators.document_kind, value, "Вид документа")
+
     def kbk(self, value):
         self.set_select2(ReturnRequestLocators.kbk, value, "КБК", exactly=False)
 
@@ -1096,15 +1207,44 @@ class ReturnRequestPage(Browser):
     def cost_element(self, value):
         self.set_select2(ReturnRequestLocators.cost_element, value, "Вид затрат")
 
-    def outstanding_payment_document_amount(self, value):
-        self.set_text(ReturnRequestLocators.outstanding_payment_document_amount, value,
-                      "Сумма в рублях")
+    def goal_code(self, value):
+        self.set_text(ReturnRequestLocators.goal_code, value, "Код цели")
+
+    def oktmo(self, value):
+        self.set_select2(ReturnRequestLocators.oktmo, value, "Код по ОКТМО")
+
+    def department(self, value):
+        self.set_select2(ReturnRequestLocators.department, value, "Группа учета")
+
+    def investment_program(self, value):
+        self.set_select2(ReturnRequestLocators.investment_program, value, "Код объекта по ФАИП")
+
+    def expenditure_goal_act(self, value):
+        self.set_select2(ReturnRequestLocators.expenditure_goal_act, value, "Мероприятие")
+
+    def amount(self, value):
+        self.set_text(ReturnRequestLocators.amount, value, "Сумма в рублях")
 
     def nds_percent(self, value):
         self.set_text(ReturnRequestLocators.nds_percent, value, "Ставка НДС")
 
     def nds_amount(self, value):
         self.set_text(ReturnRequestLocators.nds_amount, value, "ndsAmount")
+
+    def document_foundation_kind(self, value):
+        self.set_select2(ReturnRequestLocators.document_foundation_kind, value, "Вид документа-основания")
+
+    def document_foundation_number(self, value):
+        self.set_text(ReturnRequestLocators.document_foundation_number, value, "Номер документа-основания")
+
+    def document_foundation_date(self, value):
+        self.set_date(ReturnRequestLocators.document_foundation_date, value, "Дата документа-основания")
+
+    def recepient_kbk(self, value):
+        self.set_select2(ReturnRequestLocators.recepient_kbk, value, "КБК получателя")
+
+    def recepient_oktmo(self, value):
+        self.set_select2(ReturnRequestLocators.recepient_oktmo, value, "Код по ОКТМО Получателя")
 
     def chief(self, value):
         self.set_select2(ReturnRequestLocators.chief, value, "Руководитель (уполномоченное лицо)", exactly=False)
@@ -1124,6 +1264,160 @@ class ReturnRequestPage(Browser):
 
     def type_funds_for_return(self, value):
         self.set_select(ReturnRequestLocators.type_funds_for_return, value, "Вид средств для возврата")
+
+    def outstanding_payment_document_number(self, value):
+        self.set_text(
+            ReturnRequestLocators.outstanding_payment_document_number, value, "Документ по зачислению  - Номер")
+
+    def outstanding_payment_document_date(self, value):
+        self.set_date(
+            ReturnRequestLocators.outstanding_payment_document_date, value, "Документ по зачислению  - Дата")
+
+    def outstanding_payment_document_amount(self, value):
+        self.set_text(
+            ReturnRequestLocators.outstanding_payment_document_amount, value, "Документ по зачислению  - Сумма")
+
+    def outstanding_payment_document_inn(self, value):
+        self.set_text(ReturnRequestLocators.outstanding_payment_document_inn, value, "ИНН")
+
+    def outstanding_payment_document_kpp(self, value):
+        self.set_text(ReturnRequestLocators.outstanding_payment_document_kpp, value, "КПП")
+
+
+# Уведомления об уточнении вида и принадлежности платежа
+class NotificationTypeAndPaymentTypePage(Browser):
+    def document_number(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(NotificationTypeAndPaymentTypeLocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(NotificationTypeAndPaymentTypeLocators.entry_date, value, "Дата проводки")
+
+    def account_details(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.account_details, value, "Лицевой счет")
+
+    def activity_kind(self, value):
+        self.set_select(NotificationTypeAndPaymentTypeLocators.activity_kind, value, "Вид деятельности")
+
+    def budget_commitment_info_number(self, value):
+        self.set_text(
+            NotificationTypeAndPaymentTypeLocators.budget_commitment_info_number, value,
+            "Номер бюджетного обязательства")
+
+    def notification_kind(self, value):
+        self.set_select(NotificationTypeAndPaymentTypeLocators.notification_kind, value, "Вид уведомления")
+
+    def unit(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.unit, value, "Группа учета")
+
+    def counterparty(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.counterparty, value, "Плательщик")
+
+    def counterparty_account_details(self, value):
+        self.set_select2(
+            NotificationTypeAndPaymentTypeLocators.counterparty_account_details, value,
+            "Номер банковского счета плательщика")
+
+    def federal_treasury_request_number(self, value):
+        self.set_text(
+            NotificationTypeAndPaymentTypeLocators.federal_treasury_request_number, value, "Номер запроса УФК")
+
+    def federal_treasury_request_date(self, value):
+        self.set_date(NotificationTypeAndPaymentTypeLocators.federal_treasury_request_date, value, "Дата запроса УФК")
+
+    def region(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.region, value, "Регион")
+
+    def is_employee(self, value):
+        self.set_checkbox(NotificationTypeAndPaymentTypeLocators.is_employee, value, "Сотрудник - чекбокс")
+
+    def employee(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.employee, value, "Сотрудник")
+
+    def passport(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeLocators.passport, value, "Паспортные данные плательщика")
+
+    def chief(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.chief, value, "Руководитель")
+
+    def contractor(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.contractor, value, "Ответственный исполнитель")
+
+    def contractor_phone(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeLocators.contractor_phone, value, "Телефон исполнителя")
+
+
+# Уведомления об уточнении вида и принадлежности платежа - добавление уведомления
+class NotificationTypeAndPaymentTypeNotificationPage(Browser):
+    def order_number(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.order_number, value, "№ п/п")
+
+    def amount(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.amount, value, "Сумма")
+
+    def operation(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.operation, value, "Типовая операция")
+
+    def document_type(self, value):
+        self.set_select(NotificationTypeAndPaymentTypeNotificationLocators.document_type, value, "Тип документа")
+
+    def document_number(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(NotificationTypeAndPaymentTypeNotificationLocators.document_date, value, "Дата")
+
+    def billing_document(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.billing_document, value,
+                         "Платежный документ")
+
+    def document_foundation(self, value):
+        self.set_select2(
+            NotificationTypeAndPaymentTypeNotificationLocators.document_foundation, value, "Документ–основание")
+
+    def recepient(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.recepient, value, "Получатель")
+
+    def recepient_name(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.recepient_name, value, "Получатель-имя")
+
+    def recepient_account_details(self, value):
+        self.set_select2(
+            NotificationTypeAndPaymentTypeNotificationLocators.recepient_account_details, value,
+            "Расчетный счет получателя")
+
+    def inn(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.inn, value, "ИНН")
+
+    def kpp(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.kpp, value, "КПП")
+
+    def oktmo(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.oktmo, value, "ОКТМО")
+
+    def kbk(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.kbk, value, "КБК")
+
+    def kosgu(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.kosgu, value, "КОСГУ")
+
+    def cost_element(self, value):
+        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.cost_element, value, "Вид затрат")
+
+    def statement_analysis_code(self, value):
+        self.set_select2(
+            NotificationTypeAndPaymentTypeNotificationLocators.statement_analysis_code, value, "Код для отчетности")
+
+    def purpose_code(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.purpose_code, value, "Код цели")
+
+    def purpose_payment(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.purpose_payment, value, "Назначение платежа")
+
+    def comment(self, value):
+        self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.comment, value, "Примечание")
 
 
 # Заявка на получение наличных денег

@@ -959,7 +959,7 @@ class TestSuite:
         page.recepient_account_details("40702810400000002194")
         page.kbk("0411 0000000000 000")
         page.kosgu("226")
-        page.outstanding_payment_document_amount("500,00")
+        page.amount("500,00")
         page.click_by_text("Уполномоченные сотрудники")
         page.chief("Е.Ю.Петрова")
         page.chief_accountant("С.В. Васина")
