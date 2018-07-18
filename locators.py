@@ -396,6 +396,95 @@ class CalendarPlanLocators(object):
     account_details = (By.XPATH, "//counterparty-account-details-classifier[@name='accountDetails']")
 
 
+# Обеспечение исполнения обязательств
+class EnsuringFulfillmentOfObligationsLocators(object):
+    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
+    counterparty = (By.XPATH, "//counterparty-classifier[@name='counterparty']")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    retirement_date = (By.XPATH, "//date-input[@name='retirementDate']//input")
+    amount = (By.XPATH, "//currency-input[@name='amount']//input")
+    guarantor = (By.XPATH, "(//counterparty-classifier[@name='counterparty'])[2]")
+    assurance_starts = (By.XPATH, "//date-input[@name='assuranceStarts']//input")
+    assurance_ends = (By.XPATH, "//date-input[@name='assuranceEnds']//input")
+
+
+# Сведения о бюджетном обязательстве
+class InformationAboutBudgetObligationLocators(object):
+    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    liability = (By.XPATH, "//liability-dropdown-input[@name='liability']//select")
+    tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
+    registration_date = (By.XPATH, "//date-input[@name='registrationDate']//input")
+    account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
+    guid = (By.XPATH, "//text-input[@name='guid']//input")
+    counterparty = (By.XPATH, "//counterparty-classifier[@name='counterparty']")
+    transaction_account = (By.XPATH, "//counterparty-account-details-classifier[@name='transactionAccount']")
+    chief = (By.XPATH, "//signatory-classifier[@name='Chief']")
+    prepared_by = (By.XPATH, "//signatory-classifier[@name='PreparedBy']")
+
+# Сведения о бюджетном обязательстве
+class InformationAboutBudgetObligationDopLocators(object):
+    counterparty = (By.XPATH, "//div[@class='modal-content']//*[@id='counterparty']//input")
+    account_details = (By.XPATH, "//div[@class='modal-content']//*[@id='accountDetails']//input")
+
+
+# Сведения о бюджетном обязательстве строки
+class InformationAboutBudgetObligationAddLineLocators(object):
+    financial_year = (By.XPATH, "//text-input[@name='financialYear']//input")
+    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+    activity_kind = (By.XPATH, "//activity-kind-dropdown-input[@name='activityKind']//select")
+    kbk_type = (By.XPATH, "//kbk-type-dropdown-input[@name='kbkType']//select")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    investment_program = (By.XPATH, "//federal-targeted-investment-program-classifier[@name='investmentProgram']")
+    current_year_amounts = (By.XPATH, "//currency-input[@name='currentYearAmounts']//input")
+    february = (By.XPATH, "//currency-input[@name='february']//input")
+    march = (By.XPATH, "//currency-input[@name='march']//input")
+    april = (By.XPATH, "//currency-input[@name='april']//input")
+    may = (By.XPATH, "//currency-input[@name='may']//input")
+    june = (By.XPATH, "//currency-input[@name='june']//input")
+    july = (By.XPATH, "//currency-input[@name='july']//input")
+    august = (By.XPATH, "//currency-input[@name='august']//input")
+    september = (By.XPATH, "//currency-input[@name='september']//input")
+    october = (By.XPATH, "//currency-input[@name='october']//input")
+    november = (By.XPATH, "//currency-input[@name='november']//input")
+    december = (By.XPATH, "//currency-input[@name='december']//input")
+    first_year_amount = (By.XPATH, "//currency-input[@name='firstYearAmount']//input")
+    second_year_amount = (By.XPATH, "//currency-input[@name='secondYearAmount']//input")
+    third_year_amount = (By.XPATH, "//currency-input[@name='thirdYearAmount']//input")
+    other_years_amount = (By.XPATH, "//currency-input[@name='otherYearsAmount']//input")
+    completed_amout = (By.XPATH, "//currency-input[@name='completedAmout']//input")
+    not_completed_amount = (By.XPATH, "//currency-input[@name='notCompletedAmount']//input")
+    conditional_payment = (By.XPATH, "//check-input[@name='conditionalPayment']//input")
+    analytical_code = (By.XPATH, "//text-input[@name='analyticalCode']//input")
+    act = (By.XPATH, "//act-classifier[@name='act']")
+    payment_day = (By.XPATH, "//number-input[@name='paymentDay']//input")
+
+
+# Сведения о бюджетном обязательстве - история
+class InformationAboutBudgetObligationHistoryLocators(object):
+    change_number = (By.XPATH, "//text-input[@name='changeNumber']//input")
+    change_date = (By.XPATH, "//date-input[@name='changeDate']//input")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+
+
+# Сведения о бюджетном обязательстве -  Реквизиты документа-основания
+class InformationAboutBudgetObligationRequisitesLocators(object):
+    document_foundation_kind = (
+        By.XPATH, "//budget-commitment-info-kind-dropdown-input[@name='documentFoundationKind']//select")
+    document_foundation_number = (By.XPATH, "//text-input[@name='documentFoundationNumber']//input")
+    document_foundation_date = (By.XPATH, "//date-input[@name='documentFoundationDate']//input")
+    document_fondation_currency = (By.XPATH, "//currency-classifier[@name='documentFondationCurrency']")
+    amount = (By.XPATH, "//currency-input[@name='amount']//input")
+    currency_amount = (By.XPATH, "//currency-input[@name='currencyAmount']//input")
+    advance_percent = (By.XPATH, "//decimal-input[@name='advancePercent']//input")
+    advance_amount = (By.XPATH, "//currency-input[@name='advanceAmount']//input")
+    register_record_number = (By.XPATH, "//number-input[@name='registerRecordNumber']//input")
+    document_foundation_subject = (By.XPATH, "//text-input[@name='documentFoundationSubject']//input")
+
 # Локаторы для Справочника «ОС,НМА,НПА»
 class CardIndexOSNMANPALocators(object):
     tag_no_first_part = (By.XPATH, "//*[@name='tagNoFirstPart']//input")

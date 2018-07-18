@@ -2042,6 +2042,232 @@ class CalendarPlanPage(Browser):
         self.set_select2(CalendarPlanLocators.account_details, value, "accountDetails")
 
 
+# Обеспечение исполнения обязательств
+class EnsuringFulfillmentOfObligationsPage(Browser):
+    def document_number(self, value):
+        self.set_text(EnsuringFulfillmentOfObligationsLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(EnsuringFulfillmentOfObligationsLocators.document_date, value, "Дата")
+
+    def operation(self, value):
+        self.set_select2(EnsuringFulfillmentOfObligationsLocators.operation, value, "Типовая операция")
+
+    def counterparty(self, value):
+        self.set_select2(EnsuringFulfillmentOfObligationsLocators.counterparty, value, "Принципал / Должник")
+
+    def entry_date(self, value):
+        self.set_date(EnsuringFulfillmentOfObligationsLocators.entry_date, value, "Дата проводки / постановки на учет")
+
+    def retirement_date(self, value):
+        self.set_date(EnsuringFulfillmentOfObligationsLocators.retirement_date, value, "Дата списания")
+
+    def amount(self, value):
+        self.set_text(EnsuringFulfillmentOfObligationsLocators.amount, value, "Сумма обеспечения")
+
+    def guarantor(self, value):
+        self.set_select2(EnsuringFulfillmentOfObligationsLocators.guarantor, value, "Гарант / Поручитель")
+
+    def assurance_starts(self, value):
+        self.set_date(EnsuringFulfillmentOfObligationsLocators.assurance_starts, value, "Срок действия обеспечения с")
+
+    def assurance_ends(self, value):
+        self.set_date(EnsuringFulfillmentOfObligationsLocators.assurance_ends, value, "Срок действия обеспечения по")
+
+
+# Сведения о бюджетном обязательстве
+class InformationAboutBudgetObligationPage(Browser):
+    def document_number(self, value):
+        self.set_text(InformationAboutBudgetObligationLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(InformationAboutBudgetObligationLocators.document_date, value, "Дата")
+
+    def financial_year(self, value):
+        self.set_text(InformationAboutBudgetObligationLocators.financial_year, value, "Финансовый год")
+
+    def liability(self, value):
+        self.set_select(InformationAboutBudgetObligationLocators.liability, value, "Тип бюджетного обязательства")
+
+    def tracking_number(self, value):
+        self.set_text(InformationAboutBudgetObligationLocators.tracking_number, value, "Учетный номер БО")
+
+    def registration_date(self, value):
+        self.set_date(InformationAboutBudgetObligationLocators.registration_date, value, "Дата регистрации в ФК")
+
+    def account_details(self, value):
+        self.set_select2(InformationAboutBudgetObligationLocators.account_details, value, "Лицевой счет")
+
+    def guid(self, value):
+        self.set_text(InformationAboutBudgetObligationLocators.guid, value, "GUID")
+
+    def counterparty(self, value):
+        self.set_select2(InformationAboutBudgetObligationLocators.counterparty, value, "Контрагент")
+
+    def transaction_account(self, value):
+        self.set_select2(InformationAboutBudgetObligationLocators.transaction_account, value, "Номер банковского счета")
+
+    def chief(self, value):
+        self.set_select2(InformationAboutBudgetObligationLocators.chief, value, "Руководитель")
+
+    def prepared_by(self, value):
+        self.set_select2(InformationAboutBudgetObligationLocators.prepared_by, value, "Исполнитель")
+
+
+# Сведения о бюджетном обязательстве  - Дополнительные контрагенты
+class InformationAboutBudgetObligationDopPage(Browser):
+    def counterparty(self, value):
+        self.set_text(InformationAboutBudgetObligationDopLocators.counterparty, value, "Наименование")
+
+    def account_details(self, value):
+        self.set_text(InformationAboutBudgetObligationDopLocators.account_details, value, "Номер банковского счета")
+
+
+# Сведения о бюджетном обязательстве строки
+class InformationAboutBudgetObligationAddLinePage(Browser):
+    def financial_year(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.financial_year, value, "Финансовый год")
+
+    def kbk(self, value):
+        self.set_select2(InformationAboutBudgetObligationAddLineLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(InformationAboutBudgetObligationAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def activity_kind(self, value):
+        self.set_select(InformationAboutBudgetObligationAddLineLocators.activity_kind, value, "Вид средств")
+
+    def kbk_type(self, value):
+        self.set_select(InformationAboutBudgetObligationAddLineLocators.kbk_type, value, "Тип КБК")
+
+    def comment(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.comment, value, "Примечание")
+
+    def investment_program(self, value):
+        self.set_select2(InformationAboutBudgetObligationAddLineLocators.investment_program, value, "ФАИП")
+
+    # Суммы на текущий год
+    def current_year_amounts(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.current_year_amounts, value, "Январь")
+
+    def february(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.february, value, "february")
+
+    def march(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.march, value, "march")
+
+    def april(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.april, value, "april")
+
+    def may(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.may, value, "may")
+
+    def june(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.june, value, "june")
+
+    def july(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.july, value, "july")
+
+    def august(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.august, value, "august")
+
+    def september(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.september, value, "september")
+
+    def october(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.october, value, "october")
+
+    def november(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.november, value, "november")
+
+    def december(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.december, value, "december")
+
+    # Суммы на плановый период
+    def first_year_amount(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.first_year_amount, value, "Первый год")
+
+    def second_year_amount(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.second_year_amount, value, "Второй год")
+
+    def third_year_amount(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.third_year_amount, value, "Третий год")
+
+    def other_years_amount(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.other_years_amount, value, "Последующие")
+
+    def completed_amout(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.completed_amout, value, "Исполненные")
+
+    def not_completed_amount(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.not_completed_amount, value, "Неисполненные")
+
+    def conditional_payment(self, value):
+        self.set_checkbox(
+            InformationAboutBudgetObligationAddLineLocators.conditional_payment, value, "Условный платеж - чек бокс")
+
+    def analytical_code(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.analytical_code, value, "Аналитический код")
+
+    def act(self, value):
+        self.set_select2(InformationAboutBudgetObligationAddLineLocators.act, value, "Мероприятие по бюджетной росписи")
+
+    def payment_day(self, value):
+        self.set_text(InformationAboutBudgetObligationAddLineLocators.payment_day, value,
+                      "День выплаты по исполнительному документу")
+
+
+# Сведения о бюджетном обязательстве - история
+class InformationAboutBudgetObligationHistoryPage(Browser):
+    def change_number(self, value):
+        self.set_text(InformationAboutBudgetObligationHistoryLocators.change_number, value, "Номер изменения")
+
+    def change_date(self, value):
+        self.set_date(InformationAboutBudgetObligationHistoryLocators.change_date, value, "Дата изменения")
+
+    def comment(self, value):
+        self.set_text(InformationAboutBudgetObligationHistoryLocators.comment, value, "Примечание")
+
+
+# Сведения о бюджетном обязательстве -  Реквизиты документа-основания
+class InformationAboutBudgetObligationRequisitesPage(Browser):
+    def document_foundation_kind(self, value):
+        self.set_select(InformationAboutBudgetObligationRequisitesLocators.document_foundation_kind, value,
+                        "Вид")
+
+    def document_foundation_number(self, value):
+        self.set_text(InformationAboutBudgetObligationRequisitesLocators.document_foundation_number, value,
+                      "Номер")
+
+    def document_foundation_date(self, value):
+        self.set_date(InformationAboutBudgetObligationRequisitesLocators.document_foundation_date, value,
+                      "Дата")
+
+    def document_fondation_currency(self, value):
+        self.set_select2(InformationAboutBudgetObligationRequisitesLocators.document_fondation_currency, value,
+                         "Код валюты по ОКВ")
+
+    def amount(self, value):
+        self.set_text(InformationAboutBudgetObligationRequisitesLocators.amount, value, "Сумма в рублях")
+
+    def currency_amount(self, value):
+        self.set_text(InformationAboutBudgetObligationRequisitesLocators.currency_amount, value, "Сумма в валюте")
+
+    def advance_percent(self, value):
+        self.set_text(InformationAboutBudgetObligationRequisitesLocators.advance_percent, value, "%")
+
+    def advance_amount(self, value):
+        self.set_text(InformationAboutBudgetObligationRequisitesLocators.advance_amount, value, "Сумма аванса")
+
+    def register_record_number(self, value):
+        self.set_text(InformationAboutBudgetObligationRequisitesLocators.register_record_number, value,
+                      "Реестровый номер")
+
+    def document_foundation_subject(self, value):
+        self.set_text(InformationAboutBudgetObligationRequisitesLocators.document_foundation_subject, value,
+                      "Предмет по документу-основанию")
+
+
 # Справочники - Картотека ОС,НМА,НПА - добавление документа
 class CardIndexOSNMANPAPage(Browser):
 
