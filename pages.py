@@ -1082,7 +1082,7 @@ class PaymentOrderArrivalPage(Browser):
         self.set_text(PaymentOrderArrivalLocators.document_number, value, "Номер")
 
     def recipient_account_details(self, value):
-        self.set_select2(PaymentOrderArrivalLocators.recipient_account_details, value, "Лицевой счет")
+        self.set_select2(PaymentOrderArrivalLocators.recipient_account_details, value, "Лицевой счет", exactly=False)
 
     def operation(self, value):
         self.set_select2(PaymentOrderArrivalLocators.operation, value, "Типовая операция")
@@ -1314,7 +1314,7 @@ class NotificationTypeAndPaymentTypePage(Browser):
         self.set_date(NotificationTypeAndPaymentTypeLocators.entry_date, value, "Дата проводки")
 
     def account_details(self, value):
-        self.set_select2(NotificationTypeAndPaymentTypeLocators.account_details, value, "Лицевой счет")
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.account_details, value, "Лицевой счет", exactly=False)
 
     def activity_kind(self, value):
         self.set_select(NotificationTypeAndPaymentTypeLocators.activity_kind, value, "Вид деятельности")
@@ -1610,7 +1610,7 @@ class ApplyingForCardPage(Browser):
         self.set_select2(ApplyingForCardLocators.operation_master, value, "Типовая операция")
 
     def account_details(self, value):
-        self.set_select2(ApplyingForCardLocators.account_details, value, "Лицевой счет")
+        self.set_select2(ApplyingForCardLocators.account_details, value, "Лицевой счет", exactly=False)
 
     def tracking_number(self, value):
         self.set_text(ApplyingForCardLocators.tracking_number, value, "Учетный номер обязательства")
@@ -1654,13 +1654,13 @@ class ApplyingForCardAddLinePage(Browser):
         self.set_select2(ApplyingForCardAddLineLocators.operation_master, value, "Типовая операция")
 
     def kbk(self, value):
-        self.set_select2(ApplyingForCardAddLineLocators.kbk, value, "КБК")
+        self.set_select2(ApplyingForCardAddLineLocators.kbk, value, "КБК", exactly=False)
 
     def kbk_type(self, value):
         self.set_select(ApplyingForCardAddLineLocators.kbk_type, value, "Тип КБК")
 
     def kosgu(self, value):
-        self.set_select2(ApplyingForCardAddLineLocators.kosgu, value, "КОСГУ")
+        self.set_select2(ApplyingForCardAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_element(self, value):
         self.set_select2(ApplyingForCardAddLineLocators.cost_element, value, "Вид затрат")
@@ -1702,7 +1702,7 @@ class DecodingAmountsUnusedFundsPage(Browser):
         self.set_select(DecodingAmountsUnusedFundsLocators.operation_type, value, "Вид операции")
 
     def personal_account(self, value):
-        self.set_select2(DecodingAmountsUnusedFundsLocators.personal_account, value, "Лицевой счет")
+        self.set_select2(DecodingAmountsUnusedFundsLocators.personal_account, value, "Лицевой счет", exactly=False)
 
     def operation_master(self, value):
         self.set_select2(DecodingAmountsUnusedFundsLocators.operation_master, value, "Типовая операция")
@@ -1726,13 +1726,13 @@ class DecodingAmountsUnusedFundsAddLinePage(Browser):
         self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.operation_master, value, "Типовая операция")
 
     def kosgu(self, value):
-        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.kosgu, value, "КОСГУ")
+        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_element(self, value):
         self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.cost_element, value, "Вид затрат")
 
     def kbk(self, value):
-        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.kbk, value, "КБК")
+        self.set_select2(DecodingAmountsUnusedFundsAddLineLocators.kbk, value, "КБК", exactly=False)
 
     def kbk_type(self, value):
         self.set_select(DecodingAmountsUnusedFundsAddLineLocators.kbk_type, value, "Тип КБК")
@@ -1781,7 +1781,7 @@ class ContractWithSupplierPage(Browser):
         self.set_select2(ContractWithSupplierLocators.currency, value, "Валюта")
 
     def personal_account(self, value):
-        self.set_select2(ContractWithSupplierLocators.personal_account, value, "Лицевой счет")
+        self.set_select2(ContractWithSupplierLocators.personal_account, value, "Лицевой счет", exactly=False)
 
     def budget_commitment(self, value):
         self.set_select2(ContractWithSupplierLocators.budget_commitment, value, "Номер бюджетного обязательства")
@@ -1849,7 +1849,7 @@ class ContractWithSupplierPage(Browser):
 
 
 # Договор с Поставщиком - вкладка Детализация по КБК
-class ContractWithSupplierPageDetailKBK(Browser):
+class ContractWithSupplierDetailKBKPage(Browser):
 
     def financial_year(self, value):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.financial_year, value, "Финансовый год")
@@ -1860,14 +1860,36 @@ class ContractWithSupplierPageDetailKBK(Browser):
     def operation(self, value):
         self.set_select2(ContractWithSupplierDetailKBKPageLocators.operation, value, "Типовая операция")
 
+    def changed(self, value):
+        self.set_checkbox(ContractWithSupplierDetailKBKPageLocators.changed, value, "Изменение чекбокс")
+
     def kbk(self, value):
         self.set_select2(ContractWithSupplierDetailKBKPageLocators.kbk, value, "КБК", exactly=False)
 
     def kosgu(self, value):
         self.set_select2(ContractWithSupplierDetailKBKPageLocators.kosgu, value, "КОСГУ", exactly=False)
 
+    def cost_element(self, value):
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.cost_Element, value, "Вид затрат")
+
     def contract_subject(self, value):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.contract_subject, value, "Предмет договора")
+
+    def department(self, value):
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.department, value, "Департамент")
+
+    def budgetary_plan_act(self, value):
+        self.set_select2(
+            ContractWithSupplierDetailKBKPageLocators.budgetary_plan_act, value, "Мероприятие по бюджетной росписи")
+
+    def investment_program(self, value):
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.investment_program, value, "ФАИП")
+
+    def department_unit(self, value):
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.department_unit, value, "Группа учета")
+
+    def work(self, value):
+        self.set_select2(ContractWithSupplierDetailKBKPageLocators.work, value, "Работа")
 
     def amounts_amount(self, value):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.amounts_amount, value, "Сумма по договору с НДС")
@@ -1878,8 +1900,146 @@ class ContractWithSupplierPageDetailKBK(Browser):
     def advance(self, value):
         self.set_text(ContractWithSupplierDetailKBKPageLocators.advance, value, "Сумма аванса")
 
-    def cost_element(self, value):
-        self.set_select2(ContractWithSupplierDetailKBKPageLocators.cost_Element, value, "Вид затрат")
+
+# Договор с Поставщиком - вкладка  Детализация по ОКПД
+class ContractWithSupplierDetailOKPDPage(Browser):
+    def order_number(self, value):
+        self.set_text(ContractWithSupplierDetailOKPDLocators.order_number, value, " № п/п ")
+
+    def okpd2(self, value):
+        self.set_select2(ContractWithSupplierDetailOKPDLocators.okpd2, value, "ОКПД2")
+
+    def unit_of_measure(self, value):
+        self.set_select2(ContractWithSupplierDetailOKPDLocators.unit_of_measure, value, "Единица измерения по ОКЕИ")
+
+    def unit_price(self, value):
+        self.set_text(ContractWithSupplierDetailOKPDLocators.unit_price, value, "Цена за единицу")
+
+    def quantity(self, value):
+        self.set_text(ContractWithSupplierDetailOKPDLocators.quantity, value, " Количество ")
+
+    def amount(self, value):
+        self.set_text(ContractWithSupplierDetailOKPDLocators.amount, value, "Сумма")
+
+    def purchase_object_type(self, value):
+        self.set_select2(ContractWithSupplierDetailOKPDLocators.purchase_object_type, value, "Вид объекта закупки")
+
+
+# Договор с Поставщиком - Вкладка Сведения о госконтракте
+class InformationAboutContractPage(Browser):
+    def aviso(self, value):
+        self.set_select2(InformationAboutContractLocators.aviso, value, "Номер извещения о проведении закупки")
+
+    def purchase_identity(self, value):
+        self.set_text(InformationAboutContractLocators.purchase_identity, value, "Идентификационный код закупки")
+
+    def register_record_number(self, value):
+        self.set_text(InformationAboutContractLocators.register_record_number, value, "Номер реестровой записи")
+
+    def registration_date(self, value):
+        self.set_date(InformationAboutContractLocators.registration_date, value, "Дата регистрации госконтракта")
+
+    def privacy(self, value):
+        self.set_select(InformationAboutContractLocators.privacy, value, "Признак секретности")
+
+    def confirm_document_number(self, value):
+        self.set_text(InformationAboutContractLocators.confirm_document_number, value, "Номер")
+
+    def confirm_document_date(self, value):
+        self.set_date(InformationAboutContractLocators.confirm_document_date, value, "Дата")
+
+    def confirm_document_kind(self, value):
+        self.set_select2(InformationAboutContractLocators.confirm_document_kind, value, "Вид документа")
+
+    def comment(self, value):
+        self.set_text(InformationAboutContractLocators.comment, value, "Дополнительная информация")
+
+    def department(self, value):
+        self.set_select2(InformationAboutContractLocators.department, value, "Способ размещения заказа")
+
+    def auction_date(self, value):
+        self.set_date(InformationAboutContractLocators.auction_date, value, "Дата торгов")
+
+    def declared_value(self, value):
+        self.set_text(InformationAboutContractLocators.declared_value, value, "Объявленная стоимость госконтракта")
+
+    def change_foundation(self, value):
+        self.set_text(InformationAboutContractLocators.change_foundation, value, "Основание для внесения изменений")
+
+    def for_small_entrepreneur(self, value):
+        self.set_checkbox(InformationAboutContractLocators.for_small_entrepreneur, value,
+                          "Для размещения среди субъектов малого предпринимательства")
+
+    def domestic_goods_preference(self, value):
+        self.set_checkbox(InformationAboutContractLocators.domestic_goods_preference, value,
+                          "С предоставлением преференций отечественным и белорусским товарам")
+
+    def perfomance_document_number(self, value):
+        self.set_text(InformationAboutContractLocators.perfomance_document_number, value,
+                      "Номер документа об исполнении или расторжении")
+
+    def contract_performance_date(self, value):
+        self.set_date(InformationAboutContractLocators.contract_performance_date, value,
+                      "Дата исполнения или расторжения госконтракта")
+
+    def terminated_by(self, value):
+        self.set_select(InformationAboutContractLocators.terminated_by, value, "Причина расторжения")
+
+    def contract_cancellation_record_number(self, value):
+        self.set_text(
+            InformationAboutContractLocators.contract_cancellation_record_number, value,
+            "Номер реестровой записи ранее расторгнутого госконтракта")
+
+    def contract_perfomance_foundation(self, value):
+        self.set_text(
+            InformationAboutContractLocators.contract_perfomance_foundation, value,
+            "Основание исполнения или расторжения госконтракта")
+
+
+# Договор с Поставщиком - История
+class HistoryPage(Browser):
+    def change_date(self, value):
+        self.set_date(HistoryLocators.change_date, value, "Дата изменения")
+
+    def change_number(self, value):
+        self.set_text(HistoryLocators.change_number, value, "Номер изменения")
+
+    def change_type(self, value):
+        self.set_select(HistoryLocators.change_type, value, "Тип изменения")
+
+    def comment(self, value):
+        self.set_text(HistoryLocators.comment, value, "comment")
+
+
+# Договор с Поставщиком - Календарный план
+class CalendarPlanPage(Browser):
+    def financial_year(self, value):
+        self.set_text(CalendarPlanLocators.financial_year, value, "Финансовый год")
+
+    def work_name(self, value):
+        self.set_text(CalendarPlanLocators.work_name, value, "Наименование этапа")
+
+    def result(self, value):
+        self.set_text(CalendarPlanLocators.result, value, "Результат")
+
+    def comment(self, value):
+        self.set_text(CalendarPlanLocators.comment, value, "Комментарий")
+
+    def start_date(self, value):
+        self.set_date(CalendarPlanLocators.start_date, value, "Дата начала этапа")
+
+    def end_date(self, value):
+        self.set_date(CalendarPlanLocators.end_date, value, "Дата окончания этапа")
+
+    def amount(self, value):
+        self.set_text(CalendarPlanLocators.amount, value, "Сумма по этапу")
+
+    # Договор с Поставщиком - Дополнительные контрагенты
+    def counterparty(self, value):
+        self.set_select2(CalendarPlanLocators.counterparty, value, "counterparty")
+
+    def account_details(self, value):
+        self.set_select2(CalendarPlanLocators.account_details, value, "accountDetails")
 
 
 # Справочники - Картотека ОС,НМА,НПА - добавление документа

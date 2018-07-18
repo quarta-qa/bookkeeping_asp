@@ -320,18 +320,80 @@ class ContractWithSupplierLocators(object):
     prolongation_term = (By.XPATH, "//text-area-input[@name='prolongationTerm']//textarea")
 
 
-
+# Договор с Поставщиком - вкладка Детализация по КБК
 class ContractWithSupplierDetailKBKPageLocators(object):
     financial_year = (By.XPATH, "//*[@name='financialYear']//input")
     entry_date = (By.XPATH, "//*[@name='entryDate']//input")
+    changed = (By.XPATH, "//*[@name='changed']//input")
     operation = (By.XPATH, "//*[@name='operation']")
     kbk = (By.XPATH, "//*[@name='kbk']")
     kosgu = (By.XPATH, "//*[@name='kosgu']")
+    cost_Element = (By.XPATH, "//*[@name='costElement']")
     contract_subject = (By.XPATH, "//*[@name='contractSubject']//textarea")
+    department = (By.XPATH, "//department-classifier[@name='Department']")
+    budgetary_plan_act = (By.XPATH, "//act-classifier[@name='budgetaryPlanAct']")
+    investment_program = (By.XPATH, "//federal-targeted-investment-program-classifier[@name='investmentProgram']")
+    department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
+    work = (By.XPATH, "//work-classifier[@name='work']")
     amounts_amount = (By.XPATH, "//*[@name='amountsAmount']//input")
     amounts_nds_percent = (By.XPATH, "//*[@name='amountsNdsPercent']//input")
     advance = (By.XPATH, "//*[@name='advance']//input")
-    cost_Element = (By.XPATH, "//*[@name='costElement']")
+
+
+# Договор с Поставщиком - вкладка  Детализация по ОКПД
+class ContractWithSupplierDetailOKPDLocators(object):
+    order_number = (By.XPATH, "//number-input[@name='orderNumber']//input")
+    okpd2 = (By.XPATH, "//okpd2-classifier[@name='okpd2']")
+    unit_of_measure = (By.XPATH, "//okei-classifier[@name='unitOfMeasure']")
+    unit_price = (By.XPATH, "//currency-input[@name='unitPrice']//input")
+    quantity = (By.XPATH, "//decimal-input[@name='quantity']//input")
+    amount = (By.XPATH, "//currency-input[@name='amount']//input")
+    purchase_object_type = (By.XPATH, "//purchase-object-type-dropdown-input[@name='purchaseObjectType']")
+
+
+# Договор с Поставщиком - Вкладка Сведения о госконтракте
+class InformationAboutContractLocators(object):
+    aviso = (By.XPATH, "//purchasing-notice-classifier[@name='aviso']")
+    purchase_identity = (By.XPATH, "//text-input[@name='purchaseIdentity']//input")
+    register_record_number = (By.XPATH, "//text-input[@name='registerRecordNumber']//input")
+    registration_date = (By.XPATH, "//date-input[@name='registrationDate']//input")
+    privacy = (By.XPATH, "//privacy-dropdown-input[@name='privacy']//select")
+    confirm_document_number = (By.XPATH, "//number-input[@name='confirmDocumentNumber']//input")
+    confirm_document_date = (By.XPATH, "//date-input[@name='confirmDocumentDate']//input")
+    confirm_document_kind = (By.XPATH, "//contract-award-foundation-classifier[@name='confirmDocumentKind']")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    department = (By.XPATH, "//order-placement-classifier[@name='department']")
+    auction_date = (By.XPATH, "//date-input[@name='auctionDate']//input")
+    declared_value = (By.XPATH, "//currency-input[@name='declaredValue']//input")
+    change_foundation = (By.XPATH, "//text-input[@name='changeFoundation']//input")
+    for_small_entrepreneur = (By.XPATH, "//check-input[@name='forSmallEntrepreneur']//input")
+    domestic_goods_preference = (By.XPATH, "//check-input[@name='domesticGoodsPreference']//input")
+    perfomance_document_number = (By.XPATH, "//text-input[@name='perfomanceDocumentNumber']//input")
+    contract_performance_date = (By.XPATH, "//date-input[@name='contractPerformanceDate']//input")
+    terminated_by = (By.XPATH, "//termination-reason-dropdown-input[@name='terminatedBy']//select")
+    contract_cancellation_record_number = (By.XPATH, "//text-input[@name='contractCancellationRecordNumber']//input")
+    contract_perfomance_foundation = (By.XPATH, "//text-area-input[@name='contractPerfomanceFoundation']//textarea")
+
+
+# Договор с Поставщиком - История
+class HistoryLocators(object):
+    change_date = (By.XPATH, "//date-input[@name='changeDate']//input")
+    change_number = (By.XPATH, "//number-input[@name='changeNumber']//input")
+    change_type = (By.XPATH, "//contract-with-supplier-change-type-dropdown-input[@name='changeType']//select")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//input")
+
+
+# Договор с Поставщиком - Календарный план
+class CalendarPlanLocators(object):
+    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    work_name = (By.XPATH, "//text-area-input[@name='workName']//textarea")
+    result = (By.XPATH, "//text-area-input[@name='result']//textarea")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    start_date = (By.XPATH, "//date-input[@name='startDate']//input")
+    end_date = (By.XPATH, "//date-input[@name='endDate']//input")
+    amount = (By.XPATH, "//currency-input[@name='amount']//input")
+    counterparty = (By.XPATH, "//counterparty-classifier[@name='counterparty']")
+    account_details = (By.XPATH, "//counterparty-account-details-classifier[@name='accountDetails']")
 
 
 # Локаторы для Справочника «ОС,НМА,НПА»
