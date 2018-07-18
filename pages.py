@@ -694,22 +694,25 @@ class BasisForReportingAmountsPage(Browser):
 #  Основание для выдачи подотчетных сумм добавление строк
 class BasisForReportingAmountsAddLinePage(Browser):
     def kbk(self, value):
-        self.set_select2(BasisForReportingAmountsAddLineLocators.kbk, value, "kbk", exactly=False)
+        self.set_select2(BasisForReportingAmountsAddLineLocators.kbk, value, "КБК", exactly=False)
 
     def kosgu(self, value):
-        self.set_select2(BasisForReportingAmountsAddLineLocators.kosgu, value, "kosgu", exactly=False)
+        self.set_select2(BasisForReportingAmountsAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_element(self, value):
-        self.set_select2(BasisForReportingAmountsAddLineLocators.cost_element, value, "costElement")
+        self.set_select2(BasisForReportingAmountsAddLineLocators.cost_element, value, "Вид затрат")
 
     def employee(self, value):
-        self.set_select2(BasisForReportingAmountsAddLineLocators.employee, value, "employee")
+        self.set_select2(BasisForReportingAmountsAddLineLocators.employee, value, "Сотрудник")
+
+    def position(self, value):
+        self.set_select2(BasisForReportingAmountsAddLineLocators.position, value, "Должность" )
 
     def amount(self, value):
-        self.set_text(BasisForReportingAmountsAddLineLocators.amount, value, "amount")
+        self.set_text(BasisForReportingAmountsAddLineLocators.amount, value, "Сумма")
 
     def comment(self, value):
-        self.set_text(BasisForReportingAmountsAddLineLocators.comment, value, "comment")
+        self.set_text(BasisForReportingAmountsAddLineLocators.comment, value, "Комментарий")
 
 
 # Приходный кассовый ордер
@@ -817,22 +820,37 @@ class IncomeCashOrderPlusPage(Browser):
 # Авансовый отчет
 class AvansReportPage(Browser):
     def document_kind(self, value):
-        self.set_select2(AvansReportLocators.document_kind, value, "documentKind")
+        self.set_select2(AvansReportLocators.document_kind, value, "Вид документа")
 
     def document_number(self, value):
-        self.set_text(AvansReportLocators.document_number, value, "documentNumber")
+        self.set_text(AvansReportLocators.document_number, value, "Номер документа")
 
     def document_date(self, value):
-        self.set_date(AvansReportLocators.document_date, value, "documentDate")
+        self.set_date(AvansReportLocators.document_date, value, "Дата")
 
     def entry_date(self, value):
-        self.set_date(AvansReportLocators.entry_date, value, "entryDate")
+        self.set_date(AvansReportLocators.entry_date, value, "Дата проводки")
+
+    def employee(self, value):
+        self.set_select2(AvansReportLocators.employee, value, "Сотрудник")
+
+    def position(self, value):
+        self.set_select2(AvansReportLocators.position, value, "Должность")
+
+    def department(self, value):
+        self.set_select2(AvansReportLocators.department, value, "Подразделение")
+
+    def employee_full_name(self, value):
+        self.set_text(AvansReportLocators.employee_full_name, value, "ФИО")
+
+    def document_foundation(self, value):
+        self.set_select2(AvansReportLocators.document_foundation, value, "Основание")
 
     def purpose(self, value):
-        self.set_text(AvansReportLocators.purpose, value, "purpose")
+        self.set_text(AvansReportLocators.purpose, value, "Назначение аванса")
 
     def comment(self, value):
-        self.set_text(AvansReportLocators.comment, value, "comment")
+        self.set_text(AvansReportLocators.comment, value, "Комментарий")
 
 
 # Авансовый отчет добавление строки
@@ -1762,14 +1780,66 @@ class ContractWithSupplierPage(Browser):
     def currency(self, value):
         self.set_select2(ContractWithSupplierLocators.currency, value, "Валюта")
 
+    def personal_account(self, value):
+        self.set_select2(ContractWithSupplierLocators.personal_account, value, "Лицевой счет")
+
+    def budget_commitment(self, value):
+        self.set_select2(ContractWithSupplierLocators.budget_commitment, value, "Номер бюджетного обязательства")
+
+    def payment_against_invoice(self, value):
+        self.set_checkbox(ContractWithSupplierLocators.payment_against_invoice, value, "Оплата по счетам -чекбокс")
+
+    def payment_type(self, value):
+        self.set_select(ContractWithSupplierLocators.payment_type, value, "Вид оплаты")
+
     def date_begin(self, value):
         self.set_date(ContractWithSupplierLocators.date_begin, value, "Дата начала")
 
     def date_end(self, value):
         self.set_date(ContractWithSupplierLocators.date_end, value, "Дата окончания")
 
-    def payment_type(self, value):
-        self.set_select(ContractWithSupplierLocators.payment_type, value, "Вид оплаты")
+    def security_type(self, value):
+        self.set_select(ContractWithSupplierLocators.security_type, value, "Тип")
+
+    def security_amount(self, value):
+        self.set_text(ContractWithSupplierLocators.security_amount, value, "Сумма")
+
+    def security_period(self, value):
+        self.set_date(ContractWithSupplierLocators.security_period, value, " Срок действия ")
+
+    def sending_letter_number(self, value):
+        self.set_text(ContractWithSupplierLocators.sending_letter_number, value, "Номер письма об отправке")
+
+    def assurance_register_record_number(self, value):
+        self.set_text(ContractWithSupplierLocators.assurance_register_record_number, value,
+                      "Номер записи в реестре гарантий")
+
+    def letter_date(self, value):
+        self.set_date(ContractWithSupplierLocators.letter_date, value, "Дата письма")
+
+    def note(self, value):
+        self.set_text(ContractWithSupplierLocators.note, value, "Примечание")
+
+    def responsible(self, value):
+        self.set_select2(ContractWithSupplierLocators.responsible, value, "Ответственный")
+
+    def department_unit(self, value):
+        self.set_select2(ContractWithSupplierLocators.department_unit, value, "Группа учета")
+
+    def penalty_period_count(self, value):
+        self.set_select(ContractWithSupplierLocators.penalty_period_count, value, "Количество")
+
+    def penalty_period(self, value):
+        self.set_select(ContractWithSupplierLocators.penalty_period, value, "дней/часов")
+
+    def penalty_percent(self, value):
+        self.set_text(ContractWithSupplierLocators.penalty_percent, value, "%")
+
+    def penalty_amount(self, value):
+        self.set_text(ContractWithSupplierLocators.penalty_amount, value, "Сумма")
+
+    def prolongation_term(self, value):
+        self.set_text(ContractWithSupplierLocators.prolongation_term, value, "Условие пролонгации")
 
     def subject_contract(self, value):
         self.set_text(ContractWithSupplierLocators.subject_contract, value, "Предмет договора")
@@ -1777,11 +1847,8 @@ class ContractWithSupplierPage(Browser):
     def payment_terms(self, value):
         self.set_text(ContractWithSupplierLocators.payment_terms, value, "Условие оплаты")
 
-    def note(self, value):
-        self.set_text(ContractWithSupplierLocators.note, value, "Примечание")
 
-
-# Договор с Поставщиком - добавление строки
+# Договор с Поставщиком - вкладка Детализация по КБК
 class ContractWithSupplierPageDetailKBK(Browser):
 
     def financial_year(self, value):

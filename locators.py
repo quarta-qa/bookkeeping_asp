@@ -296,12 +296,29 @@ class ContractWithSupplierLocators(object):
     bank_account_number = (By.XPATH, "//*[@name='transactionAccount']")
     uin = (By.XPATH, "//*[@name='chargeUniqueIdentifier']//input")
     currency = (By.XPATH, "//*[@name='currency']")
+    personal_account = (By.XPATH, "//current-organization-account-details-classifier[@name='personalAccount']")
+    budget_commitment = (By.XPATH, "//budget-commitment-classifier[@name='budgetCommitment']")
+    payment_against_invoice = (By.XPATH, "//check-input[@name='paymentAgainstInvoice']//input")
+    payment_type = (By.XPATH, "//*[@name='considerationPeriod']//select")
     date_begin = (By.XPATH, "//*[@name='startDate']//input")
     date_end = (By.XPATH, "//*[@name='endDate']//input")
-    payment_type = (By.XPATH, "//*[@name='considerationPeriod']//select")
+    security_type = (By.XPATH, "//security-type-dropdown-input[@name='securityType']//select")
+    security_amount = (By.XPATH, "//currency-input[@name='securityAmount']//input")
+    security_period = (By.XPATH, "//date-input[@name='securityPeriod']//input")
+    sending_letter_number = (By.XPATH, "//text-input[@name='sendingLetterNumber']//input")
+    assurance_register_record_number = (By.XPATH, "//text-input[@name='assuranceRegisterRecordNumber']//input")
+    letter_date = (By.XPATH, "//date-input[@name='letterDate']//input")
+    note = (By.XPATH, "//*[@name='comment']//textarea")
+    responsible = (By.XPATH, "//employee-classifier[@name='responsible']")
+    department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
+    penalty_period = (By.XPATH, "//penalty-period-dropdown[@name='penaltyPeriod']//select")
+    penalty_percent = (By.XPATH, "//decimal-input[@name='penaltyPercent']//input")
+    penalty_amount = (By.XPATH, "//currency-input[@name='penaltyAmount']//input")
+    penalty_period_count = (By.XPATH, "//number-input[@name='penaltyPeriodCount']//select")
     subject_contract = (By.XPATH, "//*[@name='subject']//textarea")
     payment_terms = (By.XPATH, "//*[@name='paymentTerm']//textarea")
-    note = (By.XPATH, "//*[@name='comment']//textarea")
+    prolongation_term = (By.XPATH, "//text-area-input[@name='prolongationTerm']//textarea")
+
 
 
 class ContractWithSupplierDetailKBKPageLocators(object):
@@ -944,18 +961,24 @@ class BasisForReportingAmountsAddLineLocators(object):
     kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
     cost_element = (By.XPATH, "//cost-elements-classifier[@name='costElement']")
     employee = (By.XPATH, "//div[@class='modal-content']//*[@name='employee']")
+    position = (By.XPATH, "//div[@class='modal-content']//*[@name='position']")
     amount = (By.XPATH, "//currency-input[@name='amount']//input")
     comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
 
 
 # авансовый отчет
 class AvansReportLocators(object):
-    document_kind = (By.XPATH, "//div[@class='container-fluid']//document-kind-classifier[@name='documentKind']")
-    document_number = (By.XPATH, "//div[@class='container-fluid']//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//div[@class='container-fluid']//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//div[@class='container-fluid']//date-input[@name='entryDate']//input")
-    purpose = (By.XPATH, "//div[@class='container-fluid']//text-area-input[@name='purpose']//textarea")
-    comment = (By.XPATH, "//div[@class='container-fluid']//text-area-input[@name='comment']//textarea")
+    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
+    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "date-input[@name='entryDate']//input")
+    employee = (By.XPATH, "//employee-classifier[@name='employee']")
+    position = (By.XPATH, "//position-classifier[@name='position']")
+    department = (By.XPATH, "//position-classifier[@name='department']")
+    employee_full_name = (By.XPATH, "//text-input[@name='employeeFullName']//input")
+    document_foundation = (By.XPATH, "//imprest-foundation-classifier[@name='documentFoundation']")
+    purpose = (By.XPATH, "//text-area-input[@name='purpose']//textarea")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
 
 
 # авансовый отчет добавление строки
