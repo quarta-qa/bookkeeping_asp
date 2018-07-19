@@ -1289,3 +1289,5 @@ class TestSuite:
         page.click_by_text("Проводки")
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
+
+

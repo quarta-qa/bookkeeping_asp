@@ -803,7 +803,10 @@ class InvoiceFromTheSupplierLocators(object):
     document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
     document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
     supplier = (By.XPATH, "//counterparty-classifier[@name='supplier']")
-
+    paid_date = (By.XPATH, "//date-input[@name='paidDate']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
+    department_unit = (By.XPATH, "//department-unit-classifier[@name='DepartmentUnit']")
     supplier_account_detail = (By.XPATH, "//counterparty-account-details-classifier[@name='supplierAccountDetail']")
     account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
     department = (By.XPATH, "//department-classifier[@name='Department']")

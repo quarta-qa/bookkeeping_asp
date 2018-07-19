@@ -706,7 +706,7 @@ class BasisForReportingAmountsAddLinePage(Browser):
         self.set_select2(BasisForReportingAmountsAddLineLocators.employee, value, "Сотрудник")
 
     def position(self, value):
-        self.set_select2(BasisForReportingAmountsAddLineLocators.position, value, "Должность" )
+        self.set_select2(BasisForReportingAmountsAddLineLocators.position, value, "Должность")
 
     def amount(self, value):
         self.set_text(BasisForReportingAmountsAddLineLocators.amount, value, "Сумма")
@@ -2973,9 +2973,7 @@ class AccountCashWarrantPagePlusPage(Browser):
         self.set_select2(AccountCashWarrantPagePlusLocators.cashier, value, "Выдал кассир")
 
 
-
-
-# # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
+# Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
 # class TemplatesofthecardOSNMANPA(Browser):
 #         print("Templates_of_the_card_OSNMANPA")
 #
