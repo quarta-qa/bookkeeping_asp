@@ -2662,6 +2662,18 @@ class InvoiceFromTheSupplierPage(Browser):
     def document_date(self, value):
         self.set_date(InvoiceFromTheSupplierLocators.document_date, value, "Дата")
 
+    def paid_date(self, value):
+        self.set_date(InvoiceFromTheSupplierLocators.paid_date, value, "Дата регистрации")
+
+    def entry_date(self, value):
+        self.set_date(InvoiceFromTheSupplierLocators.entry_date, value, "Дата проводки")
+
+    def operation(self, value):
+        self.set_select2(InvoiceFromTheSupplierLocators.operation, value, "Типовая операция")
+
+    def department_unit(self, value):
+        self.set_select2(InvoiceFromTheSupplierLocators.department_unit, value, "Группа учета")
+
     def supplier(self, value):
         self.set_select2(InvoiceFromTheSupplierLocators.supplier, value, "Постащик")
 
@@ -2696,6 +2708,12 @@ class InvoiceFromTheSupplierAddLinePage(Browser):
     def cost_element(self, value):
         self.set_select2(InvoiceFromTheSupplierAddLineLocators.cost_element, value, "Вид затрат")
 
+    def act(self, value):
+        self.set_text(InvoiceFromTheSupplierAddLineLocators.act, value, "Мероприятие")
+
+    def okpd2(self, value):
+        self.set_text(InvoiceFromTheSupplierAddLineLocators.okpd2, value, "ОКПД2")
+
     def comment(self, value):
         self.set_text(InvoiceFromTheSupplierAddLineLocators.comment, value, "Примечание")
 
@@ -2704,6 +2722,164 @@ class InvoiceFromTheSupplierAddLinePage(Browser):
 
     def vat_percent(self, value):
         self.set_text(InvoiceFromTheSupplierAddLineLocators.vat_percent, value, "Ставка НДС")
+
+
+# Cчет фактура от поставщика
+class InvoiceFromVendorPage(Browser):
+    def document_kind(self, value):
+        self.set_select2(InvoiceFromVendorLocators.document_kind, value, "Вид документа")
+
+    def document_number(self, value):
+        self.set_text(InvoiceFromVendorLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(InvoiceFromVendorLocators.document_date, value, "Дата")
+
+    def received_date(self, value):
+        self.set_date(InvoiceFromVendorLocators.received_date, value, "Дата получения")
+
+    def correction_number(self, value):
+        self.set_text(InvoiceFromVendorLocators.correction_number, value, "Исправление номер")
+
+    def correction_date(self, value):
+        self.set_date(InvoiceFromVendorLocators.correction_date, value, "от")
+
+    def editable(self, value):
+        self.set_select2(InvoiceFromVendorLocators.editable, value, "Исправление к счет-фактуре")
+
+    def vendor(self, value):
+        self.set_select2(InvoiceFromVendorLocators.vendor, value, "Продавец")
+
+    def billing_type(self, value):
+        self.set_select(InvoiceFromVendorLocators.billing_type, value, "Способ выставления")
+
+    def nds_operation_code(self, value):
+        self.set_select2(InvoiceFromVendorLocators.nds_operation_code, value, "Код вида операции")
+
+    def public_contract_identifier(self, value):
+        self.set_text(InvoiceFromVendorLocators.public_contract_identifier, value,
+                      "Идентификатор ГК, договора (соглашения)")
+
+    def mercantile_agent(self, value):
+        self.set_select2(InvoiceFromVendorLocators.mercantile_agent, value, "Комиссионер (агент)")
+
+    def employee(self, value):
+        self.set_select2(InvoiceFromVendorLocators.employee, value, "Сотрудник")
+
+    def department_unit(self, value):
+        self.set_select2(InvoiceFromVendorLocators.department_unit, value, "Группа учета")
+
+    def trip(self, value):
+        self.set_select2(InvoiceFromVendorLocators.trip, value, "Командировка")
+
+    def operation(self, value):
+        self.set_checkbox(InvoiceFromVendorLocators.operation, value, "Типовая операция")
+
+    def entry_date(self, value):
+        self.set_date(InvoiceFromVendorLocators.entry_date, value, "Дата проводки")
+
+    def capitalization_date(self, value):
+        self.set_date(InvoiceFromVendorLocators.capitalization_date, value, "Дата оприходования товара")
+
+    def comment(self, value):
+        self.set_text(InvoiceFromVendorLocators.comment, value, "Примечание")
+
+
+# Cчет фактура от поставщика - добавление строки
+class InvoiceFromVendorAddLinePage(Browser):
+    def goods_name(self, value):
+        self.set_text(InvoiceFromVendorAddLineLocators.goods_name, value, "Наименование товара (услуг)")
+
+    def kbk(self, value):
+        self.set_select2(InvoiceFromVendorAddLineLocators.kbk, value, "КБК")
+
+    def kosgu(self, value):
+        self.set_select2(InvoiceFromVendorAddLineLocators.kosgu, value, "КОСГУ")
+
+    def cost_elements(self, value):
+        self.set_select2(InvoiceFromVendorAddLineLocators.cost_elements, value, "Вид затрат")
+
+    def act(self, value):
+        self.set_select2(InvoiceFromVendorAddLineLocators.act, value, "Мероприятие")
+
+    def unit_of_measure(self, value):
+        self.set_select2(InvoiceFromVendorAddLineLocators.unit_of_measure, value, "Единицы измерения")
+
+    def quantity(self, value):
+        self.set_text(InvoiceFromVendorAddLineLocators.quantity, value, "Количество")
+
+    def price(self, value):
+        self.set_text(InvoiceFromVendorAddLineLocators.price, value, "Цена")
+
+    def nds_percent(self, value):
+        self.set_text(InvoiceFromVendorAddLineLocators.nds_percent, value, "Ставка НДС")
+
+    def amount(self, value):
+        self.set_text(InvoiceFromVendorAddLineLocators.amount, value, "Сумма с НДС")
+
+    def excise_duty(self, value):
+        self.set_text(InvoiceFromVendorAddLineLocators.excise_duty, value, "Сумма акциза")
+
+    def cargo_custom_declaration(self, value):
+        self.set_text(InvoiceFromVendorAddLineLocators.cargo_custom_declaration, value,
+                      "Номер грузовой таможенной декларации")
+
+    def origin_country(self, value):
+        self.set_select2(InvoiceFromVendorAddLineLocators.origin_country, value, "Страна происхождения")
+
+
+# Акт входящий
+class IncomingActPage(Browser):
+    def document_kind(self, value):
+        self.set_select2(IncomingActLocators.document_kind, value, "Вид документа")
+
+    def document_number(self, value):
+        self.set_text(IncomingActLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(IncomingActLocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(IncomingActLocators.entry_date, value, "Дата проводки")
+
+    def contractor(self, value):
+        self.set_select2(IncomingActLocators.contractor, value, "Исполнитель")
+
+    def department_unit(self, value):
+        self.set_select2(IncomingActLocators.department_unit, value, "Группа учета")
+
+    def comment(self, value):
+        self.set_text(IncomingActLocators.Appointment, value, "Назначение")
+
+
+# Акт входящий - добавление строки
+class IncomingActAddLinePage(Browser):
+    def operation(self, value):
+        self.set_select2(IncomingActLocators.operation, value, "Типовая операция", exactly=False)
+
+    def kbk(self, value):
+        self.set_select2(IncomingActLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(IncomingActLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def cost_elements(self, value):
+        self.set_select2(IncomingActLocators.cost_elements, value, "Вид затрат")
+
+    def nds_percent(self, value):
+        self.set_text(IncomingActLocators.nds_percent, value, "Ставка НДС")
+
+    def amount(self, value):
+        self.set_text(IncomingActLocators.amount, value, "Сумма с НДС")
+
+    def advance_offset(self, value):
+        self.set_text(IncomingActLocators.advance_offset, value, "Сумма зачета аванса")
+
+    def under_repair(self, value):
+        self.set_select2(IncomingActLocators.under_repair, value, "Наименование объекта ОС, подлежащего ремонту")
+
+    def comment(self, value):
+        self.set_text(IncomingActLocators.comment, value, "Комментарий")
 
 
 # Расходный кассовый ордер
