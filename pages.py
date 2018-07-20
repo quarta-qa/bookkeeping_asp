@@ -2366,6 +2366,15 @@ class ReceiptOfNonFinancialAssetsCapPage(Browser):
     def organization(self, value):
         self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.organization, value, "Наименование отправителя")
 
+    def storage(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.storage, value, "Место хранения")
+
+    def advance_report(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.advance_report, value, "Авансовый отчет")
+
+    def sender_foundation(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.sender_foundation, value, "Документ-основание")
+
     def comment(self, value):
         self.set_text(ReceiptOfNonFinancialAssetsCapLocators.comment, value, "Комментарий")
 
@@ -2880,6 +2889,109 @@ class IncomingActAddLinePage(Browser):
 
     def comment(self, value):
         self.set_text(IncomingActLocators.comment, value, "Комментарий")
+
+
+# Сведения о денежном обязательстве
+class InformationAboutTheMonetaryObligationPage(Browser):
+    def document_number(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(InformationAboutTheMonetaryObligationLocators.document_date, value, "Дата")
+
+    def financial_year(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationLocators.financial_year, value, "Финансовый год")
+
+    def tracking_number(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationLocators.tracking_number, value, "Учетный номер ДО")
+
+    def currency(self, value):
+        self.set_select2(InformationAboutTheMonetaryObligationLocators.currency, value, "Код валюты по ОКВ")
+
+    def is_advance(self, value):
+        self.set_checkbox(InformationAboutTheMonetaryObligationLocators.is_advance, value, "Авансовый платеж")
+
+    def registration_date(self, value):
+        self.set_date(InformationAboutTheMonetaryObligationLocators.registration_date, value, "Дата регистрации ФК")
+
+    def personal_account(self, value):
+        self.set_select2(InformationAboutTheMonetaryObligationLocators.personal_account, value, "Лицевой счет")
+
+    def counterparty(self, value):
+        self.set_select2(InformationAboutTheMonetaryObligationLocators.counterparty, value, "Контрагент")
+
+    def counterparty_account_detail(self, value):
+        self.set_select2(InformationAboutTheMonetaryObligationLocators.counterparty_account_detail, value,
+                         "Номер банковского счета")
+
+    def guid(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationLocators.guid, value, "GUID")
+
+    def chief(self, value):
+        self.set_select2(InformationAboutTheMonetaryObligationLocators.chief, value, "Руководитель")
+
+    def accountant_general(self, value):
+        self.set_select2(InformationAboutTheMonetaryObligationLocators.accountant_general, value, "Главный бухгалтер")
+
+    def document_foundation_kind(self, value):
+        self.set_select(InformationAboutTheMonetaryObligationLocators.document_foundation_kind, value, "Вид")
+
+    def foundation_number(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationLocators.foundation_number, value, "Номер")
+
+    def foundation_date(self, value):
+        self.set_date(InformationAboutTheMonetaryObligationLocators.foundation_date, value, "Дата")
+
+    def foundation_amount(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationLocators.foundation_amount, value, "Сумма")
+
+    def foundation_subject(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationLocators.foundation_subject, value, "Предмет")
+
+
+# Сведения о денежном обязательстве - Расшифровка обязательства
+class InformationAboutTheMonetaryObligationAddLinePage(Browser):
+    def financial_year(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationAddLineLocators.financial_year, value, "Финансовый год")
+
+    def kbk(self, value):
+        self.set_select2(InformationAboutTheMonetaryObligationAddLineLocators.kbk, value, "КБК", exactly=False)
+
+    def kbk_type(self, value):
+        self.set_select(InformationAboutTheMonetaryObligationAddLineLocators.kbk_type, value, "Тип КБК")
+
+    def kosgu(self, value):
+        self.set_select2(InformationAboutTheMonetaryObligationAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def activity_kind(self, value):
+        self.set_select(InformationAboutTheMonetaryObligationAddLineLocators.activity_kind, value, "Вид средств")
+
+    def investment_program(self, value):
+        self.set_select2(InformationAboutTheMonetaryObligationAddLineLocators.investment_program, value, "ФАИП")
+
+    def analytical_code(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationAddLineLocators.analytical_code, value, "Аналитический код")
+
+    def advance_transfered(self, value):
+        self.set_text(
+            InformationAboutTheMonetaryObligationAddLineLocators.advance_transfered, value, "Перечислено аванса")
+
+    def amount(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationAddLineLocators.amount, value, "Сумма в рублях")
+
+    def currency_amount(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationAddLineLocators.currency_amount, value, "Сумма в валюте")
+
+
+class InformationAboutTheMonetaryObligationHistoryPage(Browser):
+    def change_number(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationHistoryLocators.change_number, value, "Номер")
+
+    def change_date(self, value):
+        self.set_date(InformationAboutTheMonetaryObligationHistoryLocators.change_date, value, "Дата")
+
+    def comment(self, value):
+        self.set_text(InformationAboutTheMonetaryObligationHistoryLocators.comment, value, "Примечание")
 
 
 # Расходный кассовый ордер

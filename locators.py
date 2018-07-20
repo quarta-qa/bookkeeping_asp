@@ -528,7 +528,11 @@ class ReceiptOfNonFinancialAssetsCapLocators(object):
         (By.XPATH, "//materially-responsible-person-classifier[@name='materiallyResponsiblePerson']")
     sender_sender_type = (By.XPATH, "//income-sender-type-enum[@name='senderSenderType']//select")
     organization = (By.XPATH, "//counterparty-classifier[@name='organization']")
+    storage = (By.XPATH, "//storage-classifier[@name='storage']")
+    advance_report = (By.XPATH, "//advance-report-classifier[@name='advanceReport']")
+    sender_foundation = (By.XPATH, "//*[@name='senderFoundation']")
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+
 
 
 # Локаторы для Справочника «Поступление НФА - строки»
@@ -889,6 +893,52 @@ class IncomingActLocators(object):
     advance_offset = (By.XPATH, "//currency-input[@name='advanceOffset']//input")
     under_repair = (By.XPATH, "//basic-facilities-classifier[@name='underRepair']")
     comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
+
+
+# Сведения о денежном обязательстве
+class InformationAboutTheMonetaryObligationLocators(object):
+    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
+    currency = (By.XPATH, "//currency-classifier[@name='currency']")
+    is_advance = (By.XPATH, "//check-input[@name='isAdvance']//input")
+    registration_date = (By.XPATH, "//date-input[@name='registrationDate']//input")
+    personal_account = (By.XPATH, "//current-organization-account-details-classifier[@name='personalAccount']")
+    counterparty = (By.XPATH, "//counterparty-classifier[@name='counterparty']")
+    counterparty_account_detail = (By.XPATH, "//*[@name='counterpartyAccountDetail']")
+    guid = (By.XPATH, "//text-input[@name='guid']//input")
+    chief = (By.XPATH, "//signatory-classifier[@name='chief']")
+    accountant_general = (By.XPATH, "//signatory-classifier[@name='accountantGeneral']")
+    document_foundation_kind = (By.XPATH, "//*[@name='documentFoundationKind']//select")
+    foundation_number = (By.XPATH, "//text-input[@name='foundationNumber']//input")
+    foundation_date = (By.XPATH, "//date-input[@name='foundationDate']//input")
+    foundation_amount = (By.XPATH, "//currency-input[@name='foundationAmount']//input")
+    foundation_subject = (By.XPATH, "//text-area-input[@name='foundationSubject']//textarea")
+
+
+# Сведения о денежном обязательстве добавление строк
+class InformationAboutTheMonetaryObligationAddLineLocators(object):
+    financial_year = (By.XPATH, "//div[@class='modal-content']//number-input[@name='financialYear']//input")
+    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
+    kbk_type = (By.XPATH, "//div[@class='modal-content']//kbk-type-dropdown-input[@name='kbkType']//select")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+    activity_kind = (
+        By.XPATH, "//div[@class='modal-content']//*[@name='activityKind']//select")
+    investment_program = (By.XPATH,
+                          "//div[@class='modal-content']//*[@name='investmentProgram']")
+    analytical_code = (By.XPATH, "//div[@class='modal-content']//text-input[@name='analyticalCode']//input")
+    advance_transfered = (
+        By.XPATH, "//div[@class='modal-content']//currency-input[@name='advanceTransfered']//input")
+    amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
+    currency_amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='currencyAmount']//input")
+
+
+# Сведения о денежном обязательстве - История изменений
+class InformationAboutTheMonetaryObligationHistoryLocators(object):
+    change_number = (By.XPATH, "//div[@class='modal-content']//text-input[@name='changeNumber']//input")
+    change_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='changeDate']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
 
 
 # Заявка на возврат
