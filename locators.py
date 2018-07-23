@@ -534,16 +534,52 @@ class ReceiptOfNonFinancialAssetsCapLocators(object):
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
 
 
-
 # Локаторы для Справочника «Поступление НФА - строки»
 class ReceiptOfNonFinancialAssetsRowLocators(object):
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
-    tag_no = (By.XPATH, "//number-input[@name='tagNo']//input")
-    amount = (By.XPATH, "//amount-input[@name='amount']//input")
+    tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='tagNo']//input")
+    additional_features = (
+        By.XPATH, "//div[@class='modal-content']//*[@name='additionalFeatures']")
+    amount = (By.XPATH, "//div[@class='modal-content']//amount-input[@name='amount']//input")
     amortization = (By.XPATH, "//currency-input[@name='amortization']//input")
     comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
     kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
     kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
+    quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='quantity']//input")
+    nds_percent = (By.XPATH, "//div[@class='modal-content']//nds-percent-input[@name='ndsPercent']//input")
+    advance_amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='advanceAmount']//input")
+    actually_used = (By.XPATH, "//div[@class='modal-content']//number-input[@name='actuallyUsed']//input")
+    foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='foundation']")
+    department_unit = (By.XPATH, "//div[@class='modal-content']//department-unit-classifier[@name='departmentUnit']")
+    storage = (By.XPATH, "//div[@class='modal-content']//storage-classifier[@name='storage']")
+    cost_element = (By.XPATH, "//div[@class='modal-content']//cost-elements-classifier[@name='costElement']")
+
+
+#  Перемещение НФА
+class MoveNFALocators(object):
+    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
+    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    addressee_materially_responsible_person = (By.XPATH, "//*[@name='addresseeMateriallyResponsiblePerson']")
+    addressee_storage = (By.XPATH, "//storage-classifier[@name='addresseeStorage']")
+    sending_end_materially_responsible_person = (By.XPATH, "//*[@name='sendingEndMateriallyResponsiblePerson']")
+    sending_end_storage = (By.XPATH, "//storage-classifier[@name='sendingEndStorage']")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+
+
+#  Перемещение НФА - строка документа
+class MoveNFAAddNFALocators(object):
+    operation = (By.XPATH, "//div[@class='modal-content']//*[@name='operation']")
+    tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='tagNo']//input")
+    item = (By.XPATH, "//div[@class='modal-content']//basic-facilities-classifier[@name='item']")
+    quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='quantity']//input")
+    amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
+    sender_foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='senderFoundation']")
+    additional_features = (By.XPATH, "//div[@class='modal-content']//*[@name='additionalFeatures']")
+
+
 
 
 # Локаторы для Справочника «Шаблоны карточки ОС, НМА, НПА»

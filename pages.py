@@ -2388,20 +2388,107 @@ class ReceiptOfNonFinancialAssetsRowPage(Browser):
     def tag_no(self, value):
         self.set_text(ReceiptOfNonFinancialAssetsRowLocators.tag_no, value, "Инвентарный №")
 
+    def additional_features(self, value):
+        self.set_select2(
+            ReceiptOfNonFinancialAssetsRowLocators.additional_features, value, "Дополнительная характеристика МЗ")
+
+    def quantity(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsRowLocators.quantity, value, "Количество")
+
     def amount(self, value):
         self.set_text(ReceiptOfNonFinancialAssetsRowLocators.amount, value, "Сумма по документу")
 
     def amortization(self, value):
         self.set_text(ReceiptOfNonFinancialAssetsRowLocators.amortization, value, "Амортизация")
 
+    def nds_percent(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsRowLocators.nds_percent, value, "Ставка НДС, %")
+
+    def advance_amount(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsRowLocators.advance_amount, value, "Сумма аванса")
+
+    def actually_used(self, value):
+        self.set_text(ReceiptOfNonFinancialAssetsRowLocators.actually_used, value, "СФИ")
+
     def comment(self, value):
         self.set_text(ReceiptOfNonFinancialAssetsRowLocators.comment, value, "Комментарий")
+
+    def foundation(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.foundation, value, "Документ-основание")
+
+    def department_unit(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.department_unit, value, "Группа учета")
+
+    def storage(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.storage, value, "Место хранения")
+
+    def cost_element(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.cost_element, value, "Вид затрат")
 
     def kbk(self, value):
         self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.kbk, value, "КБК", exactly=False)
 
     def kosgu(self, value):
         self.set_select2(ReceiptOfNonFinancialAssetsRowLocators.kosgu, value, "КОСГУ", exactly=False)
+
+
+#  Перемещение НФА
+class MoveNFAPage(Browser):
+    def document_kind(self, value):
+        self.set_select2(MoveNFALocators.document_kind, value, "Вид документа")
+
+    def document_number(self, value):
+        self.set_text(MoveNFALocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(MoveNFALocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(MoveNFALocators.entry_date, value, "Дата проводки")
+
+    def addressee_materially_responsible_person(self, value):
+        self.set_select2(MoveNFALocators.addressee_materially_responsible_person, value,
+                         "Получатель МОЛ")
+
+    def addressee_storage(self, value):
+        self.set_select2(MoveNFALocators.addressee_storage, value, "Получатель Место хранения")
+
+    def sending_end_materially_responsible_person(self, value):
+        self.set_select2(MoveNFALocators.sending_end_materially_responsible_person, value,
+                         "Отправитель МОЛ")
+
+    def sending_end_storage(self, value):
+        self.set_select2(MoveNFALocators.sending_end_storage, value, "Отправитель Место хранения")
+
+    def comment(self, value):
+        self.set_text(MoveNFALocators.comment, value, "Комментарий")
+
+
+#  Перемещение НФА - строка документа
+class MoveNFAAddNFAPage(Browser):
+    def operation(self, value):
+        self.set_select2(MoveNFAAddNFALocators.operation, value, "Типовая операция")
+
+    def tag_no(self, value):
+        self.set_text(MoveNFAAddNFALocators.tag_no, value, "Инвентарный №")
+
+    def item(self, value):
+        self.set_select2(MoveNFAAddNFALocators.item, value, "Наименование")
+
+    def quantity(self, value):
+        self.set_text(MoveNFAAddNFALocators.quantity, value, "Количество")
+
+    def amount(self, value):
+        self.set_text(MoveNFAAddNFALocators.amount, value, "Сумма")
+
+    def comment(self, value):
+        self.set_text(MoveNFAAddNFALocators.comment, value, "Комментарий")
+
+    def sender_foundation(self, value):
+        self.set_select2(MoveNFAAddNFALocators.sender_foundation, value, "Документ-основание")
+
+    def additional_features(self, value):
+        self.set_select2(MoveNFAAddNFALocators.additional_features, value, "Дополнительная характеристика МЗ")
 
 
 # Шаблона карточки ОС, НМА, НПА
