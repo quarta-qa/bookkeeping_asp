@@ -2491,6 +2491,128 @@ class MoveNFAAddNFAPage(Browser):
         self.set_select2(MoveNFAAddNFALocators.additional_features, value, "Дополнительная характеристика МЗ")
 
 
+#  Перемещение НФА - строка документа вкладки
+class MoveNFAAddNFADopPage(Browser):
+    def kbk(self, value):
+        self.set_select2(MoveNFAAddNFADopLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(MoveNFAAddNFADopLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(MoveNFAAddNFADopLocators.cost_element, value, "Вид затрат")
+
+    def department_unit(self, value):
+        self.set_select2(MoveNFAAddNFADopLocators.department_unit, value, "Группа учета")
+
+    def storage(self, value):
+        self.set_select2(MoveNFAAddNFADopLocators.storage, value, "Место хранения")
+
+    def organization(self, value):
+        self.set_select2(MoveNFAAddNFADopLocators.organization, value, "Организация")
+
+    def new_tag_no(self, value):
+        self.set_text(MoveNFAAddNFADopLocators.new_tag_no, value, "Новый инвентарный №")
+
+    def new_item(self, value):
+        self.set_select2(MoveNFAAddNFADopLocators.new_item, value, "Новое наименование")
+
+    def new_additional_features(self, value):
+        self.set_select2(MoveNFAAddNFADopLocators.new_additional_features, value, "Новая характеристика МЗ")
+
+    def new_quantity(self, value):
+        self.set_text(MoveNFAAddNFADopLocators.new_quantity, value, "Новое количество")
+
+
+# Выбытие НФА
+class RetirementNfaPage(Browser):
+    def document_kind(self, value):
+        self.set_select2(RetirementNfaLocators.document_kind, value, "Вид документа")
+
+    def document_number(self, value):
+        self.set_text(RetirementNfaLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(RetirementNfaLocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(RetirementNfaLocators.entry_date, value, "Дата проводки")
+
+    def department(self, value):
+        self.set_select2(RetirementNfaLocators.department, value, "Наименование получателя- Подразделение")
+
+    def retirement_addressee_type(self, value):
+        self.set_select(RetirementNfaLocators.retirement_addressee_type, value, "Вид получателя")
+
+    def organization(self, value):
+        self.set_select2(RetirementNfaLocators.organization, value, "Наименование получателя -Организация")
+
+    def materially_responsible_person(self, value):
+        self.set_select2(RetirementNfaLocators.materially_responsible_person, value, "Материально-ответственное лицо")
+
+    def storage(self, value):
+        self.set_select2(RetirementNfaLocators.storage, value, "Место хранения")
+
+    def comment(self, value):
+        self.set_text(RetirementNfaLocators.comment, value, "Комментарий")
+
+    def committee_conclusion(self, value):
+        self.set_text(RetirementNfaLocators.committee_conclusion, value, "Заключение комиссии")
+
+
+# Выбытие НФА -добавлении срок
+class RetirementNfaAddPage(Browser):
+    def tag_no(self, value):
+        self.set_text(RetirementNfaAddLocators.tag_no, value, "Инвентарный №")
+
+    def amortization(self, value):
+        self.set_text(RetirementNfaAddLocators.amortization, value, "Амортизация")
+
+    def operation(self, value):
+        self.set_select2(RetirementNfaAddLocators.operation, value, "Типовая операция")
+
+    def quantity(self, value):
+        self.set_text(RetirementNfaAddLocators.quantity, value, "Количество")
+
+    def price(self, value):
+        self.set_text(RetirementNfaAddLocators.price, value, "Цена")
+
+    def additional_features(self, value):
+        self.set_select2(RetirementNfaAddLocators.additional_features, value, "Дополнительная характеристика МЗ")
+
+    def amount(self, value):
+        self.set_text(RetirementNfaAddLocators.amount, value, "Сумма")
+
+    def comment(self, value):
+        self.set_text(RetirementNfaAddLocators.comment, value, "Причина списания")
+
+    def kbk(self, value):
+        self.set_select2(RetirementNfaAddLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(RetirementNfaAddLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(RetirementNfaAddLocators.cost_element, value, "Вид затрат")
+
+    def department(self, value):
+        self.set_select2(RetirementNfaAddLocators.department, value, "Подразделение")
+
+    def storage(self, value):
+        self.set_select2(RetirementNfaAddLocators.storage, value, "Место хранения")
+
+    def organization(self, value):
+        self.set_select2(RetirementNfaAddLocators.organization, value, "Организация")
+
+    def under_repair_tag_no(self, value):
+        self.set_text(RetirementNfaAddLocators.under_repair_tag_no, value, "Инвентарный №")
+
+    def under_repair(self, value):
+        self.set_select2(RetirementNfaAddLocators.under_repair, value, "Наименование")
+
+
+
+
 # Шаблона карточки ОС, НМА, НПА
 class CreateATemplateForTheCardOSNMANPA(Browser):
 
@@ -2709,6 +2831,133 @@ class AccountingCalculationPage(Browser):
     def balance_sheet_account_group(self, value):
         self.set_select2(AccountingCalculationLocators.balance_sheet_account_group, value,
                          "Группа счетов учета ОС, НМА")
+
+
+# Начисление Амортизации на ОС
+class DepreciationPage(Browser):
+    def document_number(self, value):
+        self.set_text(DepreciationLocators.document_number, value, "Номер")
+
+    def document_date(self, value):
+        self.set_date(DepreciationLocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(DepreciationLocators.entry_date, value, "Дата проводки")
+
+    def comment(self, value):
+        self.set_text(DepreciationLocators.comment, value, "Комментарий")
+
+    def accrual_parameters(self, value):
+        self.set_text(DepreciationLocators.accrual_parameters, value, "Параметры начисления")
+
+
+# Начисление Амортизации на ОС - добавление строки
+class DepreciationAddLinePage(Browser):
+    def operation(self, value):
+        self.set_select2(DepreciationAddLineLocators.operation, value, "Типовая операция")
+
+    def tag_no(self, value):
+        self.set_text(DepreciationAddLineLocators.tag_no, value, "Инвентарный №")
+
+    def balance_sheet_account(self, value):
+        self.set_select2(DepreciationAddLineLocators.balance_sheet_account, value, "Счет учета объекта")
+
+    def actually_used(self, value):
+        self.set_text(DepreciationAddLineLocators.actually_used, value, "СФИ")
+
+    def carrying_value(self, value):
+        self.set_text(DepreciationAddLineLocators.carrying_value, value, "Балансовая стоимость")
+
+    def current_amortization(self, value):
+        self.set_text(DepreciationAddLineLocators.current_amortization, value, "Текущая амортизация")
+
+    def accrued_depreciation(self, value):
+        self.set_text(DepreciationAddLineLocators.accrued_depreciation, value, "Начислено")
+
+    def kbk(self, value):
+        self.set_select2(DepreciationAddLineLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(DepreciationAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def cost_element(self, value):
+        self.set_select2(DepreciationAddLineLocators.cost_element, value, "Вид затрат")
+
+    def materially_responsible_person(self, value):
+        self.set_select2(DepreciationAddLineLocators.materially_responsible_person, value,
+                         "МОЛ")
+
+    def comment(self, value):
+        self.set_text(DepreciationAddLineLocators.comment, value, "Комментарий")
+
+
+# Инвентаризация НФА
+class InventoryNFAPage(Browser):
+    def balances_collection_date(self, value):
+        self.set_date(InventoryNFALocators.balances_collection_date, value, "Дата сбора остатков")
+
+    def balance_sheet_account(self, value):
+        self.set_select2(InventoryNFALocators.balance_sheet_account, value, "Счет учета")
+
+    def balance_sheet_account_group(self, value):
+        self.set_select2(InventoryNFALocators.balance_sheet_account_group, value, "Группа счетов")
+
+    def document_number(self, value):
+        self.set_text(InventoryNFALocators.document_number, value, "Номер документа")
+
+    def document_date(self, value):
+        self.set_date(InventoryNFALocators.document_date, value, "Дата документа")
+
+    def committee(self, value):
+        self.set_select2(InventoryNFALocators.committee, value, "Приказ (распоряжение) о проведении инвентаризации")
+
+    def inventory_location(self, value):
+        self.set_text(InventoryNFALocators.inventory_location, value, "Место проведения инвентаризации")
+
+    def inventory_start_date(self, value):
+        self.set_date(InventoryNFALocators.inventory_start_date, value, "Дата начала инвентаризации")
+
+    def inventory_end_date(self, value):
+        self.set_date(InventoryNFALocators.inventory_end_date, value, "Дата окончания инвентаризации")
+
+    def committee_conclusion(self, value):
+        self.set_text(InventoryNFALocators.committee_conclusion, value, "Заключение комиссии")
+
+    def fill_actual_availability(self, value):
+        self.set_checkbox(InventoryNFALocators.fill_actual_availability, value,
+                          "Заполнение граф фактического наличия - чекбокс")
+
+    def materially_responsible_person(self, value):
+        self.set_select2(InventoryNFALocators.materially_responsible_person, value, "Фиксировать МОЛ")
+
+    def storage(self, value):
+        self.set_select2(InventoryNFALocators.storage, value, "Фиксировать Место хранения")
+
+    def separate_documents_by_materially_responsible_person(self, value):
+        self.set_checkbox(InventoryNFALocators.separate_documents_by_materially_responsible_person, value,
+                          "Отдельный документ для каждого МОЛ - чекбокс")
+
+
+# Инвентаризация НФА -добавление строки
+class InventoryNFAAddLinePage(Browser):
+    def tag_no_basic_facilities(self, value):
+        self.set_text(InventoryNFAAddLineLocators.tag_no_basic_facilities, value, "Инвентарный №")
+
+    def in_fact_quantity(self, value):
+        self.set_text(InventoryNFAAddLineLocators.in_fact_quantity, value, "Количество")
+
+    def in_fact_amount(self, value):
+        self.set_text(InventoryNFAAddLineLocators.in_fact_amount, value, "Сумма")
+
+    def in_fact_materially_responsible_person(self, value):
+        self.set_select2(InventoryNFAAddLineLocators.in_fact_materially_responsible_person, value,
+                         "МОЛ")
+
+    def in_fact_storage(self, value):
+        self.set_select2(InventoryNFAAddLineLocators.in_fact_storage, value, "Место хранения")
+
+    def additional_features(self, value):
+        self.set_select2(InventoryNFAAddLineLocators.additional_features, value, "Дополнительная характеристика МЗ")
 
 
 # Модальное окно - Параметры вывода остатков НФА

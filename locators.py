@@ -580,6 +580,54 @@ class MoveNFAAddNFALocators(object):
     additional_features = (By.XPATH, "//div[@class='modal-content']//*[@name='additionalFeatures']")
 
 
+#  Перемещение НФА - строка документа вкладки
+class MoveNFAAddNFADopLocators(object):
+    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//div[@class='modal-content']//*[@name='costElement']")
+    department_unit = (By.XPATH, "//div[@class='modal-content']//*[@name='departmentUnit']")
+    storage = (By.XPATH, "//div[@class='modal-content']//storage-classifier[@name='storage']")
+    organization = (By.XPATH, "//div[@class='modal-content']//counterparty-classifier[@name='organization']")
+    new_tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='newTagNo']//input")
+    new_item = (By.XPATH, "//div[@class='modal-content']//basic-facilities-classifier[@name='newItem']")
+    new_additional_features = (By.XPATH, "//div[@class='modal-content']//*[@name='newAdditionalFeatures']")
+    new_quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='newQuantity']//input")
+
+
+# выбытие НФА
+class RetirementNfaLocators(object):
+    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
+    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    department = (By.XPATH, "//department-classifier[@name='Department']")
+    retirement_addressee_type = (By.XPATH, "//*[@name='retirementAddresseeType']//select")
+    organization = (By.XPATH, "//counterparty-classifier[@name='organization']")
+    materially_responsible_person = (By.XPATH, "//*[@name='materiallyResponsiblePerson']")
+    storage = (By.XPATH, "//storage-classifier[@name='storage']")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    committee_conclusion = (By.XPATH, "//text-area-input[@name='committeeConclusion']//textarea")
+
+
+# Выбытие НФА -добавлении срок
+class RetirementNfaAddLocators(object):
+    tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='tagNo']//input")
+    amortization = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amortization']//input")
+    operation = (By.XPATH, "//div[@class='modal-content']//operation-master-hierarchy-classifier[@name='operation']")
+    quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='quantity']//input")
+    price = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='price']//input")
+    additional_features = (
+        By.XPATH, "//div[@class='modal-content']//*[@name='additionalFeatures']")
+    amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
+    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//div[@class='modal-content']//cost-elements-classifier[@name='costElement']")
+    department = (By.XPATH, "//div[@class='modal-content']//department-classifier[@name='department']")
+    storage = (By.XPATH, "//div[@class='modal-content']//storage-classifier[@name='storage']")
+    organization = (By.XPATH, "//div[@class='modal-content']//counterparty-classifier[@name='organization']")
+    under_repair_tag_no = (By.XPATH, "//div[@class='modal-content']//text-input[@name='underRepairTagNo']//input")
+    under_repair = (By.XPATH, "//div[@class='modal-content']//basic-facilities-classifier[@name='underRepair']")
 
 
 # Локаторы для Справочника «Шаблоны карточки ОС, НМА, НПА»
@@ -680,6 +728,62 @@ class AccountingCalculationLocators(object):
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
     balance_sheet_account_group = (By.XPATH,
                                    "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
+
+
+# Начисление Амортизации на ОС
+class DepreciationLocators(object):
+    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    accrual_parameters = (By.XPATH, "//text-input[@name='accrualParameters']//input")
+
+
+# Начисление Амортизации на ОС - добавление строки
+class DepreciationAddLineLocators(object):
+    operation = (By.XPATH, "//div[@class='modal-content']//operation-master-hierarchy-classifier[@name='operation']")
+    tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='tagNo']//input")
+    balance_sheet_account = (By.XPATH, "//div[@class='modal-content']//*[@name='balanceSheetAccount']")
+    actually_used = (By.XPATH, "//div[@class='modal-content']//number-input[@name='actuallyUsed']//input")
+    carrying_value = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='carryingValue']//input")
+    current_amortization = (By.XPATH, "//div[@class='modal-content']//*[@name='currentAmortization']//input")
+    accrued_depreciation = (By.XPATH, "//div[@class='modal-content']//*[@name='accruedDepreciation']//input")
+    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//div[@class='modal-content']//cost-elements-classifier[@name='costElement']")
+    materially_responsible_person = (By.XPATH, "//div[@class='modal-content']//*[@name='materiallyResponsiblePerson']")
+    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
+
+
+# Инвентаризация НФА
+class InventoryNFALocators(object):
+    balances_collection_date = (By.XPATH, "//date-input[@name='balancesCollectionDate']//input")
+    balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
+    balance_sheet_account_group = (By.XPATH, "//*[@name='balanceSheetAccountGroup']")
+    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    committee = (By.XPATH, "//committee-classifier[@name='committee']")
+    inventory_location = (By.XPATH, "//text-input[@name='inventoryLocation']//input")
+    inventory_start_date = (By.XPATH, "//date-input[@name='inventoryStartDate']//input")
+    inventory_end_date = (By.XPATH, "//date-input[@name='inventoryEndDate']//input")
+    committee_conclusion = (By.XPATH, "//text-input[@name='committeeConclusion']//input")
+    fill_actual_availability = (By.XPATH, "//check-input[@name='fillActualAvailability']//input")
+    materially_responsible_person = (By.XPATH, "//*[@name='materiallyResponsiblePerson']")
+    storage = (By.XPATH, "//storage-classifier[@name='storage']")
+    separate_documents_by_materially_responsible_person = (
+        By.XPATH, "//check-input[@name='separateDocumentsByMateriallyResponsiblePerson']//input")
+
+
+# Инвентаризация НФА -добавление строки
+class InventoryNFAAddLineLocators(object):
+    tag_no_basic_facilities = (By.XPATH, "//div[@class='modal-content']//*[@name='tagNoBasicFacilities']//input")
+    in_fact_quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='inFactQuantity']//input")
+    in_fact_amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='inFactAmount']//input")
+    in_fact_materially_responsible_person = (
+        By.XPATH, "//div[@class='modal-content']//*[@name='inFactMateriallyResponsiblePerson']")
+    in_fact_storage = (By.XPATH, "//div[@class='modal-content']//storage-classifier[@name='inFactStorage']")
+    additional_features = (
+        By.XPATH, "//div[@class='modal-content']//*[@name='additionalFeatures']")
 
 
 # Локаторы для модальное окна - Просмотр остатков по счету
