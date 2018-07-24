@@ -1408,3 +1408,78 @@ class AvansReportAddLineLocators(object):
     document_number = (By.XPATH, "//div[@class='modal-content']//number-input[@name='documentNumber']//input")
     amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
     comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
+
+
+# Извещение о проведении закупки
+class ProcurementNoticeLocators(object):
+    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    publish_date = (By.XPATH, "//date-input[@name='publishDate']//input")
+    demander = (By.XPATH, "//organization-classifier[@name='demander']")
+    winner = (By.XPATH, "//counterparty-classifier[@name='winner']")
+    order_placement = (By.XPATH, "//order-placement-classifier[@name='orderPlacement']")
+    identity_code = (By.XPATH, "//text-input[@name='identityCode']//input")
+    responsible = (By.XPATH, "//department-unit-classifier[@name='responsible']")
+    budget_commitment_info = (By.XPATH, "//budget-commitment-classifier[@name='budgetCommitmentInfo']")
+    works = (By.XPATH, "//text-area-input[@name='works']//textarea")
+    contract_date = (By.XPATH, "//date-input[@name='contractDate']//input")
+    procedure_failure_date = (By.XPATH, "//date-input[@name='procedureFailureDate']//input")
+    starting_price = (By.XPATH, "//currency-input[@name='startingPrice']//input")
+    cost = (By.XPATH, "//currency-input[@name='cost']//input")
+    tender_security = (By.XPATH, "//currency-input[@name='tenderSecurity']//input")
+
+
+# Извещение о проведении закупки добавление строки
+class ProcurementNoticeAddLineLocators(object):
+    operation = (By.XPATH, "//div[@class='modal-content']//operation-master-hierarchy-classifier[@name='operation']")
+    entry_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='entryDate']//input")
+    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+    starting_price = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='startingPrice']//input")
+    cost = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='cost']//input")
+    works = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='works']//textarea")
+    financial_year = (By.XPATH, "//div[@class='modal-content']//number-input[@name='financialYear']//input")
+
+
+# Смета доходов
+class EstimatedIncomeLocators(object):
+    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    recipient = (By.XPATH, "//organization-classifier[@name='recipient']")
+    account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
+    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
+
+
+# Смета доходов добавление строки
+class EstimatedIncomeAddLineLocators(object):
+    item_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='itemDate']//input")
+    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+    current_year_amount = (By.XPATH, "//div[@class='modal-content']//*[@name='currentYearAmount']//input")
+    first_plan_year_amount = (By.XPATH, "//div[@class='modal-content']//*[@name='firstPlanYearAmount']//input")
+    second_plan_year_amount = (By.XPATH, "//div[@class='modal-content']//*[@name='secondPlanYearAmount']//input")
+
+
+# Бюджетная смета
+class BudgetEstimatesLocators(object):
+    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    account = (By.XPATH, "//budget-organization-classifier[@name='account']")
+    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
+
+
+# Бюджетная смета добавление строки
+class BudgetEstimatesAddLineLocators(object):
+    line_create_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='lineCreateDate']//input")
+    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+    cost_element = (By.XPATH, "//div[@class='modal-content']//*[@name='costElement']")
+    part_number = (By.XPATH, "//div[@class='modal-content']//part-number-dropdown-input[@name='partNumber']//select")
+    current_year_amount_b_a = (By.XPATH, "//div[@class='modal-content']//*[@name='currentYearAmountBA']//input")
+    first_plan_year_amount_b_a = (By.XPATH, "//div[@class='modal-content']//*[@name='firstPlanYearAmountBA']//input")
+    second_plan_year_amount_b_a = (By.XPATH, "//div[@class='modal-content']//*[@name='secondPlanYearAmountBA']//input")
+    current_year_amount_l_b_o = (By.XPATH, "//div[@class='modal-content']//*[@name='currentYearAmountLBO']//input")
+    first_plan_year_amount_l_b_o = (By.XPATH, "//div[@class='modal-content']//*[@name='firstPlanYearAmountLBO']//input")
+    second_plan_year_amount_l_b_o = (
+        By.XPATH, "//div[@class='modal-content']//*[@name='secondPlanYearAmountLBO']//input")

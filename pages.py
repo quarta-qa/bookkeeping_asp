@@ -3421,6 +3421,183 @@ class AccountCashWarrantPagePlusPage(Browser):
         self.set_select2(AccountCashWarrantPagePlusLocators.cashier, value, "Выдал кассир")
 
 
+# Извещение о проведении закупки
+class ProcurementNoticePage(Browser):
+    def financial_year(self, value):
+        self.set_text(ProcurementNoticeLocators.financial_year, value, "Финансовый год")
+
+    def document_number(self, value):
+        self.set_text(ProcurementNoticeLocators.document_number, value, "Номер извещения")
+
+    def document_date(self, value):
+        self.set_date(ProcurementNoticeLocators.document_date, value, "Дата создания извещения")
+
+    def publish_date(self, value):
+        self.set_date(ProcurementNoticeLocators.publish_date, value, "Дата публикации извещения")
+
+    def demander(self, value):
+        self.set_select2(ProcurementNoticeLocators.demander, value, "Заказчик")
+
+    def winner(self, value):
+        self.set_select2(ProcurementNoticeLocators.winner, value, "Победитель")
+
+    def order_placement(self, value):
+        self.set_select2(ProcurementNoticeLocators.order_placement, value, "Способ размещения заказа")
+
+    def identity_code(self, value):
+        self.set_text(ProcurementNoticeLocators.identity_code, value, "Идентификационный код закупки")
+
+    def responsible(self, value):
+        self.set_select2(ProcurementNoticeLocators.responsible, value, "Ответственный департамент")
+
+    def budget_commitment_info(self, value):
+        self.set_select2(ProcurementNoticeLocators.budget_commitment_info, value, "Бюджетное обязательство")
+
+    def works(self, value):
+        self.set_text(ProcurementNoticeLocators.works, value, "Наименование работ")
+
+    def contract_date(self, value):
+        self.set_date(ProcurementNoticeLocators.contract_date, value, "Дата заключения контракта")
+
+    def procedure_failure_date(self, value):
+        self.set_date(ProcurementNoticeLocators.procedure_failure_date, value, "Дата признания несостоявшимся")
+
+    def starting_price(self, value):
+        self.set_text(ProcurementNoticeLocators.starting_price, value, "Начальная (максимальная) цена контракта")
+
+    def cost(self, value):
+        self.set_text(ProcurementNoticeLocators.cost, value, "Цена, предложенная победителем")
+
+    def tender_security(self, value):
+        self.set_text(ProcurementNoticeLocators.tender_security, value, "Сумма обеспечения заявки")
+
+
+# Извещение о проведении закупки добавление строки
+class ProcurementNoticeAddLinePage(Browser):
+    def operation(self, value):
+        self.set_select2(ProcurementNoticeAddLineLocators.operation, value, "Типовая операция")
+
+    def entry_date(self, value):
+        self.set_date(ProcurementNoticeAddLineLocators.entry_date, value, "Дата проводки")
+
+    def kbk(self, value):
+        self.set_select2(ProcurementNoticeAddLineLocators.kbk, value, "КБК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(ProcurementNoticeAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def starting_price(self, value):
+        self.set_text(ProcurementNoticeAddLineLocators.starting_price, value, "Начальная (максимальная) цена лота")
+
+    def cost(self, value):
+        self.set_text(ProcurementNoticeAddLineLocators.cost, value, "Цена, предложенная победителем")
+
+    def works(self, value):
+        self.set_text(ProcurementNoticeAddLineLocators.works, value, "Наименование работ")
+
+    def financial_year(self, value):
+        self.set_text(ProcurementNoticeAddLineLocators.financial_year, value, "Финансовый год")
+
+
+# Смета доходов
+class EstimatedIncomePage(Browser):
+    def financial_year(self, value):
+        self.set_text(EstimatedIncomeLocators.financial_year, value, "Финансовый год")
+
+    def document_date(self, value):
+        self.set_date(EstimatedIncomeLocators.document_date, value, "Дата")
+
+    def entry_date(self, value):
+        self.set_date(EstimatedIncomeLocators.entry_date, value, "Дата проводки")
+
+    def recipient(self, value):
+        self.set_select2(EstimatedIncomeLocators.recipient, value, "Получатель")
+
+    def account_details(self, value):
+        self.set_select2(EstimatedIncomeLocators.account_details, value, "Лицевой счет")
+
+    def operation(self, value):
+        self.set_select2(EstimatedIncomeLocators.operation, value, "Типовая операция")
+
+
+# Смета доходов добавление строки
+class EstimatedIncomeAddLinePage(Browser):
+    def item_date(self, value):
+        self.set_date(EstimatedIncomeAddLineLocators.item_date, value, "Дата внесения строки")
+
+    def kbk(self, value):
+        self.set_select2(EstimatedIncomeAddLineLocators.kbk, value, "Код по БК", exactly=False)
+
+    def kosgu(self, value):
+        self.set_select2(EstimatedIncomeAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
+
+    def current_year_amount(self, value):
+        self.set_text(EstimatedIncomeAddLineLocators.current_year_amount, value,
+                      "Сумма дохода на текущий финансовый год")
+
+    def first_plan_year_amount(self, value):
+        self.set_text(EstimatedIncomeAddLineLocators.first_plan_year_amount, value,
+                      "Сумма дохода на первый год планового периода")
+
+    def second_plan_year_amount(self, value):
+        self.set_text(EstimatedIncomeAddLineLocators.second_plan_year_amount, value,
+                      "Сумма дохода на второй год планового периода")
+
+
+# Бюджетная смета
+class BudgetEstimatesPage(Browser):
+    def financial_year(self, value):
+        self.set_text(BudgetEstimatesLocators.financial_year, value, "Финансовый год")
+
+    def account(self, value):
+        self.set_select2(BudgetEstimatesLocators.account, value, "Получатель бюджетных средств")
+
+    def operation(self, value):
+        self.set_select2(BudgetEstimatesLocators.operation, value, "Типовая операция")
+
+
+# Бюджетная смета добавление строки
+class BudgetEstimatesAddLinePage(Browser):
+    def line_create_date(self, value):
+        self.set_date(BudgetEstimatesAddLineLocators.line_create_date, value, "Дата внесения строки")
+
+    def kbk(self, value):
+        self.set_select2(BudgetEstimatesAddLineLocators.kbk, value, "Код по БК")
+
+    def kosgu(self, value):
+        self.set_select2(BudgetEstimatesAddLineLocators.kosgu, value, "КОСГУ")
+
+    def cost_element(self, value):
+        self.set_select2(BudgetEstimatesAddLineLocators.cost_element, value, "Вид затрат")
+
+    def part_number(self, value):
+        self.set_select(BudgetEstimatesAddLineLocators.part_number, value, "Раздел показателя")
+
+    def current_year_amount_b_a(self, value):
+        self.set_text(BudgetEstimatesAddLineLocators.current_year_amount_b_a, value, "Бюджетные ассигнования текущие")
+
+    def first_plan_year_amount_b_a(self, value):
+        self.set_text(BudgetEstimatesAddLineLocators.first_plan_year_amount_b_a, value,
+                      "Бюджетные ассигнования первый год")
+
+    def second_plan_year_amount_b_a(self, value):
+        self.set_text(BudgetEstimatesAddLineLocators.second_plan_year_amount_b_a, value,
+                      "Бюджетные ассигнования второй год")
+
+    def current_year_amount_l_b_o(self, value):
+        self.set_text(BudgetEstimatesAddLineLocators.current_year_amount_l_b_o, value,
+                      "Лимиты бюджетных обязательств текущие")
+
+    def first_plan_year_amount_l_b_o(self, value):
+        self.set_text(BudgetEstimatesAddLineLocators.first_plan_year_amount_l_b_o, value,
+                      "Лимиты бюджетных обязательств первый год")
+
+    def second_plan_year_amount_l_b_o(self, value):
+        self.set_text(BudgetEstimatesAddLineLocators.second_plan_year_amount_l_b_o, value,
+                      "Лимиты бюджетных обязательств второй год")
+
+
+
 # Справочники - Шаблоны карточки ОС, НМА, НПА - добавление документа
 # class TemplatesofthecardOSNMANPA(Browser):
 #         print("Templates_of_the_card_OSNMANPA")
