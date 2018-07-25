@@ -1762,9 +1762,3 @@ class TestSuite:
         page.click_by_text("Закрыть")
 
 
-
-
-
-
-
-
