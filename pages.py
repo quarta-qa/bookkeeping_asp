@@ -2611,8 +2611,6 @@ class RetirementNfaAddPage(Browser):
         self.set_select2(RetirementNfaAddLocators.under_repair, value, "Наименование")
 
 
-
-
 # Шаблона карточки ОС, НМА, НПА
 class CreateATemplateForTheCardOSNMANPA(Browser):
 
