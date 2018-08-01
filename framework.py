@@ -487,7 +487,7 @@ class Browser(object):
 
 class Date(object):
     """
-    Methods for working with date
+    Methods for working with document_date
     """
     # Функция возвращающая текущую дату
     @staticmethod

@@ -502,7 +502,8 @@ class CashPullRequestPage(Browser):
 
         def chief_accountant(self, value):
             self.scroll_to_bottom()
-            self.set_type(CashPullRequestLocators.NewDocument.chief_accountant, value, "Главный бухгалтер")
+            self.set_type(CashPullRequestLocators.NewDocument.chief_accountant, value,
+                          "Главный бухгалтер")
 
         class NewLine(Browser):
 
@@ -808,13 +809,13 @@ class IncomeCashOrderPlusPage(Browser):
         self.set_select2(IncomeCashOrderPlusLocators.advance_report, value, "advanceReport")
 
     def comment(self, value):
-        self.set_text(IncomeCashOrderPlusLocators.comment, value, "comment")
+        self.set_text(IncomeCashOrderPlusLocators.comment, value, "Приложение")
 
     def chief_accountant(self, value):
-        self.set_select2(IncomeCashOrderPlusLocators.chief_accountant, value, "chiefAccountant")
+        self.set_select2(IncomeCashOrderPlusLocators.chief_accountant, value, "Главный бухгалтер", exactly=False)
 
     def cashier(self, value):
-        self.set_select2(IncomeCashOrderPlusLocators.cashier, value, "cashier")
+        self.set_select2(IncomeCashOrderPlusLocators.cashier, value, "Получил кассир", exactly=False)
 
 
 # Авансовый отчет
@@ -883,13 +884,13 @@ class AvansReportAddLinePage(Browser):
 # Заявка на кассовый расход
 class ApplicationCashFlowPage(Browser):
 
-    def documen_type(self, value):
+    def document_kind(self, value):
         self.set_select2(ApplicationCashFlowLocators.documen_type, value, "Вид документа")
 
-    def number(self, value):
+    def document_number(self, value):
         self.set_text(ApplicationCashFlowLocators.number, value, "Номер")
 
-    def date(self, value):
+    def document_date(self, value):
         self.set_date(ApplicationCashFlowLocators.date, value, "Дата")
 
     def entry_date(self, value):
@@ -901,7 +902,7 @@ class ApplicationCashFlowPage(Browser):
     def bank_account_number(self, value):
         self.set_select2(ApplicationCashFlowLocators.bank_account_number, value, "Банковский счет", exactly=False)
 
-    def recipient(self, value):
+    def counterparty(self, value):
         self.set_select2(ApplicationCashFlowLocators.recipient, value, "Наименование контрагента или ФИО")
 
     def number_ufk(self, value):
@@ -968,10 +969,10 @@ class ApplicationCashFlowPage(Browser):
         self.set_text(ApplicationCashFlowLocators.payment_purpose, value, "Назначение платежа")
 
     def chief(self, value):
-        self.set_select2(ApplicationCashFlowLocators.chief, value, "Руководитель")
+        self.set_select2(ApplicationCashFlowLocators.chief, value, "Руководитель", exactly=False)
 
     def accountant_general(self, value):
-        self.set_select2(ApplicationCashFlowLocators.accountant_general, value, "Главный бухгалтер")
+        self.set_select2(ApplicationCashFlowLocators.accountant_general, value, "Главный бухгалтер", exactly=False)
 
 
 # Заявка на кассовый расход добавление строки
@@ -1358,7 +1359,7 @@ class NotificationTypeAndPaymentTypePage(Browser):
         self.set_text(NotificationTypeAndPaymentTypeLocators.passport, value, "Паспортные данные плательщика")
 
     def chief(self, value):
-        self.set_select2(NotificationTypeAndPaymentTypeLocators.chief, value, "Руководитель")
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.chief, value, "Руководитель", exactly=False)
 
     def contractor(self, value):
         self.set_select2(NotificationTypeAndPaymentTypeLocators.contractor, value, "Ответственный исполнитель")
@@ -1642,10 +1643,10 @@ class ApplyingForCardPage(Browser):
         self.set_text(ApplyingForCardLocators.foundation, value, "Основание")
 
     def chief(self, value):
-        self.set_select2(ApplyingForCardLocators.chief, value, "Руководитель")
+        self.set_select2(ApplyingForCardLocators.chief, value, "Руководитель", exactly=False)
 
     def accountant_general(self, value):
-        self.set_select2(ApplyingForCardLocators.accountant_general, value, "Главный бухгалтер")
+        self.set_select2(ApplyingForCardLocators.accountant_general, value, "Главный бухгалтер", exactly=False)
 
 
 # Заявка на получение денежных средств, перечисляемых на карту добавление строк
@@ -1714,10 +1715,11 @@ class DecodingAmountsUnusedFundsPage(Browser):
         self.set_select2(DecodingAmountsUnusedFundsLocators.investment_program, value, "Код объекта ФАИП")
 
     def chief(self, value):
-        self.set_select2(DecodingAmountsUnusedFundsLocators.chief, value, "Руководитель")
+        self.set_select2(DecodingAmountsUnusedFundsLocators.chief, value, "Руководитель", exactly=False)
 
     def accountant_general(self, value):
-        self.set_select2(DecodingAmountsUnusedFundsLocators.accountant_general, value, "Главный бухгалтер")
+        self.set_select2(DecodingAmountsUnusedFundsLocators.accountant_general, value,
+                         "Главный бухгалтер", exactly=False)
 
 
 # Расшифровка сумм неиспользованных средств добавление строки
@@ -2108,7 +2110,7 @@ class InformationAboutBudgetObligationPage(Browser):
         self.set_select2(InformationAboutBudgetObligationLocators.transaction_account, value, "Номер банковского счета")
 
     def chief(self, value):
-        self.set_select2(InformationAboutBudgetObligationLocators.chief, value, "Руководитель")
+        self.set_select2(InformationAboutBudgetObligationLocators.chief, value, "Руководитель", exactly=False)
 
     def prepared_by(self, value):
         self.set_select2(InformationAboutBudgetObligationLocators.prepared_by, value, "Исполнитель")
@@ -3262,10 +3264,11 @@ class InformationAboutTheMonetaryObligationPage(Browser):
         self.set_text(InformationAboutTheMonetaryObligationLocators.guid, value, "GUID")
 
     def chief(self, value):
-        self.set_select2(InformationAboutTheMonetaryObligationLocators.chief, value, "Руководитель")
+        self.set_select2(InformationAboutTheMonetaryObligationLocators.chief, value, "Руководитель", exactly=False)
 
     def accountant_general(self, value):
-        self.set_select2(InformationAboutTheMonetaryObligationLocators.accountant_general, value, "Главный бухгалтер")
+        self.set_select2(InformationAboutTheMonetaryObligationLocators.accountant_general, value,
+                         "Главный бухгалтер", exactly=False)
 
     def document_foundation_kind(self, value):
         self.set_select(InformationAboutTheMonetaryObligationLocators.document_foundation_kind, value, "Вид")
@@ -3351,6 +3354,9 @@ class AccountCashWarrantPage(Browser):
     def employee(self, value):
         self.set_select2(AccountCashWarrantLocators.employee, value, "Сотрудник")
 
+    def counterparty(self, value):
+        self.set_select2(AccountCashWarrantLocators.counterparty, value, "Организация")
+
     def issue(self, value):
         self.set_text(AccountCashWarrantLocators.issue, value, "Выдать")
 
@@ -3385,10 +3391,13 @@ class AccountCashWarrantPageAddLine(Browser):
         self.set_select2(AccountCashWarrantLocatorsAddLine.material_inventory, value, "Номенклатура")
 
     def quantity(self, value):
-        self.set_text(AccountCashWarrantPageAddLine.quantity, value, "Количество")
+        self.set_text(AccountCashWarrantLocatorsAddLine.quantity, value, "Количество")
 
     def amount(self, value):
         self.set_text(AccountCashWarrantLocatorsAddLine.amount, value, "Сумма")
+
+    def nds_percent(self, value):
+        self.set_text(AccountCashWarrantLocatorsAddLine.nds_percent, value, "Ставка НДС")
 
     def comment(self, value):
         self.set_text(AccountCashWarrantLocatorsAddLine.comment, value, "Комментарий")
@@ -3410,13 +3419,13 @@ class AccountCashWarrantPagePlusPage(Browser):
         self.set_text(AccountCashWarrantPagePlusLocators.supplement, value, "Приложение")
 
     def accountant(self, value):
-        self.set_select2(AccountCashWarrantPagePlusLocators.accountant, value, "Главный бухгалтер")
+        self.set_select2(AccountCashWarrantPagePlusLocators.accountant, value, "Главный бухгалтер", exactly=False)
 
     def chief(self, value):
-        self.set_select2(AccountCashWarrantPagePlusLocators.chief, value, "Руководитель организации")
+        self.set_select2(AccountCashWarrantPagePlusLocators.chief, value, "Руководитель организации", exactly=False)
 
     def cashier(self, value):
-        self.set_select2(AccountCashWarrantPagePlusLocators.cashier, value, "Выдал кассир")
+        self.set_select2(AccountCashWarrantPagePlusLocators.cashier, value, "Выдал кассир", exactly=False)
 
 
 # Извещение о проведении закупки

@@ -74,8 +74,8 @@ class ClickOnTheSectionFromTheDirectoryLocators(object):
 
 # оборотная ведомость
 class TurnoverStatementLocators(object):
-    date_from = (By.XPATH, "//date-input[@name='dateFrom']//input")
-    date_to = (By.XPATH, "//date-input[@name='dateTo']//input")
+    date_from = (By.XPATH, "//document_date-input[@name='dateFrom']//input")
+    date_to = (By.XPATH, "//document_date-input[@name='dateTo']//input")
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
     balance_sheet_account_group = (By.XPATH, "//*[@name='balanceSheetAccountGroup']")
     account_unit = (By.XPATH, "//account-units-dropdown-input[@name='accountUnits']//select")
@@ -249,21 +249,21 @@ class IncomingOrderLocators(object):
 
 # Добавление  строки в Приходный кассовый ордер
 class IncomingOrderAddLineLocators(object):
-    operation = (By.XPATH, "//div[@class='modal in']//*[@name='operation']")
-    kbk = (By.XPATH, "//kbk-classifier[@name='kbk']")
-    kosgu = (By.XPATH, "//kosgu-classifier[@name='kosgu']")
-    expense_type = (By.XPATH, "//cost-elements-classifier[@name='expenseType']")
-    inventory = (By.XPATH, "//material-inventory-classifier[@name='inventory']")
-    quantity = (By.XPATH, "//number-input[@name='quantity']//input")
-    amount = (By.XPATH, "//amount-input[@name='amount']//input")
-    amount_without_nds = (By.XPATH, "//currency-input[@name='amountWithoutNds']//input")
-    nds_percent = (By.XPATH, "//nds-percent-input[@name='ndsPercent']//input")
-    nds_amount = (By.XPATH, "//currency-input[@name='ndsAmount']//input")
-    department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
-    recepient = (By.XPATH, "//materially-responsible-person-classifier[@name='recepient']")
-    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
-    act = (By.XPATH, "//expenditure-goal-act-classifier[@name='act']")
-    cash_transaction_code = (By.XPATH, "//cash-transaction-code-dropdown-input[@name='CashTransactionCode']//select")
+    operation = (By.XPATH, "//div[@class='modal-content']//*[@name='operation']")
+    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+    expense_type = (By.XPATH, "//div[@class='modal-content']//cost-elements-classifier[@name='expenseType']")
+    inventory = (By.XPATH, "//div[@class='modal-content']//material-inventory-classifier[@name='inventory']")
+    quantity = (By.XPATH, "//div[@class='modal-content']//*[@name='quantity']//input")
+    amount = (By.XPATH, "//div[@class='modal-content']//amount-input[@name='amount']//input")
+    amount_without_nds = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amountWithoutNds']//input")
+    nds_percent = (By.XPATH, "//div[@class='modal-content']//nds-percent-input[@name='ndsPercent']//input")
+    nds_amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='ndsAmount']//input")
+    department_unit = (By.XPATH, "//div[@class='modal-content']//department-unit-classifier[@name='departmentUnit']")
+    recepient = (By.XPATH, "//div[@class='modal-content']//materially-responsible-person-classifier[@name='recepient']")
+    comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
+    act = (By.XPATH, "//div[@class='modal-content']//expenditure-goal-act-classifier[@name='act']")
+    cash_transaction_code = (By.XPATH, "//div[@class='modal-content']//*[@name='CashTransactionCode']//select")
 
 
 # Добавление приложения в Приходный кассовый ордер
@@ -304,17 +304,17 @@ class ContractWithSupplierLocators(object):
     date_end = (By.XPATH, "//*[@name='endDate']//input")
     security_type = (By.XPATH, "//security-type-dropdown-input[@name='securityType']//select")
     security_amount = (By.XPATH, "//currency-input[@name='securityAmount']//input")
-    security_period = (By.XPATH, "//date-input[@name='securityPeriod']//input")
+    security_period = (By.XPATH, "//document_date-input[@name='securityPeriod']//input")
     sending_letter_number = (By.XPATH, "//text-input[@name='sendingLetterNumber']//input")
     assurance_register_record_number = (By.XPATH, "//text-input[@name='assuranceRegisterRecordNumber']//input")
-    letter_date = (By.XPATH, "//date-input[@name='letterDate']//input")
+    letter_date = (By.XPATH, "//document_date-input[@name='letterDate']//input")
     note = (By.XPATH, "//*[@name='comment']//textarea")
     responsible = (By.XPATH, "//employee-classifier[@name='responsible']")
     department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
     penalty_period = (By.XPATH, "//penalty-period-dropdown[@name='penaltyPeriod']//select")
     penalty_percent = (By.XPATH, "//decimal-input[@name='penaltyPercent']//input")
     penalty_amount = (By.XPATH, "//currency-input[@name='penaltyAmount']//input")
-    penalty_period_count = (By.XPATH, "//number-input[@name='penaltyPeriodCount']//select")
+    penalty_period_count = (By.XPATH, "//document_number-input[@name='penaltyPeriodCount']//select")
     subject_contract = (By.XPATH, "//*[@name='subject']//textarea")
     payment_terms = (By.XPATH, "//*[@name='paymentTerm']//textarea")
     prolongation_term = (By.XPATH, "//text-area-input[@name='prolongationTerm']//textarea")
@@ -342,7 +342,7 @@ class ContractWithSupplierDetailKBKPageLocators(object):
 
 # Договор с Поставщиком - вкладка  Детализация по ОКПД
 class ContractWithSupplierDetailOKPDLocators(object):
-    order_number = (By.XPATH, "//number-input[@name='orderNumber']//input")
+    order_number = (By.XPATH, "//document_number-input[@name='orderNumber']//input")
     okpd2 = (By.XPATH, "//okpd2-classifier[@name='okpd2']")
     unit_of_measure = (By.XPATH, "//okei-classifier[@name='unitOfMeasure']")
     unit_price = (By.XPATH, "//currency-input[@name='unitPrice']//input")
@@ -356,20 +356,20 @@ class InformationAboutContractLocators(object):
     aviso = (By.XPATH, "//purchasing-notice-classifier[@name='aviso']")
     purchase_identity = (By.XPATH, "//text-input[@name='purchaseIdentity']//input")
     register_record_number = (By.XPATH, "//text-input[@name='registerRecordNumber']//input")
-    registration_date = (By.XPATH, "//date-input[@name='registrationDate']//input")
+    registration_date = (By.XPATH, "//document_date-input[@name='registrationDate']//input")
     privacy = (By.XPATH, "//privacy-dropdown-input[@name='privacy']//select")
-    confirm_document_number = (By.XPATH, "//number-input[@name='confirmDocumentNumber']//input")
-    confirm_document_date = (By.XPATH, "//date-input[@name='confirmDocumentDate']//input")
+    confirm_document_number = (By.XPATH, "//document_number-input[@name='confirmDocumentNumber']//input")
+    confirm_document_date = (By.XPATH, "//document_date-input[@name='confirmDocumentDate']//input")
     confirm_document_kind = (By.XPATH, "//contract-award-foundation-classifier[@name='confirmDocumentKind']")
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
     department = (By.XPATH, "//order-placement-classifier[@name='department']")
-    auction_date = (By.XPATH, "//date-input[@name='auctionDate']//input")
+    auction_date = (By.XPATH, "//document_date-input[@name='auctionDate']//input")
     declared_value = (By.XPATH, "//currency-input[@name='declaredValue']//input")
     change_foundation = (By.XPATH, "//text-input[@name='changeFoundation']//input")
     for_small_entrepreneur = (By.XPATH, "//check-input[@name='forSmallEntrepreneur']//input")
     domestic_goods_preference = (By.XPATH, "//check-input[@name='domesticGoodsPreference']//input")
     perfomance_document_number = (By.XPATH, "//text-input[@name='perfomanceDocumentNumber']//input")
-    contract_performance_date = (By.XPATH, "//date-input[@name='contractPerformanceDate']//input")
+    contract_performance_date = (By.XPATH, "//document_date-input[@name='contractPerformanceDate']//input")
     terminated_by = (By.XPATH, "//termination-reason-dropdown-input[@name='terminatedBy']//select")
     contract_cancellation_record_number = (By.XPATH, "//text-input[@name='contractCancellationRecordNumber']//input")
     contract_perfomance_foundation = (By.XPATH, "//text-area-input[@name='contractPerfomanceFoundation']//textarea")
@@ -377,20 +377,20 @@ class InformationAboutContractLocators(object):
 
 # Договор с Поставщиком - История
 class HistoryLocators(object):
-    change_date = (By.XPATH, "//date-input[@name='changeDate']//input")
-    change_number = (By.XPATH, "//number-input[@name='changeNumber']//input")
+    change_date = (By.XPATH, "//document_date-input[@name='changeDate']//input")
+    change_number = (By.XPATH, "//document_number-input[@name='changeNumber']//input")
     change_type = (By.XPATH, "//contract-with-supplier-change-type-dropdown-input[@name='changeType']//select")
     comment = (By.XPATH, "//text-area-input[@name='comment']//input")
 
 
 # Договор с Поставщиком - Календарный план
 class CalendarPlanLocators(object):
-    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    financial_year = (By.XPATH, "//document_number-input[@name='financialYear']//input")
     work_name = (By.XPATH, "//text-area-input[@name='workName']//textarea")
     result = (By.XPATH, "//text-area-input[@name='result']//textarea")
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
-    start_date = (By.XPATH, "//date-input[@name='startDate']//input")
-    end_date = (By.XPATH, "//date-input[@name='endDate']//input")
+    start_date = (By.XPATH, "//document_date-input[@name='startDate']//input")
+    end_date = (By.XPATH, "//document_date-input[@name='endDate']//input")
     amount = (By.XPATH, "//currency-input[@name='amount']//input")
     counterparty = (By.XPATH, "//counterparty-classifier[@name='counterparty']")
     account_details = (By.XPATH, "//counterparty-account-details-classifier[@name='accountDetails']")
@@ -398,26 +398,26 @@ class CalendarPlanLocators(object):
 
 # Обеспечение исполнения обязательств
 class EnsuringFulfillmentOfObligationsLocators(object):
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
     counterparty = (By.XPATH, "//counterparty-classifier[@name='counterparty']")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
-    retirement_date = (By.XPATH, "//date-input[@name='retirementDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
+    retirement_date = (By.XPATH, "//document_date-input[@name='retirementDate']//input")
     amount = (By.XPATH, "//currency-input[@name='amount']//input")
     guarantor = (By.XPATH, "(//counterparty-classifier[@name='counterparty'])[2]")
-    assurance_starts = (By.XPATH, "//date-input[@name='assuranceStarts']//input")
-    assurance_ends = (By.XPATH, "//date-input[@name='assuranceEnds']//input")
+    assurance_starts = (By.XPATH, "//document_date-input[@name='assuranceStarts']//input")
+    assurance_ends = (By.XPATH, "//document_date-input[@name='assuranceEnds']//input")
 
 
 # Сведения о бюджетном обязательстве
 class InformationAboutBudgetObligationLocators(object):
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    financial_year = (By.XPATH, "//document_number-input[@name='financialYear']//input")
     liability = (By.XPATH, "//liability-dropdown-input[@name='liability']//select")
     tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
-    registration_date = (By.XPATH, "//date-input[@name='registrationDate']//input")
+    registration_date = (By.XPATH, "//document_date-input[@name='registrationDate']//input")
     account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
     guid = (By.XPATH, "//text-input[@name='guid']//input")
     counterparty = (By.XPATH, "//counterparty-classifier[@name='counterparty']")
@@ -462,13 +462,13 @@ class InformationAboutBudgetObligationAddLineLocators(object):
     conditional_payment = (By.XPATH, "//check-input[@name='conditionalPayment']//input")
     analytical_code = (By.XPATH, "//text-input[@name='analyticalCode']//input")
     act = (By.XPATH, "//act-classifier[@name='act']")
-    payment_day = (By.XPATH, "//number-input[@name='paymentDay']//input")
+    payment_day = (By.XPATH, "//document_number-input[@name='paymentDay']//input")
 
 
 # Сведения о бюджетном обязательстве - история
 class InformationAboutBudgetObligationHistoryLocators(object):
     change_number = (By.XPATH, "//text-input[@name='changeNumber']//input")
-    change_date = (By.XPATH, "//date-input[@name='changeDate']//input")
+    change_date = (By.XPATH, "//document_date-input[@name='changeDate']//input")
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
 
 
@@ -477,13 +477,13 @@ class InformationAboutBudgetObligationRequisitesLocators(object):
     document_foundation_kind = (
         By.XPATH, "//budget-commitment-info-kind-dropdown-input[@name='documentFoundationKind']//select")
     document_foundation_number = (By.XPATH, "//text-input[@name='documentFoundationNumber']//input")
-    document_foundation_date = (By.XPATH, "//date-input[@name='documentFoundationDate']//input")
+    document_foundation_date = (By.XPATH, "//document_date-input[@name='documentFoundationDate']//input")
     document_fondation_currency = (By.XPATH, "//currency-classifier[@name='documentFondationCurrency']")
     amount = (By.XPATH, "//currency-input[@name='amount']//input")
     currency_amount = (By.XPATH, "//currency-input[@name='currencyAmount']//input")
     advance_percent = (By.XPATH, "//decimal-input[@name='advancePercent']//input")
     advance_amount = (By.XPATH, "//currency-input[@name='advanceAmount']//input")
-    register_record_number = (By.XPATH, "//number-input[@name='registerRecordNumber']//input")
+    register_record_number = (By.XPATH, "//document_number-input[@name='registerRecordNumber']//input")
     document_foundation_subject = (By.XPATH, "//text-input[@name='documentFoundationSubject']//input")
 
 
@@ -522,8 +522,8 @@ class MateriallyResponsiblePersonLocators(object):
 class ReceiptOfNonFinancialAssetsCapLocators(object):
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
     document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     materially_responsible_person = \
         (By.XPATH, "//materially-responsible-person-classifier[@name='materiallyResponsiblePerson']")
     sender_sender_type = (By.XPATH, "//income-sender-type-enum[@name='senderSenderType']//select")
@@ -537,7 +537,7 @@ class ReceiptOfNonFinancialAssetsCapLocators(object):
 # Локаторы для Справочника «Поступление НФА - строки»
 class ReceiptOfNonFinancialAssetsRowLocators(object):
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
-    tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='tagNo']//input")
+    tag_no = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='tagNo']//input")
     additional_features = (
         By.XPATH, "//div[@class='modal-content']//*[@name='additionalFeatures']")
     amount = (By.XPATH, "//div[@class='modal-content']//amount-input[@name='amount']//input")
@@ -548,7 +548,7 @@ class ReceiptOfNonFinancialAssetsRowLocators(object):
     quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='quantity']//input")
     nds_percent = (By.XPATH, "//div[@class='modal-content']//nds-percent-input[@name='ndsPercent']//input")
     advance_amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='advanceAmount']//input")
-    actually_used = (By.XPATH, "//div[@class='modal-content']//number-input[@name='actuallyUsed']//input")
+    actually_used = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='actuallyUsed']//input")
     foundation = (By.XPATH, "//div[@class='modal-content']//*[@name='foundation']")
     department_unit = (By.XPATH, "//div[@class='modal-content']//department-unit-classifier[@name='departmentUnit']")
     storage = (By.XPATH, "//div[@class='modal-content']//storage-classifier[@name='storage']")
@@ -559,8 +559,8 @@ class ReceiptOfNonFinancialAssetsRowLocators(object):
 class MoveNFALocators(object):
     document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     addressee_materially_responsible_person = (By.XPATH, "//*[@name='addresseeMateriallyResponsiblePerson']")
     addressee_storage = (By.XPATH, "//storage-classifier[@name='addresseeStorage']")
     sending_end_materially_responsible_person = (By.XPATH, "//*[@name='sendingEndMateriallyResponsiblePerson']")
@@ -571,7 +571,7 @@ class MoveNFALocators(object):
 #  Перемещение НФА - строка документа
 class MoveNFAAddNFALocators(object):
     operation = (By.XPATH, "//div[@class='modal-content']//*[@name='operation']")
-    tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='tagNo']//input")
+    tag_no = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='tagNo']//input")
     item = (By.XPATH, "//div[@class='modal-content']//basic-facilities-classifier[@name='item']")
     quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='quantity']//input")
     amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
@@ -588,7 +588,7 @@ class MoveNFAAddNFADopLocators(object):
     department_unit = (By.XPATH, "//div[@class='modal-content']//*[@name='departmentUnit']")
     storage = (By.XPATH, "//div[@class='modal-content']//storage-classifier[@name='storage']")
     organization = (By.XPATH, "//div[@class='modal-content']//counterparty-classifier[@name='organization']")
-    new_tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='newTagNo']//input")
+    new_tag_no = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='newTagNo']//input")
     new_item = (By.XPATH, "//div[@class='modal-content']//basic-facilities-classifier[@name='newItem']")
     new_additional_features = (By.XPATH, "//div[@class='modal-content']//*[@name='newAdditionalFeatures']")
     new_quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='newQuantity']//input")
@@ -598,8 +598,8 @@ class MoveNFAAddNFADopLocators(object):
 class RetirementNfaLocators(object):
     document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     department = (By.XPATH, "//department-classifier[@name='Department']")
     retirement_addressee_type = (By.XPATH, "//*[@name='retirementAddresseeType']//select")
     organization = (By.XPATH, "//counterparty-classifier[@name='organization']")
@@ -611,7 +611,7 @@ class RetirementNfaLocators(object):
 
 # Выбытие НФА -добавлении срок
 class RetirementNfaAddLocators(object):
-    tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='tagNo']//input")
+    tag_no = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='tagNo']//input")
     amortization = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amortization']//input")
     operation = (By.XPATH, "//div[@class='modal-content']//operation-master-hierarchy-classifier[@name='operation']")
     quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='quantity']//input")
@@ -643,24 +643,24 @@ class CreateATemplateForTheCardOSNMANPALocators(object):
 class MassFillingOfOsParametersLocators(object):
     unit_of_measure = (By.XPATH, "//okei-classifier[@name='unitOfMeasure']")
     property_designation = (By.XPATH, "//text-input[@name='propertyDesignation']//input")
-    start_up_date = (By.XPATH, "//date-input[@name='startUpDate']//input")
-    issue_date = (By.XPATH, "//date-input[@name='issueDate']//input")
+    start_up_date = (By.XPATH, "//document_date-input[@name='startUpDate']//input")
+    issue_date = (By.XPATH, "//document_date-input[@name='issueDate']//input")
 
 
 # Локаторы для Справочника «Группы МЗ»
 class CreationOfANewEntryInTheDirectoryGroupMzLocators(object):
-    order_number = (By.XPATH, "//number-input[@name='orderNumber']//input")
+    order_number = (By.XPATH, "//document_number-input[@name='orderNumber']//input")
     full_name = (By.XPATH, "//text-input[@name='fullName']//input")
     name = (By.XPATH, "//text-input[@name='name']//input")
 
 
 # Локаторы для Справочника «Объекты МЗ» - шапка
 class CreationOfAnEntryInTheDirectoryObjectsOfOzCapLocators(object):
-    tag_no = (By.XPATH, "//number-input[@name='tagNo']//input")
+    tag_no = (By.XPATH, "//document_number-input[@name='tagNo']//input")
     name = (By.XPATH, "//text-input[@name='name']//input")
     unit_of_measure = (By.XPATH, "//okei-classifier[@name='unitOfMeasure']")
     group = (By.XPATH, "//material-inventory-group-classifier[@name='group']")
-    valid_till = (By.XPATH, "//date-input[@name='validTill']//input")
+    valid_till = (By.XPATH, "//document_date-input[@name='validTill']//input")
 
 
 # Локаторы для Справочника «Объекты МЗ» - строки
@@ -670,15 +670,15 @@ class CreationOfAnEntryInTheDirectoryObjectsOfOzRowLocators(object):
     delete = (By.XPATH, "(//button[contains(.,'Добавить')])")
     name = (By.XPATH, "(//text-input[@name='name']//input)[2]")
     price = (By.XPATH, "//currency-input[@name='price']//input")
-    acquisition_date = (By.XPATH, "//date-input[@name='acquisitionDate']//input")
+    acquisition_date = (By.XPATH, "//document_date-input[@name='acquisitionDate']//input")
 
 
 # Локаторы для справочника «Приказы о назначении комиссии» - шапка
 class CreationOfACommissionOrderCapLocators(object):
     order_number = (By.XPATH, "//text-input[@name='orderNumber']//input")
-    order_date = (By.XPATH, "//date-input[@name='orderDate']//input")
+    order_date = (By.XPATH, "//document_date-input[@name='orderDate']//input")
     comment = (By.XPATH, "//text-input[@name='comment']//input")
-    valid_till = (By.XPATH, "//date-input[@name='validTill']//input")
+    valid_till = (By.XPATH, "//document_date-input[@name='validTill']//input")
 
 
 # Локаторы для справочника «Приказы о назначении комиссии» - строки
@@ -693,7 +693,7 @@ class ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators
     committee = (By.XPATH, "//committee-classifier[@name='committee']")
     foundation_document = (By.XPATH, "//text-input[@name='foundationDocument']//input")
     foundation_number = (By.XPATH, "//text-input[@name='foundationNumber']//input")
-    foundation_date = (By.XPATH, "//date-input[@name='foundationDate']//input")
+    foundation_date = (By.XPATH, "//document_date-input[@name='foundationDate']//input")
     sender_chief_position = (By.XPATH, "//text-input[@name='senderChiefPosition']//input")
     sender_chief_name = (By.XPATH, "//text-input[@name='senderChiefName']//input")
     recipient_chief_position = (By.XPATH, "//text-input[@name='recipientChiefPosition']//input")
@@ -704,8 +704,8 @@ class ModalWindowTheActOfAcceptanceTransferOfObjectsOfNonFinancialAssetsLocators
 # реконструированных и модернизированных объектов основных средств»
 class ModalWindowOfTheActOnAcceptanceAndTransferOfObjectsOfNonFinancialAssetsLocators(object):
     committee = (By.XPATH, "//committee-classifier[@name='committee']")
-    inventory_date_from = (By.XPATH, "//date-input[@name='inventoryDateFrom']//input")
-    inventory_date_to = (By.XPATH, "//date-input[@name='inventoryDateTo']//input")
+    inventory_date_from = (By.XPATH, "//document_date-input[@name='inventoryDateFrom']//input")
+    inventory_date_to = (By.XPATH, "//document_date-input[@name='inventoryDateTo']//input")
 
 
 # Локаторы для модального окна - «Изменение параметров в отмеченных записях»
@@ -723,8 +723,8 @@ class ModalWindowChangingParametersInMarkedRecordsLocators(object):
 
 # Локаторы для модального окна - «Расчет по бухгалтерским данным»
 class AccountingCalculationLocators(object):
-    balances_collection_date = (By.XPATH, "//date-input[@name='balancesCollectionDate']//input")
-    operation_date = (By.XPATH, "//date-input[@name='operationDate']//input")
+    balances_collection_date = (By.XPATH, "//document_date-input[@name='balancesCollectionDate']//input")
+    operation_date = (By.XPATH, "//document_date-input[@name='operationDate']//input")
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
     balance_sheet_account_group = (By.XPATH,
                                    "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
@@ -733,8 +733,8 @@ class AccountingCalculationLocators(object):
 # Начисление Амортизации на ОС
 class DepreciationLocators(object):
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
     accrual_parameters = (By.XPATH, "//text-input[@name='accrualParameters']//input")
 
@@ -742,9 +742,9 @@ class DepreciationLocators(object):
 # Начисление Амортизации на ОС - добавление строки
 class DepreciationAddLineLocators(object):
     operation = (By.XPATH, "//div[@class='modal-content']//operation-master-hierarchy-classifier[@name='operation']")
-    tag_no = (By.XPATH, "//div[@class='modal-content']//number-input[@name='tagNo']//input")
+    tag_no = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='tagNo']//input")
     balance_sheet_account = (By.XPATH, "//div[@class='modal-content']//*[@name='balanceSheetAccount']")
-    actually_used = (By.XPATH, "//div[@class='modal-content']//number-input[@name='actuallyUsed']//input")
+    actually_used = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='actuallyUsed']//input")
     carrying_value = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='carryingValue']//input")
     current_amortization = (By.XPATH, "//div[@class='modal-content']//*[@name='currentAmortization']//input")
     accrued_depreciation = (By.XPATH, "//div[@class='modal-content']//*[@name='accruedDepreciation']//input")
@@ -757,15 +757,15 @@ class DepreciationAddLineLocators(object):
 
 # Инвентаризация НФА
 class InventoryNFALocators(object):
-    balances_collection_date = (By.XPATH, "//date-input[@name='balancesCollectionDate']//input")
+    balances_collection_date = (By.XPATH, "//document_date-input[@name='balancesCollectionDate']//input")
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
     balance_sheet_account_group = (By.XPATH, "//*[@name='balanceSheetAccountGroup']")
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
     committee = (By.XPATH, "//committee-classifier[@name='committee']")
     inventory_location = (By.XPATH, "//text-input[@name='inventoryLocation']//input")
-    inventory_start_date = (By.XPATH, "//date-input[@name='inventoryStartDate']//input")
-    inventory_end_date = (By.XPATH, "//date-input[@name='inventoryEndDate']//input")
+    inventory_start_date = (By.XPATH, "//document_date-input[@name='inventoryStartDate']//input")
+    inventory_end_date = (By.XPATH, "//document_date-input[@name='inventoryEndDate']//input")
     committee_conclusion = (By.XPATH, "//text-input[@name='committeeConclusion']//input")
     fill_actual_availability = (By.XPATH, "//check-input[@name='fillActualAvailability']//input")
     materially_responsible_person = (By.XPATH, "//*[@name='materiallyResponsiblePerson']")
@@ -789,7 +789,7 @@ class InventoryNFAAddLineLocators(object):
 # Локаторы для модальное окна - Просмотр остатков по счету
 class ViewingOfAccountBalancesLocators(object):
     clear_field_account = (By.XPATH, "//button[@class='btn btn-clear']")
-    date = (By.XPATH, "//date-input[@name='date']//input")
+    date = (By.XPATH, "//document_date-input[@name='document_date']//input")
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
     balance_sheet_account_group = (By.XPATH,
                                    "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
@@ -804,7 +804,7 @@ class ViewingOfAccountBalancesLocators(object):
 
 # Локаторы для модального окна - Массовое заполнение параметров объектов - остатки НФА
 class BulkFillingOfObjectParametersOfRemnantsNfaLocators(object):
-    date = (By.XPATH, "//date-input[@name='date']//input")
+    date = (By.XPATH, "//document_date-input[@name='document_date']//input")
     balance_sheet_account = (By.XPATH, "//balance-sheet-account-classifier[@name='balanceSheetAccount']")
     balance_sheet_account_group = (By.XPATH,
                                    "//balance-sheet-account-group-classifier[@name='balanceSheetAccountGroup']")
@@ -821,7 +821,7 @@ class ApplicationCashFlowLocators(object):
     documen_type = (By.XPATH, "//*[@name='documentKind']")
     number = (By.XPATH, "//*[@name='documentNumber']//input")
     date = (By.XPATH, "//*[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     personal_account = (By.XPATH, "//*[@name='accountDetails']")
     bank_account_number = (By.XPATH, "//*[@name='counterpartyAccountDetails']")
     recipient = (By.XPATH, "//*[@name='counterparty']")
@@ -835,7 +835,7 @@ class ApplicationCashFlowLocators(object):
     tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
     document_foundaiont_kind = (By.XPATH, "//document-foundation-kind-autocomplete[@name='documentFoundaiontKind']")
     document_foundation_number = (By.XPATH, "//text-input[@name='documentFoundationNumber']//input")
-    document_foundation_date = (By.XPATH, "//date-input[@name='documentFoundationDate']//input")
+    document_foundation_date = (By.XPATH, "//document_date-input[@name='documentFoundationDate']//input")
     document_foundation_subject = (By.XPATH, "//text-area-input[@name='documentFoundationSubject']//textarea")
     operation = (By.XPATH, "//*[@name='operation']")
     currency = (By.XPATH, "//currency-classifier[@name='currency']")
@@ -880,7 +880,7 @@ class ApplicationCashFlowRequisitesLocators(object):
     document_type = (
         By.XPATH, "//div[@class='modal-content']//document-foundation-kind-autocomplete[@name='documentType']")
     document_number = (By.XPATH, "//div[@class='modal-content']//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='documentDate']//input")
+    document_date = (By.XPATH, "//div[@class='modal-content']//document_date-input[@name='documentDate']//input")
     subject = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='subject']//textarea")
 
 
@@ -892,17 +892,17 @@ class ApplicationCashFlowRequisitesTaxPaymentsLocators(object):
     kbk = (By.XPATH, "//kbk-tax-autocomplete[@name='kbk']")
     tax_bill_number = (By.XPATH, "//text-input[@name='taxBillNumber']//input")
     oktmo = (By.XPATH, "//oktmo-autocomplete[@name='oktmo']")
-    tax_bill_date = (By.XPATH, "//date-input[@name='taxBillDate']//input")
+    tax_bill_date = (By.XPATH, "//document_date-input[@name='taxBillDate']//input")
     reason_for_payment = (By.XPATH, "//reason-for-payment-dropdown-input[@name='reasonForPayment']//select")
 
 
 # Платежное поручение (приход средств)
 class PaymentOrderArrivalLocators(object):
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
     recipient_account_details = (
         By.XPATH, "//current-organization-account-details-classifier[@name='recipientAccountDetails']")
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     drawee = (By.XPATH, "//counterparty-classifier[@name='drawee']")
     drawee_account_details = (By.XPATH, "//counterparty-account-details-classifier[@name='draweeAccountDetails']")
     tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
@@ -939,16 +939,16 @@ class PaymentOrderArrivalRequisitesLocators(object):
     oktmo = (By.XPATH, "//oktmo-autocomplete[@name='oktmo']")
     tax_period = (By.XPATH, "//field107-input[@name='taxPeriod']//input")
     tax_bill_number = (By.XPATH, "//text-input[@name='taxBillNumber']//input")
-    tax_bill_date = (By.XPATH, "//date-input[@name='taxBillDate']//input")
+    tax_bill_date = (By.XPATH, "//document_date-input[@name='taxBillDate']//input")
     reason_for_payment = (By.XPATH, "//reason-for-payment-dropdown-input[@name='reasonForPayment']//select")
 
 
 class InvoiceFromTheSupplierLocators(object):
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
     supplier = (By.XPATH, "//counterparty-classifier[@name='supplier']")
-    paid_date = (By.XPATH, "//date-input[@name='paidDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    paid_date = (By.XPATH, "//document_date-input[@name='paidDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
     department_unit = (By.XPATH, "//department-unit-classifier[@name='DepartmentUnit']")
     supplier_account_detail = (By.XPATH, "//counterparty-account-details-classifier[@name='supplierAccountDetail']")
@@ -968,8 +968,8 @@ class InvoiceFromTheSupplierAddLineLocators(object):
     comment = (By.XPATH, "//div[@class='modal in']//*[@name='comment']//textarea")
     amount = (By.XPATH, "//amount-input[@name='amount']//input")
     vat_percent = (By.XPATH, "//nds-percent-input[@name='vatPercent']//input")
-    paid_date = (By.XPATH, "//date-input[@name='paidDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    paid_date = (By.XPATH, "//document_date-input[@name='paidDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
     department_unit = (By.XPATH, "//department-unit-classifier[@name='DepartmentUnit']")
 
@@ -978,10 +978,10 @@ class InvoiceFromTheSupplierAddLineLocators(object):
 class InvoiceFromVendorLocators(object):
     document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    received_date = (By.XPATH, "//date-input[@name='receivedDate']//input")
-    correction_number = (By.XPATH, "//number-input[@name='correctionNumber']//input")
-    correction_date = (By.XPATH, "//date-input[@name='correctionDate']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    received_date = (By.XPATH, "//document_date-input[@name='receivedDate']//input")
+    correction_number = (By.XPATH, "//document_number-input[@name='correctionNumber']//input")
+    correction_date = (By.XPATH, "//document_date-input[@name='correctionDate']//input")
     editable = (By.XPATH, "//tax-invoice-from-supplier-classifier[@name='editable']")
     vendor = (By.XPATH, "//counterparty-classifier[@name='vendor']")
     billing_type = (By.XPATH, "//billing-type-dropdown-input[@name='billingType']//select")
@@ -992,8 +992,8 @@ class InvoiceFromVendorLocators(object):
     department_unit = (By.XPATH, "//department-unit-classifier[@name='DepartmentUnit']")
     trip = (By.XPATH, "//imprest-foundation-classifier[@name='Trip']")
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
-    capitalization_date = (By.XPATH, "//date-input[@name='capitalizationDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
+    capitalization_date = (By.XPATH, "//document_date-input[@name='capitalizationDate']//input")
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
 
 
@@ -1018,9 +1018,9 @@ class InvoiceFromVendorAddLineLocators(object):
 # Акт входящий
 class IncomingActLocators(object):
     document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     contractor = (By.XPATH, "//counterparty-classifier[@name='contractor']")
     department_unit = (By.XPATH, "//department-unit-classifier[@name='DepartmentUnit']")
     Appointment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
@@ -1037,13 +1037,13 @@ class IncomingActLocators(object):
 
 # Сведения о денежном обязательстве
 class InformationAboutTheMonetaryObligationLocators(object):
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    financial_year = (By.XPATH, "//document_number-input[@name='financialYear']//input")
     tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
     currency = (By.XPATH, "//currency-classifier[@name='currency']")
     is_advance = (By.XPATH, "//check-input[@name='isAdvance']//input")
-    registration_date = (By.XPATH, "//date-input[@name='registrationDate']//input")
+    registration_date = (By.XPATH, "//document_date-input[@name='registrationDate']//input")
     personal_account = (By.XPATH, "//current-organization-account-details-classifier[@name='personalAccount']")
     counterparty = (By.XPATH, "//counterparty-classifier[@name='counterparty']")
     counterparty_account_detail = (By.XPATH, "//*[@name='counterpartyAccountDetail']")
@@ -1052,14 +1052,14 @@ class InformationAboutTheMonetaryObligationLocators(object):
     accountant_general = (By.XPATH, "//signatory-classifier[@name='accountantGeneral']")
     document_foundation_kind = (By.XPATH, "//*[@name='documentFoundationKind']//select")
     foundation_number = (By.XPATH, "//text-input[@name='foundationNumber']//input")
-    foundation_date = (By.XPATH, "//date-input[@name='foundationDate']//input")
+    foundation_date = (By.XPATH, "//document_date-input[@name='foundationDate']//input")
     foundation_amount = (By.XPATH, "//currency-input[@name='foundationAmount']//input")
     foundation_subject = (By.XPATH, "//text-area-input[@name='foundationSubject']//textarea")
 
 
 # Сведения о денежном обязательстве добавление строк
 class InformationAboutTheMonetaryObligationAddLineLocators(object):
-    financial_year = (By.XPATH, "//div[@class='modal-content']//number-input[@name='financialYear']//input")
+    financial_year = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='financialYear']//input")
     kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
     kbk_type = (By.XPATH, "//div[@class='modal-content']//kbk-type-dropdown-input[@name='kbkType']//select")
     kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
@@ -1077,18 +1077,18 @@ class InformationAboutTheMonetaryObligationAddLineLocators(object):
 # Сведения о денежном обязательстве - История изменений
 class InformationAboutTheMonetaryObligationHistoryLocators(object):
     change_number = (By.XPATH, "//div[@class='modal-content']//text-input[@name='changeNumber']//input")
-    change_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='changeDate']//input")
+    change_date = (By.XPATH, "//div[@class='modal-content']//document_date-input[@name='changeDate']//input")
     comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
 
 
 # Заявка на возврат
 class ReturnRequestLocators(object):
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
     account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
     recepient = (By.XPATH, "//counterparty-classifier[@name='recepient']")
     ofk_registration_number = (By.XPATH, "//text-input[@name='ofkRegistrationNumber']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
     recepient_account_details = (By.XPATH, "//*[@name='recepientAccountDetails']")
     document_kind = (By.XPATH, "//*[@name='documentKind']")
@@ -1107,7 +1107,7 @@ class ReturnRequestLocators(object):
     expenditure_goal_act = (By.XPATH, "//expenditure-goal-act-classifier[@name='expenditureGoalAct']")
     document_foundation_kind = (By.XPATH, "//document-foundation-kind-autocomplete[@name='documentFoundationKind']")
     document_foundation_number = (By.XPATH, "//text-input[@name='documentFoundationNumber']//input")
-    document_foundation_date = (By.XPATH, "//date-input[@name='documentFoundationDate']//input")
+    document_foundation_date = (By.XPATH, "//document_date-input[@name='documentFoundationDate']//input")
     recepient_kbk = (By.XPATH, "//recepient-kbk-autocomplete[@name='recepientKbk']")
     recepient_oktmo = (By.XPATH, "//oktmo-autocomplete[@name='recepientOktmo']")
     chief = (By.XPATH, "//*[@name='chief']")
@@ -1117,7 +1117,7 @@ class ReturnRequestLocators(object):
     payment_type = (By.XPATH, "//*[@name='paymentForm']//select")
     type_funds_for_return = (By.XPATH, "//*[@name='activityKind']//select")
     outstanding_payment_document_number = (By.XPATH, "//text-input[@name='outstandingPaymentDocumentNumber']//input")
-    outstanding_payment_document_date = (By.XPATH, "//date-input[@name='outstandingPaymentDocumentDate']//input")
+    outstanding_payment_document_date = (By.XPATH, "//document_date-input[@name='outstandingPaymentDocumentDate']//input")
     outstanding_payment_document_amount = (
         By.XPATH, "//currency-input[@name='outstandingPaymentDocumentAmount']//input")
     outstanding_payment_document_inn = (By.XPATH, "//text-input[@name='outstandingPaymentDocumentInn']//input")
@@ -1126,9 +1126,9 @@ class ReturnRequestLocators(object):
 
 # Уведомления об уточнении вида и принадлежности платежа
 class NotificationTypeAndPaymentTypeLocators(object):
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
     activity_kind = (By.XPATH, "//activity-kind-dropdown-input[@name='activityKind']//select")
     budget_commitment_info_number = (By.XPATH, "//text-input[@name='budgetCommitmentInfoNumber']//input")
@@ -1138,7 +1138,7 @@ class NotificationTypeAndPaymentTypeLocators(object):
     counterparty_account_details = (
         By.XPATH, "//counterparty-account-details-classifier[@name='counterpartyAccountDetails']")
     federal_treasury_request_number = (By.XPATH, "//text-input[@name='federalTreasuryRequestNumber']//input")
-    federal_treasury_request_date = (By.XPATH, "//date-input[@name='federalTreasuryRequestDate']//input")
+    federal_treasury_request_date = (By.XPATH, "//document_date-input[@name='federalTreasuryRequestDate']//input")
     region = (By.XPATH, "//region-classifier[@name='region']")
     is_employee = (By.XPATH, "//check-input[@name='isEmployee']//input")
     employee = (By.XPATH, "//employee-classifier[@name='employee']")
@@ -1150,13 +1150,13 @@ class NotificationTypeAndPaymentTypeLocators(object):
 
 # Уведомления об уточнении вида и принадлежности платежа - добавление уведомления
 class NotificationTypeAndPaymentTypeNotificationLocators(object):
-    order_number = (By.XPATH, "//div[@class='modal-content']//number-input[@name='orderNumber']//input")
+    order_number = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='orderNumber']//input")
     amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
     operation = (By.XPATH, "//div[@class='modal-content']//operation-master-hierarchy-classifier[@name='operation']")
     document_type = (
         By.XPATH, "//div[@class='modal-content']//*[@name='documentType']//select")
-    document_number = (By.XPATH, "//div[@class='modal-content']//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='documentDate']//input")
+    document_number = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//div[@class='modal-content']//document_date-input[@name='documentDate']//input")
     billing_document = (
         By.XPATH, "//div[@class='modal-content']//*[@name='billingDocument']")
     document_foundation = (
@@ -1203,10 +1203,10 @@ class NotificationTypeAndPaymentTypeImageLocators(object):
 
 # Заявка на получение наличных денег
 class ApplicationForCashWithdrawalLocators(object):
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
-    deadline = (By.XPATH, "//date-input[@name='deadline']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
+    deadline = (By.XPATH, "//document_date-input[@name='deadline']//input")
     account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
     tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
     operation_master = (By.XPATH, "//operation-master-hierarchy-classifier[@name='OperationMaster']")
@@ -1218,9 +1218,9 @@ class ApplicationForCashWithdrawalLocators(object):
     accountant_general = (By.XPATH, "//*[@name='AccountantGeneral']")
     foundation = (By.XPATH, "//text-area-input[@name='foundation']//textarea")
     check_series = (By.XPATH, "//text-input[@name='checkSeries']//input")
-    check_number = (By.XPATH, "//number-input[@name='checkNumber']//input")
-    check_date = (By.XPATH, "//date-input[@name='checkDate']//input")
-    check_valid_till = (By.XPATH, "//date-input[@name='checkValidTill']//input")
+    check_number = (By.XPATH, "//document_number-input[@name='checkNumber']//input")
+    check_date = (By.XPATH, "//document_date-input[@name='checkDate']//input")
+    check_valid_till = (By.XPATH, "//document_date-input[@name='checkValidTill']//input")
 
 
 # Заявка на получение наличных денег добавление строк
@@ -1244,13 +1244,13 @@ class ApplicationForCashWithdrawalAddLineLocators(object):
 # Заявка на получение денежных средств, перечисляемых на карту
 class ApplyingForCardLocators(object):
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     operation_master = (By.XPATH, "//operation-master-hierarchy-classifier[@name='OperationMaster']")
     account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
     tracking_number = (By.XPATH, "//text-input[@name='trackingNumber']//input")
     activity_kind = (By.XPATH, "//activity-kind-dropdown-input[@name='activityKind']//select")
-    card_number = (By.XPATH, "//card-number-input[@name='cardNumber']//input")
+    card_number = (By.XPATH, "//card-document_number-input[@name='cardNumber']//input")
     trustee = (By.XPATH, "//employee-classifier[@name='Trustee']")
     employee_position = (By.XPATH, "//position-classifier[@name='employeePosition']")
     investment_program = (By.XPATH, "//federal-targeted-investment-program-classifier[@name='investmentProgram']")
@@ -1279,10 +1279,10 @@ class ApplyingForCardAddLineLocators(object):
 
 # Расшифровка сумм неиспользованных средств
 class DecodingAmountsUnusedFundsLocators(object):
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
-    card_number = (By.XPATH, "//card-number-input[@name='cardNumber']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
+    card_number = (By.XPATH, "//card-document_number-input[@name='cardNumber']//input")
     operation_type = (By.XPATH, "//operation-type-dropdown-input[@name='operationType']//select")
     personal_account = (By.XPATH, "//current-organization-account-details-classifier[@name='personalAccount']")
     operation_master = (By.XPATH, "//operation-master-hierarchy-classifier[@name='OperationMaster']")
@@ -1313,11 +1313,12 @@ class DecodingAmountsUnusedFundsAddLineLocators(object):
 class AccountCashWarrantLocators(object):
     document_kind = (By.XPATH, "//*[@name='documentKind']")
     document_number = (By.XPATH, "//*[@name='documentNumber']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
     document_date = (By.XPATH, "//*[@name='documentDate']//input")
     department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
     operation_master = (By.XPATH, "//operation-master-hierarchy-classifier[@name='OperationMaster']")
     employee = (By.XPATH, "//*[@name='employee']")
+    counterparty = (By.XPATH, "//*[@name='counterparty']")
     issue = (By.XPATH, "//*[@name='issue']//input")
     foundation = (By.XPATH, "//*[@name='foundation']//textarea")
     cash_report_number = (By.XPATH, "//*[@name='cashReportNumber']//input")
@@ -1335,6 +1336,7 @@ class AccountCashWarrantLocatorsAddLine(object):
         By.XPATH, "//div[@class='modal-content']//material-inventory-classifier[@name='materialInventory']")
     quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='quantity']//input")
     amount = (By.XPATH, "//div[@class='modal-content']//*[@name='amount']//input")
+    nds_percent = (By.XPATH, "//div[@class='modal-content']//*[@name='ndsPercent']//input")
     comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
     act = (By.XPATH, "//div[@class='modal-content']//expenditure-goal-act-classifier[@name='act']")
 
@@ -1385,9 +1387,9 @@ class BasisForReportingAmountsAddLineLocators(object):
 # авансовый отчет
 class AvansReportLocators(object):
     document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
-    document_number = (By.XPATH, "//number-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "date-input[@name='entryDate']//input")
+    document_number = (By.XPATH, "//document_number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "document_date-input[@name='entryDate']//input")
     employee = (By.XPATH, "//employee-classifier[@name='employee']")
     position = (By.XPATH, "//position-classifier[@name='position']")
     department = (By.XPATH, "//position-classifier[@name='department']")
@@ -1404,18 +1406,18 @@ class AvansReportAddLineLocators(object):
     kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
     kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
     cost_element = (By.XPATH, "//div[@class='modal-content']//cost-elements-classifier[@name='costElement']")
-    document_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='documentDate']//input")
-    document_number = (By.XPATH, "//div[@class='modal-content']//number-input[@name='documentNumber']//input")
+    document_date = (By.XPATH, "//div[@class='modal-content']//document_date-input[@name='documentDate']//input")
+    document_number = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='documentNumber']//input")
     amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
     comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
 
 
 # Извещение о проведении закупки
 class ProcurementNoticeLocators(object):
-    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    financial_year = (By.XPATH, "//document_number-input[@name='financialYear']//input")
     document_number = (By.XPATH, "//text-input[@name='documentNumber']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    publish_date = (By.XPATH, "//date-input[@name='publishDate']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    publish_date = (By.XPATH, "//document_date-input[@name='publishDate']//input")
     demander = (By.XPATH, "//organization-classifier[@name='demander']")
     winner = (By.XPATH, "//counterparty-classifier[@name='winner']")
     order_placement = (By.XPATH, "//order-placement-classifier[@name='orderPlacement']")
@@ -1423,8 +1425,8 @@ class ProcurementNoticeLocators(object):
     responsible = (By.XPATH, "//department-unit-classifier[@name='responsible']")
     budget_commitment_info = (By.XPATH, "//budget-commitment-classifier[@name='budgetCommitmentInfo']")
     works = (By.XPATH, "//text-area-input[@name='works']//textarea")
-    contract_date = (By.XPATH, "//date-input[@name='contractDate']//input")
-    procedure_failure_date = (By.XPATH, "//date-input[@name='procedureFailureDate']//input")
+    contract_date = (By.XPATH, "//document_date-input[@name='contractDate']//input")
+    procedure_failure_date = (By.XPATH, "//document_date-input[@name='procedureFailureDate']//input")
     starting_price = (By.XPATH, "//currency-input[@name='startingPrice']//input")
     cost = (By.XPATH, "//currency-input[@name='cost']//input")
     tender_security = (By.XPATH, "//currency-input[@name='tenderSecurity']//input")
@@ -1433,28 +1435,28 @@ class ProcurementNoticeLocators(object):
 # Извещение о проведении закупки добавление строки
 class ProcurementNoticeAddLineLocators(object):
     operation = (By.XPATH, "//div[@class='modal-content']//operation-master-hierarchy-classifier[@name='operation']")
-    entry_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='entryDate']//input")
+    entry_date = (By.XPATH, "//div[@class='modal-content']//document_date-input[@name='entryDate']//input")
     kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
     kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
     starting_price = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='startingPrice']//input")
     cost = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='cost']//input")
     works = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='works']//textarea")
-    financial_year = (By.XPATH, "//div[@class='modal-content']//number-input[@name='financialYear']//input")
+    financial_year = (By.XPATH, "//div[@class='modal-content']//document_number-input[@name='financialYear']//input")
 
 
 # Смета доходов
 class EstimatedIncomeLocators(object):
-    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
-    document_date = (By.XPATH, "//date-input[@name='documentDate']//input")
-    entry_date = (By.XPATH, "//date-input[@name='entryDate']//input")
-    recipient = (By.XPATH, "//organization-classifier[@name='recipient']")
+    financial_year = (By.XPATH, "//document_number-input[@name='financialYear']//input")
+    document_date = (By.XPATH, "//document_date-input[@name='documentDate']//input")
+    entry_date = (By.XPATH, "//document_date-input[@name='entryDate']//input")
+    recipient = (By.XPATH, "//organization-classifier[@name='counterparty']")
     account_details = (By.XPATH, "//current-organization-account-details-classifier[@name='accountDetails']")
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
 
 
 # Смета доходов добавление строки
 class EstimatedIncomeAddLineLocators(object):
-    item_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='itemDate']//input")
+    item_date = (By.XPATH, "//div[@class='modal-content']//document_date-input[@name='itemDate']//input")
     kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
     kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
     current_year_amount = (By.XPATH, "//div[@class='modal-content']//*[@name='currentYearAmount']//input")
@@ -1464,18 +1466,18 @@ class EstimatedIncomeAddLineLocators(object):
 
 # Бюджетная смета
 class BudgetEstimatesLocators(object):
-    financial_year = (By.XPATH, "//number-input[@name='financialYear']//input")
+    financial_year = (By.XPATH, "//document_number-input[@name='financialYear']//input")
     account = (By.XPATH, "//budget-organization-classifier[@name='account']")
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
 
 
 # Бюджетная смета добавление строки
 class BudgetEstimatesAddLineLocators(object):
-    line_create_date = (By.XPATH, "//div[@class='modal-content']//date-input[@name='lineCreateDate']//input")
+    line_create_date = (By.XPATH, "//div[@class='modal-content']//document_date-input[@name='lineCreateDate']//input")
     kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
     kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
     cost_element = (By.XPATH, "//div[@class='modal-content']//*[@name='costElement']")
-    part_number = (By.XPATH, "//div[@class='modal-content']//part-number-dropdown-input[@name='partNumber']//select")
+    part_number = (By.XPATH, "//div[@class='modal-content']//part-document_number-dropdown-input[@name='partNumber']//select")
     current_year_amount_b_a = (By.XPATH, "//div[@class='modal-content']//*[@name='currentYearAmountBA']//input")
     first_plan_year_amount_b_a = (By.XPATH, "//div[@class='modal-content']//*[@name='firstPlanYearAmountBA']//input")
     second_plan_year_amount_b_a = (By.XPATH, "//div[@class='modal-content']//*[@name='secondPlanYearAmountBA']//input")
