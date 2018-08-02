@@ -999,7 +999,7 @@ class DecodingOfTheApplicationPage(Browser):
         self.set_text(DecodingOfTheApplicationLocators.nds_percent, value, "Ставка НДС")
 
     def recepient_kbk(self, value):
-        self.set_select2(DecodingOfTheApplicationLocators.recepient_kbk, value, "КБК получателя")
+        self.set_select2(DecodingOfTheApplicationLocators.recepient_kbk, value, "КБК получателя", exactly=False)
 
     def recepient_kbk_type(self, value):
         self.set_select(DecodingOfTheApplicationLocators.recepient_kbk_type, value, "Тип КБК Получателя")
@@ -1028,6 +1028,22 @@ class DecodingOfTheApplicationPage(Browser):
 
     def type_of_funds(self, value):
         self.set_select(DecodingOfTheApplicationLocators.typeOfFunds, value, "Тип КБК плательщика")
+
+    def act(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.act, value, "Мероприятие по бюджетной росписи")
+
+    def goal_code(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.goal_code, value, "Код цели")
+
+    def report_code(self, value):
+        self.set_select2(DecodingOfTheApplicationLocators.report_code, value, "Код для отчетности")
+
+    def drawee_subsidy_code(self, value):
+        self.set_text(DecodingOfTheApplicationLocators.drawee_subsidy_code, value, "Код субсидии плательщика")
+
+    def recepient_subsidy_code(self, value):
+        self.set_text(DecodingOfTheApplicationLocators.recepient_subsidy_code, value, "Код субсидии получателя")
+
 
 
 # Заявка на кассовый расход - реквизиты документа основания
