@@ -1077,7 +1077,7 @@ class ApplicationCashFlowRequisitesTaxPaymentsPage(Browser):
         self.set_checkbox(ApplicationCashFlowRequisitesTaxPaymentsLocators.is_tax, value, "Налоговый платеж")
 
     def kbk(self, value):
-        self.set_select2(ApplicationCashFlowRequisitesTaxPaymentsLocators.kbk, value, "КБК")
+        self.set_select2(ApplicationCashFlowRequisitesTaxPaymentsLocators.kbk, value, "КБК", exactly=False)
 
     def tax_bill_number(self, value):
         self.set_text(
@@ -1111,7 +1111,8 @@ class PaymentOrderArrivalPage(Browser):
         self.set_select2(PaymentOrderArrivalLocators.drawee, value, "Плательщик")
 
     def drawee_account_details(self, value):
-        self.set_select2(PaymentOrderArrivalLocators.drawee_account_details, value, "Расчетный счет плательщика")
+        self.set_select2(PaymentOrderArrivalLocators.drawee_account_details, value,
+                         "Расчетный счет плательщика", exactly=False)
 
     def tracking_number(self, value):
         self.set_text(PaymentOrderArrivalLocators.tracking_number, value, "Бюджетное обязательство")
@@ -1135,7 +1136,7 @@ class PaymentOrderArrivalPage(Browser):
         self.set_select2(PaymentOrderArrivalLocators.department_unit, value, "Группа учета")
 
     def purchasing_notice(self, value):
-        self.set_select2(PaymentOrderArrivalLocators.purchasing_notice, value, "Извещения о закупке")
+        self.set_select2(PaymentOrderArrivalLocators.purchasing_notice, value, "Извещения о закупке", exactly=False)
 
     def notification_number(self, value):
         self.set_text(PaymentOrderArrivalLocators.notification_number, value, "Номер уведомления")
@@ -1147,13 +1148,13 @@ class PaymentOrderArrivalPage(Browser):
 # Платежное поручение (приход средств) бланк
 class PaymentOrderArrivalBlankPage(Browser):
     def kbk(self, value):
-        self.set_select2(PaymentOrderArrivalBlankLocators.kbk, value, "КБК")
+        self.set_select2(PaymentOrderArrivalBlankLocators.kbk, value, "КБК", exactly=False)
 
     def operation(self, value):
         self.set_select2(PaymentOrderArrivalBlankLocators.operation, value, "Типовая операция")
 
     def kosgu(self, value):
-        self.set_select2(PaymentOrderArrivalBlankLocators.kosgu, value, "КОСГУ")
+        self.set_select2(PaymentOrderArrivalBlankLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_element(self, value):
         self.set_select2(PaymentOrderArrivalBlankLocators.cost_element, value, "Вид затрат")
@@ -1237,7 +1238,7 @@ class ReturnRequestPage(Browser):
         self.set_select2(ReturnRequestLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def kbk_type(self, value):
-        self.set_select2(ReturnRequestLocators.kbk_type, value, "Тип КБК")
+        self.set_select(ReturnRequestLocators.kbk_type, value, "Тип КБК")
 
     def cost_element(self, value):
         self.set_select2(ReturnRequestLocators.cost_element, value, "Вид затрат")
@@ -1276,7 +1277,7 @@ class ReturnRequestPage(Browser):
         self.set_date(ReturnRequestLocators.document_foundation_date, value, "Дата документа-основания")
 
     def recepient_kbk(self, value):
-        self.set_select2(ReturnRequestLocators.recepient_kbk, value, "КБК получателя")
+        self.set_select2(ReturnRequestLocators.recepient_kbk, value, "КБК получателя", exactly=False)
 
     def recepient_oktmo(self, value):
         self.set_select2(ReturnRequestLocators.recepient_oktmo, value, "Код по ОКТМО Получателя")
