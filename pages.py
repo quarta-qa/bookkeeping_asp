@@ -1364,7 +1364,7 @@ class NotificationTypeAndPaymentTypePage(Browser):
         self.set_date(NotificationTypeAndPaymentTypeLocators.federal_treasury_request_date, value, "Дата запроса УФК")
 
     def region(self, value):
-        self.set_select2(NotificationTypeAndPaymentTypeLocators.region, value, "Регион")
+        self.set_select2(NotificationTypeAndPaymentTypeLocators.region, value, "Регион", exactly=False)
 
     def is_employee(self, value):
         self.set_checkbox(NotificationTypeAndPaymentTypeLocators.is_employee, value, "Сотрудник - чекбокс")
@@ -1434,10 +1434,10 @@ class NotificationTypeAndPaymentTypeNotificationPage(Browser):
         self.set_text(NotificationTypeAndPaymentTypeNotificationLocators.oktmo, value, "ОКТМО")
 
     def kbk(self, value):
-        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.kbk, value, "КБК")
+        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.kbk, value, "КБК", exactly=False)
 
     def kosgu(self, value):
-        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.kosgu, value, "КОСГУ")
+        self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_element(self, value):
         self.set_select2(NotificationTypeAndPaymentTypeNotificationLocators.cost_element, value, "Вид затрат")
@@ -1485,16 +1485,17 @@ class NotificationTypeAndPaymentTypeImagePage(Browser):
         self.set_checkbox(NotificationTypeAndPaymentTypeImageLocators.is_taxes, value, "Налог - чек бокс")
 
     def kbk(self, value):
-        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.kbk, value, "КБК")
+        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.kbk, value, "КБК", exactly=False)
 
     def kosgu(self, value):
-        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.kosgu, value, "КОСГУ")
+        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_element(self, value):
         self.set_select2(NotificationTypeAndPaymentTypeImageLocators.cost_element, value, "Вид затрат")
 
     def recepient_kbk(self, value):
-        self.set_select2(NotificationTypeAndPaymentTypeImageLocators.recepient_kbk, value, "КБК поступлений")
+        self.set_select2(
+            NotificationTypeAndPaymentTypeImageLocators.recepient_kbk, value, "КБК поступлений", exactly=False)
 
     def activity_kind(self, value):
         self.set_select(NotificationTypeAndPaymentTypeImageLocators.activity_kind, value, "Вид средств")
@@ -1780,10 +1781,10 @@ class ContractWithSupplierPage(Browser):
     def document_type(self, value):
         self.set_select2(ContractWithSupplierLocators.documen_type, value, "Вид документа")
 
-    def number(self, value):
+    def document_number(self, value):
         self.set_text(ContractWithSupplierLocators.number, value, "Номер документа")
 
-    def date(self, value):
+    def document_date(self, value):
         self.set_date(ContractWithSupplierLocators.date, value, "Дата создания документа")
 
     def counter_party(self, value):
@@ -1947,7 +1948,8 @@ class ContractWithSupplierDetailOKPDPage(Browser):
 # Договор с Поставщиком - Вкладка Сведения о госконтракте
 class InformationAboutContractPage(Browser):
     def aviso(self, value):
-        self.set_select2(InformationAboutContractLocators.aviso, value, "Номер извещения о проведении закупки")
+        self.set_select2(
+            InformationAboutContractLocators.aviso, value, "Номер извещения о проведении закупки", exactly=False)
 
     def purchase_identity(self, value):
         self.set_text(InformationAboutContractLocators.purchase_identity, value, "Идентификационный код закупки")

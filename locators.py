@@ -333,22 +333,22 @@ class ContractWithSupplierDetailKBKPageLocators(object):
     department = (By.XPATH, "//department-classifier[@name='Department']")
     budgetary_plan_act = (By.XPATH, "//act-classifier[@name='budgetaryPlanAct']")
     investment_program = (By.XPATH, "//federal-targeted-investment-program-classifier[@name='investmentProgram']")
-    department_unit = (By.XPATH, "//department-unit-classifier[@name='departmentUnit']")
-    work = (By.XPATH, "//work-classifier[@name='work']")
-    amounts_amount = (By.XPATH, "//*[@name='amountsAmount']//input")
-    amounts_nds_percent = (By.XPATH, "//*[@name='amountsNdsPercent']//input")
-    advance = (By.XPATH, "//*[@name='advance']//input")
+    department_unit = (By.XPATH, "//div[@class='modal-content']//*[@name='departmentUnit']")
+    work = (By.XPATH, "//div[@class='modal-content']//work-classifier[@name='work']")
+    amounts_amount = (By.XPATH, "//div[@class='modal-content']//*[@name='amountsAmount']//input")
+    amounts_nds_percent = (By.XPATH, "//div[@class='modal-content']//*[@name='amountsNdsPercent']//input")
+    advance = (By.XPATH, "//div[@class='modal-content']//*[@name='advance']//input")
 
 
 # Договор с Поставщиком - вкладка  Детализация по ОКПД
 class ContractWithSupplierDetailOKPDLocators(object):
-    order_number = (By.XPATH, "//*[@name='orderNumber']//input")
-    okpd2 = (By.XPATH, "//okpd2-classifier[@name='okpd2']")
-    unit_of_measure = (By.XPATH, "//okei-classifier[@name='unitOfMeasure']")
-    unit_price = (By.XPATH, "//currency-input[@name='unitPrice']//input")
-    quantity = (By.XPATH, "//decimal-input[@name='quantity']//input")
-    amount = (By.XPATH, "//currency-input[@name='amount']//input")
-    purchase_object_type = (By.XPATH, "//purchase-object-type-dropdown-input[@name='purchaseObjectType']")
+    order_number = (By.XPATH, "//div[@class='modal-content']//*[@name='orderNumber']//input")
+    okpd2 = (By.XPATH, "//div[@class='modal-content']//okpd2-classifier[@name='okpd2']")
+    unit_of_measure = (By.XPATH, "//div[@class='modal-content']//okei-classifier[@name='unitOfMeasure']")
+    unit_price = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='unitPrice']//input")
+    quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='quantity']//input")
+    amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
+    purchase_object_type = (By.XPATH, "//div[@class='modal-content']//*[@name='purchaseObjectType']")
 
 
 # Договор с Поставщиком - Вкладка Сведения о госконтракте
@@ -361,7 +361,7 @@ class InformationAboutContractLocators(object):
     confirm_document_number = (By.XPATH, "//*[@name='confirmDocumentNumber']//input")
     confirm_document_date = (By.XPATH, "//*[@name='confirmDocumentDate']//input")
     confirm_document_kind = (By.XPATH, "//contract-award-foundation-classifier[@name='confirmDocumentKind']")
-    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    comment = (By.XPATH, "(//text-area-input[@name='comment']//textarea)[2]")
     department = (By.XPATH, "//order-placement-classifier[@name='department']")
     auction_date = (By.XPATH, "//*[@name='auctionDate']//input")
     declared_value = (By.XPATH, "//currency-input[@name='declaredValue']//input")
@@ -380,7 +380,7 @@ class HistoryLocators(object):
     change_date = (By.XPATH, "//*[@name='changeDate']//input")
     change_number = (By.XPATH, "//*[@name='changeNumber']//input")
     change_type = (By.XPATH, "//contract-with-supplier-change-type-dropdown-input[@name='changeType']//select")
-    comment = (By.XPATH, "//text-area-input[@name='comment']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//input")
 
 
 # Договор с Поставщиком - Календарный план
@@ -1193,14 +1193,14 @@ class NotificationTypeAndPaymentTypeImageLocators(object):
     kpp = (By.XPATH, "(//div[@class='modal-content']//text-input[@name='kpp']//input)[2]")
     oktmo = (By.XPATH, "(//div[@class='modal-content']//text-input[@name='oktmo']//input)[2]")
     recepient_personal_account = (
-        By.XPATH, "(//div[@class='modal-content']//text-input[@name='recepientPersonalAccount']//input)[2]")
-    is_taxes = (By.XPATH, "(//div[@class='modal-content']//check-input[@name='isTaxes']//input)[2]")
-    kbk = (By.XPATH, "(//div[@class='modal-content']//kbk-classifier[@name='Kbk']")
-    kosgu = (By.XPATH, "(//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
+        By.XPATH, "(//div[@class='modal-content']//text-input[@name='recepientPersonalAccount']//input)")
+    is_taxes = (By.XPATH, "(//div[@class='modal-content']//*[@name='isTaxes']//input)[2]")
+    kbk = (By.XPATH, "(//div[@class='modal-content']//kbk-classifier[@name='Kbk'])[2]")
+    kosgu = (By.XPATH, "(//div[@class='modal-content']//kosgu-classifier[@name='kosgu'])[2]")
     cost_element = (By.XPATH, "(//div[@class='modal-content']//cost-elements-classifier[@name='costElement'])[2]")
-    recepient_kbk = (By.XPATH, "(//div[@class='modal-content']//recepient-kbk-autocomplete[@name='recepientKbk'])[2]")
+    recepient_kbk = (By.XPATH, "(//div[@class='modal-content']//recepient-kbk-autocomplete[@name='recepientKbk'])")
     activity_kind = (
-        By.XPATH, "(//div[@class='modal-content']//activity-kind-dropdown-input[@name='activityKind']//select)[2]")
+        By.XPATH, "(//div[@class='modal-content']//activity-kind-dropdown-input[@name='activityKind']//select)")
     purpose_code = (By.XPATH, "(//div[@class='modal-content']//text-input[@name='purposeCode']//input)[2]")
     statement_analysis_code = (
         By.XPATH, "(//div[@class='modal-content']//*[@name='statementAnalysisCode'])[2]")
@@ -1395,7 +1395,7 @@ class AvansReportLocators(object):
     document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
     document_number = (By.XPATH, "//*[@name='documentNumber']//input")
     document_date = (By.XPATH, "//*[@name='documentDate']//input")
-    entry_date = (By.XPATH, "*[@name='entryDate']//input")
+    entry_date = (By.XPATH, "//*[@name='entryDate']//input")
     employee = (By.XPATH, "//employee-classifier[@name='employee']")
     position = (By.XPATH, "//position-classifier[@name='position']")
     department = (By.XPATH, "//position-classifier[@name='department']")
@@ -1408,14 +1408,14 @@ class AvansReportLocators(object):
 # авансовый отчет добавление строки
 class AvansReportAddLineLocators(object):
     operation_master = (
-        By.XPATH, "//div[@class='modal-content']//operation-master-hierarchy-classifier[@name='OperationMaster']")
-    kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
-    kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
-    cost_element = (By.XPATH, "//div[@class='modal-content']//cost-elements-classifier[@name='costElement']")
+        By.XPATH, "//div[@class='modal-content']//*[@name='OperationMaster']")
+    kbk = (By.XPATH, "//div[@class='modal-content']//*[@name='kbk']")
+    kosgu = (By.XPATH, "//div[@class='modal-content']//*[@name='kosgu']")
+    cost_element = (By.XPATH, "//div[@class='modal-content']//*[@name='costElement']")
     document_date = (By.XPATH, "//div[@class='modal-content']//*[@name='documentDate']//input")
     document_number = (By.XPATH, "//div[@class='modal-content']//*[@name='documentNumber']//input")
-    amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
-    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
+    amount = (By.XPATH, "//div[@class='modal-content']//*[@name='amount']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//*[@name='comment']//textarea")
 
 
 # Извещение о проведении закупки
