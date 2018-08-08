@@ -2117,7 +2117,7 @@ class InformationAboutBudgetObligationPage(Browser):
         self.set_date(InformationAboutBudgetObligationLocators.registration_date, value, "Дата регистрации в ФК")
 
     def account_details(self, value):
-        self.set_select2(InformationAboutBudgetObligationLocators.account_details, value, "Лицевой счет")
+        self.set_select2(InformationAboutBudgetObligationLocators.account_details, value, "Лицевой счет", exactly=False)
 
     def guid(self, value):
         self.set_text(InformationAboutBudgetObligationLocators.guid, value, "GUID")
@@ -2132,16 +2132,17 @@ class InformationAboutBudgetObligationPage(Browser):
         self.set_select2(InformationAboutBudgetObligationLocators.chief, value, "Руководитель", exactly=False)
 
     def prepared_by(self, value):
-        self.set_select2(InformationAboutBudgetObligationLocators.prepared_by, value, "Исполнитель")
+        self.set_select2(InformationAboutBudgetObligationLocators.prepared_by, value, "Исполнитель", exactly=False)
 
 
 # Сведения о бюджетном обязательстве  - Дополнительные контрагенты
 class InformationAboutBudgetObligationDopPage(Browser):
     def counterparty(self, value):
-        self.set_text(InformationAboutBudgetObligationDopLocators.counterparty, value, "Наименование")
+        self.set_select2(InformationAboutBudgetObligationDopLocators.counterparty, value, "Наименование")
 
     def account_details(self, value):
-        self.set_text(InformationAboutBudgetObligationDopLocators.account_details, value, "Номер банковского счета")
+        self.set_select2(InformationAboutBudgetObligationDopLocators.account_details, value,
+                      "Номер банковского счета", exactly=False)
 
 
 # Сведения о бюджетном обязательстве строки

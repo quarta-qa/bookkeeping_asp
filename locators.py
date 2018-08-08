@@ -380,20 +380,20 @@ class HistoryLocators(object):
     change_date = (By.XPATH, "//*[@name='changeDate']//input")
     change_number = (By.XPATH, "//*[@name='changeNumber']//input")
     change_type = (By.XPATH, "//contract-with-supplier-change-type-dropdown-input[@name='changeType']//select")
-    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
 
 
 # Договор с Поставщиком - Календарный план
 class CalendarPlanLocators(object):
-    financial_year = (By.XPATH, "//*[@name='financialYear']//input")
-    work_name = (By.XPATH, "//text-area-input[@name='workName']//textarea")
-    result = (By.XPATH, "//text-area-input[@name='result']//textarea")
-    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
-    start_date = (By.XPATH, "//*[@name='startDate']//input")
-    end_date = (By.XPATH, "//*[@name='endDate']//input")
-    amount = (By.XPATH, "//currency-input[@name='amount']//input")
-    counterparty = (By.XPATH, "//*[@name='counterparty']")
-    account_details = (By.XPATH, "//counterparty-account-details-classifier[@name='accountDetails']")
+    financial_year = (By.XPATH, "//div[@class='modal-content']//*[@name='financialYear']//input")
+    work_name = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='workName']//textarea")
+    result = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='result']//textarea")
+    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
+    start_date = (By.XPATH, "//div[@class='modal-content']//*[@name='startDate']//input")
+    end_date = (By.XPATH, "//div[@class='modal-content']//*[@name='endDate']//input")
+    amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='amount']//input")
+    counterparty = (By.XPATH, "//div[@class='modal-content']//*[@name='counterparty']")
+    account_details = (By.XPATH, "//div[@class='modal-content']//*[@name='accountDetails']")
 
 
 # Обеспечение исполнения обязательств
@@ -428,8 +428,8 @@ class InformationAboutBudgetObligationLocators(object):
 
 # Сведения о бюджетном обязательстве
 class InformationAboutBudgetObligationDopLocators(object):
-    counterparty = (By.XPATH, "//div[@class='modal-content']//*[@id='counterparty']//input")
-    account_details = (By.XPATH, "//div[@class='modal-content']//*[@id='accountDetails']//input")
+    counterparty = (By.XPATH, "//div[@class='modal-content']//*[@id='counterparty']")
+    account_details = (By.XPATH, "//div[@class='modal-content']//*[@id='accountDetails']")
 
 
 # Сведения о бюджетном обязательстве строки
@@ -467,9 +467,9 @@ class InformationAboutBudgetObligationAddLineLocators(object):
 
 # Сведения о бюджетном обязательстве - история
 class InformationAboutBudgetObligationHistoryLocators(object):
-    change_number = (By.XPATH, "//text-input[@name='changeNumber']//input")
-    change_date = (By.XPATH, "//*[@name='changeDate']//input")
-    comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
+    change_number = (By.XPATH, "//div[@class='modal-content']//text-input[@name='changeNumber']//input")
+    change_date = (By.XPATH, "//div[@class='modal-content']//*[@name='changeDate']//input")
+    comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
 
 
 # Сведения о бюджетном обязательстве -  Реквизиты документа-основания
