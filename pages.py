@@ -3138,7 +3138,7 @@ class InvoiceFromVendorPage(Browser):
         self.set_select2(InvoiceFromVendorLocators.trip, value, "Командировка")
 
     def operation(self, value):
-        self.set_checkbox(InvoiceFromVendorLocators.operation, value, "Типовая операция")
+        self.set_select2(InvoiceFromVendorLocators.operation, value, "Типовая операция")
 
     def entry_date(self, value):
         self.set_date(InvoiceFromVendorLocators.entry_date, value, "Дата проводки")
@@ -3156,10 +3156,10 @@ class InvoiceFromVendorAddLinePage(Browser):
         self.set_text(InvoiceFromVendorAddLineLocators.goods_name, value, "Наименование товара (услуг)")
 
     def kbk(self, value):
-        self.set_select2(InvoiceFromVendorAddLineLocators.kbk, value, "КБК")
+        self.set_select2(InvoiceFromVendorAddLineLocators.kbk, value, "КБК", exactly=False)
 
     def kosgu(self, value):
-        self.set_select2(InvoiceFromVendorAddLineLocators.kosgu, value, "КОСГУ")
+        self.set_select2(InvoiceFromVendorAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_elements(self, value):
         self.set_select2(InvoiceFromVendorAddLineLocators.cost_elements, value, "Вид затрат")

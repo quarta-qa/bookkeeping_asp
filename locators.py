@@ -997,7 +997,7 @@ class InvoiceFromVendorLocators(object):
     employee = (By.XPATH, "//employee-classifier[@name='employee']")
     department_unit = (By.XPATH, "//department-unit-classifier[@name='DepartmentUnit']")
     trip = (By.XPATH, "//imprest-foundation-classifier[@name='Trip']")
-    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']//input")
+    operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
     entry_date = (By.XPATH, "//*[@name='entryDate']//input")
     capitalization_date = (By.XPATH, "//*[@name='capitalizationDate']//input")
     comment = (By.XPATH, "//text-area-input[@name='comment']//textarea")
