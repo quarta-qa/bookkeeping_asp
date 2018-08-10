@@ -3271,7 +3271,8 @@ class InformationAboutTheMonetaryObligationPage(Browser):
         self.set_date(InformationAboutTheMonetaryObligationLocators.registration_date, value, "Дата регистрации ФК")
 
     def personal_account(self, value):
-        self.set_select2(InformationAboutTheMonetaryObligationLocators.personal_account, value, "Лицевой счет")
+        self.set_select2(
+            InformationAboutTheMonetaryObligationLocators.personal_account, value, "Лицевой счет", exactly=False)
 
     def counterparty(self, value):
         self.set_select2(InformationAboutTheMonetaryObligationLocators.counterparty, value, "Контрагент")

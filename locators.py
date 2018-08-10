@@ -1023,7 +1023,7 @@ class InvoiceFromVendorAddLineLocators(object):
 
 # Акт входящий
 class IncomingActLocators(object):
-    document_kind = (By.XPATH, "//document-kind-classifier[@name='documentKind']")
+    document_kind = (By.XPATH, "//*[@name='documentKind']")
     document_number = (By.XPATH, "//*[@name='documentNumber']//input")
     document_date = (By.XPATH, "//*[@name='documentDate']//input")
     entry_date = (By.XPATH, "//*[@name='entryDate']//input")
