@@ -528,6 +528,7 @@ class ReceiptOfNonFinancialAssetsCapLocators(object):
         (By.XPATH, "//materially-responsible-person-classifier[@name='materiallyResponsiblePerson']")
     sender_sender_type = (By.XPATH, "//income-sender-type-enum[@name='senderSenderType']//select")
     organization = (By.XPATH, "//*[@name='organization']")
+    employee = (By.XPATH, "//*[@name='employee']")
     storage = (By.XPATH, "//storage-classifier[@name='storage']")
     advance_report = (By.XPATH, "//advance-report-classifier[@name='advanceReport']")
     sender_foundation = (By.XPATH, "//*[@name='senderFoundation']")

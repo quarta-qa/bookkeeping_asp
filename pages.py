@@ -2385,6 +2385,9 @@ class ReceiptOfNonFinancialAssetsCapPage(Browser):
     def sender_sender_type(self, value):
         self.set_select(ReceiptOfNonFinancialAssetsCapLocators.sender_sender_type, value, "Вид отправителя")
 
+    def employee(self, value):
+        self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.employee, value, "Наименование отправителя ф.л.")
+
     def organization(self, value):
         self.set_select2(ReceiptOfNonFinancialAssetsCapLocators.organization, value, "Наименование отправителя")
 
