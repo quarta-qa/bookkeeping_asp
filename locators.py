@@ -751,7 +751,7 @@ class DepreciationAddLineLocators(object):
     accrued_depreciation = (By.XPATH, "//div[@class='modal-content']//*[@name='accruedDepreciation']//input")
     kbk = (By.XPATH, "//div[@class='modal-content']//kbk-classifier[@name='kbk']")
     kosgu = (By.XPATH, "//div[@class='modal-content']//kosgu-classifier[@name='kosgu']")
-    cost_element = (By.XPATH, "//div[@class='modal-content']//cost-elements-classifier[@name='costElement']")
+    cost_element = (By.XPATH, "//div[@class='modal-content']//*[@name='costElement']")
     materially_responsible_person = (By.XPATH, "//div[@class='modal-content']//*[@name='materiallyResponsiblePerson']")
     comment = (By.XPATH, "//div[@class='modal-content']//text-area-input[@name='comment']//textarea")
 
@@ -778,6 +778,7 @@ class InventoryNFALocators(object):
 # Инвентаризация НФА -добавление строки
 class InventoryNFAAddLineLocators(object):
     tag_no_basic_facilities = (By.XPATH, "//div[@class='modal-content']//*[@name='tagNoBasicFacilities']//input")
+    tagNoMaterialInventory = (By.XPATH, "//div[@class='modal-content']//*[@name='tagNoMaterialInventory']//input")
     in_fact_quantity = (By.XPATH, "//div[@class='modal-content']//decimal-input[@name='inFactQuantity']//input")
     in_fact_amount = (By.XPATH, "//div[@class='modal-content']//currency-input[@name='inFactAmount']//input")
     in_fact_materially_responsible_person = (
@@ -1456,7 +1457,7 @@ class EstimatedIncomeLocators(object):
     financial_year = (By.XPATH, "//*[@name='financialYear']//input")
     document_date = (By.XPATH, "//*[@name='documentDate']//input")
     entry_date = (By.XPATH, "//*[@name='entryDate']//input")
-    recipient = (By.XPATH, "//organization-classifier[@name='counterparty']")
+    recipient = (By.XPATH, "//*[@name='recipient']")
     account_details = (By.XPATH, "//*[@name='accountDetails']")
     operation = (By.XPATH, "//operation-master-hierarchy-classifier[@name='operation']")
 

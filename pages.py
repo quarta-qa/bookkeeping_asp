@@ -2966,6 +2966,9 @@ class InventoryNFAAddLinePage(Browser):
     def tag_no_basic_facilities(self, value):
         self.set_text(InventoryNFAAddLineLocators.tag_no_basic_facilities, value, "Инвентарный №")
 
+    def tag_no_mat_inventory(self, value):
+        self.set_text(InventoryNFAAddLineLocators.tagNoMaterialInventory, value, "Инвентарный №")
+
     def in_fact_quantity(self, value):
         self.set_text(InventoryNFAAddLineLocators.in_fact_quantity, value, "Количество")
 
@@ -3545,7 +3548,7 @@ class EstimatedIncomePage(Browser):
         self.set_select2(EstimatedIncomeLocators.recipient, value, "Получатель")
 
     def account_details(self, value):
-        self.set_select2(EstimatedIncomeLocators.account_details, value, "Лицевой счет")
+        self.set_select2(EstimatedIncomeLocators.account_details, value, "Лицевой счет", exactly=False)
 
     def operation(self, value):
         self.set_select2(EstimatedIncomeLocators.operation, value, "Типовая операция")
