@@ -3596,10 +3596,10 @@ class BudgetEstimatesAddLinePage(Browser):
         self.set_date(BudgetEstimatesAddLineLocators.line_create_date, value, "Дата внесения строки")
 
     def kbk(self, value):
-        self.set_select2(BudgetEstimatesAddLineLocators.kbk, value, "Код по БК")
+        self.set_select2(BudgetEstimatesAddLineLocators.kbk, value, "Код по БК", exactly=False)
 
     def kosgu(self, value):
-        self.set_select2(BudgetEstimatesAddLineLocators.kosgu, value, "КОСГУ")
+        self.set_select2(BudgetEstimatesAddLineLocators.kosgu, value, "КОСГУ", exactly=False)
 
     def cost_element(self, value):
         self.set_select2(BudgetEstimatesAddLineLocators.cost_element, value, "Вид затрат")

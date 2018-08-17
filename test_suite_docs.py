@@ -317,8 +317,11 @@ class TestSuite:
         page.document_date(data["documents"]["incomeCashOrder"]["documentDate"])
         page.entry_date(data["documents"]["incomeCashOrder"]["entryDate"])
         page.employee(data["documents"]["incomeCashOrder"]["employee"])
+        page.checker.check_text_locator(IncomingOrderLocators.received_from,
+                                        data["documents"]["incomeCashOrder"]["employee"])
         page.organization(data["documents"]["incomeCashOrder"]["organization"])
-        # page.received_from('value') - Принято от
+        page.checker.check_text_locator(IncomingOrderLocators.received_from,
+                                        data["documents"]["incomeCashOrder"]["organization"])
         page.operation(data["documents"]["incomeCashOrder"]["operation"])
         page.department_unit(data["documents"]["incomeCashOrder"]["departmentUnit"])
         page.cash_report_number(data["documents"]["incomeCashOrder"]["cashReportNumber"])
@@ -348,9 +351,11 @@ class TestSuite:
         page.chief_accountant(data["documents"]["incomeCashOrder"]["chiefAccountant"])
         page.cashier(data["documents"]["incomeCashOrder"]["cashier"])
         page.click_by_text("Проводки")
-        sleep(3)
+        sleep(1)
+        page.checker.check_text_locator(IncomingOrderLocators.amount,
+                                        data["documents"]["incomeCashOrder"]["amountCheck"])
         page.click_by_text("Сохранить")
-        sleep(3)
+        sleep(1)
         page.click_by_text("Закрыть")
 
     def te1st_account_cash_warrant(self):
@@ -368,7 +373,11 @@ class TestSuite:
         page.department_unit(data["documents"]["accountCashWarrant"]["departmentUnit"])
         page.operation_master(data["documents"]["accountCashWarrant"]["operationMaster"])
         page.employee(data["documents"]["accountCashWarrant"]["employee"])
+        page.checker.check_text_locator(AccountCashWarrantLocators.issue,
+                                        data["documents"]["accountCashWarrant"]["employee"])
         page.counterparty(data["documents"]["accountCashWarrant"]["organization"])
+        page.checker.check_text_locator(AccountCashWarrantLocators.issue,
+                                        data["documents"]["accountCashWarrant"]["organization"])
         page.foundation(data["documents"]["accountCashWarrant"]["foundation"])
         page.cash_report_number(data["documents"]["accountCashWarrant"]["cashReportNumber"])
         # Добавили  строку
@@ -398,6 +407,8 @@ class TestSuite:
         page.chief(data["documents"]["accountCashWarrant"]["chief"])
         page.cashier(data["documents"]["accountCashWarrant"]["cashier"])
         page.click_by_text("Проводки")
+        page.checker.check_text_locator(AccountCashWarrantLocators.amount,
+                                        data["documents"]["accountCashWarrant"]["amountCheck"])
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
@@ -447,6 +458,9 @@ class TestSuite:
         page.comment(data["documents"]["applicationForCashWithdrawal"]["comment"])
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Проводки")
+        page.checker.check_text_locator(ApplicationForCashWithdrawalAddLineLocators.amount,
+                                        data["documents"]["applicationForCashWithdrawal"]["amountCheck"])
+
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
@@ -866,8 +880,8 @@ class TestSuite:
         page.department(data["documents"]["basisForReportingAmounts"]["department"])
         page.trip_start_date(data["documents"]["basisForReportingAmounts"]["documentDate"])
         page.trip_end_date(data["documents"]["basisForReportingAmounts"]["limitDate"])
-        page.comment(data["documents"]["basisForReportingAmounts"]["comment"])
-        page.trip_route('value')
+        page.comment(data["documents"]["basisForReportingAmounts"]["documentFoundationSubject"])
+        page.trip_route(data["documents"]["basisForReportingAmounts"]["documentFoundationSubject"])
         # добавление строки документа
         page.click_by_text("Строки документа")
         page.click_by_text("Добавить")
@@ -1307,7 +1321,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_information_about_the_monetary_obligation(self):
+    def test_information_about_the_monetary_obligation(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1363,7 +1377,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_creation_document_admission_nfa(self):
+    def test_creation_document_admission_nfa(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.click_by_text("Поступление НФА")
@@ -1431,7 +1445,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_move_nfa(self):
+    def test_move_nfa(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.click_by_text("Перемещение НФА")
@@ -1503,7 +1517,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_retirement_nfa(self):
+    def test_retirement_nfa(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.click_by_text("Выбытие НФА")
@@ -1574,7 +1588,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_accrual_of_amortization_on_the_os_under_the_account(self):
+    def test_accrual_of_amortization_on_the_os_under_the_account(self):
         # Начисление Амортизации на ОС
         page = MenuPage(self.driver)
         page.click_to_eagle()
@@ -1623,7 +1637,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_inventory_n_f_a(self):
+    def test_inventory_n_f_a(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1686,7 +1700,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_procurement_notice(self):
+    def test_procurement_notice(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1766,25 +1780,25 @@ class TestSuite:
         page.click_by_text('Добавить')
         page.click_by_text("Новый документ")
         page = BudgetEstimatesPage(self.driver)
-        page.financial_year(data["documents"]["informationAboutBudgetObligation"]["financialYear"])
-        page.account('value')
-        page.operation(data["documents"]["applicationCashFlow"]["operation"])
+        page.financial_year(data["documents"]["budgetEstimates"]["financialYear"])
+        page.account(data["documents"]["budgetEstimates"]["account"])
+        # page.operation(data["documents"]["budgetEstimates"]["operation"])
         # Добавляем строку документа
         page.click_by_text("Строки документа")
         page.click_by_text("Добавить")
         page.click_by_text("Новую строку")
         page = BudgetEstimatesAddLinePage(self.driver)
-        page.line_create_date('value')
-        page.kbk(data["documents"]["incomeCashOrder"]["kbk"])
-        page.kosgu(data["documents"]["incomeCashOrder"]["kosgu"])
-        page.cost_element(data["documents"]["incomeCashOrder"]["costElement"])
-        page.part_number('value')
-        page.current_year_amount_b_a('value')
-        page.first_plan_year_amount_b_a('value')
-        page.second_plan_year_amount_b_a('value')
-        page.current_year_amount_l_b_o('value')
-        page.first_plan_year_amount_l_b_o('value')
-        page.second_plan_year_amount_l_b_o('value')
+        page.line_create_date(data["documents"]["budgetEstimates"]["documentDate"])
+        page.kbk(data["documents"]["budgetEstimates"]["kbk"])
+        page.kosgu(data["documents"]["budgetEstimates"]["kosgu"])
+        page.cost_element(data["documents"]["budgetEstimates"]["costElement"])
+        # page.part_number('value')
+        page.current_year_amount_b_a(data["documents"]["budgetEstimates"]["amount"])
+        page.first_plan_year_amount_b_a(data["documents"]["budgetEstimates"]["amount"])
+        page.second_plan_year_amount_b_a(data["documents"]["budgetEstimates"]["amount"])
+        page.current_year_amount_l_b_o(data["documents"]["budgetEstimates"]["amount"])
+        page.first_plan_year_amount_l_b_o(data["documents"]["budgetEstimates"]["amount"])
+        page.second_plan_year_amount_l_b_o(data["documents"]["budgetEstimates"]["amount"])
         page.click_by_text("Сохранить", order=2)
         page.click_by_text("Проводки")
         page.click_by_text("Сохранить")
