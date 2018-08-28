@@ -1230,6 +1230,7 @@ class ApplicationForCashWithdrawalLocators(object):
     check_number = (By.XPATH, "//*[@name='checkNumber']//input")
     check_date = (By.XPATH, "//*[@name='checkDate']//input")
     check_valid_till = (By.XPATH, "//*[@name='checkValidTill']//input")
+    amount = (By.XPATH, "//*[@name='amount']//input")
 
 
 # Заявка на получение наличных денег добавление строк

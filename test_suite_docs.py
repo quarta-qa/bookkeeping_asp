@@ -303,7 +303,7 @@ class TestSuite:
         print("ЗАЯВКА НА ВОЗВРАТ - ДОКУМЕНТ СОХРАНЕН")
         sleep(10)
 
-    def te1st_income_cash_order(self):
+    def test_income_cash_order(self):
         
         page = MenuPage(self.driver)
         page.click_to_eagle()
@@ -358,7 +358,7 @@ class TestSuite:
         sleep(1)
         page.click_by_text("Закрыть")
 
-    def te1st_account_cash_warrant(self):
+    def test_account_cash_warrant(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -412,7 +412,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_application_for_cash_withdrawal(self):
+    def test_application_for_cash_withdrawal(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -458,13 +458,13 @@ class TestSuite:
         page.comment(data["documents"]["applicationForCashWithdrawal"]["comment"])
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Проводки")
-        page.checker.check_text_locator(ApplicationForCashWithdrawalAddLineLocators.amount,
+        page.checker.check_text_locator(ApplicationForCashWithdrawalLocators.amount,
                                         data["documents"]["applicationForCashWithdrawal"]["amountCheck"])
 
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_applying_for_card(self):
+    def test_applying_for_card(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -484,7 +484,7 @@ class TestSuite:
         page.card_number(data["documents"]["applyingForCard"]["cardNumber"])
         page.trustee(data["documents"]["applyingForCard"]["Trustee"])
         page.employee_position(data["documents"]["applyingForCard"]["employeePosition"])
-        # # page.investment_program('value')
+        page.investment_program(data["documents"]["applyingForCard"]["investmentProgram"])
         # page.employee_name_in_ablative_case('value')
         # page.employee_position_in_ablative_case('value')
         page.foundation(data["documents"]["applyingForCard"]["foundation"])
@@ -514,7 +514,7 @@ class TestSuite:
         sleep(5)
         page.click_by_text("Закрыть")
 
-    def te1st_decoding_amounts_unused_funds(self):
+    def test_decoding_amounts_unused_funds(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -530,7 +530,7 @@ class TestSuite:
         page.personal_account(data["documents"]["decodingAmountsUnusedFunds"]["personalAccount"])
         page.operation_master(data["documents"]["decodingAmountsUnusedFunds"]["operationMaster"])
         page.tracking_number(data["documents"]["decodingAmountsUnusedFunds"]["trackingNumber"])
-        # page.investment_program('value')
+        page.investment_program(data["documents"]["decodingAmountsUnusedFunds"]["investmentProgram"])
         # Вкладка Уполномоченные лица
         page.click_by_text("Уполномоченные лица")
         page.chief(data["documents"]["decodingAmountsUnusedFunds"]["chief"])
@@ -557,7 +557,7 @@ class TestSuite:
         sleep(5)
         page.click_by_text("Закрыть")
 
-    def te1st_application_cash_flow(self):
+    def test_application_cash_flow(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page = ApplicationCashFlowPage(self.driver)
@@ -581,7 +581,7 @@ class TestSuite:
         page.click_by_text("Реквизиты документа")
         page.currency(data["documents"]["applicationCashFlow"]["currency"])
         page.department_unit(data["documents"]["applicationCashFlow"]["departmentUnit"])
-        # page.investment_program('value')
+        page.investment_program(data["documents"]["applicationCashFlow"]["investmentProgram"])
         page.priority(data["documents"]["applicationCashFlow"]["priority"])
         page.is_advance(1)
         page.priority_of_payment(data["documents"]["applicationCashFlow"]["paymentPriority"])
@@ -665,7 +665,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_payment_order_arrival(self):
+    def test_payment_order_arrival(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page = PaymentOrderArrivalPage(self.driver)
@@ -721,7 +721,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_return_request(self):
+    def test_return_request(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -751,7 +751,7 @@ class TestSuite:
         # page.goal_code(data["documents"]["returnReques"]["codeGoal"])
         # page.oktmo(data["documents"]["returnReques"]["oktmo"])
         page.department(data["documents"]["returnReques"]["department"])
-        # page.investment_program('value')
+        page.investment_program(data["documents"]["returnReques"]["investmentProgram"])
         # page.expenditure_goal_act('value')
         # Информация о платеже
         page.priority_of_payment('5')
@@ -778,7 +778,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_notification_of_the_type_and_payment_type(self):
+    def test_notification_of_the_type_and_payment_type(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -863,7 +863,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_basis_for_reporting_amounts(self):
+    def test_basis_for_reporting_amounts(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -913,7 +913,7 @@ class TestSuite:
         page.click_by_text("Сохранить", 2)
         page.click_by_text("Сохранить")
 
-    def te1st_advance_report(self):
+    def test_advance_report(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -955,7 +955,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_payment_order_through_contract_with_the_supplier(self):
+    def test_payment_order_through_contract_with_the_supplier(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page = ContractWithSupplierPage(self.driver, 5)
@@ -1011,7 +1011,7 @@ class TestSuite:
         page.contract_subject(data["documents"]["contractWithSupplier"]["comment"])
         page.department(data["documents"]["contractWithSupplier"]["department"])
         page.budgetary_plan_act(data["documents"]["contractWithSupplier"]["act"])
-        # page.investment_program('value')
+        page.investment_program(data["documents"]["contractWithSupplier"]["investmentProgram"])
         page.department_unit(data["documents"]["contractWithSupplier"]["departmentUnit"])
         page.work(data["documents"]["contractWithSupplier"]["work"])
         page.amounts_amount(data["documents"]["contractWithSupplier"]["amount"])
@@ -1084,7 +1084,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_ensuring_fulfillment_of_obligations(self):
+    def test_ensuring_fulfillment_of_obligations(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1106,7 +1106,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_information_about_budget_obligation(self):
+    def test_information_about_budget_obligation(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1138,7 +1138,7 @@ class TestSuite:
         page.activity_kind(data["documents"]["informationAboutBudgetObligation"]["activityKind"])
         page.kbk_type(data["documents"]["informationAboutBudgetObligation"]["kbkType"])
         page.comment(data["documents"]["informationAboutBudgetObligation"]["comment"])
-        # page.investment_program('value')
+        page.investment_program(data["documents"]["informationAboutBudgetObligation"]["investmentProgram"])
         # Суммы на текущий год
         page.current_year_amounts(data["documents"]["informationAboutBudgetObligation"]["financialYear"])
         page.february(data["documents"]["informationAboutBudgetObligation"]["amount"])
@@ -1200,7 +1200,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_invoice_from_the_supplier(self):
+    def test_invoice_from_the_supplier(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1236,7 +1236,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_invoice_from_vendor(self):
+    def test_invoice_from_vendor(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1287,7 +1287,7 @@ class TestSuite:
         page.click_by_text("Сохранить")
         page.click_by_text("Закрыть")
 
-    def te1st_incoming_act(self):
+    def test_incoming_act(self):
         page = MenuPage(self.driver)
         page.click_to_eagle()
         page.select_month("Январь", "2018")
@@ -1338,7 +1338,6 @@ class TestSuite:
         page.registration_date(data["documents"]["informationAboutTheMonetaryObligation"]["documentDate"])
         page.personal_account(data["documents"]["informationAboutTheMonetaryObligation"]["personalAccount"])
         page.counterparty(data["documents"]["informationAboutTheMonetaryObligation"]["organization"])
-        # page.counterparty_account_detail('value')
         page.guid(data["documents"]["informationAboutTheMonetaryObligation"]["guid"])
         page.chief(data["documents"]["informationAboutTheMonetaryObligation"]["chief"])
         page.accountant_general(data["documents"]["informationAboutTheMonetaryObligation"]["AccountantGeneral"])
@@ -1360,7 +1359,7 @@ class TestSuite:
         page.kbk_type(data["documents"]["informationAboutTheMonetaryObligation"]["kbkType"])
         page.kosgu(data["documents"]["informationAboutTheMonetaryObligation"]["kosgu"])
         page.activity_kind(data["documents"]["informationAboutTheMonetaryObligation"]["activityKind"])
-        # page.investment_program('value')
+        page.investment_program(data["documents"]["informationAboutTheMonetaryObligation"]["investmentProgram"])
         page.analytical_code(data["documents"]["informationAboutTheMonetaryObligation"]["codeGoal"])
         page.advance_transfered(data["documents"]["informationAboutTheMonetaryObligation"]["amount"])
         page.amount(data["documents"]["informationAboutTheMonetaryObligation"]["amount"])
